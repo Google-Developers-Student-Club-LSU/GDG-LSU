@@ -76,6 +76,6 @@ Want to contribute or make improvements? Here's how:
 
 **Dina Taing**  
 GDG LSU Officer: Web Master  
-[dtaing1@lsu.edu](mailto:dtaing1@lsu.edy)
+[dtaing1@lsu.edu](mailto:dtaing1@lsu.edu)
 
 ---
