@@ -70,3 +70,12 @@ Want to contribute or make improvements? Here's how:
 4. **Submit a Pull Request** explaining your updates
 
 > ⚠️ Please do not push directly to `main`. All contributions must go through a PR for review.
+
+
+## 👨‍💻 Maintainer
+
+**Dina Taing**  
+GDG LSU Officer: Web Master  
+[dtaing1@lsu.edu](mailto:dtaing1@lsu.edy)
+
+---
