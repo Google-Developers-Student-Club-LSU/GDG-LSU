@@ -13,14 +13,13 @@ import 'package:google_fonts/google_fonts.dart';
 //textfont
 TextStyle textFont = GoogleFonts.ptSans();
 
-//backgroundColor
+// backgroundColor
 const lightBackgroundColor = Color(0xFFFFFFFF);
-const darkBackgroundColor = Color(0x00000000);
+const darkBackgroundColor = Color(0xFF000000); 
 
-
-//letterColor 
-const lightLetterColor = Color(0x00000000);
-const darkLetterColor = Color(0xFFFFFFFF);
+// letterColor
+const lightLetterColor = Color(0xFF000000); 
+const darkLetterColor = Color(0xFFFFFFFF); 
 
 
 //Google color

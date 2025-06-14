@@ -1,3 +1,11 @@
+//
+//
+// Licensed under Creative Commons Attribution-NonCommercial-ShareAlike 4.0
+// International License https://creativecommons.org/licenses/by-nc-sa/4.0/
+//
+// Authors: Dina Taing
+//
+
 import 'package:calendar_view/calendar_view.dart';
 import 'package:flutter/material.dart';
 import 'package:gdgwebsite/Models/EventModel.dart';

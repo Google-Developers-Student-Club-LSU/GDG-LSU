@@ -1,4 +1,11 @@
 
+//
+//
+// Licensed under Creative Commons Attribution-NonCommercial-ShareAlike 4.0
+// International License https://creativecommons.org/licenses/by-nc-sa/4.0/
+//
+// Authors: Dina Taing
+//
 
 
 final List<Map<String, dynamic>> myEvents = [
@@ -10,7 +17,7 @@ final List<Map<String, dynamic>> myEvents = [
     "image": "assets/images/team_meeting.png"
   },
   {
-    "title": "WorkShop",
+    "title": "Firebase WorkShop",
     "date": DateTime(2025, 6, 16, 14, 30),
     "endDate": DateTime(2025, 6, 16, 15, 30),
     "description": "Annual physical check-up at local clinic.",
