@@ -73,13 +73,3 @@ final ThemeData darkTheme = ThemeData(
   ),
 );
 
-
-
-
-const secondaryColor = Color(0xFF5AA1BB);
-const accentColor = Color(0xFF0B2E60);
-const textColor = Color(0xFF000000);
-const hintTextColor = Color(0xFF808080);
-
-const textFieldBorder = Color(0xFF002E6F);
-const textFieldIconColor = Color(0xFF8D8E8D);
