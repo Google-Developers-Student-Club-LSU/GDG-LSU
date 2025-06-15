@@ -17,42 +17,51 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  final ScrollController _scrollController = ScrollController();
   double scrollOffset = 0.0;
+
+  @override
+  void initState() {
+    super.initState();
+    _scrollController.addListener(() {
+      // Avoid setState spam by throttling
+      final newOffset = _scrollController.offset;
+      if ((newOffset - scrollOffset).abs() > 1) {
+        scrollOffset = newOffset;
+        setState(() {});
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const Appbar(),
-      body: NotificationListener<ScrollNotification>(
-        onNotification: (notification) {
-          if (notification is ScrollUpdateNotification) {
-            setState(() {
-              scrollOffset = notification.metrics.pixels;
-            });
-          }
-          return true;
-        },
-        child: ListView(
-          children: [
-            _buildAnimatedSlideshow(scrollOffset),
-            const SizedBox(height: 600, child: Center(child: Text("More content goes here..."))),
-          ],
-        ),
+      body: ListView(
+        controller: _scrollController,
+        children: [
+          _buildAnimatedSlideshow(scrollOffset),
+          const SizedBox(
+            height: 600,
+            child: Center(child: Text("More content goes here...")),
+          ),
+        ],
       ),
     );
   }
-
-
 
   Widget _buildAnimatedSlideshow(double offset) {
     const double maxOffset = 200;
     final double clampedOffset = offset.clamp(0, maxOffset);
 
-    // Shrinks from 1.0 to 0.8
-    final double scale = 1.0 - (clampedOffset / maxOffset) * 0.2;
-
-    // Moves right up to ~133 pixels
-    final double translateX = clampedOffset / 1.5;
+    final double scale = 1.0 - (clampedOffset / maxOffset) * 0.5;
+    final double translateX = clampedOffset / 0.5;
 
     return Transform.translate(
       offset: Offset(translateX, 0),
