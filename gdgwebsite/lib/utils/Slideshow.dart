@@ -1,10 +1,3 @@
-//
-//
-// Licensed under Creative Commons Attribution-NonCommercial-ShareAlike 4.0
-// International License https://creativecommons.org/licenses/by-nc-sa/4.0/
-//
-// Authors: Dina Taing
-//
 
 import 'dart:async';
 import 'package:flutter/material.dart';
@@ -61,7 +54,7 @@ class _AutoSlideCarouselState extends State<AutoSlideCarousel> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: widget.height,
+      height:877,
       child: PageView.builder(
         controller: _controller,
         itemCount: widget.imagePaths.length,
@@ -70,6 +63,7 @@ class _AutoSlideCarouselState extends State<AutoSlideCarousel> {
             widget.imagePaths[index],
             fit: widget.fit,
             width: double.infinity,
+            height: double.infinity,
           );
         },
       ),
