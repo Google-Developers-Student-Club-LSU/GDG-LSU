@@ -34,6 +34,7 @@ const gGreen = Color(0xFF34AB53);
 //ThemeData
 //lightMode
 final ThemeData lightTheme = ThemeData(
+  useMaterial3: true,
   brightness: Brightness.light,
   scaffoldBackgroundColor: lightBackgroundColor,
   textTheme: GoogleFonts.ptSansTextTheme().apply(

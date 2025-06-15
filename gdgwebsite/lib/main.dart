@@ -37,7 +37,7 @@ class MyApp extends StatelessWidget {
         '/eboard': (_) => const EboardPage(),
         '/events': (_) => const EventsPage(),
         '/sponsor': (_) => const SponsorPage(),
-        '/blog': (_) => const BlogPage()
+       // '/blog': (_) => const BlogPage()
       }
     );
   }
