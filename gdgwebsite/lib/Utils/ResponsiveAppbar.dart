@@ -13,35 +13,39 @@ class ResponsiveAppBar extends StatelessWidget implements PreferredSizeWidget {
   bool isMobile(BuildContext context) => MediaQuery.of(context).size.width < 600;
 
   @override
-  Widget build(BuildContext context) {
-    return AppBar(
-  title: InkWell(
-    onTap: () => Navigator.of(context).pushNamed('/'),
-    child: Row(
+Widget build(BuildContext context) {
+  return AppBar(
+    title: Row(
       children: [
-        Image.asset(
-          'logo/GDSC.png',
-          height: 32,
-        ),
-        const SizedBox(width: 8),
-        const Text(
-          'GDG@LSU',
-          style: TextStyle(fontWeight: FontWeight.bold),
+        InkWell(
+          onTap: () => Navigator.of(context).pushReplacementNamed('home'),
+          borderRadius: BorderRadius.circular(8),
+          child: Row(
+            children: [
+              Image.asset(
+                'logo/GDSC.png',
+                height: 32,
+              ),
+              const SizedBox(width: 8),
+              const Text(
+                'GDG@LSU',
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
+            ],
+          ),
         ),
       ],
     ),
-  ),
-  actions: isMobile(context)
-      ? [
-          IconButton(
-            icon: const Icon(Icons.menu),
-            onPressed: onMenuTap,
-          ),
-        ]
-      : navItems,
-    );
-
-  }
+    actions: isMobile(context)
+        ? [
+            IconButton(
+              icon: const Icon(Icons.menu),
+              onPressed: onMenuTap,
+            ),
+          ]
+        : navItems,
+  );
+}
 
   @override
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);

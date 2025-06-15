@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gdgwebsite/Utils/ResponsiveAppbar.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class Appbar extends StatelessWidget implements PreferredSizeWidget {
   const Appbar({super.key});
@@ -19,20 +20,37 @@ class Appbar extends StatelessWidget implements PreferredSizeWidget {
     );
   }
 
-  VoidCallback navButton(BuildContext context, String route) {
-    return () => Navigator.pushNamed(context, route);
-  }
+VoidCallback navButton(BuildContext context, String route) {
+  return () => Navigator.pushReplacementNamed(context, route);
+}
+
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final textColor = theme.textTheme.bodyMedium?.color;
+
     return ResponsiveAppBar(
       navItems: [
-        TextButton(onPressed: navButton(context, '/home'), child: const Text('Home')),
-        TextButton(onPressed: navButton(context, '/eboard'), child: const Text('Eboard')),
-        TextButton(onPressed: navButton(context, '/events'), child: const Text('Events')),
-        TextButton(onPressed: navButton(context, '/sponsor'), child: const Text('Sponsor')),
+        _navItem(context, 'Home', '/home', textColor),
+        _navItem(context, 'Eboard', '/eboard', textColor),
+        _navItem(context, 'Events', '/events', textColor),
+        _navItem(context, 'Sponsor', '/sponsor', textColor),
       ],
       onMenuTap: () => _openMobileMenu(context),
+    );
+  }
+
+  Widget _navItem(BuildContext context, String label, String route, Color? color) {
+    return TextButton(
+      onPressed: navButton(context, route),
+      child: Text(
+        label,
+        style: GoogleFonts.ptSans(
+          fontWeight: FontWeight.w600,
+          color: color,
+        ),
+      ),
     );
   }
 
