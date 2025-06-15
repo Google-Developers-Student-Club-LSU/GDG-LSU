@@ -10,7 +10,7 @@ class ResponsiveAppBar extends StatelessWidget implements PreferredSizeWidget {
     required this.onMenuTap,
   });
 
-  bool isMobile(BuildContext context) => MediaQuery.of(context).size.width < 600;
+  bool isMobile(BuildContext context) => MediaQuery.of(context).size.width < 650;
 
   @override
 Widget build(BuildContext context) {
@@ -18,7 +18,7 @@ Widget build(BuildContext context) {
     title: Row(
       children: [
         InkWell(
-          onTap: () => Navigator.of(context).pushReplacementNamed('home'),
+          onTap: () => Navigator.of(context).pushReplacementNamed('/'),
           borderRadius: BorderRadius.circular(8),
           child: Row(
             children: [
@@ -28,7 +28,7 @@ Widget build(BuildContext context) {
               ),
               const SizedBox(width: 8),
               const Text(
-                'GDG@LSU',
+                'Google Developer Group @LSU',
                 style: TextStyle(fontWeight: FontWeight.bold),
               ),
             ],

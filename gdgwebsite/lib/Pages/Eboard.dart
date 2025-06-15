@@ -7,6 +7,7 @@
 //
 
 import 'package:flutter/material.dart';
+import 'package:gdgwebsite/Widgets/Appbar.dart';
 
 class EboardPage extends StatefulWidget {
   const EboardPage({super.key});
@@ -18,6 +19,8 @@ class EboardPage extends StatefulWidget {
 class _EboardPageState extends State<EboardPage> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      appBar: const Appbar(),
+    );
   }
 }

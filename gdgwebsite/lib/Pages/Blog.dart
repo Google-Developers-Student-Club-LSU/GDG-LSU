@@ -7,12 +7,15 @@
 //
 
 import 'package:flutter/material.dart';
+import 'package:gdgwebsite/Widgets/Appbar.dart';
 
 class BlogPage extends StatelessWidget {
   const BlogPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      appBar: const Appbar(),
+    );
   }
 }

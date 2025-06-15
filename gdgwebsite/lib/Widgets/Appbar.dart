@@ -32,10 +32,11 @@ VoidCallback navButton(BuildContext context, String route) {
 
     return ResponsiveAppBar(
       navItems: [
-        _navItem(context, 'Home', '/home', textColor),
+        _navItem(context, 'Home', '/', textColor),
         _navItem(context, 'Eboard', '/eboard', textColor),
         _navItem(context, 'Events', '/events', textColor),
         _navItem(context, 'Sponsor', '/sponsor', textColor),
+        SizedBox(width: 10)
       ],
       onMenuTap: () => _openMobileMenu(context),
     );

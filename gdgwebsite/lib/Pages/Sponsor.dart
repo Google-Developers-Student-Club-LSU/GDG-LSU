@@ -6,6 +6,7 @@
 // Authors: Dina Taing
 //
 import 'package:flutter/material.dart';
+import 'package:gdgwebsite/Widgets/Appbar.dart';
 
 class SponsorPage extends StatefulWidget {
   const SponsorPage({super.key});
@@ -17,6 +18,8 @@ class SponsorPage extends StatefulWidget {
 class _SponsorPageState extends State<SponsorPage> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      appBar: const Appbar(),
+    );
   }
 }
