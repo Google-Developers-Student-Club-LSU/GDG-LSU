@@ -1,8 +1,6 @@
 //
-//
 // Licensed under Creative Commons Attribution-NonCommercial-ShareAlike 4.0
 // International License https://creativecommons.org/licenses/by-nc-sa/4.0/
-//
 // Authors: Dina Taing
 //
 
@@ -65,13 +63,13 @@ class _EventsCalendarState extends State<EventsCalendar> {
           color: gYellow,
         ),
         headerTextStyle: StandardText.copyWith(fontSize: 20)
-        
+
       ),
       cellBuilder: (date, event, isToday, isInMonth, hideDaysNotInMonth) {
-      Color cellColor = Colors.white; // Default color
+      Color cellColor = Colors.white; 
         
          if (event.isNotEmpty) {
-          cellColor = gGreen; // Indicate presence of events
+          cellColor = gGreen; 
         }
         return Container(
       decoration: BoxDecoration(
@@ -80,9 +78,9 @@ class _EventsCalendarState extends State<EventsCalendar> {
       ),
       child: Column(
         children: [
-          Text(date.day.toString()), // Display the day number
-          if (event.isNotEmpty) // Display indicators or icons for events
-            Icon(Icons.event_available_rounded, size: 12, color: Colors.deepPurple), // Use your own icon or event representation
+          Text(date.day.toString()), 
+          if (event.isNotEmpty)
+            Icon(Icons.event_available_rounded, size: 12, color: Colors.deepPurple), 
         ],
       ),
     );
