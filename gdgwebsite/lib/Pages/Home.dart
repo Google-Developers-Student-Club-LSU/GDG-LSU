@@ -64,6 +64,24 @@ class _HomePageState extends State<HomePage> {
               )),
               _buildSecondText()
             ],
+          ),
+
+          const SizedBox(
+            height: 50,
+          ),
+                    Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              _buildThirdText(),
+              SizedBox(
+                 width: MediaQuery.of(context).size.width * 0.6,
+                 height: MediaQuery.of(context).size.height * 0.6,
+                child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: _buildThirdSlideShow(),
+              )),
+              
+            ],
           )
         ],
       ),
@@ -176,4 +194,63 @@ Widget _buildAnimatedText(double offset) {
       ],
     );
   }
+
+    Widget _buildThirdSlideShow(){
+    return AutoSlideCarousel(imagePaths: [
+          'thirdSlide/slide1.png',
+          'thirdSlide/slide2.jpg',
+          'thirdSlide/slide3.jpg',
+          'thirdSlide/slide4.jpg',
+    ]
+    );
+  }
+    Widget _buildThirdText(){
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+                  "OUR MISSION: ",
+                  style: TextStyle(
+                    fontSize: 40,
+                    fontWeight: FontWeight.w900,
+                    
+                  ),
+            ),
+         Text(
+               "  WE GROW",
+                  style: TextStyle(
+                    fontSize: 40,
+                    fontWeight: FontWeight.w900,  
+                    color: gBlue
+                  ),
+            ),
+         Text(
+               "  WE INNOVATE",
+                  style: TextStyle(
+                    fontSize: 40,
+                    fontWeight: FontWeight.w900,  
+                    color: gRed
+                  ),
+            ),
+         Text(
+               "  WE BUILD",
+                  style: TextStyle(
+                    fontSize: 40,
+                    fontWeight: FontWeight.w900,  
+                    color: gYellow
+                  ),
+            ), 
+         Text(
+               "  TOGETHER",
+                  style: TextStyle(
+                    fontSize: 40,
+                    fontWeight: FontWeight.w900,  
+                    color: gGreen
+                  ),
+            ),                           
+      ],
+    );
+  }
+
+
 }

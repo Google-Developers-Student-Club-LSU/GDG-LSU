@@ -45,7 +45,7 @@ final ThemeData lightTheme = ThemeData(
     backgroundColor: lightBackgroundColor,
     foregroundColor: lightLetterColor,
     titleTextStyle: GoogleFonts.ptSans(
-      fontSize: 20,
+      fontSize: 30,
       fontWeight: FontWeight.bold,
       color: lightLetterColor,
     ),
@@ -66,7 +66,7 @@ final ThemeData darkTheme = ThemeData(
     backgroundColor: darkBackgroundColor,
     foregroundColor: darkLetterColor,
     titleTextStyle: GoogleFonts.ptSans(
-      fontSize: 20,
+      fontSize: 30,
       fontWeight: FontWeight.bold,
       color: darkLetterColor,
     ),

@@ -1,3 +1,6 @@
+import 'dart:isolate';
+
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:gdgwebsite/Utils/ResponsiveAppbar.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -24,19 +27,23 @@ VoidCallback navButton(BuildContext context, String route) {
   return () => Navigator.pushReplacementNamed(context, route);
 }
 
-
+  
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final textColor = theme.textTheme.bodyMedium?.color;
+    Widget Spacer = SizedBox(width: 25) ;
 
     return ResponsiveAppBar(
       navItems: [
         _navItem(context, 'Home', '/', textColor),
+         Spacer,
         _navItem(context, 'Eboard', '/eboard', textColor),
+        Spacer,
         _navItem(context, 'Events', '/events', textColor),
+         Spacer,
         _navItem(context, 'Sponsor', '/sponsor', textColor),
-        SizedBox(width: 10)
+        Spacer,
       ],
       onMenuTap: () => _openMobileMenu(context),
     );
@@ -48,7 +55,8 @@ VoidCallback navButton(BuildContext context, String route) {
       child: Text(
         label,
         style: GoogleFonts.ptSans(
-          fontWeight: FontWeight.w600,
+          fontWeight: FontWeight.w200,
+          fontSize: 20,
           color: color,
         ),
       ),

@@ -10,7 +10,7 @@ class ResponsiveAppBar extends StatelessWidget implements PreferredSizeWidget {
     required this.onMenuTap,
   });
 
-  bool isMobile(BuildContext context) => MediaQuery.of(context).size.width < 800;
+  bool isMobile(BuildContext context) => MediaQuery.of(context).size.width < 1000;
 
   @override
 Widget build(BuildContext context) {
