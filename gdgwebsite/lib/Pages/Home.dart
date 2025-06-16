@@ -52,15 +52,23 @@ class _HomePageState extends State<HomePage> {
             _buildAnimatedText(scrollOffset),
             
           ]),
-          const SizedBox(
-            height: 600,
-            child: Center(child: Text("More content goes here...")),
-          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              SizedBox(
+                 width: MediaQuery.of(context).size.width * 0.6,
+                 height: MediaQuery.of(context).size.height * 0.6,
+                child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: _buildSecondSlideShow(),
+              )),
+              _buildSecondText()
+            ],
+          )
         ],
       ),
     );
   }
-
 
 
 Widget _buildAnimatedText(double offset) {
@@ -114,8 +122,6 @@ Widget _buildAnimatedText(double offset) {
   );
 }
 
-
-
   Widget _buildAnimatedSlideshow(double offset) {
     const double maxOffset = 200;
     final double clampedOffset = offset.clamp(0, maxOffset);
@@ -137,6 +143,37 @@ Widget _buildAnimatedText(double offset) {
 
         ]),
       ),
+    );
+  }
+
+  Widget _buildSecondSlideShow(){
+    return AutoSlideCarousel(imagePaths: [
+          'secondSlide/slide1.png',
+          'secondSlide/slide2.png',
+          'secondSlide/slide3.jpg',
+    ]
+    );
+  }
+
+  Widget _buildSecondText(){
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+                  "CONNECT ",
+                  style: TextStyle(
+                    fontSize: 40,
+                    fontWeight: FontWeight.w900,
+                  ),
+            ),
+         Text(
+               "WITH DEVELOPERS",
+                  style: TextStyle(
+                    fontSize: 40,
+                    fontWeight: FontWeight.w900,  
+                  ),
+            ),
+      ],
     );
   }
 }
