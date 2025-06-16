@@ -133,6 +133,8 @@ Widget _buildAnimatedText(double offset) {
           'firstSlide/slide1.png',
           'firstSlide/slide2.png',
           'firstSlide/slide3.png',
+          'firstSlide/slide4.jpg',
+
         ]),
       ),
     );
