@@ -54,16 +54,19 @@ class _AutoSlideCarouselState extends State<AutoSlideCarousel> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height:877,
+      height: 877,
       child: PageView.builder(
         controller: _controller,
         itemCount: widget.imagePaths.length,
         itemBuilder: (context, index) {
-          return Image.asset(
-            widget.imagePaths[index],
-            fit: widget.fit,
-            width: double.infinity,
-            height: double.infinity,
+          return ClipRRect(
+            borderRadius: BorderRadius.circular(24), 
+            child: Image.asset(
+              widget.imagePaths[index],
+              fit: widget.fit,
+              width: double.infinity,
+              height: double.infinity,
+            ),
           );
         },
       ),
