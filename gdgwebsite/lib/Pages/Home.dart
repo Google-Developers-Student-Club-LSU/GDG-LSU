@@ -5,9 +5,12 @@
 // Authors: Dina Taing
 //
 
+import 'package:calendar_view/calendar_view.dart';
 import 'package:flutter/material.dart';
 import 'package:gdgwebsite/Colors.dart';
+import 'package:gdgwebsite/Models/EventModel.dart';
 import 'package:gdgwebsite/Widgets/Appbar.dart';
+import 'package:gdgwebsite/utils/EventsCalendar.dart';
 import 'package:gdgwebsite/utils/Slideshow.dart';
 
 class HomePage extends StatefulWidget {
@@ -69,7 +72,7 @@ class _HomePageState extends State<HomePage> {
           const SizedBox(
             height: 50,
           ),
-                    Row(
+          Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               _buildThirdText(),
@@ -79,11 +82,31 @@ class _HomePageState extends State<HomePage> {
                 child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: _buildThirdSlideShow(),
-              )),
+              )
+              ),         
               
             ],
-          )
+          ),
+      const SizedBox(
+            height: 50,
+          ),
+          Center(child:Text("UPCOMING EVENTS",
+          style: StandardText,)
+          ),
+          Center(
+            child: SizedBox(
+              width: MediaQuery.of(context).size.width * 0.6,
+              height: MediaQuery.of(context).size.height * 0.6,
+              child: CalendarControllerProvider<Event>(
+                controller: EventController<Event>(),
+                child: EventsCalendar(),
+              ),
+            ),
+          ),
+
+
         ],
+        
       ),
     );
   }

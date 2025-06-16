@@ -8,6 +8,7 @@
 
 import 'package:calendar_view/calendar_view.dart';
 import 'package:flutter/material.dart';
+import 'package:gdgwebsite/Colors.dart';
 import 'package:gdgwebsite/Models/EventModel.dart';
 import 'package:gdgwebsite/UpcomingEvents.dart';
 
@@ -59,6 +60,33 @@ class _EventsCalendarState extends State<EventsCalendar> {
       initialMonth: DateTime.now(),
       showBorder: true,
       cellAspectRatio: 1.2,
+      headerStyle: HeaderStyle(
+        decoration: BoxDecoration(
+          color: gYellow,
+        ),
+        headerTextStyle: StandardText.copyWith(fontSize: 20)
+        
+      ),
+      cellBuilder: (date, event, isToday, isInMonth, hideDaysNotInMonth) {
+      Color cellColor = Colors.white; // Default color
+        
+         if (event.isNotEmpty) {
+          cellColor = gGreen; // Indicate presence of events
+        }
+        return Container(
+      decoration: BoxDecoration(
+        color: cellColor,
+        border: Border.all(color: Colors.grey.shade300),
+      ),
+      child: Column(
+        children: [
+          Text(date.day.toString()), // Display the day number
+          if (event.isNotEmpty) // Display indicators or icons for events
+            Icon(Icons.event_available_rounded, size: 12, color: Colors.deepPurple), // Use your own icon or event representation
+        ],
+      ),
+    );
+      },
       onCellTap: (date, events) {
         // TODO: Implement show dialog or navigation
       },

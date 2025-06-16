@@ -13,6 +13,11 @@ import 'package:google_fonts/google_fonts.dart';
 //textfont
 TextStyle textFont = GoogleFonts.ptSans();
 
+//textStyle
+TextStyle StandardText = TextStyle(
+                fontSize: 50,
+                fontWeight: FontWeight.w800,
+                   );
 // backgroundColor
 const lightBackgroundColor = Color(0xFFFFFFFF);
 const darkBackgroundColor = Color(0xFF000000); 
