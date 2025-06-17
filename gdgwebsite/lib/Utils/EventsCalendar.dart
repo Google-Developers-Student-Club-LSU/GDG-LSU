@@ -110,7 +110,7 @@ class _EventsCalendarState extends State<EventsCalendar> {
             padding: const EdgeInsets.symmetric(horizontal: 8,),
             child: Text(
               event.first.title, 
-              style: StandardText.copyWith(fontSize: 15),
+              style: StandardText.copyWith(fontSize: 10),
                
             ),
           ),

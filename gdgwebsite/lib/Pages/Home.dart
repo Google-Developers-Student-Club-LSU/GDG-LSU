@@ -55,36 +55,58 @@ class _HomePageState extends State<HomePage> {
             _buildAnimatedText(scrollOffset),
             
           ]),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          Stack(
             children: [
-              SizedBox(
-                 width: MediaQuery.of(context).size.width * 0.6,
-                 height: MediaQuery.of(context).size.height * 0.6,
-                child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: _buildSecondSlideShow(),
-              )),
-              _buildSecondText()
+          Positioned(
+                top: MediaQuery.of(context).size.height * 0.01,
+                right: MediaQuery.of(context).size.width * 0.04,
+                child: Image.asset('splash/BLUE.png',
+                  width:  MediaQuery.of(context).size.width * 0.1 , 
+                   ),
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  SizedBox(
+                     width: MediaQuery.of(context).size.width * 0.6,
+                     height: MediaQuery.of(context).size.height * 0.6,
+                    child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: _buildSecondSlideShow(),
+                  )),
+                  _buildSecondText()
+                ],
+              ),
             ],
           ),
 
           const SizedBox(
             height: 50,
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          Stack(
             children: [
-              _buildThirdText(),
-              SizedBox(
-                 width: MediaQuery.of(context).size.width * 0.6,
-                 height: MediaQuery.of(context).size.height * 0.6,
-                child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: _buildThirdSlideShow(),
-              )
-              ),         
-              
+              Positioned(
+                top: MediaQuery.of(context).size.height * 0.01,
+                left: MediaQuery.of(context).size.width * 0.04,
+                child: Image.asset('splash/Green.png',
+                  width:  MediaQuery.of(context).size.width * 0.1 , 
+                   ),
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  _buildThirdText(),
+                  SizedBox(
+                     width: MediaQuery.of(context).size.width * 0.6,
+                     height: MediaQuery.of(context).size.height * 0.6,
+                    child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: _buildThirdSlideShow(),
+                  )
+                  ),         
+                  
+                ],
+              ),
             ],
           ),
       const SizedBox(
@@ -202,17 +224,11 @@ Widget _buildAnimatedText(double offset) {
       children: [
         Text(
                   "CONNECT ",
-                  style: TextStyle(
-                    fontSize: 40,
-                    fontWeight: FontWeight.w900,
-                  ),
+                  style: StandardText
             ),
          Text(
                "WITH DEVELOPERS",
-                  style: TextStyle(
-                    fontSize: 40,
-                    fontWeight: FontWeight.w900,  
-                  ),
+                  style: StandardText
             ),
       ],
     );
@@ -241,35 +257,19 @@ Widget _buildAnimatedText(double offset) {
             ),
          Text(
                "  WE GROW",
-                  style: TextStyle(
-                    fontSize: 40,
-                    fontWeight: FontWeight.w900,  
-                    color: gBlue
-                  ),
+                  style: StandardText.copyWith(color: gBlue)
             ),
          Text(
                "  WE INNOVATE",
-                  style: TextStyle(
-                    fontSize: 40,
-                    fontWeight: FontWeight.w900,  
-                    color: gRed
-                  ),
+                  style: StandardText.copyWith(color: gRed)
             ),
          Text(
                "  WE BUILD",
-                  style: TextStyle(
-                    fontSize: 40,
-                    fontWeight: FontWeight.w900,  
-                    color: gYellow
-                  ),
+                  style: StandardText.copyWith(color: gYellow)
             ), 
          Text(
                "  TOGETHER",
-                  style: TextStyle(
-                    fontSize: 40,
-                    fontWeight: FontWeight.w900,  
-                    color: gGreen
-                  ),
+                  style: StandardText.copyWith(color: gGreen)
             ),                           
       ],
     );
