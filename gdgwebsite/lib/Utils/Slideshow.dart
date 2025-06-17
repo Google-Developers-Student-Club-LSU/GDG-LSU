@@ -53,23 +53,26 @@ class _AutoSlideCarouselState extends State<AutoSlideCarousel> {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: MediaQuery.of(context).size.height,
-      width: MediaQuery.of(context).size.width,
-      child: PageView.builder(
-        controller: _controller,
-        itemCount: widget.imagePaths.length,
-        itemBuilder: (context, index) {
-          return ClipRRect(
-            borderRadius: BorderRadius.circular(24), 
-            child: Image.asset(
-              widget.imagePaths[index],
-              fit: widget.fit,
-              width: double.infinity,
-              height: double.infinity,
-            ),
-          );
-        },
+    return AbsorbPointer(
+      absorbing: true,
+      child: SizedBox(
+        height: MediaQuery.of(context).size.height,
+        width: MediaQuery.of(context).size.width,
+        child: PageView.builder(
+          controller: _controller,
+          itemCount: widget.imagePaths.length,
+          itemBuilder: (context, index) {
+            return ClipRRect(
+              borderRadius: BorderRadius.circular(24), 
+              child: Image.asset(
+                widget.imagePaths[index],
+                fit: widget.fit,
+                width: double.infinity,
+                height: double.infinity,
+              ),
+            );
+          },
+        ),
       ),
     );
   }

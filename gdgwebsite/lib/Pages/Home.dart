@@ -116,12 +116,15 @@ class _HomePageState extends State<HomePage> {
           style: StandardText,)
           ),
           Center(
-            child: SizedBox(
-              width: MediaQuery.of(context).size.width * 0.6,
-              height:1000,
-              child: CalendarControllerProvider<Event>(
-                controller: EventController<Event>(),
-                child: EventsCalendar(),
+            child: AbsorbPointer(
+              absorbing: true,
+              child: SizedBox(
+                width: MediaQuery.of(context).size.width * 0.6,
+                height:1000,
+                child: CalendarControllerProvider<Event>(
+                  controller: EventController<Event>(),
+                  child: EventsCalendar(),
+                ),
               ),
             ),
           ),
