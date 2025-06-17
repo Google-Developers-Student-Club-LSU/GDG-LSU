@@ -27,8 +27,8 @@ Widget build(BuildContext context) {
                 height: 32,
               ),
               const SizedBox(width: 8),
-              const Text(
-                'Google Developer Group @LSU',
+            Text(
+                isMobile(context) ? 'GDG @ LSU': 'Google Developer Group @ LSU',
                 style: TextStyle(fontWeight: FontWeight.bold),
               ),
             ],

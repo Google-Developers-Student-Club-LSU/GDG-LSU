@@ -9,6 +9,8 @@ import 'package:flutter/material.dart';
 import 'package:gdgwebsite/Colors.dart';
 import 'package:gdgwebsite/Models/EventModel.dart';
 import 'package:gdgwebsite/UpcomingEvents.dart';
+import 'package:intl/intl.dart'; // Add this line
+
 
 class EventsCalendar extends StatefulWidget {
   const EventsCalendar({super.key});
@@ -53,20 +55,36 @@ class _EventsCalendarState extends State<EventsCalendar> {
 
   @override
   Widget build(BuildContext context) {
+     final theme = Theme.of(context);
+     final backgroundColor = theme.scaffoldBackgroundColor;
+    final contrast = theme.textTheme.bodyMedium?.color;
     return MonthView<Event>(
       controller: _eventController,
+      useAvailableVerticalSpace: true,
       initialMonth: DateTime.now(),
       showBorder: true,
-      cellAspectRatio: 1.2,
+      cellAspectRatio: 1,
+      headerStringBuilder: (date, {secondaryDate}) {
+        return DateFormat('MMMM yyyy').format(date);
+      },
       headerStyle: HeaderStyle(
-        decoration: BoxDecoration(
-          color: gYellow,
+    
+      leftIconConfig: IconDataConfig(
+        icon: (context) => Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 8.0),
+          child: Image.asset('logo/GDSC.png',
+           height: 32,),
         ),
-        headerTextStyle: StandardText.copyWith(fontSize: 20)
-
+        ),
+        decoration: BoxDecoration(
+          color: backgroundColor ,
+          border: Border(top: BorderSide(color: gYellow,width: 2), left: BorderSide(color: gYellow,width: 2),right: BorderSide(color: gYellow,width: 2)),
+          borderRadius: BorderRadius.vertical(top: Radius.circular(24))
+        ),
+        headerTextStyle: StandardText.copyWith(fontSize: 20),
       ),
       cellBuilder: (date, event, isToday, isInMonth, hideDaysNotInMonth) {
-      Color cellColor = Colors.white; 
+      Color cellColor = backgroundColor; 
         
          if (event.isNotEmpty) {
           cellColor = gGreen; 
@@ -74,16 +92,31 @@ class _EventsCalendarState extends State<EventsCalendar> {
         return Container(
       decoration: BoxDecoration(
         color: cellColor,
-        border: Border.all(color: Colors.grey.shade300),
+        border: Border.all(color: Colors.grey.shade300,),
       ),
-      child: Column(
-        children: [
-          Text(date.day.toString()), 
-          if (event.isNotEmpty)
-            Icon(Icons.event_available_rounded, size: 12, color: Colors.deepPurple), 
-        ],
-      ),
-    );
+      child:
+         Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Text(
+            date.day.toString(),
+            style: StandardText.copyWith(fontSize: 10),
+          ),
+        ),
+        if (event.isNotEmpty)
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8,),
+            child: Text(
+              event.first.title, 
+              style: StandardText.copyWith(fontSize: 15),
+               
+            ),
+          ),
+      ],
+    )
+  );
       },
       onCellTap: (date, events) {
         // TODO: Implement show dialog or navigation

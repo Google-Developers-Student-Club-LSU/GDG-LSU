@@ -54,8 +54,8 @@ class _AutoSlideCarouselState extends State<AutoSlideCarousel> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 877,
-      width: double.infinity,
+      height: MediaQuery.of(context).size.height,
+      width: MediaQuery.of(context).size.width,
       child: PageView.builder(
         controller: _controller,
         itemCount: widget.imagePaths.length,
