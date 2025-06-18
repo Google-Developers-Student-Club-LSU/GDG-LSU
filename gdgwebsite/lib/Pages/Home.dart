@@ -9,8 +9,10 @@ import 'package:calendar_view/calendar_view.dart';
 import 'package:flutter/material.dart';
 import 'package:gdgwebsite/Colors.dart';
 import 'package:gdgwebsite/Models/EventModel.dart';
+import 'package:gdgwebsite/Utils/CustomButton.dart';
 import 'package:gdgwebsite/Widgets/Appbar.dart';
 import 'package:gdgwebsite/utils/EventsCalendar.dart';
+import 'package:gdgwebsite/utils/HoverExpand.dart';
 import 'package:gdgwebsite/utils/Slideshow.dart';
 
 class HomePage extends StatefulWidget {
@@ -120,7 +122,7 @@ class _HomePageState extends State<HomePage> {
               absorbing: true,
               child: SizedBox(
                 width: MediaQuery.of(context).size.width * 0.6,
-                height:1000,
+                height: 1000,
                 child: CalendarControllerProvider<Event>(
                   controller: EventController<Event>(),
                   child: EventsCalendar(),
@@ -128,7 +130,17 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
           ),
-
+          Center(
+            child: SizedBox(
+              width: 200,
+              child: HoverExpand(
+                child: CustomButton(
+                  buttonName: "More Details",
+                  pressed: () => Navigator.pushReplacementNamed(context, '/events'),
+                ),
+              ),
+            ),
+          )
 
         ],
         
