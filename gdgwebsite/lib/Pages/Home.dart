@@ -87,13 +87,7 @@ class _HomePageState extends State<HomePage> {
           ),
           Stack(
             children: [
-              Positioned(
-                top: MediaQuery.of(context).size.height * 0.01,
-                left: MediaQuery.of(context).size.width * 0.04,
-                child: Image.asset('splash/Green.png',
-                  width:  MediaQuery.of(context).size.width * 0.1 , 
-                   ),
-              ),
+              SplashColor(),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
@@ -118,15 +112,11 @@ class _HomePageState extends State<HomePage> {
           style: StandardText,)
           ),
           Center(
-            child: AbsorbPointer(
-              absorbing: true,
-             
                 child: CalendarControllerProvider<Event>(
                   controller: EventController<Event>(),
                   child: EventsCalendar(),
                 ),
               ),
-            ),
           Center(
             child: SizedBox(
               width: 200,
@@ -264,7 +254,6 @@ Widget _buildAnimatedText(double offset) {
                   style: TextStyle(
                     fontSize: 40,
                     fontWeight: FontWeight.w900,
-                    
                   ),
             ),
          Text(
@@ -288,4 +277,21 @@ Widget _buildAnimatedText(double offset) {
   }
 
 
+}
+
+class SplashColor extends StatelessWidget {
+  const SplashColor({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Positioned(
+      top: MediaQuery.of(context).size.height * 0.01,
+      left: MediaQuery.of(context).size.width * 0.04,
+      child: Image.asset('splash/Green.png',
+        width:  MediaQuery.of(context).size.width * 0.1 , 
+         ),
+    );
+  }
 }

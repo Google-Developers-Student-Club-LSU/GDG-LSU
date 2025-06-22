@@ -15,6 +15,7 @@ final List<Map<String, dynamic>> myEvents = [
     "endDate": DateTime(2025, 6, 15, 11, 0),
     "description": "Weekly sync-up with the team to discuss goals.",
     "image": "assets/images/team_meeting.png"
+    
   },
   {
     "title": "Firebase WorkShop",

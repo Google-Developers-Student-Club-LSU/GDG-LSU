@@ -103,8 +103,8 @@ class _EventsCalendarState extends State<EventsCalendar> {
                       : cellConstraints.maxHeight;
 
                   final padding = base * 0.05;
-                  final dayFontSize = base * 0.15;
-                  final titleFontSize = base * 0.12;
+                  final dayFontSize = base * 0.2;
+                  final titleFontSize = base * 0.17;
 
                   return Container(
                     decoration: BoxDecoration(
