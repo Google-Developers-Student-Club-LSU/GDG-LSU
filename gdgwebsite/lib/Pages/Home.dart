@@ -9,6 +9,7 @@ import 'package:calendar_view/calendar_view.dart';
 import 'package:flutter/material.dart';
 import 'package:gdgwebsite/Colors.dart';
 import 'package:gdgwebsite/Models/EventModel.dart';
+import 'package:gdgwebsite/Utils/CIickableImageLink.dart';
 import 'package:gdgwebsite/Utils/CustomButton.dart';
 import 'package:gdgwebsite/Widgets/Appbar.dart';
 import 'package:gdgwebsite/utils/AnimatedCounter.dart';
@@ -149,7 +150,7 @@ class _HomePageState extends State<HomePage> {
                   Column(
                     children: [
                       Center(child: Image.asset('icon/members.png', width: 150,)),
-                      AnimatedCounter(targetNumber: 32,),
+                      AnimatedCounter(targetNumber: 163,),
                       Text('Memebers',
                       style: StandardText.copyWith(fontWeight: FontWeight.w500),)
                     ],
@@ -164,11 +165,15 @@ class _HomePageState extends State<HomePage> {
             child:Text('Join Us',
                 style: StandardText.copyWith(fontWeight: FontWeight.w500),),
           ),
+      const SizedBox(
+            height: 50,
+          ),   
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Image.asset('logo/Discord.png', width: 150,),
-              Image.asset('logo/TigerLink.png', width: 150,)
+              ClickableImageLink(imageAsset: 'logo/Discord.png', width: 150, linkUrl: 'https://discord.com/'),
+              const SizedBox(width: 200,),
+              ClickableImageLink(imageAsset:'logo/TigerLink.png', width: 150, linkUrl: 'https://tigerlink.lsu.edu')
 
             ],
           )
