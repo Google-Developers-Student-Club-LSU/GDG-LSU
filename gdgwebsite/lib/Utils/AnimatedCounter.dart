@@ -7,6 +7,7 @@
 //
 
 import 'package:flutter/material.dart';
+import 'package:gdgwebsite/Colors.dart';
 
 class AnimatedCounter extends StatefulWidget {
   final int targetNumber;
@@ -81,7 +82,7 @@ class _AnimatedCounterState extends State<AnimatedCounter> with SingleTickerProv
       builder: (context, _) {
         return Text(
           '${_animation.value}',
-          style: widget.textStyle ?? Theme.of(context).textTheme.headlineMedium,
+          style: StandardText.copyWith(fontWeight: FontWeight.w500),
         );
       },
     );

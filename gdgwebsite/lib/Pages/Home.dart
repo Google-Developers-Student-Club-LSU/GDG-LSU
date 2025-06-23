@@ -11,6 +11,7 @@ import 'package:gdgwebsite/Colors.dart';
 import 'package:gdgwebsite/Models/EventModel.dart';
 import 'package:gdgwebsite/Utils/CustomButton.dart';
 import 'package:gdgwebsite/Widgets/Appbar.dart';
+import 'package:gdgwebsite/utils/AnimatedCounter.dart';
 import 'package:gdgwebsite/utils/EventsCalendar.dart';
 import 'package:gdgwebsite/utils/HoverExpand.dart';
 import 'package:gdgwebsite/utils/Slideshow.dart';
@@ -111,6 +112,9 @@ class _HomePageState extends State<HomePage> {
           Center(child:Text("UPCOMING EVENTS",
           style: StandardText,)
           ),
+      const SizedBox(
+            height: 50,
+          ),          
           Center(
                 child: CalendarControllerProvider<Event>(
                   controller: EventController<Event>(),
@@ -118,15 +122,55 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
           Center(
-            child: SizedBox(
-              width: 200,
               child: HoverExpand(
                 child: CustomButton(
+                  width: MediaQuery.of(context).size.width * 0.15,
+                  height:MediaQuery.of(context).size.height * 0.06 ,
                   buttonName: "More Details",
                   pressed: () => Navigator.pushReplacementNamed(context, '/events'),
                 ),
               ),
+          ),
+      const SizedBox(
+            height: 50,
+          ),
+           Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Column(
+                    children: [
+                      Center(child: Image.asset('icon/officers.png', width: 150,)),
+                      AnimatedCounter(targetNumber: 8,),
+                      Text('Officers',
+                      style: StandardText.copyWith(fontWeight: FontWeight.w500),)
+                    ],
+                  ),
+                  const SizedBox(width: 200,),
+                  Column(
+                    children: [
+                      Center(child: Image.asset('icon/members.png', width: 150,)),
+                      AnimatedCounter(targetNumber: 32,),
+                      Text('Memebers',
+                      style: StandardText.copyWith(fontWeight: FontWeight.w500),)
+                    ],
+                  )
+                  
+                ],
             ),
+      const SizedBox(
+            height: 50,
+          ),            
+          Center(
+            child:Text('Join Us',
+                style: StandardText.copyWith(fontWeight: FontWeight.w500),),
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image.asset('logo/Discord.png', width: 150,),
+              Image.asset('logo/TigerLink.png', width: 150,)
+
+            ],
           )
 
         ],
