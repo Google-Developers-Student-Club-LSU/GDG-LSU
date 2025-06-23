@@ -176,7 +176,21 @@ class _HomePageState extends State<HomePage> {
               ClickableImageLink(imageAsset:'logo/TigerLink.png', width: 150, linkUrl: 'https://tigerlink.lsu.edu')
 
             ],
-          )
+          ),
+      const SizedBox(
+            height: 50,
+          ),           
+          Center(
+              child: HoverExpand(
+                child: CustomButton(
+                  color: gGreen,
+                  width: MediaQuery.of(context).size.width * 0.17,
+                  height:MediaQuery.of(context).size.height * 0.07 ,
+                  buttonName: "Sponsor Package",
+                  pressed: () => Navigator.pushReplacementNamed(context, '/sponsor'),
+                ),
+              ),
+          ),          
 
         ],
         

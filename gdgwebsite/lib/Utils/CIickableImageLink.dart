@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gdgwebsite/Utils/HoverExpand.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:flutter/foundation.dart' show kIsWeb;
 
 class ClickableImageLink extends StatelessWidget {
   final String imageAsset;
@@ -14,12 +15,19 @@ class ClickableImageLink extends StatelessWidget {
     this.width = 150,
   });
 
-  void _launchLink() async {
+  Future<void> _launchLink() async {
     final Uri url = Uri.parse(linkUrl);
-    if (await canLaunchUrl(url)) {
-      await launchUrl(url, mode: LaunchMode.externalApplication);
+
+    if (kIsWeb) {
+      // For web, open in a new tab without checking canLaunch
+      await launchUrl(url, webOnlyWindowName: '_blank');
     } else {
-      throw 'Could not launch $linkUrl';
+      // For mobile/desktop platforms
+      if (await canLaunchUrl(url)) {
+        await launchUrl(url, mode: LaunchMode.platformDefault);
+      } else {
+        debugPrint('Could not launch $linkUrl');
+      }
     }
   }
 
