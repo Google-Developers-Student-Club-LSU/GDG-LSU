@@ -11,6 +11,7 @@ import 'package:gdgwebsite/Colors.dart';
 import 'package:gdgwebsite/Models/EventModel.dart';
 import 'package:gdgwebsite/Utils/CIickableImageLink.dart';
 import 'package:gdgwebsite/Utils/CustomButton.dart';
+import 'package:gdgwebsite/Utils/Footbar.dart';
 import 'package:gdgwebsite/Widgets/Appbar.dart';
 import 'package:gdgwebsite/utils/AnimatedCounter.dart';
 import 'package:gdgwebsite/utils/EventsCalendar.dart';
@@ -117,9 +118,12 @@ class _HomePageState extends State<HomePage> {
             height: 50,
           ),          
           Center(
-                child: CalendarControllerProvider<Event>(
-                  controller: EventController<Event>(),
-                  child: EventsCalendar(),
+                child: AbsorbPointer(
+                  absorbing: true,
+                  child: CalendarControllerProvider<Event>(
+                    controller: EventController<Event>(),
+                    child: EventsCalendar(),
+                  ),
                 ),
               ),
           Center(
@@ -190,7 +194,9 @@ class _HomePageState extends State<HomePage> {
                   pressed: () => Navigator.pushReplacementNamed(context, '/sponsor'),
                 ),
               ),
-          ),          
+          ),
+          const SizedBox(height: 50),
+          FooterBar()          
 
         ],
         
