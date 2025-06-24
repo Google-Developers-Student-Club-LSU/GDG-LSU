@@ -9,6 +9,7 @@ import 'package:calendar_view/calendar_view.dart';
 import 'package:flutter/material.dart';
 import 'package:gdgwebsite/Colors.dart';
 import 'package:gdgwebsite/Models/EventModel.dart';
+import 'package:gdgwebsite/RandomArts/SmoothRandomArt.dart';
 import 'package:gdgwebsite/Utils/CIickableImageLink.dart';
 import 'package:gdgwebsite/Utils/CustomButton.dart';
 import 'package:gdgwebsite/Utils/Footbar.dart';
@@ -62,13 +63,11 @@ class _HomePageState extends State<HomePage> {
           ]),
           Stack(
             children: [
-          Positioned(
-                top: MediaQuery.of(context).size.height * 0.01,
-                right: MediaQuery.of(context).size.width * 0.04,
-                child: Image.asset('splash/BLUE.png',
-                  width:  MediaQuery.of(context).size.width * 0.1 , 
-                   ),
-              ),
+            Container(
+                  width: double.infinity,
+                  height: MediaQuery.of(context).size.height * 0.6,
+                  child: const SmoothRandomArt(),
+                ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [

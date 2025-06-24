@@ -6,6 +6,7 @@
 // Authors: Dina Taing
 //
 import 'package:flutter/material.dart';
+import 'package:gdgwebsite/RandomArts/PerlinFlowField.dart';
 import 'package:gdgwebsite/Widgets/Appbar.dart';
 
 class EventsPage extends StatefulWidget {
@@ -20,6 +21,11 @@ class _EventsPageState extends State<EventsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const Appbar(),
+      body: Container(
+        width: double.infinity,
+        height: 400,
+        child: const PerlinFlowField(),
+      )  ,
     );;
   }
 }
