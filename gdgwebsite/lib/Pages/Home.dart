@@ -9,6 +9,7 @@ import 'package:calendar_view/calendar_view.dart';
 import 'package:flutter/material.dart';
 import 'package:gdgwebsite/Colors.dart';
 import 'package:gdgwebsite/Models/EventModel.dart';
+import 'package:gdgwebsite/RandomArts/PerlinFlowField.dart';
 import 'package:gdgwebsite/RandomArts/SmoothRandomArt.dart';
 import 'package:gdgwebsite/Utils/CIickableImageLink.dart';
 import 'package:gdgwebsite/Utils/CustomButton.dart';
@@ -89,7 +90,11 @@ class _HomePageState extends State<HomePage> {
           ),
           Stack(
             children: [
-              SplashColor(),
+              Container(
+                width: double.infinity,
+                height:  MediaQuery.of(context).size.height * 0.6,
+                child: PerlinFlowField(),
+                ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [

@@ -2,6 +2,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:gdgwebsite/Colors.dart';
 
+
 const googleColors = [gBlue, gRed, gYellow, gGreen];
 
 class PerlinFlowField extends StatefulWidget {
@@ -26,7 +27,7 @@ class _PerlinFlowFieldState extends State<PerlinFlowField>
         for (final p in _particles!) {
           p.update(_canvasSize!);
         }
-        setState(() {}); 
+        setState(() {}); // trigger repaint
       })
       ..repeat(min: 0, max: 1, period: const Duration(milliseconds: 16));
   }
@@ -42,13 +43,14 @@ class _PerlinFlowFieldState extends State<PerlinFlowField>
     return LayoutBuilder(
       builder: (_, constraints) {
         final canvasSize = Size(constraints.maxWidth, constraints.maxHeight);
-        if (_canvasSize == null) {
+        if (_canvasSize == null || _canvasSize != canvasSize) {
           _canvasSize = canvasSize;
           _particles = List.generate(
             300,
             (_) => _FlowParticle(canvasSize),
           );
         }
+
         return CustomPaint(
           size: canvasSize,
           painter: _FlowFieldPainter(_particles!),
@@ -75,11 +77,13 @@ class _FlowParticle {
     final angle = _perlinNoise(pos.dx * 0.002, pos.dy * 0.002) * pi * 4;
     final direction = Offset(cos(angle), sin(angle));
 
-    velocity += direction * 0.3;
-    velocity *= 0.9;
+    // ✅ Amplitude scales with canvas height
+    final amplitude = bounds.height * 0.001; 
+    velocity += direction * amplitude;
+    velocity *= 0.1;
     pos += velocity;
 
-    // Wrap around edges
+    // Wrap around screen
     if (pos.dx < 0) pos = Offset(bounds.width, pos.dy);
     if (pos.dx > bounds.width) pos = Offset(0, pos.dy);
     if (pos.dy < 0) pos = Offset(pos.dx, bounds.height);
@@ -87,6 +91,7 @@ class _FlowParticle {
   }
 
   static double _perlinNoise(double x, double y) {
+    // Fake Perlin-style flow field (simple sine/cosine blend)
     return (sin(x * 2 * pi) + cos(y * 2 * pi)) * 0.5 + 0.5;
   }
 }
