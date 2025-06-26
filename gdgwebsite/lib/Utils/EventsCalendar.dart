@@ -93,51 +93,44 @@ class _EventsCalendarState extends State<EventsCalendar> {
               ),
               headerTextStyle: StandardText.copyWith(fontSize: 20),
             ),
-            cellBuilder: (date, events, isToday, isInMonth, hideDaysNotInMonth) {
-              final cellColor = events.isNotEmpty ? gGreen : backgroundColor;
+cellBuilder: (date, events, isToday, isInMonth, hideDaysNotInMonth) {
+  final cellColor = events.isNotEmpty ? gGreen : backgroundColor;
 
-              return LayoutBuilder(
-                builder: (context, cellConstraints) {
-                  final base = cellConstraints.maxWidth < cellConstraints.maxHeight
-                      ? cellConstraints.maxWidth
-                      : cellConstraints.maxHeight;
-
-                  final padding = base * 0.05;
-                  final dayFontSize = base * 0.2;
-                  final titleFontSize = base * 0.17;
-
-                  return Container(
-                    decoration: BoxDecoration(
-                      color: cellColor,
-                      border: Border.all(color: Colors.grey.shade300),
-                    ),
-                    padding: EdgeInsets.all(padding),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          date.day.toString(),
-                          style: StandardText.copyWith(fontSize: dayFontSize),
-                        ),
-                        if (events.isNotEmpty)
-                          Padding(
-                            padding: EdgeInsets.only(top: padding),
-                            child: Text(
-                              events.first.title,
-                              maxLines: 2,
-                              overflow: TextOverflow.ellipsis,
-                              style: StandardText.copyWith(fontSize: titleFontSize),
-                            ),
-                          ),
-                      ],
-                    ),
-                  );
-                },
-              );
-            },
-            onCellTap: (date, events) {
-              // Optional: Implement pop-up or navigation
-            },
+  return Container(
+    decoration: BoxDecoration(
+      color: cellColor,
+      border: Border.all(color: gBlue),
+    ),
+    padding: const EdgeInsets.all(6),
+    child: Stack(
+      children: [
+        // Day number in the top-left corner
+        Positioned(
+          top: 0,
+          left: 0,
+          child: Text(
+            date.day.toString(),
+            style: StandardText.copyWith(fontSize: 12),
+          ),
+        ),
+        // Centered event title (if any)
+        if (events.isNotEmpty)
+          Center(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 4.0),
+              child: Text(
+                events.first.title,
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+                textAlign: TextAlign.center,
+                style: StandardText.copyWith(fontSize: 17 , fontWeight: FontWeight.w500),
+              ),
+            ),
+          ),
+      ],
+    ),
+  );
+},
           ),
         );
       },

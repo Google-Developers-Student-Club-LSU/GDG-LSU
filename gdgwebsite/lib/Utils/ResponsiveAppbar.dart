@@ -1,3 +1,12 @@
+//
+//
+// Licensed under Creative Commons Attribution-NonCommercial-ShareAlike 4.0
+// International License https://creativecommons.org/licenses/by-nc-sa/4.0/
+//
+// Authors: Dina Taing
+//
+
+
 import 'package:flutter/material.dart';
 
 class ResponsiveAppBar extends StatelessWidget implements PreferredSizeWidget {

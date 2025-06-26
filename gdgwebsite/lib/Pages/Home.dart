@@ -9,7 +9,6 @@ import 'package:calendar_view/calendar_view.dart';
 import 'package:flutter/material.dart';
 import 'package:gdgwebsite/Colors.dart';
 import 'package:gdgwebsite/Models/EventModel.dart';
-import 'package:gdgwebsite/RandomArts/PerlinFlowField.dart';
 import 'package:gdgwebsite/RandomArts/SmoothRandomArt.dart';
 import 'package:gdgwebsite/Utils/CIickableImageLink.dart';
 import 'package:gdgwebsite/Utils/CustomButton.dart';
@@ -35,7 +34,7 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     super.initState();
     _scrollController.addListener(() {
-      // Avoid setState spam by throttling
+     
       final newOffset = _scrollController.offset;
       if ((newOffset - scrollOffset).abs() > 1) {
         scrollOffset = newOffset;
@@ -53,47 +52,75 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const Appbar(),
+      appBar:  Appbar(),
       body: ListView(
         controller: _scrollController,
         children: [
-          Stack(children: [
+    Stack(children: [
+        Container(
+      width: double.infinity,
+      height: MediaQuery.of(context).size.height,
+      child: const SmoothRandomArt(),
+                ),
             _buildAnimatedSlideshow(scrollOffset),
             _buildAnimatedText(scrollOffset),
-            
-          ]),
-          Stack(
+     ]),
+     Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
             children: [
-            Container(
-                  width: double.infinity,
-                  height: MediaQuery.of(context).size.height * 0.6,
-                  child: const SmoothRandomArt(),
-                ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  SizedBox(
-                     width: MediaQuery.of(context).size.width * 0.6,
-                     height: MediaQuery.of(context).size.height * 0.6,
-                    child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: _buildSecondSlideShow(),
-                  )),
-                  _buildSecondText()
-                ],
+              Padding(padding: EdgeInsets.all(8.0),
+              child: Image.asset('icon/Workshop.png', width: 150,),),
+              Padding(
+                padding: const EdgeInsets.only(bottom: 8.0),
+                child: Text("Workshop", style: StandardText.copyWith(fontSize: 40 ),),
               ),
+              Padding(
+                padding: const EdgeInsets.only(bottom: 8.0),
+                child: Text("Hands-on learning opportunities on Python,​", style: StandardText.copyWith(fontSize: 20, color: gRed, fontWeight: FontWeight.w500 ),),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(bottom: 8.0),
+                child: Text("Flutter, Google Cloud, and more.​​", style: StandardText.copyWith(fontSize: 20, color: gRed, fontWeight: FontWeight.w500),),
+              )
+          
             ],
           ),
-
-          const SizedBox(
-            height: 50,
+        ),
+        const SizedBox(width:50),
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            children: [
+              Padding(padding: EdgeInsets.all(8.0),
+              child: Image.asset('icon/Community.png', width: 145,),),
+              Padding(
+                padding: const EdgeInsets.only(bottom: 8.0),
+                child: Text("Community", style: StandardText.copyWith(fontSize: 40 ),),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(bottom: 8.0),
+                child: Text("Build connections and grow your network​", style: StandardText.copyWith(fontSize: 20, color: gRed, fontWeight: FontWeight.w500 ),),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(bottom: 8.0),
+                child: Text("through engaging social events.​​", style: StandardText.copyWith(fontSize: 20, color: gRed, fontWeight: FontWeight.w500),),
+              )
+            ],
           ),
+        ),  
+      ],
+     ),
+      const SizedBox(height:50),
           Stack(
             children: [
               Container(
                 width: double.infinity,
                 height:  MediaQuery.of(context).size.height * 0.6,
-                child: PerlinFlowField(),
+                child: SmoothRandomArt(),
                 ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -112,7 +139,8 @@ class _HomePageState extends State<HomePage> {
               ),
             ],
           ),
-      const SizedBox(
+
+          const SizedBox(
             height: 50,
           ),
           Center(child:Text("UPCOMING EVENTS",
@@ -122,19 +150,19 @@ class _HomePageState extends State<HomePage> {
             height: 50,
           ),          
           Center(
-                child: AbsorbPointer(
-                  absorbing: true,
+               
+            
                   child: CalendarControllerProvider<Event>(
                     controller: EventController<Event>(),
                     child: EventsCalendar(),
                   ),
-                ),
+              
               ),
           Center(
               child: HoverExpand(
                 child: CustomButton(
-                  width: MediaQuery.of(context).size.width * 0.15,
-                  height:MediaQuery.of(context).size.height * 0.06 ,
+                  width: 300,
+                  height: 75  ,
                   buttonName: "More Details",
                   pressed: () => Navigator.pushReplacementNamed(context, '/events'),
                 ),
@@ -192,8 +220,8 @@ class _HomePageState extends State<HomePage> {
               child: HoverExpand(
                 child: CustomButton(
                   color: gGreen,
-                  width: MediaQuery.of(context).size.width * 0.17,
-                  height:MediaQuery.of(context).size.height * 0.07 ,
+                  width: 400,
+                  height:100 ,
                   buttonName: "Sponsor Package",
                   pressed: () => Navigator.pushReplacementNamed(context, '/sponsor'),
                 ),
@@ -278,36 +306,13 @@ Widget _buildAnimatedText(double offset) {
           'firstSlide/slide2.png',
           'firstSlide/slide3.png',
           'firstSlide/slide4.jpg',
+          'firstSlide/slide5.png'
 
         ]),
       ),
     );
   }
 
-  Widget _buildSecondSlideShow(){
-    return AutoSlideCarousel(imagePaths: [
-          'secondSlide/slide1.png',
-          'secondSlide/slide2.png',
-          'secondSlide/slide3.jpg',
-    ]
-    );
-  }
-
-  Widget _buildSecondText(){
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-                  "CONNECT ",
-                  style: StandardText
-            ),
-         Text(
-               "WITH DEVELOPERS",
-                  style: StandardText
-            ),
-      ],
-    );
-  }
 
     Widget _buildThirdSlideShow(){
     return AutoSlideCarousel(imagePaths: [
@@ -315,6 +320,8 @@ Widget _buildAnimatedText(double offset) {
           'thirdSlide/slide2.jpg',
           'thirdSlide/slide3.jpg',
           'thirdSlide/slide4.jpg',
+          'thirdSlide/slide5.png',
+          'thirdSlide/slide6.jpg'
     ]
     );
   }

@@ -6,6 +6,9 @@
 // Authors: Dina Taing
 //
 import 'package:flutter/material.dart';
+import 'package:gdgwebsite/RandomArts/FlowingWaves.dart';
+import 'package:gdgwebsite/RandomArts/GlowingParticles.dart';
+import 'package:gdgwebsite/RandomArts/TriangleMesh.dart';
 import 'package:gdgwebsite/RandomArts/PerlinFlowField.dart';
 import 'package:gdgwebsite/Widgets/Appbar.dart';
 
@@ -22,10 +25,10 @@ class _EventsPageState extends State<EventsPage> {
     return Scaffold(
       appBar: const Appbar(),
       body: Container(
-        width: double.infinity,
-        height: 400,
-        child: const PerlinFlowField(),
-      )  ,
+  height: double.infinity,
+  width: double.infinity,
+  child: PerlinFlowField(),
+)
     );;
   }
 }

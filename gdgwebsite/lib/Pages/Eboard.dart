@@ -7,6 +7,7 @@
 //
 
 import 'package:flutter/material.dart';
+import 'package:gdgwebsite/RandomArts/GlowingParticles.dart';
 import 'package:gdgwebsite/Widgets/Appbar.dart';
 
 class EboardPage extends StatefulWidget {
@@ -21,6 +22,15 @@ class _EboardPageState extends State<EboardPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const Appbar(),
+      body: Stack(
+        children: [
+          Container(
+            width: double.infinity,
+            height: double.infinity,
+            child: GlowingParticles(),
+          )
+        ],
+      ),
     );
   }
 }
