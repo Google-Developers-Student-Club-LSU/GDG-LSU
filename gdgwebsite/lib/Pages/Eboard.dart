@@ -19,31 +19,33 @@ class EboardPage extends StatefulWidget {
 }
 
 class _EboardPageState extends State<EboardPage> {
-  @override
-  Widget build(BuildContext context) {
-     const double containerWidth= 300;
-     const double  containerHeight = 500;
-    return Scaffold(
-     
-      appBar: const Appbar(),
-      body: Stack(
-        children: [
-          Container(
-            width: double.infinity,
-            height: double.infinity,
-            child: GlowingParticles(),
-          ), 
-          Column(
-            children: [
-              Trenton(containerWidth: containerWidth, containerHeight: containerHeight),
-              Jerrick(containerWidth: containerWidth, containerHeight: containerHeight)
-            ],
-          )
-         
-        ],
-      ),
-    );
-  }
+ @override
+Widget build(BuildContext context) {
+  const double containerWidth = 300;
+  const double containerHeight = 500;
+
+  return Scaffold(
+    appBar: const Appbar(),
+    body: Stack(
+      children: [
+        Positioned.fill(child: GlowingParticles()),
+
+        SingleChildScrollView(
+          padding: const EdgeInsets.symmetric(vertical: 40),
+          child: Center(
+            child: Column(
+              children: [
+                Trenton(containerWidth: containerWidth, containerHeight: containerHeight),
+                const SizedBox(height: 40),
+                Jerrick(containerWidth: containerWidth, containerHeight: containerHeight),
+              ],
+            ),
+          ),
+        ),
+      ],
+    ),
+  );
+}
 }
 class Jerrick extends StatelessWidget {
   const Jerrick({
