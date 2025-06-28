@@ -9,9 +9,9 @@ import 'dart:math';
 import 'package:calendar_view/calendar_view.dart';
 import 'package:flutter/material.dart';
 import 'package:gdgwebsite/Colors.dart';
+import 'package:gdgwebsite/Constants.dart';
 import 'package:gdgwebsite/EventsWidgets/EventCart.dart';
 import 'package:gdgwebsite/Models/EventModel.dart';
-import 'package:gdgwebsite/UpcomingEvents.dart';
 import 'package:intl/intl.dart';
 
 class MonthCalendar extends StatefulWidget {

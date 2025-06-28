@@ -101,4 +101,3 @@ final ThemeData darkTheme = ThemeData(
     ),
   ),
 );
-

@@ -9,6 +9,7 @@ import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:calendar_view/calendar_view.dart';
 import 'package:flutter/material.dart';
 import 'package:gdgwebsite/Colors.dart';
+import 'package:gdgwebsite/Constants.dart';
 import 'package:gdgwebsite/Models/EventModel.dart';
 import 'package:gdgwebsite/RandomArts/SmoothRandomArt.dart';
 import 'package:gdgwebsite/Utils/CIickableImageLink.dart';
@@ -82,7 +83,7 @@ class _HomePageState extends State<HomePage> {
                   width: 300,
                   height: 75  ,
                   buttonName: "More Details",
-                  pressed: () => Navigator.pushReplacementNamed(context, '/events'),
+                  pressed: () => Navigator.pushReplacementNamed(context, events),
                 ),
               ),
           ),
@@ -111,7 +112,7 @@ class _HomePageState extends State<HomePage> {
                   width: 400,
                   height:100 ,
                   buttonName: "Sponsor Package",
-                  pressed: () => Navigator.pushReplacementNamed(context, '/sponsor'),
+                  pressed: () => Navigator.pushReplacementNamed(context, sponsor),
                 ),
               ),
           ),

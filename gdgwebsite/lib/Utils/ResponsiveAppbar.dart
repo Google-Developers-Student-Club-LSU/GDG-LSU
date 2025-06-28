@@ -24,6 +24,7 @@ class ResponsiveAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
 Widget build(BuildContext context) {
   return AppBar(
+    automaticallyImplyLeading: false,
     title: Row(
       children: [
         InkWell(

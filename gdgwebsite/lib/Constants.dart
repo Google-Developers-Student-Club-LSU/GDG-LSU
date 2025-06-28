@@ -1,8 +1,16 @@
 import 'package:gdgwebsite/Models/MemberModel.dart';
 
+final String home = '/home';
+final String events = 'events';
+final String eboard = 'eboard';
+final String sponsor = 'sponsor';
+
+
 const double containerWidth = 300;
 const double containerHeight = 500;
 
+
+// EBOARD MEMBERS
 final List<MemberProfile> members = [
   MemberProfile(
     fullName: 'Mujtaba Malik',
@@ -45,4 +53,32 @@ Apart from coding, I like One Piece, Cooking, and Working out(honestly, not much
     linkedin: 'https://www.linkedin.com/in/dina-taing-143935236/',
     imageAsset: 'members/Dina.jpg',
   ),
+];
+
+
+
+
+
+// UPCOMING EVENTS
+final List<Map<String, dynamic>> myEvents = [
+  {
+    "title": "General Body Meeting",
+    "date": DateTime(2025, 6, 15, 10, 0),
+    "endDate": DateTime(2025, 6, 15, 11, 0),
+    "description": "Weekly sync-up with the team to discuss goals.",
+  },
+  {
+    "title": "Firebase WorkShop",
+    "date": DateTime(2025, 6, 16, 14, 30),
+    "endDate": DateTime(2025, 6, 16, 15, 30),
+    "description": "Annual physical check-up at local clinic.",
+  },
+  {
+    "title": "Flutter Workshop",
+    "date": DateTime(2025, 6, 17, 9, 0),
+    "endDate": DateTime(2025, 6, 17, 12, 0),
+    "description": "In-depth workshop on Flutter animations.",
+    "image": "events/Flutter.jpg"
+    
+  },
 ];

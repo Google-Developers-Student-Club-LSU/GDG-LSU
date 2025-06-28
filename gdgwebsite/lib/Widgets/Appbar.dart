@@ -10,6 +10,7 @@ import 'dart:isolate';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:gdgwebsite/Colors.dart';
+import 'package:gdgwebsite/Constants.dart';
 import 'package:gdgwebsite/Utils/NavHoverItem.dart';
 import 'package:gdgwebsite/Utils/ResponsiveAppbar.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -35,10 +36,10 @@ class Appbar extends StatelessWidget implements PreferredSizeWidget {
       ),
       color: theme.appBarTheme.backgroundColor,
       items: [
-        _popupItem(context, 'Home', '/', theme),
-        _popupItem(context, 'Eboard', '/eboard', theme),
-        _popupItem(context, 'Events', '/events', theme),
-        _popupItem(context, 'Sponsor', '/sponsor', theme),
+        _popupItem(context, 'Home', home, theme),
+        _popupItem(context, 'Eboard', eboard, theme),
+        _popupItem(context, 'Events', events, theme),
+        _popupItem(context, 'Sponsor', sponsor, theme),
       ],
     );
   }
@@ -65,28 +66,28 @@ return ResponsiveAppBar(
   navItems: [
     NavHoverItem(
       label: 'Home',
-      route: '/',
+      route: home,
       baseColor: textColor,
       hoverColor: gBlue,
     ),
     spacer,
     NavHoverItem(
       label: 'Eboard',
-      route: '/eboard',
+      route: eboard,
       baseColor: textColor,
       hoverColor: gYellow,
     ),
     spacer,
     NavHoverItem(
       label: 'Events',
-      route: '/events',
+      route: events,
       baseColor: textColor,
       hoverColor: gGreen,
     ),
     spacer,
     NavHoverItem(
       label: 'Sponsor',
-      route: '/sponsor',
+      route: sponsor,
       baseColor: textColor,
       hoverColor: gRed,
     ),

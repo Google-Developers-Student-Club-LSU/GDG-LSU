@@ -8,6 +8,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:gdgwebsite/Colors.dart';
+import 'package:gdgwebsite/Constants.dart';
 import 'package:gdgwebsite/Models/EventModel.dart';
 import 'package:gdgwebsite/Pages/Blog.dart';
 import 'package:gdgwebsite/Pages/Eboard.dart';
@@ -33,10 +34,10 @@ class MyApp extends StatelessWidget {
       themeMode: ThemeMode.system,
       home: HomePage(),
       routes: {
-        '/home': (_) => const HomePage(),
-        '/eboard': (_) => const EboardPage(),
-        '/events': (_) => const EventsPage(),
-        '/sponsor': (_) => const SponsorPage(),
+         home: (_) => const HomePage(),
+        eboard: (_) => const EboardPage(),
+        events: (_) => const EventsPage(),
+        sponsor: (_) => const SponsorPage(),
        // '/blog': (_) => const BlogPage()
       }
     );
