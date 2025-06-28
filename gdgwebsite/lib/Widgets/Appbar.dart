@@ -9,6 +9,8 @@ import 'dart:isolate';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:gdgwebsite/Colors.dart';
+import 'package:gdgwebsite/Utils/NavHoverItem.dart';
 import 'package:gdgwebsite/Utils/ResponsiveAppbar.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -57,22 +59,42 @@ class Appbar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final textColor = theme.textTheme.bodyMedium?.color;
-    Widget spacer = const SizedBox(width: 25);
+final textColor = Theme.of(context).textTheme.bodyMedium?.color ?? Colors.black;    Widget spacer = const SizedBox(width: 25);
 
-    return ResponsiveAppBar(
-      navItems: [
-        _navItem(context, 'Home', '/', textColor),
-        spacer,
-        _navItem(context, 'Eboard', '/eboard', textColor),
-        spacer,
-        _navItem(context, 'Events', '/events', textColor),
-        spacer,
-        _navItem(context, 'Sponsor', '/sponsor', textColor),
-        spacer,
-      ],
-      onMenuTap: () => _showTopDropdown(context),
-    );
+return ResponsiveAppBar(
+  navItems: [
+    NavHoverItem(
+      label: 'Home',
+      route: '/',
+      baseColor: textColor,
+      hoverColor: gBlue,
+    ),
+    spacer,
+    NavHoverItem(
+      label: 'Eboard',
+      route: '/eboard',
+      baseColor: textColor,
+      hoverColor: gYellow,
+    ),
+    spacer,
+    NavHoverItem(
+      label: 'Events',
+      route: '/events',
+      baseColor: textColor,
+      hoverColor: gGreen,
+    ),
+    spacer,
+    NavHoverItem(
+      label: 'Sponsor',
+      route: '/sponsor',
+      baseColor: textColor,
+      hoverColor: gRed,
+    ),
+    spacer,
+  ],
+  onMenuTap: () => _showTopDropdown(context),
+);
+
   }
 
   Widget _navItem(BuildContext context, String label, String route, Color? color) {
