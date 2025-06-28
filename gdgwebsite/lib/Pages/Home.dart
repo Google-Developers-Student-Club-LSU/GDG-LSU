@@ -58,101 +58,24 @@ class _HomePageState extends State<HomePage> {
         controller: _scrollController,
         children: [
     Stack(children: [
-        Container(
-      width: double.infinity,
-      height: MediaQuery.of(context).size.height,
-      child: const SmoothRandomArt(),
-                ),
-            _buildAnimatedSlideshow(scrollOffset),
+        FirstSectionBackground(),
+            _buildFirstSlideShow(scrollOffset),
             _buildAnimatedText(scrollOffset),
      ]),
-     Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Workshops(),
-        const SizedBox(width:50),
-        Community(),  
-      ],
-     ),
+     SecondSection(),
       const SizedBox(height:50),
-          Stack(
-  children: [
-    // 🔹 Carousel background
-    Center(
-      child: SizedBox(
-        width: MediaQuery.of(context).size.width * 0.8,
-        height: MediaQuery.of(context).size.height * 0.8,
-        child: ClipRRect(
-          borderRadius: BorderRadius.circular(16),
-          child: _buildThirdSlideShow(),
-        ),
-      ),
-    ),
-
-    // 🔹 Semi-transparent overlay
-    Center(
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(17),
-        child: Container(
-        width: MediaQuery.of(context).size.width * 0.8,
-        height: MediaQuery.of(context).size.height * 0.8,
-          color: Colors.black.withOpacity(0.2),
-        ),
-      ),
-    ),
-
-    // 🔹 Positioned animated text lower (but not fully bottom)
-    Positioned(
-      left: 20,
-      right: 20,
-      bottom: 60, // <-- adjust this value to move it up/down
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          AnimatedTextKit(
-            animatedTexts: [
-              TyperAnimatedText(
-                'Our Mission:',
-                textStyle: StandardTextStyled,
-              ),
-            ],
-            isRepeatingAnimation: false,
-          ),
-          const SizedBox(height: 24),
-          AnimatedTextKit(
-            animatedTexts: [
-              TyperAnimatedText('We Grow', textStyle: StandardTextStyled.copyWith(color: gBlue)),
-              TyperAnimatedText('We Innovate', textStyle: StandardTextStyled.copyWith(color: gGreen)),
-              TyperAnimatedText('We Build', textStyle: StandardTextStyled.copyWith(color: gRed)),
-              TyperAnimatedText('Together', textStyle: StandardTextStyled.copyWith(color: gYellow)),
-            ],
-            repeatForever: true,
-            pause: const Duration(milliseconds: 1500),
-          ),
-        ],
-      ),
-    ),
-  ],
-),
+          ThirdSection(context),
 
           const SizedBox(
             height: 50,
           ),
-          Center(child:Text("UPCOMING EVENTS",
+          Center(child: Text("UPCOMING EVENTS",
           style: StandardText,)
           ),
       const SizedBox(
             height: 50,
           ),          
-          Center(
-               
-            
-                  child: CalendarControllerProvider<Event>(
-                    controller: EventController<Event>(),
-                    child: EventsCalendar(),
-                  ),
-              
-              ),
+          FourthSection(),
           Center(
               child: HoverExpand(
                 child: CustomButton(
@@ -166,29 +89,7 @@ class _HomePageState extends State<HomePage> {
       const SizedBox(
             height: 50,
           ),
-           Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Column(
-                    children: [
-                      Center(child: Image.asset('icon/officers.png', width: 150,)),
-                      AnimatedCounter(targetNumber: 8,),
-                      Text('Officers',
-                      style: StandardText.copyWith(fontWeight: FontWeight.w500),)
-                    ],
-                  ),
-                  const SizedBox(width: 200,),
-                  Column(
-                    children: [
-                      Center(child: Image.asset('icon/members.png', width: 150,)),
-                      AnimatedCounter(targetNumber: 163,),
-                      Text('Memebers',
-                      style: StandardText.copyWith(fontWeight: FontWeight.w500),)
-                    ],
-                  )
-                  
-                ],
-            ),
+           FifthSection(),
       const SizedBox(
             height: 50,
           ),            
@@ -199,15 +100,7 @@ class _HomePageState extends State<HomePage> {
       const SizedBox(
             height: 50,
           ),   
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              ClickableImageLink(imageAsset: 'logo/Discord.png', width: 150, linkUrl: 'https://discord.com/'),
-              const SizedBox(width: 200,),
-              ClickableImageLink(imageAsset:'logo/TigerLink.png', width: 150, linkUrl: 'https://tigerlink.lsu.edu')
-
-            ],
-          ),
+          SixthSection(),
       const SizedBox(
             height: 50,
           ),           
@@ -224,11 +117,142 @@ class _HomePageState extends State<HomePage> {
           ),
           const SizedBox(height: 50),
           FooterBar()          
-
         ],
         
       ),
     );
+  }
+
+
+
+
+
+
+
+
+
+
+  
+
+  Row SixthSection() {
+    return Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            ClickableImageLink(imageAsset: 'logo/Discord.png', width: 150, linkUrl: 'https://discord.com/'),
+            const SizedBox(width: 200,),
+            ClickableImageLink(imageAsset:'logo/TigerLink.png', width: 150, linkUrl: 'https://tigerlink.lsu.edu')
+
+          ],
+        );
+  }
+
+  Row FifthSection() {
+    return Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Column(
+                  children: [
+                    Center(child: Image.asset('icon/officers.png', width: 150,)),
+                    AnimatedCounter(targetNumber: 8,),
+                    Text('Officers',
+                    style: StandardText.copyWith(fontWeight: FontWeight.w500),)
+                  ],
+                ),
+                const SizedBox(width: 200,),
+                Column(
+                  children: [
+                    Center(child: Image.asset('icon/members.png', width: 150,)),
+                    AnimatedCounter(targetNumber: 163,),
+                    Text('Memebers',
+                    style: StandardText.copyWith(fontWeight: FontWeight.w500),)
+                  ],
+                )
+                
+              ],
+          );
+  }
+
+  Center FourthSection() {
+    return Center(
+                child: CalendarControllerProvider<Event>(
+                  controller: EventController<Event>(),
+                  child: EventsCalendar(),
+                ),
+            
+            );
+  }
+
+  Stack ThirdSection(BuildContext context) {
+    return Stack(
+children: [
+
+  Center(
+    child: SizedBox(
+      width: MediaQuery.of(context).size.width * 0.8,
+      height: MediaQuery.of(context).size.height * 0.8,
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(16),
+        child: _buildSecondSlideShow(),
+      ),
+    ),
+  ),
+
+ 
+  Center(
+    child: ClipRRect(
+      borderRadius: BorderRadius.circular(17),
+      child: Container(
+      width: MediaQuery.of(context).size.width * 0.8,
+      height: MediaQuery.of(context).size.height * 0.8,
+        color: Colors.black.withOpacity(0.2),
+      ),
+    ),
+  ),
+
+  // 🔹 Positioned animated text lower (but not fully bottom)
+  Positioned(
+    left: 20,
+    right: 20,
+    bottom: 60, // <-- adjust this value to move it up/down
+    child: Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        AnimatedTextKit(
+          animatedTexts: [
+            TyperAnimatedText(
+              'Our Mission:',
+              textStyle: StandardTextStyled,
+            ),
+          ],
+          isRepeatingAnimation: false,
+        ),
+        const SizedBox(height: 24),
+        AnimatedTextKit(
+          animatedTexts: [
+            TyperAnimatedText('We Grow', textStyle: StandardTextStyled.copyWith(color: gBlue)),
+            TyperAnimatedText('We Innovate', textStyle: StandardTextStyled.copyWith(color: gGreen)),
+            TyperAnimatedText('We Build', textStyle: StandardTextStyled.copyWith(color: gRed)),
+            TyperAnimatedText('Together', textStyle: StandardTextStyled.copyWith(color: gYellow)),
+          ],
+          repeatForever: true,
+          pause: const Duration(milliseconds: 1500),
+        ),
+      ],
+    ),
+  ),
+],
+);
+  }
+
+  Row SecondSection() {
+    return Row(
+    mainAxisAlignment: MainAxisAlignment.center,
+    children: [
+      Workshops(),
+      const SizedBox(width:50),
+      Community(),  
+    ],
+   );
   }
 
   Padding Workshops() {
@@ -308,7 +332,7 @@ Widget _buildAnimatedText(double offset) {
   );
 }
 
-  Widget _buildAnimatedSlideshow(double offset) {
+  Widget _buildFirstSlideShow(double offset) {
     const double maxOffset = 200;
     final double clampedOffset = offset.clamp(0, maxOffset);
 
@@ -334,7 +358,7 @@ Widget _buildAnimatedText(double offset) {
   }
 
 
-    Widget _buildThirdSlideShow(){
+    Widget _buildSecondSlideShow(){
     return AutoSlideCarousel(imagePaths: [
           'thirdSlide/slide1.png',
           'thirdSlide/slide2.jpg',
@@ -345,38 +369,24 @@ Widget _buildAnimatedText(double offset) {
     ]
     );
   }
-    Widget _buildThirdText(){
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-                  "OUR MISSION: ",
-                  style: TextStyle(
-                    fontSize: 40,
-                    fontWeight: FontWeight.w900,
-                  ),
-            ),
-         Text(
-               "  WE GROW",
-                  style: StandardText.copyWith( fontWeight: FontWeight.w500)
-            ),
-         Text(
-               "  WE INNOVATE",
-                  style: StandardText.copyWith(fontWeight: FontWeight.w500,)
-            ),
-         Text(
-               "  WE BUILD",
-                  style: StandardText.copyWith(fontWeight: FontWeight.w500)
-            ), 
-         Text(
-               "  TOGETHER",
-                  style: StandardText.copyWith(fontWeight: FontWeight.w500)
-            ),                           
-      ],
-    );
+    
+
+
+}
+
+class FirstSectionBackground extends StatelessWidget {
+  const FirstSectionBackground({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+          width: double.infinity,
+          height: MediaQuery.of(context).size.height,
+          child: const SmoothRandomArt(),
+            );
   }
-
-
 }
 
 class Community extends StatelessWidget {
@@ -406,23 +416,6 @@ class Community extends StatelessWidget {
           )
         ],
       ),
-    );
-  }
-}
-
-class SplashColor extends StatelessWidget {
-  const SplashColor({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Positioned(
-      top: MediaQuery.of(context).size.height * 0.01,
-      left: MediaQuery.of(context).size.width * 0.04,
-      child: Image.asset('splash/Green.png',
-        width:  MediaQuery.of(context).size.width * 0.1 , 
-         ),
     );
   }
 }
