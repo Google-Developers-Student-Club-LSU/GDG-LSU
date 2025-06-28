@@ -7,17 +7,41 @@
 
 
 
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+
+
+const colorizeColors = [
+  Color.fromARGB(255, 18, 32, 180),
+  gRed,  
+  gYellow,
+  gGreen
+];
 
 //textfont
 TextStyle textFont = GoogleFonts.ptSans();
 
 //textStyle
+final TextStyle StandardTextStyled = StandardText.copyWith(
+  fontSize: 60,
+  color: Colors.white,
+  shadows: [
+    Shadow(
+      blurRadius: 6,
+      color: Colors.black87,
+      offset: Offset(2, 2),
+    ),
+  ],
+);
 TextStyle StandardText = TextStyle(
                 fontSize: 50,
                 fontWeight: FontWeight.w800,
                    );
+
+TextStyle SecondSecStyle = StandardText.copyWith(
+  fontWeight: FontWeight.w500
+);
 // backgroundColor
 const lightBackgroundColor = Color(0xFFFFFFFF);
 const darkBackgroundColor = Color(0xFF000000); 

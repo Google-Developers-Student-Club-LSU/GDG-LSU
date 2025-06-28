@@ -5,11 +5,11 @@ const double containerHeight = 500;
 
 final List<MemberProfile> members = [
   MemberProfile(
-    fullName: 'Trenton',
-    position: 'Treasaury',
-    yearAndMajor: 'Computer Science Junior',
+    fullName: 'Mujtaba Malik',
+    position: 'President',
+    yearAndMajor: 'Junior Computer Science',
     shortIntro: 'ffhjksal kjhfdd jlkhgajklhv clfsjdkh ...',
-    linkedin: 'https://www.google.com',
+    linkedin: 'https://www.linkedin.com/in/mujtaba-malik-7b8442299/',
     imageAsset: 'members/Trenton.jpg',
   ),
   MemberProfile(
@@ -30,14 +30,6 @@ final List<MemberProfile> members = [
   ),
     MemberProfile(
     fullName: 'Dina Taing',
-    position: 'Web Master',
-    yearAndMajor: 'Senior Computer Science',
-    shortIntro: "Hi, I’m the Web Master for GDG LSU and the sole developer behind our website. I’m deeply passionate about Go and Flutter for their speed, simplicity, and flexibility. Obsessed with UX and performance, I focus on building fast, intuitive, and polished experiences from backend to frontend. (Fun fact): This website is built entirely with Flutter!",
-    linkedin: 'https://www.linkedin.com/in/dina-taing-143935236/',
-    imageAsset: 'members/Dina.jpg',
-  ),
-  MemberProfile(
-    fullName: 'Malik',
     position: 'Web Master',
     yearAndMajor: 'Senior Computer Science',
     shortIntro: "Hi, I’m the Web Master for GDG LSU and the sole developer behind our website. I’m deeply passionate about Go and Flutter for their speed, simplicity, and flexibility. Obsessed with UX and performance, I focus on building fast, intuitive, and polished experiences from backend to frontend. (Fun fact): This website is built entirely with Flutter!",

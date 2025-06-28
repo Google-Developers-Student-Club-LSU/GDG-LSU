@@ -5,6 +5,7 @@
 // Authors: Dina Taing
 //
 
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:calendar_view/calendar_view.dart';
 import 'package:flutter/material.dart';
 import 'package:gdgwebsite/Colors.dart';
@@ -68,77 +69,71 @@ class _HomePageState extends State<HomePage> {
      Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Column(
-            children: [
-              Padding(padding: EdgeInsets.all(8.0),
-              child: Image.asset('icon/Workshop.png', width: 150,),),
-              Padding(
-                padding: const EdgeInsets.only(bottom: 8.0),
-                child: Text("Workshop", style: StandardText.copyWith(fontSize: 40 ),),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(bottom: 8.0),
-                child: Text("Hands-on learning opportunities on Python,​", style: StandardText.copyWith(fontSize: 20, color: gRed, fontWeight: FontWeight.w500 ),),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(bottom: 8.0),
-                child: Text("Flutter, Google Cloud, and more.​​", style: StandardText.copyWith(fontSize: 20, color: gRed, fontWeight: FontWeight.w500),),
-              )
-          
-            ],
-          ),
-        ),
+        Workshops(),
         const SizedBox(width:50),
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Column(
-            children: [
-              Padding(padding: EdgeInsets.all(8.0),
-              child: Image.asset('icon/Community.png', width: 145,),),
-              Padding(
-                padding: const EdgeInsets.only(bottom: 8.0),
-                child: Text("Community", style: StandardText.copyWith(fontSize: 40 ),),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(bottom: 8.0),
-                child: Text("Build connections and grow your network​", style: StandardText.copyWith(fontSize: 20, color: gRed, fontWeight: FontWeight.w500 ),),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(bottom: 8.0),
-                child: Text("through engaging social events.​​", style: StandardText.copyWith(fontSize: 20, color: gRed, fontWeight: FontWeight.w500),),
-              )
-            ],
-          ),
-        ),  
+        Community(),  
       ],
      ),
       const SizedBox(height:50),
           Stack(
-            children: [
-              Container(
-                width: double.infinity,
-                height:  MediaQuery.of(context).size.height * 0.6,
-                child: SmoothRandomArt(),
-                ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  _buildThirdText(),
-                  SizedBox(
-                     width: MediaQuery.of(context).size.width * 0.6,
-                     height: MediaQuery.of(context).size.height * 0.6,
-                    child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: _buildThirdSlideShow(),
-                  )
-                  ),         
-                  
-                ],
+  children: [
+    // 🔹 Carousel background
+    Center(
+      child: SizedBox(
+        width: MediaQuery.of(context).size.width * 0.8,
+        height: MediaQuery.of(context).size.height * 0.8,
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(16),
+          child: _buildThirdSlideShow(),
+        ),
+      ),
+    ),
+
+    // 🔹 Semi-transparent overlay
+    Center(
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(17),
+        child: Container(
+        width: MediaQuery.of(context).size.width * 0.8,
+        height: MediaQuery.of(context).size.height * 0.8,
+          color: Colors.black.withOpacity(0.2),
+        ),
+      ),
+    ),
+
+    // 🔹 Positioned animated text lower (but not fully bottom)
+    Positioned(
+      left: 20,
+      right: 20,
+      bottom: 60, // <-- adjust this value to move it up/down
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          AnimatedTextKit(
+            animatedTexts: [
+              TyperAnimatedText(
+                'Our Mission:',
+                textStyle: StandardTextStyled,
               ),
             ],
+            isRepeatingAnimation: false,
           ),
+          const SizedBox(height: 24),
+          AnimatedTextKit(
+            animatedTexts: [
+              TyperAnimatedText('We Grow', textStyle: StandardTextStyled.copyWith(color: gBlue)),
+              TyperAnimatedText('We Innovate', textStyle: StandardTextStyled.copyWith(color: gGreen)),
+              TyperAnimatedText('We Build', textStyle: StandardTextStyled.copyWith(color: gRed)),
+              TyperAnimatedText('Together', textStyle: StandardTextStyled.copyWith(color: gYellow)),
+            ],
+            repeatForever: true,
+            pause: const Duration(milliseconds: 1500),
+          ),
+        ],
+      ),
+    ),
+  ],
+),
 
           const SizedBox(
             height: 50,
@@ -234,6 +229,31 @@ class _HomePageState extends State<HomePage> {
         
       ),
     );
+  }
+
+  Padding Workshops() {
+    return Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          children: [
+            Padding(padding: EdgeInsets.all(8.0),
+            child: Image.asset('icon/Workshop.png', width: 150,),),
+            Padding(
+              padding: const EdgeInsets.only(bottom: 8.0),
+              child: Text("Workshop", style: StandardText.copyWith(fontSize: 40 ),),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(bottom: 8.0),
+              child: Text("Hands-on learning opportunities on Python,​", style: StandardText.copyWith(fontSize: 20, color: gRed, fontWeight: FontWeight.w500 ),),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(bottom: 8.0),
+              child: Text("Flutter, Google Cloud, and more.​​", style: StandardText.copyWith(fontSize: 20, color: gRed, fontWeight: FontWeight.w500),),
+            )
+        
+          ],
+        ),
+      );
   }
 
 
@@ -338,25 +358,56 @@ Widget _buildAnimatedText(double offset) {
             ),
          Text(
                "  WE GROW",
-                  style: StandardText.copyWith(color: gBlue)
+                  style: StandardText.copyWith( fontWeight: FontWeight.w500)
             ),
          Text(
                "  WE INNOVATE",
-                  style: StandardText.copyWith(color: gRed)
+                  style: StandardText.copyWith(fontWeight: FontWeight.w500,)
             ),
          Text(
                "  WE BUILD",
-                  style: StandardText.copyWith(color: gYellow)
+                  style: StandardText.copyWith(fontWeight: FontWeight.w500)
             ), 
          Text(
                "  TOGETHER",
-                  style: StandardText.copyWith(color: gGreen)
+                  style: StandardText.copyWith(fontWeight: FontWeight.w500)
             ),                           
       ],
     );
   }
 
 
+}
+
+class Community extends StatelessWidget {
+  const Community({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Column(
+        children: [
+          Padding(padding: EdgeInsets.all(8.0),
+          child: Image.asset('icon/Community.png', width: 145,),),
+          Padding(
+            padding: const EdgeInsets.only(bottom: 8.0),
+            child: Text("Community", style: StandardText.copyWith(fontSize: 40 ),),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(bottom: 8.0),
+            child: Text("Build connections and grow your network​", style: StandardText.copyWith(fontSize: 20, color: gRed, fontWeight: FontWeight.w500 ),),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(bottom: 8.0),
+            child: Text("through engaging social events.​​", style: StandardText.copyWith(fontSize: 20, color: gRed, fontWeight: FontWeight.w500),),
+          )
+        ],
+      ),
+    );
+  }
 }
 
 class SplashColor extends StatelessWidget {
