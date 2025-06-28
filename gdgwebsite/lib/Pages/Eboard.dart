@@ -11,6 +11,7 @@ import 'package:gdgwebsite/EboardWidgets/DrawerAnimation.dart';
 import 'package:gdgwebsite/MemberData.dart';
 import 'package:gdgwebsite/RandomArts/GlowingParticles.dart';
 import 'package:gdgwebsite/Widgets/Appbar.dart';
+import 'package:gdgwebsite/Widgets/Footbar.dart';
 
 class EboardPage extends StatefulWidget {
   const EboardPage({super.key});
@@ -28,16 +29,17 @@ Widget build(BuildContext context) {
   return Scaffold(
     appBar: const Appbar(),
     body: Stack(
-      children: [
-        SizedBox(
-          width: double.infinity,
-          height: double.infinity,
-          child: GlowingParticles(),
-        ),
-
-        SingleChildScrollView(
-          padding: const EdgeInsets.symmetric(vertical: 40),
-          child: Center(
+  children: [
+    SizedBox(
+      width: double.infinity,
+      height: double.infinity,
+      child: GlowingParticles(),
+    ),
+    SingleChildScrollView(
+      padding: const EdgeInsets.symmetric(vertical: 40),
+      child: Column(
+        children: [
+          Center(
             child: Wrap(
               alignment: WrapAlignment.center,
               spacing: 40,
@@ -60,10 +62,15 @@ Widget build(BuildContext context) {
               }).toList(),
             ),
           ),
-
-        ),
-      ],
+         // spacing before footer
+         const SizedBox(height: 200,),
+          const FooterBar(),
+        ],
+      ),
     ),
+  ],
+),
+
   );
 }
 }
