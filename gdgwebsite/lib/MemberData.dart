@@ -8,7 +8,16 @@ final List<MemberProfile> members = [
     fullName: 'Mujtaba Malik',
     position: 'President',
     yearAndMajor: 'Junior Computer Science',
-    shortIntro: 'ffhjksal kjhfdd jlkhgajklhv clfsjdkh ...',
+    shortIntro:
+    '''
+Hi everyone,
+I’m Mujtaba Malik, I just go by Malik, and I've got to witness this club rise from the grave in 2023 as well as play a part in helping it regain its standing in 2024. This year,  I plan to keep that momentum going to make the Google Developer Community at Louisiana stronger than it has ever been with the help of some amazing and talented officers who are devoted to pushing the club even further. 
+
+With my leadership experience in other organizations and industry experience in tech roles as well as my passions and knowledge stretching across many domains related to tech such as medicine and financials. I want to bring what I’ve learned in a way that’s engaging and valuable. Expect workshops, career prep, and community-building meetups. I want this club to be a hub—a place where both computer science and non CS students can find their footing. I know how overwhelming this field can feel at first, and I want to help make that path a little less intimidating for everyone here.
+
+Apart from coding, I like One Piece, Cooking, and Working out(honestly, not much else). You can also catch me weightlifting at the UREC from 10-11 pm or at some random spot in the pft.
+
+''',
     linkedin: 'https://www.linkedin.com/in/mujtaba-malik-7b8442299/',
     imageAsset: 'members/Trenton.jpg',
   ),

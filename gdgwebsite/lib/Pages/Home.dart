@@ -132,7 +132,7 @@ class _HomePageState extends State<HomePage> {
 
 
 
-  
+
 
   Row SixthSection() {
     return Row(
@@ -172,14 +172,17 @@ class _HomePageState extends State<HomePage> {
           );
   }
 
-  Center FourthSection() {
-    return Center(
-                child: CalendarControllerProvider<Event>(
-                  controller: EventController<Event>(),
-                  child: EventsCalendar(),
-                ),
-            
-            );
+  AbsorbPointer FourthSection() {
+    return AbsorbPointer(
+      absorbing: true,
+      child: Center(
+                  child: CalendarControllerProvider<Event>(
+                    controller: EventController<Event>(),
+                    child: EventsCalendar(),
+                  ),
+              
+              ),
+    );
   }
 
   Stack ThirdSection(BuildContext context) {

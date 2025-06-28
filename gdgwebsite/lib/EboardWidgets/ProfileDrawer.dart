@@ -20,9 +20,16 @@ class ProfileDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: lightBackgroundColor,
-      body: Stack(
+    return Container(
+      decoration: BoxDecoration(
+        color: lightBackgroundColor,
+        border: Border.all(
+          color: gBlue, // Change to any border color you prefer
+          width: 1,
+        ),
+        borderRadius: BorderRadius.circular(16), // Rounded corners
+      ),
+      child: Stack(
         children: [
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 24),
@@ -53,14 +60,18 @@ class ProfileDrawer extends StatelessWidget {
                   softWrap: true,
                 ),
                 const SizedBox(height: 12),
-                Flexible(
-                  child: Text(
-                    shortIntroduction,
-                    style: Theme.of(context)
-                        .textTheme
-                        .bodySmall
-                        ?.copyWith(fontSize: 15, color: lightLetterColor),
-                    softWrap: true,
+                Container(
+                  height: 250,
+                  child: SingleChildScrollView(
+                      child: Text(
+                        shortIntroduction,
+                        style: Theme.of(context)
+                            .textTheme
+                            .bodySmall
+                            ?.copyWith(fontSize: 15, color: lightLetterColor),
+                        softWrap: true,
+                      ),
+                    
                   ),
                 ),
               ],
