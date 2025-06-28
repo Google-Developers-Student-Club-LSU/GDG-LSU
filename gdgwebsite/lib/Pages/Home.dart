@@ -13,7 +13,7 @@ import 'package:gdgwebsite/Models/EventModel.dart';
 import 'package:gdgwebsite/RandomArts/SmoothRandomArt.dart';
 import 'package:gdgwebsite/Utils/CIickableImageLink.dart';
 import 'package:gdgwebsite/Utils/CustomButton.dart';
-import 'package:gdgwebsite/Utils/Footbar.dart';
+import 'package:gdgwebsite/Widgets/Footbar.dart';
 import 'package:gdgwebsite/Widgets/Appbar.dart';
 import 'package:gdgwebsite/utils/AnimatedCounter.dart';
 import 'package:gdgwebsite/utils/EventsCalendar.dart';
