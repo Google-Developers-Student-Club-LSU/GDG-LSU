@@ -5,12 +5,17 @@
 //
 // Authors: Dina Taing
 //
+import 'package:calendar_view/calendar_view.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
+import 'package:gdgwebsite/EventsWidgets/MonthCalendar.dart';
+import 'package:gdgwebsite/Models/EventModel.dart';
 import 'package:gdgwebsite/RandomArts/FlowingWaves.dart';
 import 'package:gdgwebsite/RandomArts/GlowingParticles.dart';
 import 'package:gdgwebsite/RandomArts/TriangleMesh.dart';
 import 'package:gdgwebsite/RandomArts/PerlinFlowField.dart';
 import 'package:gdgwebsite/Widgets/Appbar.dart';
+import 'package:gdgwebsite/Widgets/Footbar.dart';
 
 class EventsPage extends StatefulWidget {
   const EventsPage({super.key});
@@ -24,11 +29,31 @@ class _EventsPageState extends State<EventsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const Appbar(),
-      body: Container(
-  height: double.infinity,
-  width: double.infinity,
-  child: PerlinFlowField(),
-)
+      body: Stack(
+        children: [
+          Container(
+            height: double.infinity,
+            width: double.infinity,
+            child: PerlinFlowField(),
+          ),
+           SingleChildScrollView(
+             child: Column(
+               children: [
+                 Center(
+                        child: CalendarControllerProvider<Event>(
+                          controller: EventController<Event>(),
+                          child: MonthCalendar(),
+                        ),
+                    
+                    ),
+                SizedBox(height: 100,),
+                FooterBar()
+               ],
+             ),
+           ),
+
+        ],
+      )
     );;
   }
 }

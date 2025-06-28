@@ -54,7 +54,7 @@ class _PerlinFlowFieldState extends State<PerlinFlowField>
         if (_canvasSize == null || _canvasSize != canvasSize) {
           _canvasSize = canvasSize;
           _particles = List.generate(
-            300,
+            700,
             (_) => _FlowParticle(canvasSize),
           );
         }
@@ -79,7 +79,7 @@ class _FlowParticle {
           _rand.nextDouble() * size.width,
           _rand.nextDouble() * size.height,
         ),
-        color = googleColors[_rand.nextInt(googleColors.length)];
+        color = googleColors[_rand.nextInt(googleColors.length)].withValues(alpha: 0.5);
 
   void update(Size bounds) {
     final angle = _perlinNoise(pos.dx * 0.002, pos.dy * 0.002) * pi * 4;

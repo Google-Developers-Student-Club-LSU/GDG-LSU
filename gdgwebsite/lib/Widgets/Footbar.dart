@@ -17,7 +17,7 @@ class FooterBar extends StatelessWidget {
         border: Border(
           top: BorderSide(color: gBlue, width: 1)
         ),
-      color: Theme.of(context).scaffoldBackgroundColor,
+      color: Color(0x00000000),
       ),
       padding: const EdgeInsets.symmetric(vertical: 24, horizontal: 16),
       width: double.infinity,
@@ -34,7 +34,7 @@ class FooterBar extends StatelessWidget {
                 FooterSectionTitle("Contact Us"),
                 FooterText("teamdsc.lsu@gmail.com"),
                 FooterText("3304 S Quad Dr, Baton Rouge, LA 70803"),
-                const SizedBox(height: 20),
+                SizedBox(height: 20),
                 Center(
                   child: SelectableText(
                     '© 2025 GDG LSU. All rights reserved.',
