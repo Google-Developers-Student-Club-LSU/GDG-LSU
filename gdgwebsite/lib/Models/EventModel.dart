@@ -6,14 +6,22 @@
 // Authors: Dina Taing
 //
 
+import 'dart:ui';
+
 class Event {
   final String title;
   final String description;
   final String? image;
+  final Color color;
+  final String? room;
 
   Event({
     required this.title,
     required this.description,
-    this.image,
+    this.image, 
+    required this.color,
+    required this.room
   });
+
+ 
 }

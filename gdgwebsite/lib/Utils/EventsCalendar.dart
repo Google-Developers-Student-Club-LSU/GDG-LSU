@@ -34,8 +34,10 @@ class _EventsCalendarState extends State<EventsCalendar> {
         final title = e['title'] as String;
         final description = e['description'] as String;
         final image = e['image'] as String?;
+        final color = e['color'] as Color;
+        final room = e['room'] as String?; 
 
-        final event = Event(title: title, description: description, image: image);
+        final event = Event(title: title, description: description, image: image, color: color, room: room);
 
         return CalendarEventData<Event>(
           date: start,

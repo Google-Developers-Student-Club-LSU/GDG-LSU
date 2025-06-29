@@ -37,8 +37,11 @@ class _MonthCalendarState extends State<MonthCalendar> {
         final title = e['title'] as String;
         final description = e['description'] as String;
         final image = e['image'] as String?;
+        final room = e['room'] as String?; 
+        final color = e['color'] as Color; 
 
-        final event = Event(title: title, description: description, image: image);
+
+        final event = Event(title: title, description: description, image: image, color:color, room: room);
 
         return CalendarEventData<Event>(
           date: start,
@@ -47,6 +50,7 @@ class _MonthCalendarState extends State<MonthCalendar> {
           title: title,
           description: description,
           event: event,
+          color: color,
         );
       }).toList();
 
@@ -85,7 +89,7 @@ class _MonthCalendarState extends State<MonthCalendar> {
                 ),
               ),
               decoration: BoxDecoration(
-                color:  Color(0x00000000),
+                color:  Colors.white.withValues(alpha: 0.1),
                 border: Border(
                   top: BorderSide(color: gYellow, width: 2),
                   left: BorderSide(color: gYellow, width: 2),
@@ -96,11 +100,11 @@ class _MonthCalendarState extends State<MonthCalendar> {
               headerTextStyle: StandardText.copyWith(fontSize: 20),
             ),
 cellBuilder: (date, events, isToday, isInMonth, hideDaysNotInMonth) {
-  final cellColor = events.isNotEmpty ? gGreen :  Color(00000000);
+  Color? cellColor = events.isNotEmpty ? events.first.event?.color :  Colors.white70.withValues(alpha: 0.1);
           return Container(
             decoration: BoxDecoration(
               color: cellColor,
-              border: Border.all(color: gRed),
+              border: Border.all(color: Colors.white70),
             ),
             padding: const EdgeInsets.all(6),
             child: Stack(
@@ -127,8 +131,10 @@ cellBuilder: (date, events, isToday, isInMonth, hideDaysNotInMonth) {
                             title: events.first.title,
                             description: events.first.description ?? "No description",
                             start: events.first.startTime ?? DateTime.now(),
-                            end: events.first.endDate,
-                            image: events.first.event?.image
+                            end: events.first.endTime ??DateTime.now() ,
+                            image: events.first.event?.image,
+                            color: events.first.event?.color ?? gYellow,
+                            room: events.first.event?.room
                           ),
                         ),
                   );

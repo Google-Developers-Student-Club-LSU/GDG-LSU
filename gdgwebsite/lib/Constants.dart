@@ -1,3 +1,5 @@
+import 'package:flutter/cupertino.dart';
+import 'package:gdgwebsite/Colors.dart';
 import 'package:gdgwebsite/Models/MemberModel.dart';
 
 final String home = '/home';
@@ -60,25 +62,48 @@ Apart from coding, I like One Piece, Cooking, and Working out(honestly, not much
 
 
 // UPCOMING EVENTS
+//Title, Description, Date (not time), Color  is required to create an events 
+// Image, Time, Room number is no required can be update later
+
+// General Body Meeting = Green, Workshop = Blue, OtherEvents = Red
 final List<Map<String, dynamic>> myEvents = [
   {
     "title": "General Body Meeting",
     "date": DateTime(2025, 6, 15, 10, 0),
-    "endDate": DateTime(2025, 6, 15, 11, 0),
+    "endDate": DateTime(2025, 6, 15, 10, 0),
     "description": "Weekly sync-up with the team to discuss goals.",
+    "color": gGreen,
+    "room" : "PFT 1200"
   },
   {
     "title": "Firebase WorkShop",
     "date": DateTime(2025, 6, 16, 14, 30),
-    "endDate": DateTime(2025, 6, 16, 15, 30),
+    "endDate": DateTime(2025, 6, 16, 14, 30),
     "description": "Annual physical check-up at local clinic.",
+    "color": gBlue,
+    "room" : "PFT 1202"
+    
+
   },
   {
     "title": "Flutter Workshop",
     "date": DateTime(2025, 6, 17, 9, 0),
     "endDate": DateTime(2025, 6, 17, 12, 0),
-    "description": "In-depth workshop on Flutter animations.",
-    "image": "events/Flutter.jpg"
+    "description": 
+    '''
+Join us for an engaging hands-on workshop where you'll learn how to build modern, responsive mobile apps using Flutter, Google's open-source UI toolkit. Whether you're a beginner or looking to sharpen your cross-platform development skills, this session will guide you through the fundamentals of Dart, Flutter widgets, layouts, and state management.
+
+Bring your laptop and get ready to code!
+      ''',
+    "image": "events/Flutter.jpg",
+    "color": gBlue
     
+  },
+    {
+    "title": "Hackathon",
+    "date": DateTime(2025, 6, 30, 14, 30),
+    "endDate": DateTime(2025, 7, 1, 14, 30),
+    "description": "Annual physical check-up at local clinic.",
+    "color": gRed
   },
 ];

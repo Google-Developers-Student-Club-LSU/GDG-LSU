@@ -39,6 +39,7 @@ class _EventsPageState extends State<EventsPage> {
            SingleChildScrollView(
              child: Column(
                children: [
+                 SizedBox(height: 50,),
                  Center(
                         child: CalendarControllerProvider<Event>(
                           controller: EventController<Event>(),

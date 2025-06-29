@@ -12,7 +12,9 @@ class EventCart extends StatelessWidget {
   final String description;
   final DateTime start;
   final DateTime end;
+  final Color color; 
   final String? image;
+  final String? room; 
   final VoidCallback? onClose;
 
   const EventCart({
@@ -20,14 +22,20 @@ class EventCart extends StatelessWidget {
     required this.title,
     required this.start,
     required this.end,
+    required this.color,
+    this.room,
     this.image = 'events/NoImage.png',
     required this.description,
+
 
     this.onClose,
   });
 
   @override
 Widget build(BuildContext context) {
+
+   bool timeNotAvailable = start == end;
+
   return Center(
     child: Material(
       color: Theme.of(context).scaffoldBackgroundColor,
@@ -40,10 +48,10 @@ Widget build(BuildContext context) {
         decoration: BoxDecoration(
           color: Theme.of(context).scaffoldBackgroundColor,
           borderRadius: BorderRadius.circular(16),
-          border: Border.all(color: gYellow),
+          border: Border.all(color: color),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.3),
+              color: Colors.black.withValues(alpha: .3),
               blurRadius: 20,
               offset: const Offset(0, 10),
             ),
@@ -53,13 +61,23 @@ Widget build(BuildContext context) {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Align(
-                alignment: Alignment.topRight,
-                child: IconButton(
+              Row(
+                children: [
+                 Align(
+                    alignment: Alignment.topLeft,
+                    child: Image.asset('logo/GDSC.png', height: 32,) ,
+                  ),
+                 Spacer(),
+                 Align(
+                  alignment: Alignment.topRight,
+                  child: IconButton(
                   icon: const Icon(Icons.close),
                   onPressed: onClose ?? () => Navigator.of(context).pop(),
                 ),
               ),
+            ],
+          ),
+
               const SizedBox(height: 10),
 
               Text(
@@ -68,20 +86,36 @@ Widget build(BuildContext context) {
                 textAlign: TextAlign.left,
               ),
               const SizedBox(height: 10),
-              Text(
-                '${DateFormat('h:mm a').format(start)} — ${DateFormat('h:mm a').format(end)}',
-                style: Theme.of(context).textTheme.bodySmall?.copyWith(color: Colors.grey[600]),
-                textAlign: TextAlign.center,
+
+                Text(
+                  timeNotAvailable ?
+                  'Time will be announced soon'
+                   : 'Time: ${DateFormat('h:mm a').format(start)} — ${DateFormat('h:mm a').format(end)}',
+                  style: Theme.of(context).textTheme.bodySmall?.copyWith(color:timeNotAvailable ? gRed : color, fontSize: 20),
+                  textAlign: TextAlign.center,
+                ),
+                const SizedBox(height: 10),
+                Text(
+                  room == null ?
+                  'Room number will be announced soon'
+                   : 'Room: $room',
+                  style: Theme.of(context).textTheme.bodySmall?.copyWith(color: room == null? gRed : Colors.white70, fontSize: 20),
+                  textAlign: TextAlign.center,
+                ),
+
+              const SizedBox(height: 12),
+
+              Container(
+                width:  MediaQuery.of(context).size.width * 0.4,
+                child: SelectableText(
+                  description,
+                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(fontSize: 17),
+                  textAlign: TextAlign.left,
+                
+                ),
               ),
               const SizedBox(height: 12),
 
-              Text(
-                description,
-                style: Theme.of(context).textTheme.bodyMedium,
-                textAlign: TextAlign.center,
-              ),
-              const SizedBox(height: 12),
-              
               Image.asset(
                 image ?? 'events/NoImage.png' ,
                 width: MediaQuery.of(context).size.width * 0.4,
