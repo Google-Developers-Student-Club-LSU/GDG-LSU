@@ -88,7 +88,7 @@ class _FlowParticle {
     // ✅ Amplitude scales with canvas height
     final amplitude = bounds.height * 0.001; 
     velocity += direction * amplitude;
-    velocity *= 0.5;
+    velocity *= 0.2;
     pos += velocity;
 
     // Wrap around screen

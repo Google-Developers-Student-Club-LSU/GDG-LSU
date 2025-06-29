@@ -8,11 +8,8 @@
 
 import 'dart:math';
 import 'package:flutter/material.dart';
+import 'package:gdgwebsite/Colors.dart';
 
-const gBlue = Color(0xFF4285F4);
-const gRed = Color(0xFFEA4335);
-const gYellow = Color(0xFFFBBC05);
-const gGreen = Color(0xFF34A853);
 const googleColors = [gBlue, gRed, gYellow, gGreen];
 
 class TriangleMesh extends StatefulWidget {
