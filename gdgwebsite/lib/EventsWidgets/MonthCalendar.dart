@@ -65,6 +65,8 @@ class _MonthCalendarState extends State<MonthCalendar> {
    
     double ratio = MediaQuery.of(context).size.width / MediaQuery.of(context).size.height;
     final isLightMode = Theme.of(context).brightness == Brightness.light;
+    final isMobile = MediaQuery.of(context).size.width < 900;
+
     return LayoutBuilder(
       builder: (context, constraints) {
         return Container(
@@ -149,7 +151,7 @@ class _MonthCalendarState extends State<MonthCalendar> {
                           maxLines: 2,
                           overflow: TextOverflow.ellipsis,
                           textAlign: TextAlign.center,
-                          style: StandardText.copyWith(fontSize: 17 , color: Colors.white, fontWeight: FontWeight.w600),
+                          style: StandardText.copyWith(fontSize: isMobile ? 10 : 17 , color: Colors.white, fontWeight: FontWeight.w600),
                         ),
                       ),
                     ),

@@ -34,10 +34,12 @@ class EventCart extends StatelessWidget {
   @override
 Widget build(BuildContext context) {
 
-   bool timeNotAvailable = start == end;
+   bool timeNotAvailable = 
+    start == end || end.difference(start).inMinutes <= 30;;
+   
    final isLightMode = Theme.of(context).brightness == Brightness.light;
    final greyColor = isLightMode ? Colors.black54 : Colors.white70;
-
+  final isMobile = MediaQuery.of(context).size.width < 900;
 
   return Center(
     child: Material(
@@ -45,7 +47,7 @@ Widget build(BuildContext context) {
       borderRadius: BorderRadius.circular(16), // ⬅️ Add this line
       clipBehavior: Clip.antiAlias,
       child: Container(
-        width: MediaQuery.of(context).size.width * 0.6,
+        width: MediaQuery.of(context).size.width * (isMobile ? 0.8 :0.6),
         constraints: const BoxConstraints(
           maxHeight: 600, // limit max height but allow scrolling
         ),
@@ -56,7 +58,7 @@ Widget build(BuildContext context) {
                   border: Border.all(color: color, width: 3),
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.black.withOpacity(0.3),
+                      color: Colors.black.withValues(alpha: .3),
                       blurRadius: 20,
                       offset: const Offset(0, 10),
                     ),
@@ -87,7 +89,7 @@ Widget build(BuildContext context) {
 
               Text(
                 'Events: $title',
-                style: StandardText,
+                style: StandardText.copyWith(fontSize: isMobile ? 30 : 40),
                 textAlign: TextAlign.left,
               ),
               const SizedBox(height: 10),

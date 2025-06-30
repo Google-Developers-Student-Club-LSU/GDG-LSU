@@ -62,7 +62,11 @@ Apart from coding, I like One Piece, Cooking, and Working out(honestly, not much
 
 
 // UPCOMING EVENTS
-//Title, Description, Date (not time), Color  is required to create an events 
+//Title, Description, Date, Color  is required to create an events 
+// if time is not yet available please put it less than or equal 30 min gap eg 
+//                  (year, month, day, hour, mins) 
+//    "date": DateTime(2025, 6, 15, 10, 0),
+//    "endDate": DateTime(2025, 6, 15, 10, 30),
 // Image, Time, Room number is no required can be update later
 
 // General Body Meeting = Green, Workshop = Blue, OtherEvents = Red

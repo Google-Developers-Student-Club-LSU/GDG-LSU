@@ -76,7 +76,7 @@ class _EventsCalendarState extends State<EventsCalendar> {
           child: MonthView<Event>(
             hideDaysNotInMonth: true,
             controller: _eventController,
-            useAvailableVerticalSpace: false,
+            useAvailableVerticalSpace: true,
             initialMonth: DateTime.now(),
             showBorder: true,
            cellAspectRatio: (isMobile ? 0.55 : ratio),

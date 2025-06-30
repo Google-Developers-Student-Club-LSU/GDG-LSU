@@ -62,15 +62,17 @@ class _WeekCalendarState extends State<WeekCalendar> {
   @override
   Widget build(BuildContext context) {
     final isLightMode = Theme.of(context).brightness == Brightness.light;
+    final isMobile = MediaQuery.of(context).size.width < 900;
     Color themeBackGround = isLightMode ? Colors.black.withValues(alpha: .4) : Colors.white70.withValues(alpha: .1);
     return LayoutBuilder(
       builder: (context, constraints) {
         return Container(
           constraints: BoxConstraints(
-            maxWidth: MediaQuery.of(context).size.width ,
+            maxWidth: MediaQuery.of(context).size.width * (isMobile ? 1 : 0.9),
             maxHeight: MediaQuery.of(context).size.height ,
           ),
           child:  WeekView<Event>(
+           
             backgroundColor: themeBackGround,
             controller: _eventController,
             headerStringBuilder: (date, {secondaryDate}) {
@@ -127,7 +129,7 @@ class _WeekCalendarState extends State<WeekCalendar> {
                               softWrap: true,
                               overflow: TextOverflow.visible,
                               textAlign: TextAlign.center,
-                              style: StandardText.copyWith(fontSize: 10 , color: Colors.white, fontWeight: FontWeight.w600),
+                              style: StandardText.copyWith(fontSize: isMobile? 10: 17 , color: Colors.white, fontWeight: FontWeight.w600),
                             ),
                   ),
                 ),
