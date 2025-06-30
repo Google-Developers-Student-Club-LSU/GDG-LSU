@@ -9,6 +9,7 @@
 
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
+import 'package:gdgwebsite/Utils/NoTransitionBuilder.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 
@@ -70,6 +71,14 @@ final ThemeData lightTheme = ThemeData(
     bodyColor: lightLetterColor,
     displayColor: lightLetterColor,
   ),
+    pageTransitionsTheme: const PageTransitionsTheme(
+    builders: {
+      TargetPlatform.android: NoTransitionsBuilder(),
+      TargetPlatform.iOS: NoTransitionsBuilder(),
+      TargetPlatform.macOS: NoTransitionsBuilder(),
+      TargetPlatform.windows: NoTransitionsBuilder(),
+      TargetPlatform.linux: NoTransitionsBuilder(),
+    },),
   appBarTheme: AppBarTheme(
     backgroundColor: lightBackgroundColor,
     foregroundColor: lightLetterColor,
@@ -91,6 +100,14 @@ final ThemeData darkTheme = ThemeData(
     bodyColor: darkLetterColor,
     displayColor: darkLetterColor,
   ),
+  pageTransitionsTheme: const PageTransitionsTheme(
+    builders: {
+      TargetPlatform.android: NoTransitionsBuilder(),
+      TargetPlatform.iOS: NoTransitionsBuilder(),
+      TargetPlatform.macOS: NoTransitionsBuilder(),
+      TargetPlatform.windows: NoTransitionsBuilder(),
+      TargetPlatform.linux: NoTransitionsBuilder(),
+    },),
   appBarTheme: AppBarTheme(
     backgroundColor: darkBackgroundColor,
     foregroundColor: darkLetterColor,

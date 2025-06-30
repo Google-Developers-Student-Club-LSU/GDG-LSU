@@ -21,7 +21,6 @@ import 'package:gdgwebsite/Widgets/Appbar.dart';
 import 'package:gdgwebsite/utils/AnimatedCounter.dart';
 import 'package:gdgwebsite/utils/EventsCalendar.dart';
 import 'package:gdgwebsite/utils/HoverExpand.dart';
-import 'package:gdgwebsite/utils/ResponsiveAppbar.dart';
 import 'package:gdgwebsite/utils/Slideshow.dart';
 
 class HomePage extends StatefulWidget {

@@ -7,7 +7,10 @@
 import 'package:flutter/material.dart';
 import 'package:gdgwebsite/Colors.dart';
 import 'package:gdgwebsite/RandomArts/SwirlPainter.dart';
+import 'package:gdgwebsite/SponsorWidget/PdfView.dart';
 import 'package:gdgwebsite/Utils/CIickableImageLink.dart';
+import 'package:gdgwebsite/Utils/ReponsiveWrap.dart';
+import 'package:gdgwebsite/Widgets/Footbar.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:gdgwebsite/Widgets/Appbar.dart';
 import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
@@ -21,86 +24,113 @@ class SponsorPage extends StatefulWidget {
 
 class _SponsorPageState extends State<SponsorPage> {
   final PdfViewerController _pdfViewerController = PdfViewerController();
+  bool _isHoveringPdf = false;
+
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       appBar: const Appbar(),
-     
-       body:
-          
-            
-            Stack(
-              children: [
-                Container(
-                  width: double.infinity,
-                  height: double.infinity,
-                  child: MagnetismField()
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Align(
-                      alignment: Alignment.centerLeft,
-                      child: Padding(
-                        padding: const EdgeInsets.all(16.0),
-                        child: Container(
-                          decoration: BoxDecoration(
-                            border: Border.all(color: gGreen, width: 2 ),
-                            borderRadius: BorderRadius.all(Radius.circular(16)),
-                            color: Colors.transparent,
-                          ),
-                         
-                          width: MediaQuery.of(context).size.width * 0.40 ,
-                          height:  MediaQuery.of(context).size.height * 0.85 ,
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.all(Radius.circular(16)),
-                            child: SfPdfViewer.asset(
-                              'sponsorPackage/Sponsors.pdf',
-                              controller: _pdfViewerController,
-                              scrollDirection: PdfScrollDirection.vertical,
-                              pageLayoutMode: PdfPageLayoutMode.continuous,
-                              enableDoubleTapZooming: true,
-                              canShowScrollHead: true,
-                              canShowScrollStatus: true,
-                              onDocumentLoaded: (details) {
-                                // 1.0  fits width. You can tweak based on screen size.
-                                _pdfViewerController.zoomLevel = 1.0;
-                              },
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                    
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                    Padding(
-                      padding: const EdgeInsets.all(16.0),
-                      child: Text('THANK YOU TO OUR SPONSORS!',
-                          style: StandardText,
-                          ),
-                    ),
-                     Wrap(
+      body: Stack(
+        children: [
+           Positioned.fill(child: MagnetismField()),
+          ReponsiveWrap(
+            builder: (isMobiles) {
+              return NotificationListener<ScrollNotification>(
+                onNotification: (_) => _isHoveringPdf,
+                child: SingleChildScrollView(
+                  child: isMobiles
+                      ? Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                           ClickableImageLink(imageAsset: 'logo/Google.png', linkUrl: 'www.google.com')
+                            Padding(
+                              padding: const EdgeInsets.all(16.0),
+                              child: PDFView(
+                                isMobile: true,
+                                pdfViewerController: _pdfViewerController,
+                                onHoverChanged: (hovering) =>
+                                    setState(() => _isHoveringPdf = hovering),
+                              ),
+                            ),
+                            SecondPart(isMobile: true),
+                            const SizedBox(height: 30),
+                            const FooterBar(),
+                          ],
+                        )
+                      : Column(
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                Align(
+                                  alignment: Alignment.centerLeft,
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(16.0),
+                                    child: PDFView(
+                                      isMobile: false,
+                                      pdfViewerController: _pdfViewerController,
+                                      onHoverChanged: (hovering) =>
+                                          setState(() => _isHoveringPdf = hovering),
+                                    ),
+                                  ),
+                                ),
+                                SecondPart(isMobile: false),
+                              ],
+                            ),
+                            const SizedBox(height: 30),
+                            const FooterBar(),
                           ],
                         ),
-                        Padding(
-                          padding: const EdgeInsets.all(16),
-                          child: Align(
-                            alignment: Alignment.centerRight,
-                            child: SponsorLink()),
-                        ),
-                      ],
-                    )
-                  ],
-                 
                 ),
-              ],
-            ),
+              );
+            },
+          ),
+        ],
+      ),
+    );
+  }
+}
 
+class SecondPart extends StatelessWidget {
+  final bool isMobile;
+
+  const SecondPart({
+    this.isMobile = false,
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    bool isMobile = MediaQuery.of(context).size.width < 800;
+
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+    Padding(
+      padding: const EdgeInsets.all(16.0),
+        child: Container(
+           width: isMobile ? double.infinity : 600,
+          child: Text('THANK YOU TO OUR SPONSORS!',
+          softWrap: true,
+              textAlign:TextAlign.center  ,
+              style: StandardText.copyWith(fontSize: isMobile ? 40:40),
+              ),
+        ),
+      
+    ),
+     Wrap(
+          children: [
+           ClickableImageLink(imageAsset: 'logo/Google.png', linkUrl: 'www.google.com')
+          ],
+        ),
+        Padding(
+          padding: const EdgeInsets.all(16),
+          child: Align(
+            alignment: isMobile? Alignment.center :Alignment.centerRight ,
+            child: SponsorLink()),
+        ),
+      ],
     );
   }
 }
@@ -109,8 +139,12 @@ class _SponsorPageState extends State<SponsorPage> {
 
 
 
+
 class SponsorLink extends StatefulWidget {
-  const SponsorLink({super.key});
+ 
+  const SponsorLink({
+    
+    super.key});
   @override
   _SponsorLinkState createState() => _SponsorLinkState();
 }
@@ -122,7 +156,7 @@ class _SponsorLinkState extends State<SponsorLink>
     duration: const Duration(seconds: 5),
   )..repeat(reverse: true);
   final List<Color> _colors = [gBlue, gYellow, gRed, gGreen];
-  final double _fontSize = 50;
+  
 
   void _launchLink() async {
     final Uri url = Uri.parse('https://www.youtube.com');
@@ -130,7 +164,6 @@ class _SponsorLinkState extends State<SponsorLink>
       debugPrint('Could not launch');
     }
   }
-
   @override
   void dispose() {
     _controller.dispose();
@@ -139,6 +172,9 @@ class _SponsorLinkState extends State<SponsorLink>
 
   @override
   Widget build(BuildContext context) {
+   bool isMobile = MediaQuery.of(context).size.width < 600;
+      final double _fontSize = isMobile ? 40 : 50;;
+
     return InkWell(
       onTap: _launchLink,
       child: AnimatedBuilder(

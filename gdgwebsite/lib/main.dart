@@ -34,7 +34,7 @@ class MyApp extends StatelessWidget {
       themeMode: ThemeMode.system,
       home: HomePage(),
       routes: {
-         home: (_) => const HomePage(),
+        home: (_) => const HomePage(),
         eboard: (_) => const EboardPage(),
         events: (_) => const EventsPage(),
         sponsor: (_) => const SponsorPage(),

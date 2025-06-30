@@ -15,7 +15,7 @@ class ReponsiveWrap extends StatelessWidget {
 
 @override
   Widget build(BuildContext context) {
-    final isMobile = MediaQuery.of(context).size.width < 900;
+    final isMobile = MediaQuery.of(context).size.width < 1100;
     return builder(isMobile);
   }
 }
