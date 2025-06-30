@@ -14,14 +14,14 @@ import 'package:gdgwebsite/EventsWidgets/EventCart.dart';
 import 'package:gdgwebsite/Models/EventModel.dart';
 import 'package:intl/intl.dart';
 
-class MonthCalendar extends StatefulWidget {
-  const MonthCalendar({super.key});
+class WeekCalendar extends StatefulWidget {
+  const WeekCalendar({super.key});
 
   @override
-  State<MonthCalendar> createState() => _MonthCalendarState();
+  State<WeekCalendar> createState() => _WeekCalendarState();
 }
 
-class _MonthCalendarState extends State<MonthCalendar> {
+class _WeekCalendarState extends State<WeekCalendar> {
   late final EventController<Event> _eventController;
   bool _initialized = false;
 
@@ -37,8 +37,8 @@ class _MonthCalendarState extends State<MonthCalendar> {
         final title = e['title'] as String;
         final description = e['description'] as String;
         final image = e['image'] as String?;
-        final room = e['room'] as String?; 
-        final color = e['color'] as Color; 
+        final room = e['room'] as String?;
+        final color = e['color'] as Color;
 
 
         final event = Event(title: title, description: description, image: image, color:color, room: room);
@@ -61,23 +61,18 @@ class _MonthCalendarState extends State<MonthCalendar> {
 
   @override
   Widget build(BuildContext context) {
-
-   
-    double ratio = MediaQuery.of(context).size.width / MediaQuery.of(context).size.height;
     final isLightMode = Theme.of(context).brightness == Brightness.light;
+    Color themeBackGround = isLightMode ? Colors.black.withValues(alpha: .4) : Colors.white70.withValues(alpha: .1);
     return LayoutBuilder(
       builder: (context, constraints) {
         return Container(
           constraints: BoxConstraints(
-            maxWidth: MediaQuery.of(context).size.width * 0.9,
-            maxHeight: MediaQuery.of(context).size.height * 0.9,
+            maxWidth: MediaQuery.of(context).size.width ,
+            maxHeight: MediaQuery.of(context).size.height ,
           ),
-          child: MonthView<Event>(
+          child:  WeekView<Event>(
+            backgroundColor: themeBackGround,
             controller: _eventController,
-            useAvailableVerticalSpace: false,
-            initialMonth: DateTime.now(),
-            showBorder: true,
-            cellAspectRatio: ratio,
             headerStringBuilder: (date, {secondaryDate}) {
               return DateFormat('MMMM yyyy').format(date);
             },
@@ -95,36 +90,15 @@ class _MonthCalendarState extends State<MonthCalendar> {
                   top: BorderSide(color: gYellow, width: 2),
                   left: BorderSide(color: gYellow, width: 2),
                   right: BorderSide(color: gYellow, width: 2),
+                  bottom: BorderSide(color: gYellow, width: 2),
                 ),
                 borderRadius: const BorderRadius.vertical(top: Radius.circular(24)),
               ),
               headerTextStyle: StandardText.copyWith(fontSize: 20, color: Colors.white),
             ),
-    cellBuilder: (date, events, isToday, isInMonth, hideDaysNotInMonth,) {
-        Color? cellColor = events.isNotEmpty
-            ? events.first.event?.color.withValues(alpha: isLightMode ? 0.9 : 0.7)
-            : (isLightMode ? Colors.black.withValues(alpha: .4) : Colors.white70.withValues(alpha: .1));          
-            return Container(
-            decoration: BoxDecoration(
-              color: cellColor,
-              border: Border.all(color: Colors.white70),
-            ),
-            padding: const EdgeInsets.all(6),
-            child: Stack(
-              children: [
-                // Day number in the top-left corner
-                Positioned(
-                  top: 0,
-                  left: 0,
-                  child: Text(
-                    date.day.toString(),
-                    style: StandardText.copyWith(fontSize: 12, color: Colors.white),
-                  ),
-                ),
-                // Centered event title (if any)
-                if (events.isNotEmpty)
-                  InkWell(
-                    onTap: (){
+            eventTileBuilder: (date, events, boundry, start, end) {
+              return InkWell(
+                onTap:(){
                       showDialog(
                         context: context,
                         barrierDismissible: true,
@@ -140,32 +114,29 @@ class _MonthCalendarState extends State<MonthCalendar> {
                           ),
                     
                       );
-                    },
-                    child: Center(
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 4.0),
-                        child: Text(
-                          events.first.title,
-                          maxLines: 2,
-                          overflow: TextOverflow.ellipsis,
-                          textAlign: TextAlign.center,
-                          style: StandardText.copyWith(fontSize: 17 , color: Colors.white, fontWeight: FontWeight.w600),
-                        ),
-                      ),
-                    ),
+                    }, 
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: (events.first.event?.color)?.withValues(alpha: isLightMode ? 0.9 : 0.7 )
                   ),
-              ],
-            ),
-          );
-        },
-          
-            // ignore: avoid_print
-            onEventTap: (event, date) {
-            } ,
+                  child: Padding(
+                    padding: const EdgeInsets.all(4.0),
+                    child: Text(
+                              events.first.title,
+                              maxLines: 2,
+                              softWrap: true,
+                              overflow: TextOverflow.visible,
+                              textAlign: TextAlign.center,
+                              style: StandardText.copyWith(fontSize: 10 , color: Colors.white, fontWeight: FontWeight.w600),
+                            ),
+                  ),
+                ),
+              ) ;
+            }
           ),
-        );
-        
-      },
-    );
-  }
+                );
+              },
+          
+            );
+          }
 }

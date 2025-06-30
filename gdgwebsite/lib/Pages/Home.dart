@@ -12,13 +12,16 @@ import 'package:gdgwebsite/Colors.dart';
 import 'package:gdgwebsite/Constants.dart';
 import 'package:gdgwebsite/Models/EventModel.dart';
 import 'package:gdgwebsite/RandomArts/SmoothRandomArt.dart';
+import 'package:gdgwebsite/RandomArts/TriangleMesh.dart';
 import 'package:gdgwebsite/Utils/CIickableImageLink.dart';
 import 'package:gdgwebsite/Utils/CustomButton.dart';
+import 'package:gdgwebsite/Utils/ReponsiveWrap.dart';
 import 'package:gdgwebsite/Widgets/Footbar.dart';
 import 'package:gdgwebsite/Widgets/Appbar.dart';
 import 'package:gdgwebsite/utils/AnimatedCounter.dart';
 import 'package:gdgwebsite/utils/EventsCalendar.dart';
 import 'package:gdgwebsite/utils/HoverExpand.dart';
+import 'package:gdgwebsite/utils/ResponsiveAppbar.dart';
 import 'package:gdgwebsite/utils/Slideshow.dart';
 
 class HomePage extends StatefulWidget {
@@ -58,12 +61,34 @@ class _HomePageState extends State<HomePage> {
       body: ListView(
         controller: _scrollController,
         children: [
-    Stack(children: [
-        FirstSectionBackground(),
-            _buildFirstSlideShow(scrollOffset),
-            _buildAnimatedText(scrollOffset),
-     ]),
-     SecondSection(),
+    ReponsiveWrap(
+      builder: (isMobile) {
+        return 
+        isMobile? FirstSectionMobile(context) :
+      Stack(children: [
+            FirstSectionBackground(),
+                _buildFirstSlideShow(scrollOffset),
+                _buildAnimatedText(scrollOffset),
+         ]);
+      }
+    ),
+
+     ReponsiveWrap(
+       builder: (isMobile) {
+
+         return isMobile ? Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Workshops(),
+            SizedBox(height: 30,),
+            Community()
+
+          ],
+         )
+         : 
+         SecondSection();
+       }
+     ),
       const SizedBox(height:50),
           ThirdSection(context),
 
@@ -124,53 +149,158 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-
-
-
-
-
-
-
-
-
-
-
-  Row SixthSection() {
-    return Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            ClickableImageLink(imageAsset: 'logo/Discord.png', width: 150, linkUrl: 'https://discord.com/'),
-            const SizedBox(width: 200,),
-            ClickableImageLink(imageAsset:'logo/TigerLink.png', width: 150, linkUrl: 'https://tigerlink.lsu.edu')
-
-          ],
-        );
+  Stack FirstSectionMobile(BuildContext context) {
+    return Stack(
+        children: [
+        Container(
+        width: double.infinity,
+        height: MediaQuery.of(context).size.height,
+        child: const TriangleMesh(),
+        ),
+      
+      Padding(
+        padding: const EdgeInsets.all(16.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.end,
+            crossAxisAlignment: CrossAxisAlignment.start ,
+            children: [
+              SizedBox(height: MediaQuery.of(context).size.height * 0.65,),
+              Align(
+                    alignment: Alignment.bottomLeft,
+                    child: AnimatedTextKit(animatedTexts: 
+                    [
+                      TypewriterAnimatedText('ENCHANCE',
+                      textStyle: StandardText.copyWith(
+                         fontSize: 40,
+                        color: gBlue
+                      ))
+                    ],
+                    totalRepeatCount: 1,),
+                  ),
+              Align(
+                    alignment: Alignment.bottomLeft,
+                    child: AnimatedTextKit(animatedTexts: 
+                    [
+                      TypewriterAnimatedText('YOUR TECHNICAL',
+                      textStyle: StandardText.copyWith(
+                        fontSize: 40,
+                        color: gYellow
+                      ))
+                    ],
+                    totalRepeatCount: 1,),
+                  ),
+              Align(
+                    alignment: Alignment.bottomLeft,
+                    child: AnimatedTextKit(animatedTexts: 
+                    [
+                      TypewriterAnimatedText('KNOWLEDGE',
+                      textStyle: StandardText.copyWith(
+                        fontSize: 40,
+                        color: gGreen
+                      ))
+                    ],
+                    totalRepeatCount: 1,),
+                  ),
+            ],
+          ),
+        
+      ),
+          
+        
+        ],
+      );
   }
 
-  Row FifthSection() {
-    return Row(
-            mainAxisAlignment: MainAxisAlignment.center,
+
+
+
+
+
+
+
+
+
+
+
+  ReponsiveWrap SixthSection() {
+    return
+     ReponsiveWrap(
+       builder: (isMobile) {
+         return isMobile ?
+         Column(
+          children: [
+            ClickableImageLink(imageAsset: 'logo/Discord.png', width: 150, linkUrl: 'https://discord.com/'),
+            const SizedBox(height: 50,),
+            ClickableImageLink(imageAsset:'logo/TigerLink.png', width: 150, linkUrl: 'https://tigerlink.lsu.edu')
+         
+          ],
+
+         )
+         :Row(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Column(
-                  children: [
-                    Center(child: Image.asset('icon/officers.png', width: 150,)),
-                    AnimatedCounter(targetNumber: 8,),
-                    Text('Officers',
-                    style: StandardText.copyWith(fontWeight: FontWeight.w500),)
-                  ],
-                ),
+                ClickableImageLink(imageAsset: 'logo/Discord.png', width: 150, linkUrl: 'https://discord.com/'),
                 const SizedBox(width: 200,),
-                Column(
-                  children: [
-                    Center(child: Image.asset('icon/members.png', width: 150,)),
-                    AnimatedCounter(targetNumber: 163,),
-                    Text('Memebers',
-                    style: StandardText.copyWith(fontWeight: FontWeight.w500),)
-                  ],
-                )
-                
+                ClickableImageLink(imageAsset:'logo/TigerLink.png', width: 150, linkUrl: 'https://tigerlink.lsu.edu')
+         
               ],
-          );
+            );
+       }
+     );
+  }
+
+  ReponsiveWrap FifthSection() {
+    return ReponsiveWrap(
+      builder: (isMobile) {
+        return isMobile ?
+        Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+             Column(
+                      children: [
+                        Center(child: Image.asset('icon/officers.png', width: 150,)),
+                        AnimatedCounter(targetNumber: 8,),
+                        Text('Officers',
+                        style: StandardText.copyWith(fontWeight: FontWeight.w500),)
+                      ],
+                    ),
+                    const SizedBox(height: 50,),
+                    Column(
+                      children: [
+                        Center(child: Image.asset('icon/members.png', width: 150,)),
+                        AnimatedCounter(targetNumber: 163,),
+                        Text('Memebers',
+                        style: StandardText.copyWith(fontWeight: FontWeight.w500),)
+                      ],
+                    ),
+
+          ],
+        )
+         : Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Column(
+                      children: [
+                        Center(child: Image.asset('icon/officers.png', width: 150,)),
+                        AnimatedCounter(targetNumber: 8,),
+                        Text('Officers',
+                        style: StandardText.copyWith(fontWeight: FontWeight.w500),)
+                      ],
+                    ),
+                    const SizedBox(width: 200,),
+                    Column(
+                      children: [
+                        Center(child: Image.asset('icon/members.png', width: 150,)),
+                        AnimatedCounter(targetNumber: 163,),
+                        Text('Memebers',
+                        style: StandardText.copyWith(fontWeight: FontWeight.w500),)
+                      ],
+                    ),
+                    
+                  ],
+              );
+      }
+    );
   }
 
   AbsorbPointer FourthSection() {

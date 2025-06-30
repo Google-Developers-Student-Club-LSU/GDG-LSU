@@ -18,11 +18,14 @@ class EventsCalendar extends StatefulWidget {
   State<EventsCalendar> createState() => _EventsCalendarState();
 }
 
+ 
+
 class _EventsCalendarState extends State<EventsCalendar> {
   late final EventController<Event> _eventController;
   bool _initialized = false;
 
   @override
+  
   void didChangeDependencies() {
     super.didChangeDependencies();
     if (!_initialized) {
@@ -57,6 +60,7 @@ class _EventsCalendarState extends State<EventsCalendar> {
 
   @override
   Widget build(BuildContext context) {
+    final isMobile = MediaQuery.of(context).size.width < 900;
     final theme = Theme.of(context);
     final backgroundColor = theme.scaffoldBackgroundColor;
 
@@ -66,15 +70,16 @@ class _EventsCalendarState extends State<EventsCalendar> {
       builder: (context, constraints) {
         return Container(
           constraints: BoxConstraints(
-            maxWidth: MediaQuery.of(context).size.width * 0.6,
-            maxHeight: MediaQuery.of(context).size.height * 0.8,
+            maxWidth:   MediaQuery.of(context).size.width *  (isMobile ? 0.9 : 0.6),
+            maxHeight:  MediaQuery.of(context).size.height * (isMobile ? 0.9 : 0.8),
           ),
           child: MonthView<Event>(
+            hideDaysNotInMonth: true,
             controller: _eventController,
             useAvailableVerticalSpace: false,
             initialMonth: DateTime.now(),
             showBorder: true,
-            cellAspectRatio: ratio,
+           cellAspectRatio: (isMobile ? 0.55 : ratio),
             headerStringBuilder: (date, {secondaryDate}) {
               return DateFormat('MMMM yyyy').format(date);
             },
@@ -120,13 +125,17 @@ cellBuilder: (date, events, isToday, isInMonth, hideDaysNotInMonth) {
         if (events.isNotEmpty)
           Center(
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 4.0),
-              child: Text(
-                events.first.title,
-                maxLines: 2,
-                overflow: TextOverflow.ellipsis,
-                textAlign: TextAlign.center,
-                style: StandardText.copyWith(fontSize: 17 , fontWeight: FontWeight.w500),
+              padding: const EdgeInsets.only (top: 4.0),
+              child: Wrap(
+                children: [
+                  Text(
+                  events.first.title,
+                  maxLines: 2,
+                  overflow: TextOverflow.visible,
+                  textAlign: TextAlign.left,
+                  style: StandardText.copyWith(fontSize: 10 , fontWeight: FontWeight.w500),
+                ),
+                ]
               ),
             ),
           ),

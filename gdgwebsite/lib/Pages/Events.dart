@@ -9,6 +9,7 @@ import 'package:calendar_view/calendar_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:gdgwebsite/EventsWidgets/MonthCalendar.dart';
+import 'package:gdgwebsite/EventsWidgets/WeekCalendar.dart';
 import 'package:gdgwebsite/Models/EventModel.dart';
 import 'package:gdgwebsite/RandomArts/FlowingWaves.dart';
 import 'package:gdgwebsite/RandomArts/GlowingParticles.dart';
@@ -43,7 +44,7 @@ class _EventsPageState extends State<EventsPage> {
                  Center(
                         child: CalendarControllerProvider<Event>(
                           controller: EventController<Event>(),
-                          child: MonthCalendar(),
+                          child: WeekCalendar(),
                         ),
                     
                     ),

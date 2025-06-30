@@ -4,20 +4,12 @@
 //
 // Authors: Dina Taing
 //
-import 'package:flutter/foundation.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gradient_animation_text/flutter_gradient_animation_text.dart';
 import 'package:gdgwebsite/Colors.dart';
-import 'package:gdgwebsite/RandomArts/FlowingWaves.dart';
-import 'package:gdgwebsite/RandomArts/SmoothRandomArt.dart';
 import 'package:gdgwebsite/RandomArts/SwirlPainter.dart';
-import 'package:gdgwebsite/RandomArts/TriangleMesh.dart';
 import 'package:gdgwebsite/Utils/CIickableImageLink.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:gdgwebsite/Utils/HoverButton.dart';
 import 'package:gdgwebsite/Widgets/Appbar.dart';
-import 'package:gdgwebsite/Widgets/Footbar.dart';
 import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
 
 class SponsorPage extends StatefulWidget {

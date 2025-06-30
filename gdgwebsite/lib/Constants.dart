@@ -70,7 +70,7 @@ final List<Map<String, dynamic>> myEvents = [
   {
     "title": "General Body Meeting",
     "date": DateTime(2025, 6, 15, 10, 0),
-    "endDate": DateTime(2025, 6, 15, 10, 0),
+    "endDate": DateTime(2025, 6, 15, 10, 30),
     "description": "Weekly sync-up with the team to discuss goals.",
     "color": gGreen,
     "room" : "PFT 1200"
@@ -78,7 +78,7 @@ final List<Map<String, dynamic>> myEvents = [
   {
     "title": "Firebase WorkShop",
     "date": DateTime(2025, 6, 16, 14, 30),
-    "endDate": DateTime(2025, 6, 16, 14, 30),
+    "endDate": DateTime(2025, 6, 16, 14, 00),
     "description": "Annual physical check-up at local clinic.",
     "color": gBlue,
     "room" : "PFT 1202"
@@ -102,7 +102,7 @@ Bring your laptop and get ready to code!
     {
     "title": "Hackathon",
     "date": DateTime(2025, 6, 30, 14, 30),
-    "endDate": DateTime(2025, 7, 1, 14, 30),
+    "endDate": DateTime(2025, 6, 30, 15, 30),
     "description": "Annual physical check-up at local clinic.",
     "color": gRed
   },

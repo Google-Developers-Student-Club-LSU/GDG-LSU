@@ -8,6 +8,8 @@
 
 import 'dart:ui';
 
+import 'package:calendar_view/src/style/header_style.dart';
+
 class Event {
   final String title;
   final String description;
@@ -15,12 +17,12 @@ class Event {
   final Color color;
   final String? room;
 
-  Event({
+  Event( {
     required this.title,
     required this.description,
     this.image, 
+    this.room,
     required this.color,
-    required this.room
   });
 
  

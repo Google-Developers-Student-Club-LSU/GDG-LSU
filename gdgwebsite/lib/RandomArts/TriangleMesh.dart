@@ -23,7 +23,7 @@ class _TriangleMeshState extends State<TriangleMesh>
     with SingleTickerProviderStateMixin {
   late final AnimationController _controller;
   List<_MovingPoint> _points = [];
-  final int pointCount = 80;
+  final int pointCount = 40;
 
   @override
   void initState() {
