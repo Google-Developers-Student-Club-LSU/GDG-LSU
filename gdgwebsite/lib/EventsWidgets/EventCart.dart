@@ -35,28 +35,33 @@ class EventCart extends StatelessWidget {
 Widget build(BuildContext context) {
 
    bool timeNotAvailable = start == end;
+   final isLightMode = Theme.of(context).brightness == Brightness.light;
+   final greyColor = isLightMode ? Colors.black54 : Colors.white70;
+
 
   return Center(
     child: Material(
       color: Theme.of(context).scaffoldBackgroundColor,
+      borderRadius: BorderRadius.circular(16), // ⬅️ Add this line
+      clipBehavior: Clip.antiAlias,
       child: Container(
         width: MediaQuery.of(context).size.width * 0.6,
         constraints: const BoxConstraints(
           maxHeight: 600, // limit max height but allow scrolling
         ),
         padding: const EdgeInsets.all(20),
-        decoration: BoxDecoration(
-          color: Theme.of(context).scaffoldBackgroundColor,
-          borderRadius: BorderRadius.circular(16),
-          border: Border.all(color: color),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black.withValues(alpha: .3),
-              blurRadius: 20,
-              offset: const Offset(0, 10),
-            ),
-          ],
-        ),
+        decoration:  BoxDecoration(
+                  color: Theme.of(context).scaffoldBackgroundColor,
+                  borderRadius: BorderRadius.circular(16.0), // removes rounded corners
+                  border: Border.all(color: color, width: 3),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.3),
+                      blurRadius: 20,
+                      offset: const Offset(0, 10),
+                    ),
+                  ],
+                ),
         child: SingleChildScrollView(
           child: Column(
             mainAxisSize: MainAxisSize.min,
@@ -97,9 +102,9 @@ Widget build(BuildContext context) {
                 const SizedBox(height: 10),
                 Text(
                   room == null ?
-                  'Room number will be announced soon'
+                  'Room: TBD'
                    : 'Room: $room',
-                  style: Theme.of(context).textTheme.bodySmall?.copyWith(color: room == null? gRed : Colors.white70, fontSize: 20),
+                  style: Theme.of(context).textTheme.bodySmall?.copyWith(color: room == null? gRed : greyColor, fontSize: 20),
                   textAlign: TextAlign.center,
                 ),
 

@@ -64,7 +64,7 @@ class _MonthCalendarState extends State<MonthCalendar> {
 
    
     double ratio = MediaQuery.of(context).size.width / MediaQuery.of(context).size.height;
-
+    final isLightMode = Theme.of(context).brightness == Brightness.light;
     return LayoutBuilder(
       builder: (context, constraints) {
         return Container(
@@ -81,6 +81,7 @@ class _MonthCalendarState extends State<MonthCalendar> {
             headerStringBuilder: (date, {secondaryDate}) {
               return DateFormat('MMMM yyyy').format(date);
             },
+            onHeaderTitleTap: (date) async {},
             headerStyle: HeaderStyle(
               leftIconConfig: IconDataConfig(
                 icon: (context) => Padding(
@@ -89,7 +90,7 @@ class _MonthCalendarState extends State<MonthCalendar> {
                 ),
               ),
               decoration: BoxDecoration(
-                color:  Colors.white.withValues(alpha: 0.1),
+                color: (isLightMode ? Colors.black.withValues(alpha: .4) : Colors.white70.withValues(alpha: .1)),
                 border: Border(
                   top: BorderSide(color: gYellow, width: 2),
                   left: BorderSide(color: gYellow, width: 2),
@@ -97,11 +98,13 @@ class _MonthCalendarState extends State<MonthCalendar> {
                 ),
                 borderRadius: const BorderRadius.vertical(top: Radius.circular(24)),
               ),
-              headerTextStyle: StandardText.copyWith(fontSize: 20),
+              headerTextStyle: StandardText.copyWith(fontSize: 20, color: Colors.white),
             ),
-cellBuilder: (date, events, isToday, isInMonth, hideDaysNotInMonth) {
-  Color? cellColor = events.isNotEmpty ? events.first.event?.color :  Colors.white70.withValues(alpha: 0.1);
-          return Container(
+    cellBuilder: (date, events, isToday, isInMonth, hideDaysNotInMonth) {
+        Color? cellColor = events.isNotEmpty
+            ? events.first.event?.color.withValues(alpha: isLightMode ? 0.9 : 0.7)
+            : (isLightMode ? Colors.black.withValues(alpha: .4) : Colors.white70.withValues(alpha: .1));          
+            return Container(
             decoration: BoxDecoration(
               color: cellColor,
               border: Border.all(color: Colors.white70),
@@ -115,30 +118,28 @@ cellBuilder: (date, events, isToday, isInMonth, hideDaysNotInMonth) {
                   left: 0,
                   child: Text(
                     date.day.toString(),
-                    style: StandardText.copyWith(fontSize: 12),
+                    style: StandardText.copyWith(fontSize: 12, color: Colors.white),
                   ),
                 ),
                 // Centered event title (if any)
                 if (events.isNotEmpty)
                   InkWell(
                     onTap: (){
-                     showDialog(
+                      showDialog(
                         context: context,
                         barrierDismissible: true,
-                        builder: (context) => ClipRRect(
-                          borderRadius: BorderRadius.all(Radius.circular(16)),
-                          child: EventCart(
+                        builder: (context) =>
+                         EventCart(
                             title: events.first.title,
                             description: events.first.description ?? "No description",
                             start: events.first.startTime ?? DateTime.now(),
-                            end: events.first.endTime ??DateTime.now() ,
+                            end: events.first.endTime ?? DateTime.now(),
                             image: events.first.event?.image,
                             color: events.first.event?.color ?? gYellow,
-                            room: events.first.event?.room
+                            room: events.first.event?.room,
                           ),
-                        ),
-                  );
-
+                    
+                      );
                     },
                     child: Center(
                       child: Padding(
@@ -148,7 +149,7 @@ cellBuilder: (date, events, isToday, isInMonth, hideDaysNotInMonth) {
                           maxLines: 2,
                           overflow: TextOverflow.ellipsis,
                           textAlign: TextAlign.center,
-                          style: StandardText.copyWith(fontSize: 17 , fontWeight: FontWeight.w500),
+                          style: StandardText.copyWith(fontSize: 17 , color: Colors.white, fontWeight: FontWeight.w600),
                         ),
                       ),
                     ),

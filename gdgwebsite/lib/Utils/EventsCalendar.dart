@@ -46,6 +46,7 @@ class _EventsCalendarState extends State<EventsCalendar> {
           title: title,
           description: description,
           event: event,
+          color: color
         );
       }).toList();
 
@@ -96,7 +97,7 @@ class _EventsCalendarState extends State<EventsCalendar> {
               headerTextStyle: StandardText.copyWith(fontSize: 20),
             ),
 cellBuilder: (date, events, isToday, isInMonth, hideDaysNotInMonth) {
-  final cellColor = events.isNotEmpty ? gGreen : backgroundColor;
+  final cellColor = events.isNotEmpty ? events.first.event?.color : backgroundColor;
 
   return Container(
     decoration: BoxDecoration(
