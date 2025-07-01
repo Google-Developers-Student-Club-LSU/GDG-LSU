@@ -30,43 +30,50 @@ Widget build(BuildContext context) {
     appBar: const Appbar(),
     body: Stack(
   children: [
-    SizedBox(
-      width: double.infinity,
-      height: double.infinity,
-      child: GlowingParticles(),
-    ),
-    SingleChildScrollView(
-      padding: const EdgeInsets.symmetric(vertical: 40),
-      child: Column(
-        children: [
-          Center(
-            child: Wrap(
-              alignment: WrapAlignment.center,
-              spacing: 40,
-              runSpacing: 40,
-              children: members.map((member) {
-                return SizedBox(
-                  width: containerWidth,
-                  height: containerHeight,
-                  child: AnimationPage(
-                    fullName: member.fullName,
-                    position: member.position,
-                    yearAndMajor: member.yearAndMajor,
-                    shortIntroduction: member.shortIntro,
-                    linkedinLink: member.linkedin,
-                    assets: member.imageAsset,
-                    width: containerWidth,
-                    height: containerHeight,
+    Positioned.fill(child: GlowingParticles()),
+
+    LayoutBuilder(
+      builder: (context, constraints) {
+        return SingleChildScrollView(
+          child: ConstrainedBox(
+            constraints: BoxConstraints(minHeight: constraints.maxHeight),
+            child: IntrinsicHeight(
+              child: Column(
+                children: [
+                  // Main content
+                  Center(
+                    child: Wrap(
+                      alignment: WrapAlignment.center,
+                      spacing: 40,
+                      runSpacing: 40,
+                      children: members.map((member) {
+                        return SizedBox(
+                          width: containerWidth,
+                          height: containerHeight,
+                          child: AnimationPage(
+                            fullName: member.fullName,
+                            position: member.position,
+                            yearAndMajor: member.yearAndMajor,
+                            shortIntroduction: member.shortIntro,
+                            linkedinLink: member.linkedin,
+                            assets: member.imageAsset,
+                            width: containerWidth,
+                            height: containerHeight,
+                          ),
+                        );
+                      }).toList(),
+                    ),
                   ),
-                );
-              }).toList(),
+
+                  const Spacer(), // Pushes footer down if space available
+
+                  const FooterBar(),
+                ],
+              ),
             ),
           ),
-         // spacing before footer
-         const SizedBox(height: 200,),
-          const FooterBar(),
-        ],
-      ),
+        );
+      },
     ),
   ],
 ),

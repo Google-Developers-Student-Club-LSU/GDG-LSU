@@ -17,16 +17,12 @@ class FooterBar extends StatelessWidget {
     final isDark = theme.brightness == Brightness.dark;
 
     return ClipRRect(
-      borderRadius: const BorderRadius.only(
-        topLeft: Radius.circular(24),
-        topRight: Radius.circular(24),
-      ),
       child: Container(
         width: double.infinity,
-        decoration: BoxDecoration(
+        decoration: BoxDecoration(  
           gradient: LinearGradient(
             colors: [
-              (isDark ? Colors.white : Colors.black).withOpacity(0.1),
+              (isDark ? Colors.white : Colors.black).withValues(alpha: .1),
               Colors.transparent
             ],
             begin: Alignment.topLeft,
@@ -37,12 +33,16 @@ class FooterBar extends StatelessWidget {
           filter: ImageFilter.blur(sigmaX: 20, sigmaY: 20),
           child: Container(
             decoration: BoxDecoration(
+              borderRadius: const BorderRadius.only(
+                    topLeft: Radius.circular(16),
+                    topRight: Radius.circular(16),
+                  ),
               border: Border(
-                top: BorderSide(color: gBlue.withOpacity(0.6), width: 1.5),
+                top: BorderSide(color: gBlue.withValues(alpha: .6), width: 2, ),
               ),
               color: isDark
-                  ? Colors.white.withOpacity(0.05)
-                  : Colors.black.withOpacity(0.05),
+                  ? Colors.white.withValues(alpha: .05)
+                  : Colors.black.withValues(alpha: .05),
             ),
             padding: const EdgeInsets.symmetric(vertical: 24, horizontal: 16),
             child: isMobile ? _buildMobileLayout() : _buildDesktopLayout(),
@@ -131,7 +131,7 @@ class FooterSectionTitle extends StatelessWidget {
       text,
       style: Theme.of(context).textTheme.titleMedium?.copyWith(
             fontWeight: FontWeight.bold,
-            color: Theme.of(context).colorScheme.onSurface.withOpacity(0.9),
+            color: Theme.of(context).colorScheme.onSurface.withValues(alpha: .9),
           ),
     );
   }
@@ -149,7 +149,7 @@ class FooterText extends StatelessWidget {
         text,
         style: TextStyle(
           fontSize: 14,
-          color: Theme.of(context).colorScheme.onSurface.withOpacity(0.85),
+          color: Theme.of(context).colorScheme.onSurface.withValues(alpha: .85),
         ),
       ),
     );

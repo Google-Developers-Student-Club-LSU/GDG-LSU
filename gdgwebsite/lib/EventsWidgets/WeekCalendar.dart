@@ -12,6 +12,7 @@ import 'package:gdgwebsite/Colors.dart';
 import 'package:gdgwebsite/Constants.dart';
 import 'package:gdgwebsite/EventsWidgets/EventCart.dart';
 import 'package:gdgwebsite/Models/EventModel.dart';
+import 'package:gdgwebsite/Utils/CacheEvents.dart';
 import 'package:intl/intl.dart';
 
 class WeekCalendar extends StatefulWidget {
@@ -26,38 +27,14 @@ class _WeekCalendarState extends State<WeekCalendar> {
   bool _initialized = false;
 
   @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-    if (!_initialized) {
-      _eventController = CalendarControllerProvider.of<Event>(context).controller;
-
-      final List<CalendarEventData<Event>> parsedEvents = myEvents.map((e) {
-        final start = e['date'] as DateTime;
-        final end = e['endDate'] as DateTime;
-        final title = e['title'] as String;
-        final description = e['description'] as String;
-        final image = e['image'] as String?;
-        final room = e['room'] as String?;
-        final color = e['color'] as Color;
-
-
-        final event = Event(title: title, description: description, image: image, color:color, room: room);
-
-        return CalendarEventData<Event>(
-          date: start,
-          startTime: start,
-          endTime: end,
-          title: title,
-          description: description,
-          event: event,
-          color: color,
-        );
-      }).toList();
-
-      _eventController.addAll(parsedEvents);
-      _initialized = true;
-    }
+void didChangeDependencies() {
+  super.didChangeDependencies();
+  if (!_initialized) {
+    _eventController = CalendarControllerProvider.of<Event>(context).controller;
+    _eventController.addAll(parseEvents());
+    _initialized = true;
   }
+}
 
   @override
   Widget build(BuildContext context) {

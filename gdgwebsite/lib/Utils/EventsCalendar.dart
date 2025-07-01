@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:gdgwebsite/Colors.dart';
 import 'package:gdgwebsite/Constants.dart';
 import 'package:gdgwebsite/Models/EventModel.dart';
+import 'package:gdgwebsite/Utils/CacheEvents.dart';
 import 'package:intl/intl.dart';
 
 class EventsCalendar extends StatefulWidget {
@@ -26,38 +27,14 @@ class _EventsCalendarState extends State<EventsCalendar> {
 
   @override
   
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-    if (!_initialized) {
-      _eventController = CalendarControllerProvider.of<Event>(context).controller;
-
-      final List<CalendarEventData<Event>> parsedEvents = myEvents.map((e) {
-        final start = e['date'] as DateTime;
-        final end = e['endDate'] as DateTime;
-        final title = e['title'] as String;
-        final description = e['description'] as String;
-        final image = e['image'] as String?;
-        final color = e['color'] as Color;
-        final room = e['room'] as String?; 
-
-        final event = Event(title: title, description: description, image: image, color: color, room: room);
-
-        return CalendarEventData<Event>(
-          date: start,
-          startTime: start,
-          endTime: end,
-          title: title,
-          description: description,
-          event: event,
-          color: color
-        );
-      }).toList();
-
-      _eventController.addAll(parsedEvents);
-      _initialized = true;
-    }
+void didChangeDependencies() {
+  super.didChangeDependencies();
+  if (!_initialized) {
+    _eventController = CalendarControllerProvider.of<Event>(context).controller;
+    _eventController.addAll(parseEvents());
+    _initialized = true;
   }
-
+}
   @override
   Widget build(BuildContext context) {
     final isMobile = MediaQuery.of(context).size.width < 900;
@@ -70,8 +47,8 @@ class _EventsCalendarState extends State<EventsCalendar> {
       builder: (context, constraints) {
         return Container(
           constraints: BoxConstraints(
-            maxWidth:   MediaQuery.of(context).size.width *  (isMobile ? 0.9 : 0.6),
-            maxHeight:  MediaQuery.of(context).size.height * (isMobile ? 0.9 : 0.8),
+            maxWidth:   MediaQuery.of(context).size.width * 0.8,
+            maxHeight:  MediaQuery.of(context).size.height ,
           ),
           child: MonthView<Event>(
             hideDaysNotInMonth: true,
@@ -79,7 +56,6 @@ class _EventsCalendarState extends State<EventsCalendar> {
             useAvailableVerticalSpace: true,
             initialMonth: DateTime.now(),
             showBorder: true,
-           cellAspectRatio: (isMobile ? 0.55 : ratio),
             headerStringBuilder: (date, {secondaryDate}) {
               return DateFormat('MMMM yyyy').format(date);
             },
@@ -132,7 +108,7 @@ cellBuilder: (date, events, isToday, isInMonth, hideDaysNotInMonth) {
                     maxLines: 2,
                     overflow: TextOverflow.visible,
                     textAlign: TextAlign.left,
-                    style: StandardText.copyWith(fontSize: 10 , fontWeight: FontWeight.w500),
+                    style: StandardText.copyWith(fontSize: 20 , fontWeight: FontWeight.w500),
                                     ),
                   ),
               

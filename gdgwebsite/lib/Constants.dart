@@ -73,16 +73,16 @@ Apart from coding, I like One Piece, Cooking, and Working out(honestly, not much
 final List<Map<String, dynamic>> myEvents = [
   {
     "title": "General Body Meeting",
-    "date": DateTime(2025, 6, 15, 10, 0),
-    "endDate": DateTime(2025, 6, 15, 10, 30),
+    "date": DateTime(2025, 7, 15, 10, 0),
+    "endDate": DateTime(2025, 7, 15, 10, 30),
     "description": "Weekly sync-up with the team to discuss goals.",
     "color": gGreen,
     "room" : "PFT 1200"
   },
   {
     "title": "Firebase WorkShop",
-    "date": DateTime(2025, 6, 16, 14, 30),
-    "endDate": DateTime(2025, 6, 16, 14, 00),
+    "date": DateTime(2025, 7, 16, 14, 30),
+    "endDate": DateTime(2025, 7, 16, 15,00 ),
     "description": "Annual physical check-up at local clinic.",
     "color": gBlue,
     "room" : "PFT 1202"
@@ -91,8 +91,8 @@ final List<Map<String, dynamic>> myEvents = [
   },
   {
     "title": "Flutter Workshop",
-    "date": DateTime(2025, 6, 17, 9, 0),
-    "endDate": DateTime(2025, 6, 17, 12, 0),
+    "date": DateTime(2025, 7, 17, 9, 0),
+    "endDate": DateTime(2025, 7, 17, 12, 0),
     "description": 
     '''
 Join us for an engaging hands-on workshop where you'll learn how to build modern, responsive mobile apps using Flutter, Google's open-source UI toolkit. Whether you're a beginner or looking to sharpen your cross-platform development skills, this session will guide you through the fundamentals of Dart, Flutter widgets, layouts, and state management.
@@ -105,8 +105,8 @@ Bring your laptop and get ready to code!
   },
     {
     "title": "Hackathon",
-    "date": DateTime(2025, 6, 30, 14, 30),
-    "endDate": DateTime(2025, 6, 30, 15, 30),
+    "date": DateTime(2025, 7, 30, 14, 30),
+    "endDate": DateTime(2025, 7, 30, 15, 30),
     "description": "Annual physical check-up at local clinic.",
     "color": gRed
   },

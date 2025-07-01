@@ -12,6 +12,7 @@ import 'package:gdgwebsite/Colors.dart';
 import 'package:gdgwebsite/Constants.dart';
 import 'package:gdgwebsite/EventsWidgets/EventCart.dart';
 import 'package:gdgwebsite/Models/EventModel.dart';
+import 'package:gdgwebsite/Utils/CacheEvents.dart';
 import 'package:intl/intl.dart';
 
 class MonthCalendar extends StatefulWidget {
@@ -25,40 +26,15 @@ class _MonthCalendarState extends State<MonthCalendar> {
   late final EventController<Event> _eventController;
   bool _initialized = false;
 
-  @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-    if (!_initialized) {
-      _eventController = CalendarControllerProvider.of<Event>(context).controller;
-
-      final List<CalendarEventData<Event>> parsedEvents = myEvents.map((e) {
-        final start = e['date'] as DateTime;
-        final end = e['endDate'] as DateTime;
-        final title = e['title'] as String;
-        final description = e['description'] as String;
-        final image = e['image'] as String?;
-        final room = e['room'] as String?; 
-        final color = e['color'] as Color; 
-
-
-        final event = Event(title: title, description: description, image: image, color:color, room: room);
-
-        return CalendarEventData<Event>(
-          date: start,
-          startTime: start,
-          endTime: end,
-          title: title,
-          description: description,
-          event: event,
-          color: color,
-        );
-      }).toList();
-
-      _eventController.addAll(parsedEvents);
-      _initialized = true;
-    }
+@override
+void didChangeDependencies() {
+  super.didChangeDependencies();
+  if (!_initialized) {
+    _eventController = CalendarControllerProvider.of<Event>(context).controller;
+    _eventController.addAll(parseEvents());
+    _initialized = true;
   }
-
+}
   @override
   Widget build(BuildContext context) {
 
@@ -103,6 +79,7 @@ class _MonthCalendarState extends State<MonthCalendar> {
               headerTextStyle: StandardText.copyWith(fontSize: 20, color: Colors.white),
             ),
     cellBuilder: (date, events, isToday, isInMonth, hideDaysNotInMonth,) {
+        hideDaysNotInMonth = true;
         Color? cellColor = events.isNotEmpty
             ? events.first.event?.color.withValues(alpha: isLightMode ? 0.9 : 0.7)
             : (isLightMode ? Colors.black.withValues(alpha: .4) : Colors.white70.withValues(alpha: .1));          

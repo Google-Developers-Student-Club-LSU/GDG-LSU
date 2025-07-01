@@ -21,41 +21,114 @@ class Appbar extends StatelessWidget implements PreferredSizeWidget {
   VoidCallback navButton(BuildContext context, String route) {
     return () => Navigator.pushReplacementNamed(context, route);
   }
-
-  void _showTopDropdown(BuildContext context) async {
-    final RenderBox overlay = Overlay.of(context).context.findRenderObject() as RenderBox;
-    final theme = Theme.of(context);
-
-    await showMenu(
-      context: context,
-      position: RelativeRect.fromLTRB(
-        overlay.size.width - 40,
-        kToolbarHeight,
-        0,
-        0,
-      ),
-      color: theme.appBarTheme.backgroundColor,
-      items: [
-        _popupItem(context, 'Home', home, theme),
-        _popupItem(context, 'Eboard', eboard, theme),
-        _popupItem(context, 'Events', events, theme),
-        _popupItem(context, 'Sponsor', sponsor, theme),
-      ],
-    );
+ static OverlayEntry? _menuOverlay;
+ void _showTopDropdown(BuildContext context) {
+  if (_menuOverlay != null) {
+    _menuOverlay!.remove();
+    _menuOverlay = null;
+    return;
   }
 
-  PopupMenuItem _popupItem(BuildContext context, String label, String route, ThemeData theme) {
-    return PopupMenuItem(
-      textStyle: GoogleFonts.ptSans(
-        color: theme.textTheme.bodyMedium?.color,
-        fontWeight: FontWeight.w500,
-      ),
-      child: Text(label),
-      onTap: () => Future.delayed(Duration.zero, () {
-        Navigator.pushReplacementNamed(context, route);
-      }),
-    );
-  }
+  final overlay = Overlay.of(context);
+
+  late AnimationController controller;
+  late Animation<Offset> offsetAnimation;
+  late Animation<double> opacityAnimation;
+
+  _menuOverlay = OverlayEntry(
+    builder: (context) {
+      return StatefulBuilder(
+        builder: (context, setState) {
+          controller = AnimationController(
+            vsync: Navigator.of(context),
+            duration: const Duration(milliseconds: 200),
+          );
+          offsetAnimation = Tween<Offset>(
+            begin: const Offset(0, -0.1),
+            end: Offset.zero,
+          ).animate(CurvedAnimation(parent: controller, curve: Curves.easeOut));
+          opacityAnimation = CurvedAnimation(
+            parent: controller,
+            curve: Curves.easeInOut,
+          );
+
+          controller.forward();
+
+          return GestureDetector(
+            onTap: () {
+              controller.reverse().then((_) {
+                _menuOverlay?.remove();
+                _menuOverlay = null;
+              });
+            },
+            behavior: HitTestBehavior.translucent,
+            child: Material(
+              color: Colors.transparent,
+              child: Stack(
+                children: [
+                  Positioned.fill(
+                    child: Container(color: Colors.transparent),
+                  ),
+                  Positioned(
+                    top: kToolbarHeight,
+                    left: 0,
+                    right: 0,
+                    child: SlideTransition(
+                      position: offsetAnimation,
+                      child: FadeTransition(
+                        opacity: opacityAnimation,
+                        child: Material(
+                          elevation: 4,
+                          color: Theme.of(context).appBarTheme.backgroundColor ?? Colors.white,
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              _dropdownItem(context, 'Home', home),
+                              _dropdownItem(context, 'Eboard', eboard),
+                              _dropdownItem(context, 'Events', events),
+                              _dropdownItem(context, 'Sponsor', sponsor),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          );
+        },
+      );
+    },
+  );
+
+  overlay.insert(_menuOverlay!);
+}
+
+Widget _dropdownItem(BuildContext context, String label, String route) {
+  return ListTile(
+    title: Text(label, style: Theme.of(context).textTheme.bodyLarge),
+    onTap: () {
+      _menuOverlay?.remove();
+      _menuOverlay = null;
+      Navigator.pushReplacementNamed(context, route);
+    },
+  );
+}
+
+
+  // PopupMenuItem _popupItem(BuildContext context, String label, String route, ThemeData theme) {
+  //   return PopupMenuItem(
+  //     textStyle: GoogleFonts.ptSans(
+  //       color: theme.textTheme.bodyMedium?.color,
+  //       fontWeight: FontWeight.w500,
+  //     ),
+  //     child: Text(label),
+  //     onTap: () => Future.delayed(Duration.zero, () {
+  //       Navigator.pushReplacementNamed(context, route);
+  //     }),
+  //   );
+  // }
 
   @override
   Widget build(BuildContext context) {

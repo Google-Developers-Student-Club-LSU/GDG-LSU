@@ -333,11 +333,11 @@ children: [
  
   Center(
     child: ClipRRect(
-      borderRadius: BorderRadius.circular(17),
+      borderRadius: BorderRadius.circular(26),
       child: Container(
-      width: MediaQuery.of(context).size.width * 0.8,
-      height: MediaQuery.of(context).size.height * 0.8,
-        color: Colors.black.withOpacity(0.2),
+      width: MediaQuery.of(context).size.width *  0.7999,
+      height: MediaQuery.of(context).size.height * 0.7999,
+        color: Colors.black.withValues(alpha: .2),
       ),
     ),
   ),

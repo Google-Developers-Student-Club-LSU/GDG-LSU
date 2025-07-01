@@ -8,6 +8,7 @@
 
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:gdgwebsite/Colors.dart';
 
 class AutoSlideCarousel extends StatefulWidget {
   final List<String> imagePaths;
@@ -62,23 +63,33 @@ class _AutoSlideCarouselState extends State<AutoSlideCarousel> {
   Widget build(BuildContext context) {
     return AbsorbPointer(
       absorbing: true,
-      child: SizedBox(
-        height: MediaQuery.of(context).size.height,
-        width: MediaQuery.of(context).size.width,
-        child: PageView.builder(
-          controller: _controller,
-          itemCount: widget.imagePaths.length,
-          itemBuilder: (context, index) {
-            return ClipRRect(
-              borderRadius: BorderRadius.circular(24), 
-              child: Image.asset(
-                widget.imagePaths[index],
-                fit: widget.fit,
-                width: double.infinity,
-                height: double.infinity,
+      child: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.all(Radius.circular(30)),
+          border: Border.all(
+                 color: gGreen.withValues(alpha: 2), 
+                 width: 2
+                
               ),
-            );
-          },
+        ),
+        child: SizedBox(
+          height: MediaQuery.of(context).size.height,
+          width: MediaQuery.of(context).size.width,
+          child: PageView.builder(
+            controller: _controller,
+            itemCount: widget.imagePaths.length,
+            itemBuilder: (context, index) {
+              return ClipRRect(
+                borderRadius: BorderRadius.circular(24), 
+                child: Image.asset(
+                  widget.imagePaths[index],
+                  fit: widget.fit,
+                  width: double.infinity,
+                  height: double.infinity,
+                ),
+              );
+            },
+          ),
         ),
       ),
     );
