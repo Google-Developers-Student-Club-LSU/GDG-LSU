@@ -146,12 +146,14 @@ class _MonthCalendarState extends State<MonthCalendar> {
                     child: Center(
                       child: Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 4.0),
-                        child: Text(
-                          events.first.title,
-                          maxLines: 2,
-                          overflow: TextOverflow.ellipsis,
-                          textAlign: TextAlign.center,
-                          style: StandardText.copyWith(fontSize: isMobile ? 10 : 17 , color: Colors.white, fontWeight: FontWeight.w600),
+                        child: FittedBox(
+                          child: Text(
+                            events.first.title,
+                            maxLines: 2,
+                            overflow: TextOverflow.ellipsis,
+                            textAlign: TextAlign.center,
+                            style: StandardText.copyWith(fontSize: isMobile ? 10 : 17 , color: Colors.white, fontWeight: FontWeight.w600),
+                          ),
                         ),
                       ),
                     ),

@@ -126,17 +126,16 @@ cellBuilder: (date, events, isToday, isInMonth, hideDaysNotInMonth) {
           Center(
             child: Padding(
               padding: const EdgeInsets.only (top: 4.0),
-              child: Wrap(
-                children: [
-                  Text(
-                  events.first.title,
-                  maxLines: 2,
-                  overflow: TextOverflow.visible,
-                  textAlign: TextAlign.left,
-                  style: StandardText.copyWith(fontSize: 10 , fontWeight: FontWeight.w500),
-                ),
-                ]
-              ),
+                  child: FittedBox(
+                    child: Text(
+                    events.first.title,
+                    maxLines: 2,
+                    overflow: TextOverflow.visible,
+                    textAlign: TextAlign.left,
+                    style: StandardText.copyWith(fontSize: 10 , fontWeight: FontWeight.w500),
+                                    ),
+                  ),
+              
             ),
           ),
       ],

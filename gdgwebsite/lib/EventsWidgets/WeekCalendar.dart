@@ -72,7 +72,8 @@ class _WeekCalendarState extends State<WeekCalendar> {
             maxHeight: MediaQuery.of(context).size.height ,
           ),
           child:  WeekView<Event>(
-           
+            startHour: 7,
+            endHour: 22,
             backgroundColor: themeBackGround,
             controller: _eventController,
             headerStringBuilder: (date, {secondaryDate}) {
@@ -123,14 +124,16 @@ class _WeekCalendarState extends State<WeekCalendar> {
                   ),
                   child: Padding(
                     padding: const EdgeInsets.all(4.0),
-                    child: Text(
-                              events.first.title,
-                              maxLines: 2,
-                              softWrap: true,
-                              overflow: TextOverflow.visible,
-                              textAlign: TextAlign.center,
-                              style: StandardText.copyWith(fontSize: isMobile? 10: 17 , color: Colors.white, fontWeight: FontWeight.w600),
-                            ),
+                    child: FittedBox(
+                      child: Text(
+                                events.first.title,
+                                maxLines: 2,
+                                softWrap: true,
+                                overflow: TextOverflow.visible,
+                                textAlign: TextAlign.center,
+                                style: StandardText.copyWith(fontSize: isMobile? 10: 17 , color: Colors.white, fontWeight: FontWeight.w600),
+                              ),
+                    ),
                   ),
                 ),
               ) ;
