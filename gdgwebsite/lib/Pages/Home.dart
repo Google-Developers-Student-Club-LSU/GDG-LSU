@@ -306,9 +306,13 @@ class _HomePageState extends State<HomePage> {
     return AbsorbPointer(
       absorbing: true,
       child: Center(
-                  child: CalendarControllerProvider<Event>(
-                    controller: EventController<Event>(),
-                    child: EventsCalendar(),
+                  child: SizedBox(
+                    width: MediaQuery.of(context).size.width * 0.8,
+                    height: MediaQuery.of(context).size.height,
+                    child: CalendarControllerProvider<Event>(
+                      controller: EventController<Event>(),
+                      child: EventsCalendar(),
+                    ),
                   ),
               
               ),
