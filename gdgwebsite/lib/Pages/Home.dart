@@ -13,6 +13,7 @@ import 'package:gdgwebsite/Constants.dart';
 import 'package:gdgwebsite/Models/EventModel.dart';
 import 'package:gdgwebsite/RandomArts/SmoothRandomArt.dart';
 import 'package:gdgwebsite/RandomArts/TriangleMesh.dart';
+import 'package:gdgwebsite/Utils/AnimatedCalendar.dart';
 import 'package:gdgwebsite/Utils/CIickableImageLink.dart';
 import 'package:gdgwebsite/Utils/CustomButton.dart';
 import 'package:gdgwebsite/Utils/ReponsiveWrap.dart';
@@ -100,20 +101,20 @@ class _HomePageState extends State<HomePage> {
       const SizedBox(
             height: 50,
           ),          
-          FourthSection(),
-          Center(
-              child: HoverExpand(
-                child: CustomButton(
-                  width: 300,
-                  height: 75  ,
-                  buttonName: "More Details",
-                  pressed: () => Navigator.pushReplacementNamed(context, events),
-                ),
-              ),
-          ),
-      const SizedBox(
-            height: 50,
-          ),
+          AnimatedCalendar(),
+          // Center(
+          //     child: HoverExpand(
+          //       child: CustomButton(
+          //         width: 300,
+          //         height: 75  ,
+          //         buttonName: "More Details",
+          //         pressed: () => Navigator.pushReplacementNamed(context, events),
+          //       ),
+          //     ),
+          // ),
+      // const SizedBox(
+      //       height: 50,
+      //     ),
            FifthSection(),
       const SizedBox(
             height: 50,
@@ -299,19 +300,6 @@ class _HomePageState extends State<HomePage> {
                   ],
               );
       }
-    );
-  }
-
-  AbsorbPointer FourthSection() {
-    return AbsorbPointer(
-      absorbing: true,
-      child: Center(
-                  child: CalendarControllerProvider<Event>(
-                    controller: EventController<Event>(),
-                    child: EventsCalendar(),
-                  ),
-              
-              ),
     );
   }
 
