@@ -7,14 +7,10 @@
 //
 import 'package:calendar_view/calendar_view.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:gdgwebsite/Colors.dart';
 import 'package:gdgwebsite/EventsWidgets/MonthCalendar.dart';
 import 'package:gdgwebsite/EventsWidgets/WeekCalendar.dart';
 import 'package:gdgwebsite/Models/EventModel.dart';
-import 'package:gdgwebsite/RandomArts/FlowingWaves.dart';
-import 'package:gdgwebsite/RandomArts/GlowingParticles.dart';
-import 'package:gdgwebsite/RandomArts/TriangleMesh.dart';
 import 'package:gdgwebsite/RandomArts/PerlinFlowField.dart';
 import 'package:gdgwebsite/Widgets/Appbar.dart';
 import 'package:gdgwebsite/Widgets/Footbar.dart';
@@ -38,7 +34,7 @@ class _EventsPageState extends State<EventsPage> {
       appBar: const Appbar(),
       body: Stack(
         children: [
-          Container(
+          SizedBox(
             height: double.infinity,
             width: double.infinity,
             child: PerlinFlowField(),
@@ -48,7 +44,7 @@ class _EventsPageState extends State<EventsPage> {
               crossAxisAlignment: CrossAxisAlignment.start,
                children: [
                 SizedBox(height: 50,),
-                PillShapeButton(themeBackGround),
+                 pillShapeButton(themeBackGround),
                 SizedBox(height: 10,),
                  Center(
                         child: ScrollConfiguration(
@@ -68,11 +64,11 @@ class _EventsPageState extends State<EventsPage> {
 
         ],
       )
-    );;
+    );
   }
 
-  Center PillShapeButton(Color themeBackGround) {
-    return Center(
+   Center pillShapeButton(Color themeBackGround) {
+    return  Center(
                     child: Container(
                       decoration: BoxDecoration(
                         color: themeBackGround,

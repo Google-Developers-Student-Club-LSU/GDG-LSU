@@ -1,46 +1,39 @@
-
-
-
-
-
-import 'dart:ui';
 import 'package:calendar_view/calendar_view.dart';
-import 'package:gdgwebsite/Constants.dart';
+import 'package:flutter/material.dart';
 import 'package:gdgwebsite/Models/EventModel.dart';
 
-List<CalendarEventData<Event>>? _cachedParsedEvents;
+class EventProvider with ChangeNotifier {
+  List<CalendarEventData<Event>> _events = [];
 
-List<CalendarEventData<Event>> parseEvents() {
-  if (_cachedParsedEvents != null) return _cachedParsedEvents!;
+  List<CalendarEventData<Event>> get events => _events;
 
-  _cachedParsedEvents = myEvents.map((e) {
-    final start = e['date'] as DateTime;
-    final end = e['endDate'] as DateTime;
-    final title = e['title'] as String;
-    final description = e['description'] as String;
-    final image = e['image'] as String?;
-    final room = e['room'] as String?;
-    final color = e['color'] as Color;
+  void loadEvents(List<Map<String, dynamic>> rawData) {
+    _events = rawData.map((e) {
+      final start = e['date'] as DateTime;
+      final end = e['endDate'] as DateTime;
+      final title = e['title'] as String;
+      final description = e['description'] as String;
+      final image = e['image'] as String?;
+      final room = e['room'] as String?;
+      final color = e['color'] as Color;
 
-    final event = Event(
-      title: title,
-      description: description,
-      image: image,
-      color: color,
-      room: room,
-    );
+      return CalendarEventData<Event>(
+        date: start,
+        startTime: start,
+        endTime: end,
+        title: title,
+        description: description,
+        color: color,
+        event: Event(
+          title: title,
+          description: description,
+          image: image,
+          room: room,
+          color: color,
+        ),
+      );
+    }).toList();
 
-    return CalendarEventData<Event>(
-      date: start,
-      startTime: start,
-      endTime: end,
-      title: title,
-      description: description,
-      event: event,
-      color: color,
-    );
-  }).toList();
-
-  return _cachedParsedEvents!;
+    notifyListeners();
+  }
 }
-

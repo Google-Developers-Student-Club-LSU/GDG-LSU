@@ -4,16 +4,15 @@
 // Authors: Dina Taing
 //
 
-import 'dart:math';
 
 import 'package:calendar_view/calendar_view.dart';
 import 'package:flutter/material.dart';
 import 'package:gdgwebsite/Colors.dart';
-import 'package:gdgwebsite/Constants.dart';
 import 'package:gdgwebsite/EventsWidgets/EventCart.dart';
 import 'package:gdgwebsite/Models/EventModel.dart';
 import 'package:gdgwebsite/Utils/CacheEvents.dart';
 import 'package:intl/intl.dart';
+import 'package:provider/provider.dart';
 
 class WeekCalendar extends StatefulWidget {
   const WeekCalendar({super.key});
@@ -26,12 +25,13 @@ class _WeekCalendarState extends State<WeekCalendar> {
   late final EventController<Event> _eventController;
   bool _initialized = false;
 
-  @override
+@override
 void didChangeDependencies() {
   super.didChangeDependencies();
   if (!_initialized) {
+    final events = Provider.of<EventProvider>(context, listen: false).events;
     _eventController = CalendarControllerProvider.of<Event>(context).controller;
-    _eventController.addAll(parseEvents());
+    _eventController.addAll(events);
     _initialized = true;
   }
 }

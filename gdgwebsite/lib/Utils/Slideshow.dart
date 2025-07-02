@@ -67,7 +67,7 @@ class _AutoSlideCarouselState extends State<AutoSlideCarousel> {
         decoration: BoxDecoration(
           borderRadius: BorderRadius.all(Radius.circular(30)),
           border: Border.all(
-                 color: gGreen.withValues(alpha: 2), 
+                 color: gBlue.withValues(alpha: 2), 
                  width: 2
                 
               ),

@@ -62,7 +62,7 @@ class CalendarButton extends StatelessWidget {
         ),
         child: Center(
           child: Text("Add to Calendar",
-          style:  StandardText.copyWith(fontSize: 20),
+          style:  StandardText.copyWith(fontSize: 20, color: Colors.white),
           ),
         ),
       ),

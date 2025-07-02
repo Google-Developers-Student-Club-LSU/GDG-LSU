@@ -9,16 +9,25 @@
 import 'package:flutter/material.dart';
 import 'package:gdgwebsite/Colors.dart';
 import 'package:gdgwebsite/Constants.dart';
-import 'package:gdgwebsite/Models/EventModel.dart';
-import 'package:gdgwebsite/Pages/Blog.dart';
+import 'package:gdgwebsite/EventsData.dart';
 import 'package:gdgwebsite/Pages/Eboard.dart';
 import 'package:gdgwebsite/Pages/Events.dart';
 import 'package:gdgwebsite/Pages/Home.dart';
 import 'package:gdgwebsite/Pages/Sponsor.dart';
-
-void main() {
-  runApp(const MyApp());
+import 'package:gdgwebsite/Utils/CacheEvents.dart';
+import 'package:provider/provider.dart';void main() {
+  runApp(
+    ChangeNotifierProvider(
+      create: (_) {
+        final provider = EventProvider();
+        provider.loadEvents(myEvents);
+        return provider;
+      },
+      child: const MyApp(),
+    ),
+  );
 }
+
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});

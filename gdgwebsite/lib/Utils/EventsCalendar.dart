@@ -7,10 +7,10 @@
 import 'package:calendar_view/calendar_view.dart';
 import 'package:flutter/material.dart';
 import 'package:gdgwebsite/Colors.dart';
-import 'package:gdgwebsite/Constants.dart';
 import 'package:gdgwebsite/Models/EventModel.dart';
 import 'package:gdgwebsite/Utils/CacheEvents.dart';
 import 'package:intl/intl.dart';
+import 'package:provider/provider.dart';
 
 class EventsCalendar extends StatefulWidget {
   const EventsCalendar({super.key});
@@ -27,30 +27,24 @@ class _EventsCalendarState extends State<EventsCalendar> {
 
   @override
   
+@override
 void didChangeDependencies() {
   super.didChangeDependencies();
   if (!_initialized) {
+    final events = Provider.of<EventProvider>(context, listen: false).events;
     _eventController = CalendarControllerProvider.of<Event>(context).controller;
-    _eventController.addAll(parseEvents());
+    _eventController.addAll(events);
     _initialized = true;
   }
 }
+
   @override
   Widget build(BuildContext context) {
-    final isMobile = MediaQuery.of(context).size.width < 900;
     final theme = Theme.of(context);
     final backgroundColor = theme.scaffoldBackgroundColor;
 
-    double ratio = MediaQuery.of(context).size.width / MediaQuery.of(context).size.height * 0.8;
-
-    return LayoutBuilder(
-      builder: (context, constraints) {
-        return Container(
-          constraints: BoxConstraints(
-            maxWidth:   MediaQuery.of(context).size.width * 0.8,
-            maxHeight:  MediaQuery.of(context).size.height ,
-          ),
-          child: MonthView<Event>(
+    return 
+          MonthView<Event>(
             hideDaysNotInMonth: true,
             controller: _eventController,
             useAvailableVerticalSpace: true,
@@ -118,9 +112,8 @@ cellBuilder: (date, events, isToday, isInMonth, hideDaysNotInMonth) {
     ),
   );
 },
-          ),
+         
         );
-      },
-    );
+      }
+
   }
-}

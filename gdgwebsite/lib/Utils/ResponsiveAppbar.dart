@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gdgwebsite/Colors.dart';
 
 class ResponsiveAppBar extends StatelessWidget implements PreferredSizeWidget {
   final List<Widget> navItems;
@@ -34,7 +35,7 @@ class ResponsiveAppBar extends StatelessWidget implements PreferredSizeWidget {
           color: theme.scaffoldBackgroundColor.withOpacity(.95),
           border: Border(
             bottom: BorderSide(
-              color: Colors.grey.shade300,
+              color:gBlue.withValues(alpha: .6),
               width: 1.5,
             ),
           ),

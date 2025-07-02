@@ -5,15 +5,12 @@
 // Authors: Dina Taing
 //
 
-import 'dart:isolate';
 
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:gdgwebsite/Colors.dart';
 import 'package:gdgwebsite/Constants.dart';
 import 'package:gdgwebsite/Utils/NavHoverItem.dart';
 import 'package:gdgwebsite/Utils/ResponsiveAppbar.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class Appbar extends StatefulWidget implements PreferredSizeWidget {
   const Appbar({super.key});

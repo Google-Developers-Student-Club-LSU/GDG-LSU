@@ -4,16 +4,14 @@
 // Authors: Dina Taing
 //
 
-import 'dart:math';
-
 import 'package:calendar_view/calendar_view.dart';
 import 'package:flutter/material.dart';
 import 'package:gdgwebsite/Colors.dart';
-import 'package:gdgwebsite/Constants.dart';
 import 'package:gdgwebsite/EventsWidgets/EventCart.dart';
 import 'package:gdgwebsite/Models/EventModel.dart';
 import 'package:gdgwebsite/Utils/CacheEvents.dart';
 import 'package:intl/intl.dart';
+import 'package:provider/provider.dart';
 
 class MonthCalendar extends StatefulWidget {
   const MonthCalendar({super.key});
@@ -30,8 +28,9 @@ class _MonthCalendarState extends State<MonthCalendar> {
 void didChangeDependencies() {
   super.didChangeDependencies();
   if (!_initialized) {
+    final events = Provider.of<EventProvider>(context, listen: false).events;
     _eventController = CalendarControllerProvider.of<Event>(context).controller;
-    _eventController.addAll(parseEvents());
+    _eventController.addAll(events);
     _initialized = true;
   }
 }
@@ -52,6 +51,7 @@ void didChangeDependencies() {
           ),
           child: MonthView<Event>(
             controller: _eventController,
+
             useAvailableVerticalSpace: false,
             initialMonth: DateTime.now(),
             showBorder: true,

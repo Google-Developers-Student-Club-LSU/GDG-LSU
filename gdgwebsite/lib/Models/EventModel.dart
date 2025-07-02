@@ -8,8 +8,6 @@
 
 import 'dart:ui';
 
-import 'package:calendar_view/src/style/header_style.dart';
-
 class Event {
   final String title;
   final String description;
