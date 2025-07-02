@@ -3,6 +3,7 @@ import 'package:flutter/gestures.dart' as ui;
 import 'package:flutter/material.dart';
 import 'package:gdgwebsite/EboardWidgets/Picture.dart';
 import 'package:gdgwebsite/EboardWidgets/ProfileDrawer.dart';
+import 'package:flutter/foundation.dart';
 
 class AnimationPage extends StatefulWidget {
   final String fullName;
@@ -55,54 +56,69 @@ class _AnimationPageState extends State<AnimationPage>
     }
   }
 
-  @override
-  Widget build(BuildContext context) {
-    double maxSlide = widget.width;
+        @override
+      Widget build(BuildContext context) {
+        double maxSlide = widget.width;
+        final isTouch = !kIsWeb &&
+            (defaultTargetPlatform == TargetPlatform.android ||
+            defaultTargetPlatform == TargetPlatform.iOS);
 
-    return MouseRegion(
-      onEnter: _onEnter,
-      onExit: _onExit,
-      child: AnimatedBuilder(
-        animation: animationController,
-        builder: (context, _) {
-          final value = animationController.value;
-          return Stack(
-            children: [
-              Transform.translate(
-                offset: Offset(maxSlide * (value - 1), 0),
-                child: Transform(
-                  alignment: Alignment.centerRight,
-                  transform: Matrix4.identity()
-                    ..setEntry(3, 2, 0.001)
-                    ..rotateY(math.pi / 2 * (1 - value)),
-                  child: ProfileDrawer(
-                    fullName: widget.fullName,
-                    position: widget.position,
-                    yearAndMajor: widget.yearAndMajor,
-                    shortIntroduction: widget.shortIntroduction,
-                    linkedinLink: widget.linkedinLink,
+        final child = AnimatedBuilder(
+          animation: animationController,
+          builder: (context, _) {
+            final value = animationController.value;
+            return Stack(
+              children: [
+                Transform.translate(
+                  offset: Offset(maxSlide * (value - 1), 0),
+                  child: Transform(
+                    alignment: Alignment.centerRight,
+                    transform: Matrix4.identity()
+                      ..setEntry(3, 2, 0.001)
+                      ..rotateY(math.pi / 2 * (1 - value)),
+                    child: ProfileDrawer(
+                      fullName: widget.fullName,
+                      position: widget.position,
+                      yearAndMajor: widget.yearAndMajor,
+                      shortIntroduction: widget.shortIntroduction,
+                      linkedinLink: widget.linkedinLink,
+                    ),
                   ),
                 ),
-              ),
-
-              Transform.translate(
-                offset: Offset(maxSlide * value, 0),
-                child: Transform(
-                  alignment: Alignment.centerLeft,
-                  transform: Matrix4.identity()
-                    ..setEntry(3, 2, 0.001)
-                    ..rotateY(-math.pi / 2 * value),
-                  child: Picture(
-                    assets: widget.assets,
-                    width: widget.width,
-                    height: widget.height,
+                Transform.translate(
+                  offset: Offset(maxSlide * value, 0),
+                  child: Transform(
+                    alignment: Alignment.centerLeft,
+                    transform: Matrix4.identity()
+                      ..setEntry(3, 2, 0.001)
+                      ..rotateY(-math.pi / 2 * value),
+                    child: Picture(
+                      assets: widget.assets,
+                      width: widget.width,
+                      height: widget.height,
+                    ),
                   ),
                 ),
-              ),
-            ],
-          );
-        },
-      ),
-    );
-  }
-}
+              ],
+            );
+          },
+        );
+
+        return isTouch
+            ? GestureDetector(
+                onTap: () {
+                  if (animationController.isDismissed) {
+                    animationController.forward();
+                  } else if (animationController.isCompleted) {
+                    animationController.reverse();
+                  }
+                },
+                child: child,
+              )
+            : MouseRegion(
+                onEnter: _onEnter,
+                onExit: _onExit,
+                child: child,
+              );
+      }
+    }

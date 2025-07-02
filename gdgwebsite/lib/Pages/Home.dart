@@ -94,7 +94,7 @@ class _HomePageState extends State<HomePage> {
           const SizedBox(
             height: 50,
           ),
-          Center(child: Text("UPCOMING EVENTS",
+          Center(child: SelectableText("UPCOMING EVENTS",
           style: StandardText,)
           ),
       const SizedBox(
@@ -119,7 +119,7 @@ class _HomePageState extends State<HomePage> {
             height: 50,
           ),            
           Center(
-            child:Text('Join Us',
+            child:SelectableText('Join Us',
                 style: StandardText.copyWith(fontWeight: FontWeight.w500),),
           ),
       const SizedBox(
@@ -259,7 +259,7 @@ class _HomePageState extends State<HomePage> {
                       children: [
                         Center(child: Image.asset('icon/officers.png', width: 150,)),
                         AnimatedCounter(targetNumber: 8,),
-                        Text('Officers',
+                        SelectableText('Officers',
                         style: StandardText.copyWith(fontWeight: FontWeight.w500),)
                       ],
                     ),
@@ -268,7 +268,7 @@ class _HomePageState extends State<HomePage> {
                       children: [
                         Center(child: Image.asset('icon/members.png', width: 150,)),
                         AnimatedCounter(targetNumber: 163,),
-                        Text('Memebers',
+                        SelectableText('Memebers',
                         style: StandardText.copyWith(fontWeight: FontWeight.w500),)
                       ],
                     ),
@@ -282,7 +282,7 @@ class _HomePageState extends State<HomePage> {
                       children: [
                         Center(child: Image.asset('icon/officers.png', width: 150,)),
                         AnimatedCounter(targetNumber: 8,),
-                        Text('Officers',
+                        SelectableText('Officers',
                         style: StandardText.copyWith(fontWeight: FontWeight.w500),)
                       ],
                     ),
@@ -291,7 +291,7 @@ class _HomePageState extends State<HomePage> {
                       children: [
                         Center(child: Image.asset('icon/members.png', width: 150,)),
                         AnimatedCounter(targetNumber: 163,),
-                        Text('Memebers',
+                        SelectableText('Memebers',
                         style: StandardText.copyWith(fontWeight: FontWeight.w500),)
                       ],
                     ),
@@ -397,15 +397,15 @@ children: [
             child: Image.asset('icon/Workshop.png', width: 150,),),
             Padding(
               padding: const EdgeInsets.only(bottom: 8.0),
-              child: Text("Workshop", style: StandardText.copyWith(fontSize: 40 ),),
+              child: SelectableText("Workshop", style: StandardText.copyWith(fontSize: 40 ),),
             ),
             Padding(
               padding: const EdgeInsets.only(bottom: 8.0),
-              child: Text("Hands-on learning opportunities on Python,​", style: StandardText.copyWith(fontSize: 20, color: gRed, fontWeight: FontWeight.w500 ),),
+              child: SelectableText("Hands-on learning opportunities on Python,​", style: StandardText.copyWith(fontSize: 20, color: gRed, fontWeight: FontWeight.w500 ),),
             ),
             Padding(
               padding: const EdgeInsets.only(bottom: 8.0),
-              child: Text("Flutter, Google Cloud, and more.​​", style: StandardText.copyWith(fontSize: 20, color: gRed, fontWeight: FontWeight.w500),),
+              child: SelectableText("Flutter, Google Cloud, and more.​​", style: StandardText.copyWith(fontSize: 20, color: gRed, fontWeight: FontWeight.w500),),
             )
         
           ],
@@ -434,7 +434,7 @@ Widget _buildAnimatedText(double offset) {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
+            SelectableText(
               "ENHANCE",
               style: TextStyle(
                 fontSize: 50,
@@ -442,7 +442,7 @@ Widget _buildAnimatedText(double offset) {
                 color: gBlue
               ),
             ),
-            Text(
+            SelectableText(
               "YOUR TECHNICAL",
               style: TextStyle(
                 fontSize: 50,
@@ -450,7 +450,7 @@ Widget _buildAnimatedText(double offset) {
                 color: gGreen
               ),
             ),
-            Text(
+            SelectableText(
               "KNOWLEDGE",
               style: TextStyle(
                 fontSize: 50,
@@ -537,15 +537,15 @@ class Community extends StatelessWidget {
           child: Image.asset('icon/Community.png', width: 145,),),
           Padding(
             padding: const EdgeInsets.only(bottom: 8.0),
-            child: Text("Community", style: StandardText.copyWith(fontSize: 40 ),),
+            child: SelectableText("Community", style: StandardText.copyWith(fontSize: 40 ),),
           ),
           Padding(
             padding: const EdgeInsets.only(bottom: 8.0),
-            child: Text("Build connections and grow your network​", style: StandardText.copyWith(fontSize: 20, color: gRed, fontWeight: FontWeight.w500 ),),
+            child: SelectableText("Build connections and grow your network​", style: StandardText.copyWith(fontSize: 20, color: gRed, fontWeight: FontWeight.w500 ),),
           ),
           Padding(
             padding: const EdgeInsets.only(bottom: 8.0),
-            child: Text("through engaging social events.​​", style: StandardText.copyWith(fontSize: 20, color: gRed, fontWeight: FontWeight.w500),),
+            child: SelectableText("through engaging social events.​​", style: StandardText.copyWith(fontSize: 20, color: gRed, fontWeight: FontWeight.w500),),
           )
         ],
       ),

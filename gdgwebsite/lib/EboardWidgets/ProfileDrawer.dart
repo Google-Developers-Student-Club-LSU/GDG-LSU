@@ -36,7 +36,7 @@ class ProfileDrawer extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
+                SelectableText(
                   fullName,
                   style: Theme.of(context).textTheme.headlineSmall?.copyWith(
                         fontWeight: FontWeight.bold,
@@ -44,32 +44,31 @@ class ProfileDrawer extends StatelessWidget {
                       ),
                 ),
                 const SizedBox(height: 4),
-                Text(
+                SelectableText(
                   position,
                   style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                         color: lightLetterColor,
                       ),
                 ),
                 const SizedBox(height: 12),
-                Text(
+                SelectableText(
                   yearAndMajor,
                   style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                         fontSize: 17,
                         color: lightLetterColor,
                       ),
-                  softWrap: true,
                 ),
                 const SizedBox(height: 12),
                 Container(
                   height: 250,
                   child: SingleChildScrollView(
-                      child: Text(
+                      child:  SelectableText(
                         shortIntroduction,
                         style: Theme.of(context)
                             .textTheme
                             .bodySmall
                             ?.copyWith(fontSize: 15, color: lightLetterColor),
-                        softWrap: true,
+
                       ),
                     
                   ),

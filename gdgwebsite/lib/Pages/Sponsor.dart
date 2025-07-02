@@ -111,8 +111,7 @@ class SecondPart extends StatelessWidget {
       padding: const EdgeInsets.all(16.0),
         child: Container(
            width: isMobile ? double.infinity : 600,
-          child: Text('THANK YOU TO OUR SPONSORS!',
-          softWrap: true,
+          child: SelectableText('THANK YOU TO OUR SPONSORS!',
               textAlign:TextAlign.center  ,
               style: StandardText.copyWith(fontSize: isMobile ? 40:40),
               ),

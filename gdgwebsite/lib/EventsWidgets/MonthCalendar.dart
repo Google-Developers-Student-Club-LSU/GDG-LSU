@@ -95,7 +95,7 @@ void didChangeDependencies() {
                 Positioned(
                   top: 0,
                   left: 0,
-                  child: Text(
+                  child: SelectableText(
                     date.day.toString(),
                     style: StandardText.copyWith(fontSize: 12, color: Colors.white),
                   ),
@@ -127,7 +127,6 @@ void didChangeDependencies() {
                           child: Text(
                             events.first.title,
                             maxLines: 2,
-                            overflow: TextOverflow.ellipsis,
                             textAlign: TextAlign.center,
                             style: StandardText.copyWith(fontSize: isMobile ? 10 : 17 , color: Colors.white, fontWeight: FontWeight.w600),
                           ),

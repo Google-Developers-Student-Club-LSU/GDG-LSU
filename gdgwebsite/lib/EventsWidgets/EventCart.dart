@@ -5,6 +5,7 @@
 //
 import 'package:flutter/material.dart';
 import 'package:gdgwebsite/Colors.dart';
+import 'package:gdgwebsite/EventsWidgets/CreateEvent.dart';
 import 'package:intl/intl.dart';
 
 class EventCart extends StatelessWidget {
@@ -87,14 +88,14 @@ Widget build(BuildContext context) {
 
               const SizedBox(height: 10),
 
-              Text(
+              SelectableText(
                 'Events: $title',
                 style: StandardText.copyWith(fontSize: isMobile ? 30 : 40),
                 textAlign: TextAlign.left,
               ),
               const SizedBox(height: 10),
 
-                Text(
+                SelectableText(
                   timeNotAvailable ?
                   'Time will be announced soon'
                    : 'Time: ${DateFormat('h:mm a').format(start)} — ${DateFormat('h:mm a').format(end)}',
@@ -102,7 +103,7 @@ Widget build(BuildContext context) {
                   textAlign: TextAlign.center,
                 ),
                 const SizedBox(height: 10),
-                Text(
+                SelectableText(
                   room == null ?
                   'Room: TBD'
                    : 'Room: $room',
@@ -131,6 +132,8 @@ Widget build(BuildContext context) {
                   return const Text("Image failed to load.");
                 },
               ),
+              const SizedBox(height: 12),
+              CalendarButton(title: title, description: description, start: start, end: end, room: room,color: color,)
             ],
           ),
         ),
