@@ -94,7 +94,7 @@ cellBuilder: (date, events, isToday, isInMonth, hideDaysNotInMonth) {
           left: 0,
           child: Text(
             date.day.toString(),
-            style: StandardText.copyWith(fontSize: 12),
+            style: StandardText.copyWith(fontSize: 17),
           ),
         ),
         // Centered event title (if any)

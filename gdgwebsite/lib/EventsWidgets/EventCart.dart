@@ -132,7 +132,7 @@ Widget build(BuildContext context) {
                   return const Text("Image failed to load.");
                 },
               ),
-              const SizedBox(height: 12),
+              const SizedBox(height: 50),
               CalendarButton(title: title, description: description, start: start, end: end, room: room,color: color,)
             ],
           ),
