@@ -19,6 +19,7 @@ import 'package:gdgwebsite/Utils/ReponsiveWrap.dart';
 import 'package:gdgwebsite/Widgets/Footbar.dart';
 import 'package:gdgwebsite/Widgets/Appbar.dart';
 import 'package:gdgwebsite/utils/AnimatedCounter.dart';
+import 'package:gdgwebsite/utils/CircleImageContainer.dart';
 import 'package:gdgwebsite/utils/EventsCalendar.dart';
 import 'package:gdgwebsite/utils/HoverExpand.dart';
 import 'package:gdgwebsite/utils/Slideshow.dart';
@@ -398,7 +399,8 @@ children: [
         child: Column(
           children: [
             Padding(padding: EdgeInsets.all(8.0),
-            child: Image.asset('icon/Workshop.png', width: 150,),),
+            child: CircleImageContainer(imagePath:"icon/Workshop.gif", size: 200,)
+            ),
             Padding(
               padding: const EdgeInsets.only(bottom: 8.0),
               child: SelectableText("Workshop", style: StandardText.copyWith(fontSize: 40 ),),
@@ -423,8 +425,8 @@ Widget _buildAnimatedText(double offset) {
   final double clampedOffset = offset.clamp(0, maxOffset);
 
   final double baseTop = 550;
-  final double translateY = -clampedOffset / 0.75; 
-  final double scale = 1.0 - (clampedOffset / maxOffset) * 0.15;
+  final double translateY = -clampedOffset / 0.85; 
+  final double scale = 1.0 - (clampedOffset / maxOffset) * 0.1;
   final double translateX = clampedOffset / 4; 
 
   return Positioned(
@@ -440,7 +442,7 @@ Widget _buildAnimatedText(double offset) {
           children: [
             SelectableText(
               "ENHANCE",
-              style: TextStyle(
+              style: StandardTextStyled.copyWith(
                 fontSize: 50,
                 fontWeight: FontWeight.w900,
                 color: gBlue
@@ -448,7 +450,7 @@ Widget _buildAnimatedText(double offset) {
             ),
             SelectableText(
               "YOUR TECHNICAL",
-              style: TextStyle(
+              style: StandardTextStyled.copyWith(
                 fontSize: 50,
                 fontWeight: FontWeight.w800,
                 color: gGreen
@@ -456,7 +458,7 @@ Widget _buildAnimatedText(double offset) {
             ),
             SelectableText(
               "KNOWLEDGE",
-              style: TextStyle(
+              style: StandardTextStyled.copyWith(
                 fontSize: 50,
                 fontWeight: FontWeight.w800,
                 color: gYellow
@@ -473,7 +475,7 @@ Widget _buildAnimatedText(double offset) {
     const double maxOffset = 200;
     final double clampedOffset = offset.clamp(0, maxOffset);
 
-    final double scale = 1.0 - (clampedOffset / maxOffset) * 0.5;
+    final double scale = 1.0 - (clampedOffset / maxOffset) * 0.425;
     final double translateX = clampedOffset / 0.75;
     
 
@@ -538,7 +540,7 @@ class Community extends StatelessWidget {
       child: Column(
         children: [
           Padding(padding: EdgeInsets.all(8.0),
-          child: Image.asset('icon/Community.png', width: 145,),),
+          child: CircleImageContainer(imagePath:"icon/Community.gif", size: 200,)),
           Padding(
             padding: const EdgeInsets.only(bottom: 8.0),
             child: SelectableText("Community", style: StandardText.copyWith(fontSize: 40 ),),

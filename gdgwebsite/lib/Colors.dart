@@ -29,7 +29,7 @@ final TextStyle StandardTextStyled = StandardText.copyWith(
   shadows: [
     Shadow(
       blurRadius: 6,
-      color: Colors.black87,
+      color: Colors.black12,
       offset: Offset(2, 2),
     ),
   ],
