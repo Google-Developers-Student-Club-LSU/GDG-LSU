@@ -175,34 +175,36 @@ class _SponsorLinkState extends State<SponsorLink>
    bool isMobile = MediaQuery.of(context).size.width < 600;
       final double _fontSize = isMobile ? 40 : 50;;
 
-    return InkWell(
-      onTap: _launchLink,
-      child: AnimatedBuilder(
-        animation: _controller,
-        builder: (context, child) {
-          final shader = LinearGradient(
-            colors: _colors,
-            stops: _colors
-                .asMap()
-                .map((i, _) => MapEntry(i, i / (_colors.length - 1)))
-                .values
-                .toList(),
-            transform: GradientRotation(_controller.value * 2 * 3.14159),
-          ).createShader(
-            Rect.fromLTWH(0, 0, _fontSize * 3.5, _fontSize),
-          );
-          return CustomPaint(
-            painter: _UnderlinePainter(shader, _fontSize),
-            child: Text(
-              'Sponsorship Booklet',
-              style: StandardText.copyWith(
-                fontSize: _fontSize,
-                fontWeight: FontWeight.bold,
-                foreground: Paint()..shader = shader,
+    return Center(
+      child: InkWell(
+        onTap: _launchLink,
+        child: AnimatedBuilder(
+          animation: _controller,
+          builder: (context, child) {
+            final shader = LinearGradient(
+              colors: _colors,
+              stops: _colors
+                  .asMap()
+                  .map((i, _) => MapEntry(i, i / (_colors.length - 1)))
+                  .values
+                  .toList(),
+              transform: GradientRotation(_controller.value * 2 * 3.14159),
+            ).createShader(
+              Rect.fromLTWH(0, 0, _fontSize * 3.5, _fontSize),
+            );
+            return CustomPaint(
+              painter: _UnderlinePainter(shader, _fontSize),
+              child: Text(
+                'Sponsorship Booklet',
+                style: StandardText.copyWith(
+                  fontSize: _fontSize,
+                  fontWeight: FontWeight.bold,
+                  foreground: Paint()..shader = shader,
+                ),
               ),
-            ),
-          );
-        },
+            );
+          },
+        ),
       ),
     );
   }
