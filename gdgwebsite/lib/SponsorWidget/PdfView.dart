@@ -46,10 +46,12 @@ class _PDFViewState extends State<PDFView> {
                 pdfBooklet,
                 controller: widget.pdfViewerController,
                 scrollDirection: PdfScrollDirection.vertical,
+
                 pageLayoutMode: PdfPageLayoutMode.single,
                 enableDoubleTapZooming: true,
                 canShowScrollHead: true,
                 canShowScrollStatus: true,
+              
                 onDocumentLoaded: (details) {
                   widget.pdfViewerController.zoomLevel = 1.0;
                   setState(() {
@@ -61,7 +63,7 @@ class _PDFViewState extends State<PDFView> {
                 Container(
                   width: width,
                   height: height,
-                  color: Colors.black.withOpacity(0.7),
+                  color: Colors.black.withValues(alpha: .7),
                   child: Center(
                     child: Image.asset(
                       gifLoading , 
