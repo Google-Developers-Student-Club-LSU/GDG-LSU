@@ -1,113 +1,61 @@
-//
-//
-// Licensed under Creative Commons Attribution-NonCommercial-ShareAlike 4.0
-// International License https://creativecommons.org/licenses/by-nc-sa/4.0/
-//
-// Authors: Dina Taing
-//
-
 import 'dart:math';
 import 'package:flutter/material.dart';
-import 'package:gdgwebsite/Colors.dart';
 
-
-const googleColors = [gBlue, gRed, gYellow, gGreen];
-
-class SmoothRandomArt extends StatefulWidget {
-  const SmoothRandomArt({super.key});
-
+class SpiralDotsArt extends StatefulWidget {
+  const SpiralDotsArt({Key? key}) : super(key: key);
   @override
-  State<SmoothRandomArt> createState() => _SmoothRandomArtState();
+  _SpiralDotsArtState createState() => _SpiralDotsArtState();
 }
 
-class _SmoothRandomArtState extends State<SmoothRandomArt>
+class _SpiralDotsArtState extends State<SpiralDotsArt>
     with SingleTickerProviderStateMixin {
-  late final AnimationController _controller;
-  List<_MovingBlob>? _blobs;
-
+  late final AnimationController _ctrl;
   @override
   void initState() {
     super.initState();
-    _controller = AnimationController(
-      vsync: this,
-      duration: const Duration(seconds: 8), // 🔥 faster animation!
-    )..repeat();
+    _ctrl = AnimationController(vsync: this, duration: const Duration(seconds: 12))
+      ..repeat();
   }
-
   @override
   void dispose() {
-    _controller.dispose();
+    _ctrl.dispose();
     super.dispose();
   }
-
   @override
   Widget build(BuildContext context) {
-    return LayoutBuilder(
-      builder: (_, constraints) {
-        final size = Size(constraints.maxWidth, constraints.maxHeight);
-
-        // Create once with canvas size
-        _blobs ??= List.generate(25, (_) => _MovingBlob(size));
-
-        return AnimatedBuilder(
-          animation: _controller,
-          builder: (_, __) => CustomPaint(
-            size: size,
-            painter: _SmoothBlobPainter(_blobs!, _controller.value),
-          ),
-        );
-      },
+    return AnimatedBuilder(
+      animation: _ctrl,
+      builder: (_, __) => CustomPaint(
+        size: Size.infinite,
+        painter: _SpiralPainter(_ctrl.value),
+      ),
     );
   }
 }
 
-class _MovingBlob {
-  final Offset base;
-  final Color color;
-  final Size size;
-  final double phase;
-
-  static final _rand = Random();
-
-  _MovingBlob(Size canvasSize)
-      : base = Offset(
-          _rand.nextDouble() * canvasSize.width,
-          _rand.nextDouble() * canvasSize.height,
-        ),
-        color = googleColors[_rand.nextInt(googleColors.length)]
-            .withValues(alpha: .25 + _rand.nextDouble() * 0.2), // subtle blend
-        size = Size(
-          40 + _rand.nextDouble() * 50,
-          40 + _rand.nextDouble() * 50,
-        ),
-        phase = _rand.nextDouble() * 2 * pi;
-
-  Offset position(double t) {
-    final dx = base.dx + 30 * sin(t * 2 * pi + phase);
-    final dy = base.dy + 30 * cos(t * 2 * pi + phase);
-    return Offset(dx, dy);
-  }
-}
-
-class _SmoothBlobPainter extends CustomPainter {
-  final List<_MovingBlob> blobs;
-  final double time;
-
-  _SmoothBlobPainter(this.blobs, this.time);
-
+class _SpiralPainter extends CustomPainter {
+  final double t;
+  _SpiralPainter(this.t);
   @override
-  void paint(Canvas canvas, Size size) {
+  void paint(Canvas canvas, Size s) {
     final paint = Paint()..style = PaintingStyle.fill;
+    final center = s.center(Offset.zero);
 
-    for (final blob in blobs) {
-      paint.color = blob.color;
-      final pos = blob.position(time);
-      final rect = Rect.fromCenter(center: pos, width: blob.size.width, height: blob.size.height);
-      canvas.drawOval(rect, paint);
+    // Increase count and spacing for a larger spiral
+    final int totalDots = 1200;
+    final double spacing = 0.08;   // increases distance between dots
+    final double growth = 8.0;     // how quickly the spiral expands
+
+    for (int i = 0; i < totalDots; i++) {
+      final double d = i * spacing;
+      final double ang = i * 0.1 + t * 2 * pi;
+      final double x = center.dx + cos(ang) * d * growth;
+      final double y = center.dy + sin(ang) * d * growth;
+      final double alpha = (1 - d / (spacing * totalDots)).clamp(0.0, 1.0);
+      paint.color = Colors.primaries[i % Colors.primaries.length].withValues(alpha: alpha * 0.7);
+      canvas.drawCircle(Offset(x, y), d * 0.04, paint);
     }
   }
-
   @override
-  bool shouldRepaint(covariant _SmoothBlobPainter oldDelegate) =>
-      oldDelegate.time != time;
+  bool shouldRepaint(covariant _SpiralPainter old) => old.t != t;
 }

@@ -509,7 +509,7 @@ class FirstSectionBackground extends StatelessWidget {
     return Container(
           width: double.infinity,
           height: MediaQuery.of(context).size.height,
-          child: const SmoothRandomArt(),
+          child: const SpiralDotsArt(),
             );
   }
 }
