@@ -41,27 +41,30 @@ Widget build(BuildContext context) {
               child: Column(
                 children: [
                   // Main content
-                  Center(
-                    child: Wrap(
-                      alignment: WrapAlignment.center,
-                      spacing: 40,
-                      runSpacing: 40,
-                      children: members.map((member) {
-                        return SizedBox(
-                          width: containerWidth,
-                          height: containerHeight,
-                          child: AnimationPage(
-                            fullName: member.fullName,
-                            position: member.position,
-                            yearAndMajor: member.yearAndMajor,
-                            shortIntroduction: member.shortIntro,
-                            linkedinLink: member.linkedin,
-                            assets: member.imageAsset,
+                  Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Center(
+                      child: Wrap(
+                        alignment: WrapAlignment.center,
+                        spacing: 40,
+                        runSpacing: 40,
+                        children: members.map((member) {
+                          return SizedBox(
                             width: containerWidth,
                             height: containerHeight,
-                          ),
-                        );
-                      }).toList(),
+                            child: AnimationPage(
+                              fullName: member.fullName,
+                              position: member.position,
+                              yearAndMajor: member.yearAndMajor,
+                              shortIntroduction: member.shortIntro,
+                              linkedinLink: member.linkedin,
+                              assets: member.imageAsset,
+                              width: containerWidth,
+                              height: containerHeight,
+                            ),
+                          );
+                        }).toList(),
+                      ),
                     ),
                   ),
 
