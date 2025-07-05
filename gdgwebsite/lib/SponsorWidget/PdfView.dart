@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gdgwebsite/Colors.dart';
+import 'package:gdgwebsite/Constants.dart';
 import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
 
 class PDFView extends StatefulWidget {
@@ -42,7 +43,7 @@ class _PDFViewState extends State<PDFView> {
           child: Stack(
             children: [
               SfPdfViewer.asset(
-                'sponsorPackage/Sponsors.pdf',
+                pdfBooklet,
                 controller: widget.pdfViewerController,
                 scrollDirection: PdfScrollDirection.vertical,
                 pageLayoutMode: PdfPageLayoutMode.single,
@@ -63,7 +64,7 @@ class _PDFViewState extends State<PDFView> {
                   color: Colors.black.withOpacity(0.7),
                   child: Center(
                     child: Image.asset(
-                      'logo/loading.gif', 
+                      gifLoading , 
                       width: 150,
                       height: 150,
                     ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gdgwebsite/Colors.dart';
+import 'package:gdgwebsite/Constants.dart';
 
 class ResponsiveAppBar extends StatelessWidget implements PreferredSizeWidget {
   final List<Widget> navItems;
@@ -56,7 +57,7 @@ class ResponsiveAppBar extends StatelessWidget implements PreferredSizeWidget {
                 child: Row(
                   children: [
                     Image.asset(
-                      'logo/GDSC.png',
+                      GDSCLogo,
                       height: 36,
                     ),
                     const SizedBox(width: 12),

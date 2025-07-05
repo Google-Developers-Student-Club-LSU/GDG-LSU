@@ -229,9 +229,9 @@ class _HomePageState extends State<HomePage> {
          return isMobile ?
          Column(
           children: [
-            ClickableImageLink(imageAsset: 'logo/Discord.png', width: 150, linkUrl: 'https://discord.com/'),
+            ClickableImageLink(imageAsset: discordLogo, width: 150, linkUrl: discordInviteLink),
             const SizedBox(height: 50,),
-            ClickableImageLink(imageAsset:'logo/TigerLink.png', width: 150, linkUrl: 'https://tigerlink.lsu.edu')
+            ClickableImageLink(imageAsset:tigerlinkLogo, width: 150, linkUrl: tigerlinkLink)
          
           ],
 
@@ -239,9 +239,9 @@ class _HomePageState extends State<HomePage> {
          :Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                ClickableImageLink(imageAsset: 'logo/Discord.png', width: 150, linkUrl: 'https://discord.com/'),
+                ClickableImageLink(imageAsset: discordLogo, width: 150, linkUrl: discordInviteLink),
                 const SizedBox(width: 200,),
-                ClickableImageLink(imageAsset:'logo/TigerLink.png', width: 150, linkUrl: 'https://tigerlink.lsu.edu')
+                ClickableImageLink(imageAsset:tigerlinkLogo, width: 150, linkUrl: tigerlinkLink)
          
               ],
             );
@@ -258,7 +258,7 @@ class _HomePageState extends State<HomePage> {
           children: [
              Column(
                       children: [
-                        Center(child: Image.asset('icon/officers.png', width: 150,)),
+                        Center(child: Image.asset(iconOfficer, width: 150,)),
                         AnimatedCounter(targetNumber: 8,),
                         SelectableText('Officers',
                         style: StandardText.copyWith(fontWeight: FontWeight.w500),)
@@ -267,7 +267,7 @@ class _HomePageState extends State<HomePage> {
                     const SizedBox(height: 50,),
                     Column(
                       children: [
-                        Center(child: Image.asset('icon/members.png', width: 150,)),
+                        Center(child: Image.asset(iconMemember, width: 150,)),
                         AnimatedCounter(targetNumber: 163,),
                         SelectableText('Memebers',
                         style: StandardText.copyWith(fontWeight: FontWeight.w500),)
@@ -281,7 +281,7 @@ class _HomePageState extends State<HomePage> {
                   children: [
                     Column(
                       children: [
-                        Center(child: Image.asset('icon/officers.png', width: 150,)),
+                        Center(child: Image.asset(iconOfficer, width: 150,)),
                         AnimatedCounter(targetNumber: 8,),
                         SelectableText('Officers',
                         style: StandardText.copyWith(fontWeight: FontWeight.w500),)
@@ -290,7 +290,7 @@ class _HomePageState extends State<HomePage> {
                     const SizedBox(width: 200,),
                     Column(
                       children: [
-                        Center(child: Image.asset('icon/members.png', width: 150,)),
+                        Center(child: Image.asset(iconMemember, width: 150,)),
                         AnimatedCounter(targetNumber: 163,),
                         SelectableText('Memebers',
                         style: StandardText.copyWith(fontWeight: FontWeight.w500),)
@@ -399,7 +399,7 @@ children: [
         child: Column(
           children: [
             Padding(padding: EdgeInsets.all(8.0),
-            child: CircleImageContainer(imagePath:"icon/Workshop.gif", size: 200,)
+            child: CircleImageContainer(imagePath:gifWorkshop, size: 200,)
             ),
             Padding(
               padding: const EdgeInsets.only(bottom: 8.0),
@@ -484,28 +484,14 @@ Widget _buildAnimatedText(double offset) {
       child: Transform.scale(
         scale: scale,
         alignment: Alignment.center,
-        child: const AutoSlideCarousel(imagePaths: [
-          'firstSlide/slide1.png',
-          'firstSlide/slide2.png',
-          'firstSlide/slide3.png',
-          'firstSlide/slide4.jpg',
-          'firstSlide/slide5.png'
-
-        ]),
+        child: const AutoSlideCarousel(imagePaths: firstSlideShow),
       ),
     );
   }
 
 
     Widget _buildSecondSlideShow(){
-    return AutoSlideCarousel(imagePaths: [
-          'thirdSlide/slide1.png',
-          'thirdSlide/slide2.jpg',
-          'thirdSlide/slide3.jpg',
-          'thirdSlide/slide4.jpg',
-          'thirdSlide/slide5.png',
-          'thirdSlide/slide6.jpg'
-    ]
+    return AutoSlideCarousel(imagePaths: secondSlideShow
     );
   }
     
@@ -540,7 +526,7 @@ class Community extends StatelessWidget {
       child: Column(
         children: [
           Padding(padding: EdgeInsets.all(8.0),
-          child: CircleImageContainer(imagePath:"icon/Community.gif", size: 200,)),
+          child: CircleImageContainer(imagePath:gifCommunity, size: 200,)),
           Padding(
             padding: const EdgeInsets.only(bottom: 8.0),
             child: SelectableText("Community", style: StandardText.copyWith(fontSize: 40 ),),

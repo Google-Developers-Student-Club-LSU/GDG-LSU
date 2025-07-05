@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gdgwebsite/Colors.dart';
+import 'package:gdgwebsite/Constants.dart';
 import 'package:gdgwebsite/Utils/CIickableImageLink.dart';
 
 class ProfileDrawer extends StatelessWidget {
@@ -83,7 +84,7 @@ class ProfileDrawer extends StatelessWidget {
             bottom: 20,
             child: ClickableImageLink(
               width: 100,
-              imageAsset: 'logo/LinkedIn.png',
+              imageAsset: linkedInLogo,
               linkUrl: linkedinLink,
             ),
           ),

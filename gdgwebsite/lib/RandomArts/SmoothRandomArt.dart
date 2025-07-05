@@ -75,7 +75,7 @@ class _MovingBlob {
           _rand.nextDouble() * canvasSize.height,
         ),
         color = googleColors[_rand.nextInt(googleColors.length)]
-            .withOpacity(0.25 + _rand.nextDouble() * 0.2), // subtle blend
+            .withValues(alpha: .25 + _rand.nextDouble() * 0.2), // subtle blend
         size = Size(
           40 + _rand.nextDouble() * 50,
           40 + _rand.nextDouble() * 50,

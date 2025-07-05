@@ -7,6 +7,7 @@
 import 'package:calendar_view/calendar_view.dart';
 import 'package:flutter/material.dart';
 import 'package:gdgwebsite/Colors.dart';
+import 'package:gdgwebsite/Constants.dart';
 import 'package:gdgwebsite/EventsWidgets/EventCart.dart';
 import 'package:gdgwebsite/Models/EventModel.dart';
 import 'package:gdgwebsite/Utils/CacheEvents.dart';
@@ -64,7 +65,7 @@ void didChangeDependencies() {
               leftIconConfig: IconDataConfig(
                 icon: (context) => Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                  child: Image.asset('logo/GDSC.png', height: 32),
+                  child: Image.asset(GDSCLogo, height: 32),
                 ),
               ),
               decoration: BoxDecoration(

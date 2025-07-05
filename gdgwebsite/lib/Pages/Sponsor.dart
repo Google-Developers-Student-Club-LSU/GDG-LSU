@@ -6,6 +6,7 @@
 //
 import 'package:flutter/material.dart';
 import 'package:gdgwebsite/Colors.dart';
+import 'package:gdgwebsite/Constants.dart';
 import 'package:gdgwebsite/RandomArts/SwirlPainter.dart';
 import 'package:gdgwebsite/SponsorWidget/PdfView.dart';
 import 'package:gdgwebsite/Utils/CIickableImageLink.dart';
@@ -120,7 +121,7 @@ class SecondPart extends StatelessWidget {
     ),
      Wrap(
           children: [
-           ClickableImageLink(imageAsset: 'logo/Google.png', linkUrl: 'www.google.com')
+           ClickableImageLink(imageAsset: googleLogo, linkUrl: googleLink)
           ],
         ),
         Padding(
@@ -158,7 +159,7 @@ class _SponsorLinkState extends State<SponsorLink>
   
 
   void _launchLink() async {
-    final Uri url = Uri.parse('https://www.youtube.com');
+    final Uri url = Uri.parse(sponsorBookletLink);
     if (!await launchUrl(url, webOnlyWindowName: '_blank')) {
       debugPrint('Could not launch');
     }
