@@ -20,7 +20,7 @@ class AutoSlideCarousel extends StatefulWidget {
   const AutoSlideCarousel({
     super.key,
     required this.imagePaths,
-    this.height = 250,
+    this.height = 1000,
     this.interval = const Duration(seconds: 3),
     this.transitionDuration = const Duration(milliseconds: 500),
     this.fit = BoxFit.cover,
@@ -31,26 +31,34 @@ class AutoSlideCarousel extends StatefulWidget {
 }
 
 class _AutoSlideCarouselState extends State<AutoSlideCarousel> {
-  final PageController _controller = PageController();
   Timer? _timer;
-  int _currentIndex = 0;
+late PageController _controller;
 
-  @override
-  void initState() {
-    super.initState();
-    _startAutoSlide();
-  }
+@override
+void initState() {
+  super.initState();
+  _controller = PageController(initialPage: 1);
+  _startAutoSlide();
+}
 
-  void _startAutoSlide() {
-    _timer = Timer.periodic(widget.interval, (_) {
-      _currentIndex = (_currentIndex + 1) % widget.imagePaths.length;
-      _controller.animateToPage(
-        _currentIndex,
+  List<String> get _loopedImages {
+  final images = widget.imagePaths;
+  if (images.length <= 1) return images;
+  return [images.last, ...images, images.first];
+}
+
+
+void _startAutoSlide() {
+  _timer = Timer.periodic(widget.interval, (_) {
+    if (_controller.hasClients) {
+      _controller.nextPage(
         duration: widget.transitionDuration,
         curve: Curves.easeInOut,
       );
-    });
-  }
+    }
+  });
+}
+
 
   @override
   void dispose() {
@@ -59,39 +67,49 @@ class _AutoSlideCarouselState extends State<AutoSlideCarousel> {
     super.dispose();
   }
 
-  @override
-  Widget build(BuildContext context) {
-    return AbsorbPointer(
-      absorbing: true,
-      child: Container(
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.all(Radius.circular(30)),
-          border: Border.all(
-                 color: gBlue.withValues(alpha: 2), 
-                 width: 2
-                
-              ),
-        ),
-        child: SizedBox(
-          height: MediaQuery.of(context).size.height,
-          width: MediaQuery.of(context).size.width,
-          child: PageView.builder(
-            controller: _controller,
-            itemCount: widget.imagePaths.length,
-            itemBuilder: (context, index) {
-              return ClipRRect(
-                borderRadius: BorderRadius.circular(24), 
-                child: Image.asset(
-                  widget.imagePaths[index],
-                  fit: widget.fit,
-                  width: double.infinity,
-                  height: double.infinity,
-                ),
-              );
-            },
-          ),
+@override
+Widget build(BuildContext context) {
+  return AbsorbPointer(
+    absorbing: true,
+    child: Container(
+      decoration: BoxDecoration(
+        borderRadius: const BorderRadius.all(Radius.circular(30)),
+        border: Border.all(
+          color: gBlue.withAlpha(2),
+          width: 2,
         ),
       ),
-    );
-  }
+      child: SizedBox(
+        height:  MediaQuery.of(context).size.height,
+        width: MediaQuery.of(context).size.width,
+        child: PageView.builder(
+          controller: _controller,
+          itemCount: _loopedImages.length,
+          onPageChanged: (index) {
+            if (index == 0) {
+              Future.microtask(() {
+                _controller.jumpToPage(_loopedImages.length - 2);
+              });
+            } else if (index == _loopedImages.length - 1) {
+              Future.microtask(() {
+                _controller.jumpToPage(1);
+              });
+            }
+          },
+          itemBuilder: (context, index) {
+            return ClipRRect(
+              borderRadius: BorderRadius.circular(24),
+              child: Image.asset(
+                _loopedImages[index],
+                fit: widget.fit,
+                width: double.infinity,
+                height: double.infinity,
+              ),
+            );
+          },
+        ),
+      ),
+    ),
+  );
+}
 }
