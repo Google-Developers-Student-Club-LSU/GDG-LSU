@@ -58,7 +58,7 @@ void didChangeDependencies() {
               leftIconConfig: IconDataConfig(
                 icon: (context) => Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                  child: Image.asset(GDSCLogo, height: 32),
+                  child: Image.asset(gifLoading, height: 32),
                 ),
               ),
               decoration: BoxDecoration(
