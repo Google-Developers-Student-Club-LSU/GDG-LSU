@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gdgwebsite/Widgets/Appbar.dart';
 
 class HackathonPage extends StatefulWidget {
   const HackathonPage({super.key});
@@ -10,6 +11,9 @@ class HackathonPage extends StatefulWidget {
 class _HackathonPageState extends State<HackathonPage> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      appBar: Appbar(),
+      
+    );
   }
 }

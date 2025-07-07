@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-class Doorwidget extends StatelessWidget {
+class DoorWidget extends StatelessWidget {
   final bool isLeft; 
-  const Doorwidget( {
+  const DoorWidget( {
     super.key,
   required this.isLeft,
   });

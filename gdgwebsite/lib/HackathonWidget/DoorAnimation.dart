@@ -8,101 +8,112 @@ import 'package:gdgwebsite/Pages/Hackathon.dart';
 
 class DoorAnimation extends StatefulWidget {
   const DoorAnimation({super.key});
-
   @override
   State<DoorAnimation> createState() => _DoorAnimationState();
 }
 
 class _DoorAnimationState extends State<DoorAnimation> with TickerProviderStateMixin {
-  late AnimationController _doorController;
-  late AnimationController _warpController;
-  late AnimationController _tunnelController;
-  late AnimationController _zoomController;
+  // controllers
+  late AnimationController _doorController,
+      _warpController,
+      _tunnelController,
+      _zoomController,
+      _pressController,
+      _walkController;
 
-  // NEW: press effect controller
-  late AnimationController _pressController;
-  late Animation<double> _pressAnimation;
-
-  late Animation<double> _leftDoorAngle;
-  late Animation<double> _rightDoorAngle;
-  late Animation<double> _tunnelRadius;
-  late Animation<double> _zoomAnimation;
-
-  final double doorWidth = 150;
-  final double doorHeight = 300;
+  // tweens
+  late Animation<double> _leftDoorAngle,
+      _rightDoorAngle,
+      _tunnelRadius,
+      _zoomAnimation,
+      _pressAnimation,
+      _walkZ;
 
   bool showWarp = false;
   bool showTunnel = false;
+  final double doorWidth = 150, doorHeight = 300;
 
   @override
   void initState() {
     super.initState();
 
-    // door‐opening, warp, tunnel & zoom controllers unchanged
+    // 1) doors
     _doorController = AnimationController(vsync: this, duration: const Duration(seconds: 2));
-    _warpController = AnimationController(vsync: this, duration: const Duration(seconds: 4))
+    _leftDoorAngle = Tween(begin: 0.0, end: -pi/2).animate(
+      CurvedAnimation(parent: _doorController, curve: Curves.easeInOut),
+    );
+    _rightDoorAngle = Tween(begin: 0.0, end: pi/2).animate(
+      CurvedAnimation(parent: _doorController, curve: Curves.easeInOut),
+    );
+
+    // 2) walk-through
+    _walkController = AnimationController(vsync: this, duration: const Duration(seconds: 2));
+    _walkZ = Tween(begin: 0.0, end: -300.0).animate(
+      CurvedAnimation(parent: _walkController, curve: Curves.easeInOut),
+    );
+
+    // 3) zoom into warp
+    _zoomController = AnimationController(vsync: this, duration: const Duration(milliseconds: 1500));
+    _zoomAnimation = Tween(begin: 1.0, end: 3.0).animate(
+      CurvedAnimation(parent: _zoomController, curve: Curves.easeInOut),
+    );
+
+    // 4) warp painter
+    _warpController = AnimationController(vsync: this, duration: const Duration(seconds: 2))
       ..addListener(() => setState(() {}));
+
+    // 5) tunnel painter
     _tunnelController = AnimationController(vsync: this, duration: const Duration(seconds: 2))
       ..addListener(() => setState(() {}));
-    _zoomController = AnimationController(vsync: this, duration: const Duration(milliseconds: 1500));
-
-    // NEW: tiny “press” expand
-    _pressController = AnimationController(vsync: this, duration: const Duration(milliseconds: 100));
-    _pressAnimation = Tween<double>(begin: 1.0, end: 1.1).animate(
-      CurvedAnimation(parent: _pressController, curve: Curves.easeOut)
-    );
-
-    // your existing tweens
-    _leftDoorAngle = Tween<double>(begin: 0, end: -pi / 2).animate(
-      CurvedAnimation(parent: _doorController, curve: Curves.easeInOut),
-    );
-    _rightDoorAngle = Tween<double>(begin: 0, end: pi / 2).animate(
-      CurvedAnimation(parent: _doorController, curve: Curves.easeInOut),
-    );
-    _tunnelRadius = Tween<double>(begin: 0.0, end: 2.0).animate(
+    _tunnelRadius = Tween(begin: 0.0, end: 2.0).animate(
       CurvedAnimation(parent: _tunnelController, curve: Curves.easeOutCubic),
     );
-    _zoomAnimation = Tween<double>(begin: 1.0, end: 3.0).animate(
-      CurvedAnimation(parent: _zoomController, curve: Curves.easeInOut),
+
+    // 6) little “press” bump
+    _pressController = AnimationController(vsync: this, duration: const Duration(milliseconds: 100));
+    _pressAnimation = Tween(begin: 1.0, end: 1.1).animate(
+      CurvedAnimation(parent: _pressController, curve: Curves.easeOut),
     );
   }
 
   Future<void> _startSequence() async {
-    // 1) run your warp‐zoom
-    await _zoomController.forward();
+    // ensure press-down scale reverses
+    await _pressController.reverse();
 
-    // 2) open doors
+    // 1) swing doors open
     await _doorController.forward();
 
-    // 3) reveal warp
+    // 2) walk forward through doorway
+    await _walkController.forward();
+
+    // 3) zoom in & start warp
+    await _zoomController.forward();
     setState(() => showWarp = true);
     _warpController.repeat();
 
-    // 4) after a bit, reveal tunnel
+    // 4) after a beat, reveal tunnel
     await Future.delayed(const Duration(seconds: 3));
     setState(() => showTunnel = true);
     await _tunnelController.forward();
 
     // 5) stop warp & navigate
     _warpController.stop();
-    Navigator.of(context).pushReplacement(
-      PageRouteBuilder(
-        pageBuilder: (_, __, ___) => const HackathonPage(),
-        transitionDuration: const Duration(milliseconds: 1200),
-        transitionsBuilder: (_, animation, __, child) {
-          final fade = CurvedAnimation(parent: animation, curve: Curves.easeInOut);
-          return FadeTransition(opacity: fade, child: child);
-        },
-      ),
-    );
+    Navigator.of(context).pushReplacement(PageRouteBuilder(
+      pageBuilder: (_, __, ___) => const HackathonPage(),
+      transitionDuration: const Duration(milliseconds: 1200),
+      transitionsBuilder: (_, anim, __, child) {
+        return FadeTransition(opacity: CurvedAnimation(parent: anim, curve: Curves.easeInOut), child: child);
+      },
+    ));
   }
 
   @override
   void dispose() {
     _doorController.dispose();
+    _walkController.dispose();
+    _zoomController.dispose();
     _warpController.dispose();
     _tunnelController.dispose();
-    _zoomController.dispose();
     _pressController.dispose();
     super.dispose();
   }
@@ -112,75 +123,77 @@ class _DoorAnimationState extends State<DoorAnimation> with TickerProviderStateM
     final screenSize = MediaQuery.of(context).size;
     final tunnelRadius = screenSize.longestSide * _tunnelRadius.value;
 
-    return Scaffold(
-      backgroundColor: Colors.black,
-      body: Center(
-        child: InkWell(
-          // start the whole sequence on tap
-          onTap: _startSequence,
-          // press‐in expands slightly
-          onTapDown: (_) => _pressController.forward(),
-          onTapUp: (_) => _pressController.reverse(),
-          onTapCancel: () => _pressController.reverse(),
-
+    return AnimatedBuilder(
+      animation: _walkZ,
+      builder: (context, child) {
+        // tiny perspective + Z translation
+        final cam = Matrix4.identity()
+          ..setEntry(3, 2, 0.001)
+          ..translate(0, 0, _walkZ.value);
+        return Transform(alignment: Alignment.center, transform: cam, child: child);
+      },
+        child: ScaleTransition(
+          scale: _pressAnimation,
+          alignment: Alignment.center,
           child: ScaleTransition(
-            scale: _pressAnimation,           // 1) press effect
-            child: ScaleTransition(
-              scale: _zoomAnimation,          // 2) your warp zoom
-              child: Stack(
-                alignment: Alignment.center,
-                children: [
-                  if (showWarp)
-                    CustomPaint(
-                      painter: WarpPainter(time: _warpController.value),
-                      size: Size.infinite,
-                    ),
-                  if (showTunnel)
-                    CustomPaint(
-                      painter: TunnelMaskPainter(radius: tunnelRadius),
-                      size: Size.infinite,
-                    ),
-                  if (!showWarp && !showTunnel)
-                    SizedBox(
-                      width: doorWidth * 2,
-                      height: doorHeight,
-                      child: Stack(
-                        children: [
-                          Align(
+            scale: _zoomAnimation,
+            alignment: Alignment.center,
+            child: Stack(
+              alignment: Alignment.center,
+              children: [
+                if (showWarp)
+                  CustomPaint(
+                    painter: WarpPainter(time: _warpController.value),
+                    child: const SizedBox.expand(),
+                  ),
+                if (showTunnel)
+                  CustomPaint(
+                    painter: TunnelMaskPainter(radius: tunnelRadius),
+                    child: const SizedBox.expand(),
+                  ),
+                if (!showWarp && !showTunnel)
+                  SizedBox(
+                    width: doorWidth * 2,
+                    height: doorHeight,
+                    child: Stack(children: [
+                      Align(
+                        alignment: Alignment.centerLeft,
+                        child: AnimatedBuilder(
+                          animation: _leftDoorAngle,
+                          builder: (_, __) => Transform(
                             alignment: Alignment.centerLeft,
-                            child: AnimatedBuilder(
-                              animation: _leftDoorAngle,
-                              builder: (_, __) => Transform(
-                                alignment: Alignment.centerLeft,
-                                transform: Matrix4.identity()
-                                  ..setEntry(3, 2, 0.001)
-                                  ..rotateY(_leftDoorAngle.value),
-                                child: Doorwidget(isLeft: true),
-                              ),
-                            ),
+                            transform: Matrix4.identity()
+                              ..setEntry(3, 2, 0.001)
+                              ..rotateY(_leftDoorAngle.value),
+                            child: DoorWidget(isLeft: true),
                           ),
-                          Align(
-                            alignment: Alignment.centerRight,
-                            child: AnimatedBuilder(
-                              animation: _rightDoorAngle,
-                              builder: (_, __) => Transform(
-                                alignment: Alignment.centerRight,
-                                transform: Matrix4.identity()
-                                  ..setEntry(3, 2, 0.001)
-                                  ..rotateY(_rightDoorAngle.value),
-                                child: Doorwidget(isLeft: false),
-                              ),
-                            ),
-                          ),
-                        ],
+                        ),
                       ),
-                    ),
-                ],
-              ),
+                      InkWell(
+                      onTapDown: (_) => _pressController.forward(),
+                      onTapUp: (_) => _startSequence(),
+                      onTapCancel: () => _pressController.reverse(),
+                        child: Align(
+                          alignment: Alignment.centerRight,
+                          child: AnimatedBuilder(
+                            animation: _rightDoorAngle,
+                            builder: (_, __) => Transform(
+                              alignment: Alignment.centerRight,
+                              transform: Matrix4.identity()
+                                ..setEntry(3, 2, 0.001)
+                                ..rotateY(_rightDoorAngle.value),
+                              child: DoorWidget(isLeft: false),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ]),
+                  ),
+              ],
             ),
           ),
         ),
-      ),
+      
     );
   }
 }

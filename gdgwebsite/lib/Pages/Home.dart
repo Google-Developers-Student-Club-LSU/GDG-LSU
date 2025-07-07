@@ -95,16 +95,10 @@ class _HomePageState extends State<HomePage> {
       SizedBox(
               width: 150,
               height: 300,
-              child: OverflowBox(
-                // let the child be any size it wants
-                minWidth: 0, 
-                maxWidth: double.infinity,
-                minHeight: 0, 
-                maxHeight: double.infinity,
 
                 child: DoorAnimation(),
               ),
-            ),
+        
 
       const SizedBox(height:50),
           ThirdSection(context),
