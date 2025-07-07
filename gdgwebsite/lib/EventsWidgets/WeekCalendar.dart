@@ -102,7 +102,18 @@ void didChangeDependencies() {
                   ),
                   child: Padding(
                     padding: const EdgeInsets.all(4.0),
-                    child: FittedBox(
+                    child: isMobile
+                    ? 
+                     Text(
+                                events.first.title,
+                                maxLines: 2,
+                                softWrap: true,
+                                overflow: TextOverflow.ellipsis,
+                                textAlign: TextAlign.center,
+                                style: StandardText.copyWith(fontSize: isMobile? 10: 17 , color: Colors.white, fontWeight: FontWeight.w600),
+                              )
+                      :
+                     FittedBox(
                       child: Text(
                                 events.first.title,
                                 maxLines: 2,

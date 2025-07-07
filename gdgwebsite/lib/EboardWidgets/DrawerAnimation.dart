@@ -59,9 +59,7 @@ class _AnimationPageState extends State<AnimationPage>
         @override
       Widget build(BuildContext context) {
         double maxSlide = widget.width;
-        final isTouch = !kIsWeb &&
-            (defaultTargetPlatform == TargetPlatform.android ||
-            defaultTargetPlatform == TargetPlatform.iOS);
+      bool isMobile(BuildContext context) => MediaQuery.of(context).size.width < 600;
 
         final child = AnimatedBuilder(
           animation: animationController,
@@ -104,7 +102,7 @@ class _AnimationPageState extends State<AnimationPage>
           },
         );
 
-        return isTouch
+        return isMobile(context)
             ? GestureDetector(
                 onTap: () {
                   if (animationController.isDismissed) {

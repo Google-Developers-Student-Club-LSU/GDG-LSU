@@ -43,6 +43,8 @@ void didChangeDependencies() {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final backgroundColor = theme.scaffoldBackgroundColor;
+    bool isMobile (BuildContext context) => MediaQuery.of(context).size.width < 600;
+    
 
     return 
           MonthView<Event>(
@@ -74,6 +76,7 @@ void didChangeDependencies() {
             ),
 cellBuilder: (date, events, isToday, isInMonth, hideDaysNotInMonth) {
   final cellColor = events.isNotEmpty ? events.first.event?.color : backgroundColor;
+  
 
   return Container(
     decoration: BoxDecoration(
@@ -97,7 +100,17 @@ cellBuilder: (date, events, isToday, isInMonth, hideDaysNotInMonth) {
           Center(
             child: Padding(
               padding: const EdgeInsets.only (top: 4.0),
-                  child: FittedBox(
+                  child: isMobile(context)?
+                       Text(
+                                events.first.title,
+                                maxLines: 2,
+                                softWrap: true,
+                                overflow: TextOverflow.ellipsis,
+                                textAlign: TextAlign.center,
+                                style: StandardText.copyWith(fontSize: 10 , color: Colors.white, fontWeight: FontWeight.w600),
+                 )
+                   :
+                    FittedBox(
                     child: Text(
                     events.first.title,
                     maxLines: 2,
