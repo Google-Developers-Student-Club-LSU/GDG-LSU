@@ -12,6 +12,7 @@ import 'package:gdgwebsite/Constants.dart';
 import 'package:gdgwebsite/EventsData.dart';
 import 'package:gdgwebsite/Pages/Eboard.dart';
 import 'package:gdgwebsite/Pages/Events.dart';
+import 'package:gdgwebsite/Pages/Hackathon.dart';
 import 'package:gdgwebsite/Pages/Home.dart';
 import 'package:gdgwebsite/Pages/Sponsor.dart';
 import 'package:gdgwebsite/Utils/CacheEvents.dart';
@@ -47,6 +48,7 @@ class MyApp extends StatelessWidget {
         eboard: (_) => const EboardPage(),
         events: (_) => const EventsPage(),
         sponsor: (_) => const SponsorPage(),
+        hackathon: (_) => const HackathonPage(),
        // '/blog': (_) => const BlogPage()
       }
     );

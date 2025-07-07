@@ -4,6 +4,7 @@ final String home = '/home';
 final String events = 'events';
 final String eboard = 'eboard';
 final String sponsor = 'sponsor';
+final String hackathon = 'hackathon';
 
 
 const double containerWidth = 300;
