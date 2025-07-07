@@ -6,6 +6,7 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:gdgwebsite/Colors.dart';
+import 'package:gdgwebsite/Constants.dart';
 
 class FooterBar extends StatelessWidget {
   const FooterBar({super.key});
@@ -83,7 +84,7 @@ class FooterBar extends StatelessWidget {
           children: [
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Image.asset('logo/GDSC.png', width: 100),
+              child: Image.asset(gDSCLogo, width: 100),
             ),
             const SizedBox(width: 30),
             Expanded(

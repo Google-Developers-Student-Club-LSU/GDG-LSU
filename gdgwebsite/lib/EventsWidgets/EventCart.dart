@@ -5,6 +5,7 @@
 //
 import 'package:flutter/material.dart';
 import 'package:gdgwebsite/Colors.dart';
+import 'package:gdgwebsite/Constants.dart';
 import 'package:gdgwebsite/EventsWidgets/CreateEvent.dart';
 import 'package:intl/intl.dart';
 
@@ -25,7 +26,7 @@ class EventCart extends StatelessWidget {
     required this.end,
     required this.color,
     this.room,
-    this.image = 'events/NoImage.png',
+    this.image = failedImage,
     required this.description,
 
 

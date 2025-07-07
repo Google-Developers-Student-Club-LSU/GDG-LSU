@@ -46,7 +46,7 @@ Join us for an engaging hands-on workshop where you'll learn how to build modern
 
 Bring your laptop and get ready to code!
       ''',
-    "image": "events/Flutter.jpg",
+    "image": "assets/events/Flutter.jpg",
     "color": gBlue,
     "room" : "PFT 1209"
   },

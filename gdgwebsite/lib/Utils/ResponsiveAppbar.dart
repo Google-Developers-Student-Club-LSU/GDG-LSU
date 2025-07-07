@@ -57,7 +57,7 @@ class ResponsiveAppBar extends StatelessWidget implements PreferredSizeWidget {
                 child: Row(
                   children: [
                     Image.asset(
-                      GDSCLogo,
+                      gDSCLogo,
                       height: 36,
                     ),
                     const SizedBox(width: 12),

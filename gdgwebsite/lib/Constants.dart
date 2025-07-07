@@ -27,7 +27,7 @@ const failedImage = 'assets/events/NoImage.png';
 
 //logo 
 const linkedInLogo = 'assets/logo/LinkedIn.png';
-const GDSCLogo = 'assets/logo/GDSC.png';
+const gDSCLogo = 'assets/logo/GDSC.png';
 const discordLogo = 'assets/logo/Discord.png';
 const tigerlinkLogo = 'assets/logo/TigerLink.png';
 const googleLogo =  'assets/logo/Google.png';
