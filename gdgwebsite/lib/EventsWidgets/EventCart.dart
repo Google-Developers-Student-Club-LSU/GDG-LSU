@@ -74,7 +74,7 @@ Widget build(BuildContext context) {
                 children: [
                  Align(
                     alignment: Alignment.topLeft,
-                    child: Image.asset('logo/GDSC.png', height: 32,) ,
+                    child: Image.asset(gDSCLogo, height: 32,) ,
                   ),
                  Spacer(),
                  Align(
@@ -126,7 +126,7 @@ Widget build(BuildContext context) {
               const SizedBox(height: 12),
 
               Image.asset(
-                image ?? 'events/NoImage.png' ,
+                image ?? failedImage ,
                 width: MediaQuery.of(context).size.width * 0.4,
                 fit: BoxFit.contain,
                  errorBuilder: (context, error, stackTrace) {

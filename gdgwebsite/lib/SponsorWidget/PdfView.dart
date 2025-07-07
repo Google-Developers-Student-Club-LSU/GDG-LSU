@@ -26,6 +26,7 @@ class _PDFViewState extends State<PDFView> {
   Widget build(BuildContext context) {
     final double width = widget.isMobile ? 800 : MediaQuery.of(context).size.width * 0.40;
     final double height = widget.isMobile ? 700 : MediaQuery.of(context).size.height * 0.85;
+    final mobile = MediaQuery.of(context).size.width < 400;
 
     return MouseRegion(
       onEnter: (_) => widget.onHoverChanged(true),
@@ -45,7 +46,7 @@ class _PDFViewState extends State<PDFView> {
               SfPdfViewer.asset(
                 pdfBooklet,
                 controller: widget.pdfViewerController,
-                scrollDirection: PdfScrollDirection.vertical,
+                scrollDirection: mobile? PdfScrollDirection.horizontal:  PdfScrollDirection.vertical,
 
                 pageLayoutMode: PdfPageLayoutMode.single,
                 enableDoubleTapZooming: true,
