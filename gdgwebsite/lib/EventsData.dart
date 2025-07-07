@@ -20,6 +20,14 @@ final List<Map<String, dynamic>> myEvents = [
     "color": gGreen,
     "room" : "PFT 1200"
   },
+    {
+    "title": "General Body Meeting",
+    "date": DateTime(2025, 6, 15, 10, 0),
+    "endDate": DateTime(2025, 6, 15, 10, 30),
+    "description": "Weekly sync-up with the team to discuss goals.",
+    "color": gGreen,
+    "room" : "PFT 1200"
+  },
   {
     "title": "Firebase WorkShop",
     "date": DateTime(2025, 7, 16, 14, 30),

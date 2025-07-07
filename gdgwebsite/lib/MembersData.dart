@@ -1,4 +1,5 @@
 
+import 'package:gdgwebsite/Constants.dart';
 import 'package:gdgwebsite/Models/MemberModel.dart';
 
 
@@ -20,7 +21,7 @@ Apart from coding, I like One Piece, Cooking, and Working out(honestly, not much
 
 ''',
     linkedin: 'https://www.linkedin.com/in/mujtaba-malik-7b8442299/',
-    imageAsset: 'members/Trenton.jpg',
+    imageAsset: failedImage,
   ),
   MemberProfile(
     fullName: 'Jerrick Miles',
