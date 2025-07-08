@@ -129,7 +129,26 @@ class _HomePageState extends State<HomePage> {
           SixthSection(),
       const SizedBox(
             height: 50,
-          ),           
+          ),   
+      Center(
+            child:SelectableText('Follow us',
+                style: StandardText.copyWith(fontWeight: FontWeight.w500),),
+          ), 
+      Center(
+        child: Wrap(
+          runSpacing: 50 ,
+          spacing: 50,
+          children: [
+            ClickableImageLink(imageAsset: youtubeSquare, linkUrl: youtubeSoc),
+            ClickableImageLink(imageAsset: linkedInLogo, linkUrl: linkedInSoc),
+            ClickableImageLink(imageAsset: githubSquare, linkUrl: githubGrey),
+            ClickableImageLink(imageAsset: xSquare , linkUrl: xSoc),
+            ClickableImageLink(imageAsset: instagramSquare, linkUrl: instagramSoc),
+          ],
+        
+        ),
+      ), 
+      const SizedBox(height: 50),   
           Center(
               child: HoverExpand(
                 child: CustomButton(
