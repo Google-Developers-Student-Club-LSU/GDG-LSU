@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:gdgwebsite/HackathonWidget/DoorWidget.dart';
+import 'package:gdgwebsite/HackathonWidget/TransitionScene.dart';
 import 'package:gdgwebsite/HackathonWidget/TunnelMaskPainter.dart';
 import 'package:gdgwebsite/HackathonWidget/WarpPainter.dart';
 import 'package:gdgwebsite/Pages/Hackathon.dart';
@@ -38,7 +39,7 @@ class _DoorAnimationState extends State<DoorAnimation> with TickerProviderStateM
     super.initState();
 
     // 1) doors
-    _doorController = AnimationController(vsync: this, duration: const Duration(seconds: 2));
+    _doorController = AnimationController(vsync: this, duration: const Duration(seconds: 1));
     _leftDoorAngle = Tween(begin: 0.0, end: -pi/2).animate(
       CurvedAnimation(parent: _doorController, curve: Curves.easeInOut),
     );
@@ -47,7 +48,7 @@ class _DoorAnimationState extends State<DoorAnimation> with TickerProviderStateM
     );
 
     // 2) walk-through
-    _walkController = AnimationController(vsync: this, duration: const Duration(seconds: 2));
+    _walkController = AnimationController(vsync: this, duration: const Duration(seconds: 1));
     _walkZ = Tween(begin: 0.0, end: -300.0).animate(
       CurvedAnimation(parent: _walkController, curve: Curves.easeInOut),
     );
@@ -59,11 +60,11 @@ class _DoorAnimationState extends State<DoorAnimation> with TickerProviderStateM
     );
 
     // 4) warp painter
-    _warpController = AnimationController(vsync: this, duration: const Duration(seconds: 2))
+    _warpController = AnimationController(vsync: this, duration: const Duration(milliseconds: 250))
       ..addListener(() => setState(() {}));
 
     // 5) tunnel painter
-    _tunnelController = AnimationController(vsync: this, duration: const Duration(seconds: 2))
+    _tunnelController = AnimationController(vsync: this, duration: const Duration(milliseconds: 250))
       ..addListener(() => setState(() {}));
     _tunnelRadius = Tween(begin: 0.0, end: 2.0).animate(
       CurvedAnimation(parent: _tunnelController, curve: Curves.easeOutCubic),
@@ -92,14 +93,14 @@ class _DoorAnimationState extends State<DoorAnimation> with TickerProviderStateM
     _warpController.repeat();
 
     // 4) after a beat, reveal tunnel
-    await Future.delayed(const Duration(seconds: 3));
+    await Future.delayed(const Duration(seconds: 0));
     setState(() => showTunnel = true);
     await _tunnelController.forward();
 
     // 5) stop warp & navigate
     _warpController.stop();
     Navigator.of(context).pushReplacement(PageRouteBuilder(
-      pageBuilder: (_, __, ___) => const HackathonPage(),
+      pageBuilder: (_, __, ___) => const TransitionScene(),
       transitionDuration: const Duration(milliseconds: 1200),
       transitionsBuilder: (_, anim, __, child) {
         return FadeTransition(opacity: CurvedAnimation(parent: anim, curve: Curves.easeInOut), child: child);
