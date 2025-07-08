@@ -7,6 +7,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:gdgwebsite/Colors.dart';
 import 'package:gdgwebsite/Constants.dart';
+import 'package:gdgwebsite/Utils/CIickableImageLink.dart';
 
 class FooterBar extends StatelessWidget {
   const FooterBar({super.key});
@@ -23,11 +24,11 @@ class FooterBar extends StatelessWidget {
         decoration: BoxDecoration(  
           gradient: LinearGradient(
             colors: [
-              (isDark ? Colors.white : Colors.black).withValues(alpha: .1),
-              Colors.transparent
+              (Colors.blue).withValues(alpha: .6),
+              isDark? Colors.black: Colors.white
             ],
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
+            begin: Alignment.bottomRight,
+            end: Alignment.topLeft,
           ),
         ),
         child: BackdropFilter(
@@ -42,7 +43,7 @@ class FooterBar extends StatelessWidget {
                 top: BorderSide(color: gBlue.withValues(alpha: .6), width: 2, ),
               ),
               color: isDark
-                  ? Colors.white.withValues(alpha: .05)
+                  ? Colors.black.withValues(alpha: .05)
                   : Colors.black.withValues(alpha: .05),
             ),
             padding: const EdgeInsets.symmetric(vertical: 24, horizontal: 16),
@@ -66,12 +67,26 @@ class FooterBar extends StatelessWidget {
         FooterText("teamdsc.lsu@gmail.com"),
         FooterText("3304 S Quad Dr, Baton Rouge, LA 70803"),
         SizedBox(height: 20),
+         FooterText(
+          'You can find us:'
+         ),
+        SizedBox(height: 15),
+         Row(
+          children: [
+            ClickableImageLink(imageAsset: youtubeGrey, linkUrl: youtubeSoc, width: 50,),
+            SizedBox(height: 15),
+            ClickableImageLink(imageAsset: linkedInGrey, linkUrl: linkedInSoc, width: 50,),
+            SizedBox(height: 15),
+            ClickableImageLink(imageAsset: githubGrey, linkUrl: githubGrey, width: 50,),
+          ],
+         ),
         Center(
           child: SelectableText(
             '© 2025 GDG LSU. All rights reserved.',
             style: TextStyle(fontSize: 12, color: Colors.grey),
           ),
         ),
+       
       ],
     );
   }
@@ -99,16 +114,30 @@ class FooterBar extends StatelessWidget {
               ),
             ),
             const SizedBox(width: 40),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: const [
-                  FooterSectionTitle("Contact Us"),
-                  FooterText("teamdsc.lsu@gmail.com"),
-                  FooterText("3304 S Quad Dr, Baton Rouge, LA 70803"),
-                ],
-              ),
-            ),
+            Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: const [
+                      FooterSectionTitle("Contact Us"),
+                      FooterText("teamdsc.lsu@gmail.com"),
+                      FooterText("3304 S Quad Dr, Baton Rouge, LA 70803"),
+                      SizedBox(width: 20),
+                    FooterText(
+                      'Find us:'
+                    ),
+                    SizedBox(height: 15),
+                    Row(
+                      children: [
+                        ClickableImageLink(imageAsset: youtubeGrey, linkUrl: youtubeSoc, width: 50,),
+                        SizedBox(height: 20),
+                        ClickableImageLink(imageAsset: linkedInGrey, linkUrl: linkedInSoc, width: 50,),
+                        SizedBox(height: 20),
+                        ClickableImageLink(imageAsset: githubGrey, linkUrl: githubSoc, width: 50,),
+                      ],
+                    ),
+                    ],
+                  ),       
+
+           
           ],
         ),
         const Center(
