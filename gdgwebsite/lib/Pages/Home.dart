@@ -134,9 +134,12 @@ class _HomePageState extends State<HomePage> {
             child:SelectableText('Follow us',
                 style: StandardText.copyWith(fontWeight: FontWeight.w500),),
           ), 
+      const SizedBox(height: 50),   
       Center(
         child: Wrap(
           runSpacing: 50 ,
+          alignment: WrapAlignment.center,
+          runAlignment: WrapAlignment.center,
           spacing: 50,
           children: [
             ClickableImageLink(imageAsset: youtubeSquare, linkUrl: youtubeSoc),
