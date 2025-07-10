@@ -7,6 +7,7 @@
 //
 
 import 'package:flutter/material.dart';
+import 'package:gdgwebsite/Colors.dart';
 import 'package:gdgwebsite/EboardWidgets/DrawerAnimation.dart';
 import 'package:gdgwebsite/MembersData.dart';
 import 'package:gdgwebsite/RandomArts/GlowingParticles.dart';
@@ -25,9 +26,11 @@ class _EboardPageState extends State<EboardPage> {
 Widget build(BuildContext context) {
   const double containerWidth = 300;
   const double containerHeight = 500;
+    bool isMobile(BuildContext context) => MediaQuery.of(context).size.width < 600;
+
 
   return Scaffold(
-    appBar: const Appbar(),
+    appBar: const Appbar(borderColor: gRed,),
     body: Stack(
   children: [
     Positioned.fill(child: GlowingParticles()),
@@ -70,7 +73,7 @@ Widget build(BuildContext context) {
 
                   const Spacer(), // Pushes footer down if space available
 
-                  const FooterBar(),
+                  const FooterBar(footbarColor: gRed,),
                 ],
               ),
             ),

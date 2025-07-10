@@ -57,7 +57,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar:  Appbar(),
+      appBar:  Appbar(borderColor: gBlue,),
       body: ListView(
         controller: _scrollController,
         children: [
@@ -144,7 +144,7 @@ class _HomePageState extends State<HomePage> {
           children: [
             ClickableImageLink(imageAsset: youtubeSquare, linkUrl: youtubeSoc),
             ClickableImageLink(imageAsset: linkedInLogo, linkUrl: linkedInSoc),
-            ClickableImageLink(imageAsset: githubSquare, linkUrl: githubGrey),
+            ClickableImageLink(imageAsset: githubSquare, linkUrl: githubSoc),
             ClickableImageLink(imageAsset: xSquare , linkUrl: xSoc),
             ClickableImageLink(imageAsset: instagramSquare, linkUrl: instagramSoc),
           ],
@@ -164,7 +164,7 @@ class _HomePageState extends State<HomePage> {
               ),
           ),
           const SizedBox(height: 50),
-          FooterBar()          
+          FooterBar(footbarColor: gBlue,)          
         ],
         
       ),

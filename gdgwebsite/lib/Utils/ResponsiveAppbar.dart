@@ -5,11 +5,13 @@ import 'package:gdgwebsite/Constants.dart';
 class ResponsiveAppBar extends StatelessWidget implements PreferredSizeWidget {
   final List<Widget> navItems;
   final VoidCallback onMenuTap;
+  final Color borderColor;
   final bool isMenuOpen;
   final Animation<double> menuAnimation;
 
   const ResponsiveAppBar({
     super.key,
+    required this.borderColor,
     required this.navItems,
     required this.onMenuTap,
     required this.isMenuOpen,
@@ -36,7 +38,7 @@ class ResponsiveAppBar extends StatelessWidget implements PreferredSizeWidget {
           color: theme.scaffoldBackgroundColor.withOpacity(.95),
           border: Border(
             bottom: BorderSide(
-              color:gBlue.withValues(alpha: .6),
+              color: borderColor.withValues(alpha: .6),
               width: 1.5,
             ),
           ),

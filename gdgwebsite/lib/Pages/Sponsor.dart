@@ -32,7 +32,7 @@ class _SponsorPageState extends State<SponsorPage> {
   Widget build(BuildContext context) {
 
     return Scaffold(
-      appBar: const Appbar(),
+      appBar: const Appbar(borderColor: gGreen,),
       body: Stack(
         children: [
            Positioned.fill(child: MagnetismField()),
@@ -56,7 +56,7 @@ class _SponsorPageState extends State<SponsorPage> {
                             ),
                             SecondPart(isMobile: true),
                             const SizedBox(height: 30),
-                            const FooterBar(),
+                            const FooterBar(footbarColor: gGreen,),
                           ],
                         )
                       : Column(
@@ -80,7 +80,7 @@ class _SponsorPageState extends State<SponsorPage> {
                               ],
                             ),
                             const SizedBox(height: 30),
-                            const FooterBar(),
+                            const FooterBar(footbarColor: gGreen,),
                           ],
                         ),
                 ),

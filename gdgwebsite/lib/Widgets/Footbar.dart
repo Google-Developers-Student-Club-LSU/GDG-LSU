@@ -10,7 +10,8 @@ import 'package:gdgwebsite/Constants.dart';
 import 'package:gdgwebsite/Utils/CIickableImageLink.dart';
 
 class FooterBar extends StatelessWidget {
-  const FooterBar({super.key});
+  final Color footbarColor;
+  const FooterBar({super.key, required this.footbarColor});
 
   @override
   Widget build(BuildContext context) {
@@ -24,8 +25,8 @@ class FooterBar extends StatelessWidget {
         decoration: BoxDecoration(  
           gradient: LinearGradient(
             colors: [
-              (Colors.blue).withValues(alpha: .6),
-              isDark? Colors.black: Colors.white
+              (footbarColor).withValues(alpha: .6),
+              isDark? Colors.black: Color(0xFFDDD8D4)
             ],
             begin: Alignment.bottomRight,
             end: Alignment.topLeft,
@@ -40,7 +41,7 @@ class FooterBar extends StatelessWidget {
                     topRight: Radius.circular(16),
                   ),
               border: Border(
-                top: BorderSide(color: gBlue.withValues(alpha: .6), width: 2, ),
+                top: BorderSide(color: footbarColor.withValues(alpha: .6), width: 2, ),
               ),
               color: isDark
                   ? Colors.black.withValues(alpha: .05)

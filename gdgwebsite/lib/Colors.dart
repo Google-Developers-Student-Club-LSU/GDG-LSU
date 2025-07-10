@@ -43,7 +43,7 @@ TextStyle SecondSecStyle = StandardText.copyWith(
   fontWeight: FontWeight.w500
 );
 // backgroundColor
-const lightBackgroundColor = Color(0xFFFFFFFF);
+const lightBackgroundColor = Color(0xFFDDD8D4);
 const darkBackgroundColor = Color(0xFF000000); 
 
 // letterColor

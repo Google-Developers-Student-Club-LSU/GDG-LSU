@@ -6,16 +6,16 @@
 // Authors: Dina Taing
 //
 
-import 'package:flutter/material.dart';
-import 'package:gdgwebsite/Widgets/Appbar.dart';
+// import 'package:flutter/material.dart';
+// import 'package:gdgwebsite/Widgets/Appbar.dart';
 
-class BlogPage extends StatelessWidget {
-  const BlogPage({super.key});
+// class BlogPage extends StatelessWidget {
+//   const BlogPage({super.key});
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: const Appbar(),
-    );
-  }
-}
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       appBar: const Appbar(),
+//     );
+//   }
+// }

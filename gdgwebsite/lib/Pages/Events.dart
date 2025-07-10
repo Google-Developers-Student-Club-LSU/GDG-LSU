@@ -31,7 +31,7 @@ class _EventsPageState extends State<EventsPage> {
     final isLightMode = Theme.of(context).brightness == Brightness.light;
     Color themeBackGround = isLightMode ? Colors.black.withValues(alpha: .2) : Colors.white70.withValues(alpha: .1);
     return Scaffold(
-      appBar: const Appbar(),
+      appBar: const Appbar(borderColor: gYellow,),
       body: Stack(
         children: [
           SizedBox(
@@ -57,7 +57,7 @@ class _EventsPageState extends State<EventsPage> {
                     
                     ),
                 SizedBox(height: 100,),
-                FooterBar()
+                FooterBar(footbarColor: gYellow,)
                ],
              ),
            ),

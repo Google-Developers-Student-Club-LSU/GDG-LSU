@@ -60,7 +60,7 @@ class ProfileDrawer extends StatelessWidget {
                       ),
                 ),
                 const SizedBox(height: 12),
-                Container(
+                SizedBox(
                   height: 250,
                   child: SingleChildScrollView(
                       child:  SelectableText(
@@ -83,7 +83,7 @@ class ProfileDrawer extends StatelessWidget {
             left: 20,
             bottom: 20,
             child: ClickableImageLink(
-              width: 100,
+              width: 70,
               imageAsset: linkedInLogo,
               linkUrl: linkedinLink,
             ),
