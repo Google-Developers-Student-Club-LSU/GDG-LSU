@@ -3,7 +3,6 @@ import 'package:flutter/gestures.dart' as ui;
 import 'package:flutter/material.dart';
 import 'package:gdgwebsite/EboardWidgets/Picture.dart';
 import 'package:gdgwebsite/EboardWidgets/ProfileDrawer.dart';
-import 'package:flutter/foundation.dart';
 
 class AnimationPage extends StatefulWidget {
   final String fullName;
@@ -34,6 +33,7 @@ class AnimationPage extends StatefulWidget {
 class _AnimationPageState extends State<AnimationPage>
     with SingleTickerProviderStateMixin {
   late AnimationController animationController;
+  
 
   @override
   void initState() {

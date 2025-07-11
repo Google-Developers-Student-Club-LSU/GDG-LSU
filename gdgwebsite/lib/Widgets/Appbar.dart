@@ -13,7 +13,8 @@ import 'package:gdgwebsite/Utils/NavHoverItem.dart';
 import 'package:gdgwebsite/Utils/ResponsiveAppbar.dart';
 
 class Appbar extends StatefulWidget implements PreferredSizeWidget {
-  const Appbar({super.key});
+  final Color borderColor;
+  const Appbar({super.key, required this.borderColor});
 
   @override
   State<Appbar> createState() => _AppbarState();
@@ -154,14 +155,15 @@ class _AppbarState extends State<Appbar> with SingleTickerProviderStateMixin {
     Widget spacer = const SizedBox(width: 25);
 
     return ResponsiveAppBar(
+      borderColor: widget.borderColor,
       navItems: [
         NavHoverItem(label: 'Home', route: home, baseColor: textColor, hoverColor: gBlue),
         spacer,
-        NavHoverItem(label: 'Eboard', route: eboard, baseColor: textColor, hoverColor: gYellow),
+        NavHoverItem(label: 'Eboard', route: eboard, baseColor: textColor, hoverColor: gRed),
         spacer,
-        NavHoverItem(label: 'Events', route: events, baseColor: textColor, hoverColor: gGreen),
+        NavHoverItem(label: 'Events', route: events, baseColor: textColor, hoverColor: gYellow),
         spacer,
-        NavHoverItem(label: 'Sponsor', route: sponsor, baseColor: textColor, hoverColor: gRed),
+        NavHoverItem(label: 'Sponsor', route: sponsor, baseColor: textColor, hoverColor: gGreen),
         spacer,
       ],
       onMenuTap: () => _toggleMenu(context),

@@ -25,8 +25,8 @@ class ProfileDrawer extends StatelessWidget {
       decoration: BoxDecoration(
         color: lightBackgroundColor,
         border: Border.all(
-          color: gBlue, // Change to any border color you prefer
-          width: 1,
+          color: gRed, // Change to any border color you prefer
+          width: 3,
         ),
         borderRadius: BorderRadius.circular(16), // Rounded corners
       ),
@@ -60,7 +60,7 @@ class ProfileDrawer extends StatelessWidget {
                       ),
                 ),
                 const SizedBox(height: 12),
-                Container(
+                SizedBox(
                   height: 250,
                   child: SingleChildScrollView(
                       child:  SelectableText(
@@ -83,7 +83,7 @@ class ProfileDrawer extends StatelessWidget {
             left: 20,
             bottom: 20,
             child: ClickableImageLink(
-              width: 100,
+              width: 70,
               imageAsset: linkedInLogo,
               linkUrl: linkedinLink,
             ),

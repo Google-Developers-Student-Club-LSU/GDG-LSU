@@ -5,11 +5,13 @@ import 'package:gdgwebsite/Constants.dart';
 class ResponsiveAppBar extends StatelessWidget implements PreferredSizeWidget {
   final List<Widget> navItems;
   final VoidCallback onMenuTap;
+  final Color borderColor;
   final bool isMenuOpen;
   final Animation<double> menuAnimation;
 
   const ResponsiveAppBar({
     super.key,
+    required this.borderColor,
     required this.navItems,
     required this.onMenuTap,
     required this.isMenuOpen,
@@ -25,6 +27,7 @@ class ResponsiveAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     final bool mobile = isMobile(context);
     final theme = Theme.of(context);
+    final isDark = theme.brightness == Brightness.dark;
 
     return ClipRRect(
       borderRadius: const BorderRadius.only(
@@ -33,10 +36,17 @@ class ResponsiveAppBar extends StatelessWidget implements PreferredSizeWidget {
       ),
       child: Container(
         decoration: BoxDecoration(
-          color: theme.scaffoldBackgroundColor.withOpacity(.95),
+      gradient: LinearGradient(
+            colors: [
+              (borderColor).withValues(alpha: .6),
+              isDark? Colors.black: lightBackgroundColor
+            ],
+            begin: Alignment.bottomLeft,
+            end: Alignment.topRight,
+          ),
           border: Border(
             bottom: BorderSide(
-              color:gBlue.withValues(alpha: .6),
+              color: borderColor.withValues(alpha: .6),
               width: 1.5,
             ),
           ),
