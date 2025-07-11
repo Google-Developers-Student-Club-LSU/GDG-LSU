@@ -136,10 +136,6 @@ class SecondPart extends StatelessWidget {
 }
 
 
-
-
-
-
 class SponsorLink extends StatefulWidget {
  
   const SponsorLink({

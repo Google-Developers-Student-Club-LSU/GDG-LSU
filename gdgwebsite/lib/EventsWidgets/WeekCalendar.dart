@@ -11,7 +11,7 @@ import 'package:gdgwebsite/Colors.dart';
 import 'package:gdgwebsite/Constants.dart';
 import 'package:gdgwebsite/EventsWidgets/EventCart.dart';
 import 'package:gdgwebsite/Models/EventModel.dart';
-import 'package:gdgwebsite/Utils/CacheEvents.dart';
+import 'package:gdgwebsite/provider/EventProvider.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 

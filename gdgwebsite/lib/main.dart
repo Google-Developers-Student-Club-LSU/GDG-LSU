@@ -14,15 +14,25 @@ import 'package:gdgwebsite/Pages/Eboard.dart';
 import 'package:gdgwebsite/Pages/Events.dart';
 import 'package:gdgwebsite/Pages/Home.dart';
 import 'package:gdgwebsite/Pages/Sponsor.dart';
-import 'package:gdgwebsite/Utils/CacheEvents.dart';
-import 'package:provider/provider.dart';void main() {
+import 'package:gdgwebsite/provider/EventProvider.dart';
+import 'package:gdgwebsite/provider/ThemeProvider.dart';
+import 'package:provider/provider.dart';
+
+void main() {
   runApp(
-    ChangeNotifierProvider(
-      create: (_) {
-        final provider = EventProvider();
-        provider.loadEvents(myEvents);
-        return provider;
-      },
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider<EventProvider>(
+          create: (_) {
+            final provider = EventProvider();
+            provider.loadEvents(myEvents);
+            return provider;
+          },
+        ),
+        ChangeNotifierProvider<ThemeProvider>(
+          create: (_) => ThemeProvider(),
+        ),
+      ],
       child: const MyApp(),
     ),
   );
@@ -40,7 +50,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: lightTheme,
       darkTheme: darkTheme,
-      themeMode: ThemeMode.system,
+      themeMode: Provider.of<ThemeProvider>(context).themeMode,
       home: HomePage(),
       routes: {
         home: (_) => const HomePage(),

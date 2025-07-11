@@ -16,6 +16,7 @@ import 'package:gdgwebsite/RandomArts/TriangleMesh.dart';
 import 'package:gdgwebsite/Utils/CIickableImageLink.dart';
 import 'package:gdgwebsite/Utils/CustomButton.dart';
 import 'package:gdgwebsite/Utils/ReponsiveWrap.dart';
+import 'package:gdgwebsite/Widgets/FloatingDarkLightMode.dart';
 import 'package:gdgwebsite/Widgets/Footbar.dart';
 import 'package:gdgwebsite/Widgets/Appbar.dart';
 import 'package:gdgwebsite/utils/AnimatedCounter.dart';
@@ -57,6 +58,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingDarkLightmode(backgroundColor: gBlue,),
       appBar:  Appbar(borderColor: gBlue,),
       body: ListView(
         controller: _scrollController,
