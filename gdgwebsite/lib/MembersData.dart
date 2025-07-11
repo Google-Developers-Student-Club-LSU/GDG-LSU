@@ -1,3 +1,10 @@
+//
+// Licensed under Creative Commons Attribution-NonCommercial-ShareAlike 4.0
+// International License https://creativecommons.org/licenses/by-nc-sa/4.0/
+// Authors: Dina Taing
+//
+
+
 
 import 'package:gdgwebsite/Constants.dart';
 import 'package:gdgwebsite/Models/MemberModel.dart';
@@ -22,6 +29,14 @@ Apart from coding, I like One Piece, Cooking, and Working out(honestly, not much
 ''',
     linkedin: 'https://www.linkedin.com/in/mujtaba-malik-7b8442299/',
     imageAsset: failedImage,
+  ),
+    MemberProfile(
+    fullName: 'Hudson Vu',
+    position: 'Vice President',
+    yearAndMajor: 'Junior Computer Science',
+    shortIntro: "Hello everyone, I’m so excited to be part of GDG again this year. A little about me, I love doing hackathons and game jams.  Outside of Comp Sci, I’m getting math and robotics minors, and I love hiking and nature. Feel free to message me for anything!",
+    linkedin: "https://www.linkedin.com/in/hudson-vu-855214203",
+    imageAsset: hudsonPic,
   ),
   MemberProfile(
     fullName: 'Jerrick Miles',
