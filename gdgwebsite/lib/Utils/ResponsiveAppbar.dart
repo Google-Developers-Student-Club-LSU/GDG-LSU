@@ -27,6 +27,7 @@ class ResponsiveAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     final bool mobile = isMobile(context);
     final theme = Theme.of(context);
+    final isDark = theme.brightness == Brightness.dark;
 
     return ClipRRect(
       borderRadius: const BorderRadius.only(
@@ -35,7 +36,14 @@ class ResponsiveAppBar extends StatelessWidget implements PreferredSizeWidget {
       ),
       child: Container(
         decoration: BoxDecoration(
-          color: theme.scaffoldBackgroundColor.withOpacity(.95),
+      gradient: LinearGradient(
+            colors: [
+              (borderColor).withValues(alpha: .6),
+              isDark? Colors.black: lightBackgroundColor
+            ],
+            begin: Alignment.bottomLeft,
+            end: Alignment.topRight,
+          ),
           border: Border(
             bottom: BorderSide(
               color: borderColor.withValues(alpha: .6),

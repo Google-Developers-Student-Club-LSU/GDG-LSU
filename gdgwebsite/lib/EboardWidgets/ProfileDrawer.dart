@@ -25,8 +25,8 @@ class ProfileDrawer extends StatelessWidget {
       decoration: BoxDecoration(
         color: lightBackgroundColor,
         border: Border.all(
-          color: gBlue, // Change to any border color you prefer
-          width: 1,
+          color: gRed, // Change to any border color you prefer
+          width: 3,
         ),
         borderRadius: BorderRadius.circular(16), // Rounded corners
       ),
