@@ -1,4 +1,8 @@
-
+//
+// Licensed under Creative Commons Attribution-NonCommercial-ShareAlike 4.0
+// International License https://creativecommons.org/licenses/by-nc-sa/4.0/
+// Authors: Dina Taing
+//
 
 final String home = '/home';
 final String events = 'events';
@@ -53,6 +57,7 @@ const youtubeGrey =  'assets/logo/YoutubeGrey.png';
 const iconOfficer = 'assets/icon/officers.png';
 const iconMemember = 'assets/icon/members.png';
 const gifWorkshop = "assets/icon/Workshop.gif";
+const iconGallery = "assets/icon/gallery.png";
 const gifCommunity = "assets/icon/Community.gif";
 
 //sponsorPDf 

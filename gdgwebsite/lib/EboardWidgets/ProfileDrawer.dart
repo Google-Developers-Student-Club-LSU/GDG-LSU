@@ -25,10 +25,10 @@ class ProfileDrawer extends StatelessWidget {
       decoration: BoxDecoration(
         color: lightBackgroundColor,
         border: Border.all(
-          color: gRed, // Change to any border color you prefer
+          color: gRed, 
           width: 3,
         ),
-        borderRadius: BorderRadius.circular(16), // Rounded corners
+        borderRadius: BorderRadius.circular(16), 
       ),
       child: Stack(
         children: [
@@ -78,7 +78,6 @@ class ProfileDrawer extends StatelessWidget {
             ),
           ),
 
-          // Bottom-left LinkedIn icon
           Positioned(
             left: 20,
             bottom: 20,

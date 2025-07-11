@@ -1,3 +1,11 @@
+//
+// Licensed under Creative Commons Attribution-NonCommercial-ShareAlike 4.0
+// International License https://creativecommons.org/licenses/by-nc-sa/4.0/
+// Authors: Dina Taing
+//
+
+
+
 
 
 // UPCOMING EVENTS
@@ -18,7 +26,8 @@ final List<Map<String, dynamic>> myEvents = [
     "endDate": DateTime(2025, 7, 15, 10, 30),
     "description": "Weekly sync-up with the team to discuss goals.",
     "color": gGreen,
-    "room" : "PFT 1200"
+    "room" : "PFT 1200",
+    "galleryUrl" : "https://ww4.fmovies.co/film/family-guy-season-11-9393/"
   },
     {
     "title": "General Body Meeting",

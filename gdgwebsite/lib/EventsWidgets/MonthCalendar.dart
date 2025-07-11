@@ -92,7 +92,7 @@ void didChangeDependencies() {
             padding: const EdgeInsets.all(6),
             child: Stack(
               children: [
-                // Day number in the top-left corner
+                
                 Positioned(
                   top: 0,
                   left: 0,
@@ -101,7 +101,7 @@ void didChangeDependencies() {
                     style: StandardText.copyWith(fontSize: 12, color: Colors.white),
                   ),
                 ),
-                // Centered event title (if any)
+               
                 if (events.isNotEmpty)
                   InkWell(
                     onTap: (){
@@ -117,6 +117,7 @@ void didChangeDependencies() {
                             image: events.first.event?.image,
                             color: events.first.event?.color ?? gYellow,
                             room: events.first.event?.room,
+                            gallerUrl: events.first.event?.galleryUrl,
                           ),
                     
                       );
@@ -149,7 +150,6 @@ void didChangeDependencies() {
           );
         },
           
-            // ignore: avoid_print
             onEventTap: (event, date) {
             } ,
           ),

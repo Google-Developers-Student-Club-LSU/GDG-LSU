@@ -92,6 +92,7 @@ void didChangeDependencies() {
                             image: events.first.event?.image,
                             color: events.first.event?.color ?? gYellow,
                             room: events.first.event?.room,
+                            gallerUrl: events.first.event?.galleryUrl,
                           ),
                     
                       );

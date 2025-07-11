@@ -22,7 +22,27 @@ class EventsPage extends StatefulWidget {
   State<EventsPage> createState() => _EventsPageState();
 }
 
-class _EventsPageState extends State<EventsPage> {
+class _EventsPageState extends State<EventsPage> with SingleTickerProviderStateMixin {
+  late AnimationController _fadeController;
+  late Animation<double> _fadeAnimation;
+
+  @override
+  void initState() {
+    super.initState();
+    _fadeController = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 1000),
+    );
+    _fadeAnimation = Tween<double>(begin: 0, end: 1.0).animate(_fadeController);
+    _fadeController.forward();
+  }
+
+  @override
+    void dispose() {
+      _fadeController.dispose();
+      super.dispose();
+    }
+
   
   bool isWeekView = false;
   @override
@@ -44,6 +64,18 @@ class _EventsPageState extends State<EventsPage> {
               crossAxisAlignment: CrossAxisAlignment.start,
                children: [
                 SizedBox(height: 50,),
+                Center(
+                  child: FadeTransition(opacity:_fadeAnimation,
+                  child: Wrap(
+                    children: [
+                      SelectableText("Tap on an event for more information",
+                      style: StandardText,
+                      textAlign: TextAlign.center,
+                      ),
+                    ],
+                  ),),
+                ),
+                SizedBox(height: 25,),
                  pillShapeButton(themeBackGround),
                 SizedBox(height: 10,),
                  Center(

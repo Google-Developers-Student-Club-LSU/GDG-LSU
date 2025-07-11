@@ -1,3 +1,8 @@
+//
+// Licensed under Creative Commons Attribution-NonCommercial-ShareAlike 4.0
+// International License https://creativecommons.org/licenses/by-nc-sa/4.0/
+// Authors: Dina Taing
+//
 import 'package:calendar_view/calendar_view.dart';
 import 'package:flutter/material.dart';
 import 'package:gdgwebsite/Models/EventModel.dart';
@@ -15,6 +20,7 @@ class EventProvider with ChangeNotifier {
       final description = e['description'] as String;
       final image = e['image'] as String?;
       final room = e['room'] as String?;
+      final galleryUrl = e['galleryUrl'] as String? ;
       final color = e['color'] as Color;
 
       return CalendarEventData<Event>(
@@ -30,6 +36,7 @@ class EventProvider with ChangeNotifier {
           image: image,
           room: room,
           color: color,
+          galleryUrl: galleryUrl,
         ),
       );
     }).toList();

@@ -13,6 +13,7 @@ class Event {
   final String description;
   final String? image;
   final Color color;
+  final String? galleryUrl;
   final String? room;
 
   Event( {
@@ -20,6 +21,7 @@ class Event {
     required this.description,
     this.image, 
     this.room,
+    this.galleryUrl,
     required this.color,
   });
 
