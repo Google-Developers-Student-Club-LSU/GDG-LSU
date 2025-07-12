@@ -10,7 +10,9 @@ import 'package:flutter/material.dart';
 import 'package:gdgwebsite/Colors.dart';
 import 'package:gdgwebsite/EboardWidgets/DrawerAnimation.dart';
 import 'package:gdgwebsite/MembersData.dart';
+import 'package:gdgwebsite/RandomArts/FlowingWaves.dart';
 import 'package:gdgwebsite/RandomArts/GlowingParticles.dart';
+import 'package:gdgwebsite/RandomArts/SmoothRandomArt.dart';
 import 'package:gdgwebsite/Widgets/Appbar.dart';
 import 'package:gdgwebsite/Widgets/Footbar.dart';
 
@@ -23,7 +25,7 @@ class EboardPage extends StatefulWidget {
 
 class _EboardPageState extends State<EboardPage> with TickerProviderStateMixin {
   bool showIntro = true;
-  final String introText = 'Tap on board member to see more info';
+  final String introText = 'Meet the Eboard !! tap a member to learn more.';
   late AnimationController _fadeController;
   late Animation<double> _fadeAnimation;
 
@@ -35,7 +37,7 @@ class _EboardPageState extends State<EboardPage> with TickerProviderStateMixin {
 
     _fadeController = AnimationController(
       vsync: this,
-      duration: const Duration(milliseconds: 500),
+      duration: const Duration(milliseconds: 400),
     );
     _fadeAnimation = Tween<double>(begin: 1.0, end: 0.0).animate(_fadeController);
 
@@ -70,16 +72,27 @@ class _EboardPageState extends State<EboardPage> with TickerProviderStateMixin {
               child: FadeTransition(
                 opacity: _fadeAnimation,
                 child: Container(
-                  color: lightBackgroundColor,
+                  color: Theme.of(context).scaffoldBackgroundColor,
                   alignment: Alignment.center,
-                  child: Text(
-                    introText,
-                    textAlign: TextAlign.center,
-                    style: const TextStyle(
-                      fontSize: 24,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black,
-                    ),
+                  child: Stack(
+                    children: [
+                      SizedBox(
+                        width: double.infinity,
+                        height: double.infinity,
+                        child: FlowingWaves() ,
+                      ),
+                      Center(
+                        child: Text(
+                          introText,
+                          textAlign: TextAlign.center,
+                          style: const TextStyle(
+                            fontSize: 24,
+                            fontWeight: FontWeight.bold,
+                    
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               ),
