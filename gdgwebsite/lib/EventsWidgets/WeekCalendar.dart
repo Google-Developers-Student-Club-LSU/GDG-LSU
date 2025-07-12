@@ -79,7 +79,8 @@ void didChangeDependencies() {
             ),
             eventTileBuilder: (date, events, boundry, start, end) {
               return InkWell(
-                onTap:(){
+                onTapDown:(TapDownDetails details){
+                   final tapDownDetails = details.globalPosition;
                       showDialog(
                         context: context,
                         barrierDismissible: true,
@@ -93,6 +94,7 @@ void didChangeDependencies() {
                             color: events.first.event?.color ?? gYellow,
                             room: events.first.event?.room,
                             gallerUrl: events.first.event?.galleryUrl,
+                            tapPosition: tapDownDetails,
                           ),
                     
                       );

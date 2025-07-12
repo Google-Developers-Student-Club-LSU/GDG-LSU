@@ -29,7 +29,7 @@ class _FlowingWavesState extends State<FlowingWaves>
   void initState() {
     super.initState();
     _controller = AnimationController.unbounded(vsync: this)
-      ..repeat(min: 0, max: 2 * pi, period: const Duration(seconds: 8));
+      ..repeat(min: 0, max: 2 * pi, period: const Duration(milliseconds: 400));
   }
 
   @override
@@ -63,12 +63,12 @@ class _WavePainter extends CustomPainter {
       ..strokeWidth = 2;
 
     for (int i = 0; i < waveCount; i++) {
-      paint.color = waveColors[i % waveColors.length].withOpacity(0.4);
+      paint.color = waveColors[i % waveColors.length];
 
       final path = Path();
-      final frequency = 2 + i; // more waves = more wiggly
-      final amplitude = size.height * 0.05 * (1 + i); // scale with canvas
-      final yOffset = size.height * 0.2 * (i + 1); // vertical layer spacing
+      final frequency = 2 + i;
+      final amplitude = size.height * 0.05 * (1 + i); 
+      final yOffset = size.height * 0.2 * (i + 1); 
 
       for (double x = 0; x <= size.width; x++) {
         final wave = sin((x / size.width * frequency * 2 * pi) + time);

@@ -41,7 +41,7 @@ class _EboardPageState extends State<EboardPage> with TickerProviderStateMixin {
     _fadeAnimation = Tween<double>(begin: 1.0, end: 0.0).animate(_fadeController);
 
     // Automatically fade out the intro after 1.5 seconds
-    Future.delayed(const Duration(milliseconds: 1500), () {
+    Future.delayed(const Duration(milliseconds: 1200), () {
       _fadeController.forward().then((_) {
         setState(() {
           showIntro = false;

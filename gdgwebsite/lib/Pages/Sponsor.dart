@@ -7,7 +7,7 @@
 import 'package:flutter/material.dart';
 import 'package:gdgwebsite/Colors.dart';
 import 'package:gdgwebsite/Constants.dart';
-import 'package:gdgwebsite/RandomArts/SwirlPainter.dart';
+import 'package:gdgwebsite/RandomArts/MagnetismField.dart';
 import 'package:gdgwebsite/SponsorWidget/PdfView.dart';
 import 'package:gdgwebsite/Utils/CIickableImageLink.dart';
 import 'package:gdgwebsite/Utils/ReponsiveWrap.dart';
