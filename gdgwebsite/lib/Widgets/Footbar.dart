@@ -5,7 +5,6 @@
 
 import 'dart:ui';
 import 'package:flutter/material.dart';
-import 'package:gdgwebsite/Colors.dart';
 import 'package:gdgwebsite/Constants.dart';
 import 'package:gdgwebsite/Utils/CIickableImageLink.dart';
 
