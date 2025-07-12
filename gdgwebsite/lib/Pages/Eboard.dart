@@ -24,7 +24,7 @@ class EboardPage extends StatefulWidget {
 
 class _EboardPageState extends State<EboardPage> with TickerProviderStateMixin {
   bool showIntro = true;
-  final String introText = 'Meet the Eboard !! tap a member to learn more.';
+  final String introText = 'Tap a board member to see who they are.';
   late AnimationController _fadeController;
   late Animation<double> _fadeAnimation;
 
