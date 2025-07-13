@@ -38,11 +38,16 @@ class _EboardPageState extends State<EboardPage> with TickerProviderStateMixin {
       vsync: this,
       duration: const Duration(milliseconds: 400),
     );
-    _fadeAnimation = Tween<double>(begin: 1.0, end: 0.0).animate(_fadeController);
+    _fadeAnimation = Tween<double>(begin: 0, end: 1.0).animate(_fadeController);
 
-    // Automatically fade out the intro after 1.5 seconds
-    Future.delayed(const Duration(milliseconds: 1200), () {
       _fadeController.forward().then((_) {
+        setState(() {
+          showIntro = true;
+        });
+      });
+    // Automatically fade out the intro after 1.5 seconds
+    Future.delayed(const Duration(milliseconds: 1500), () {
+      _fadeController.reverse().then((_) {
         setState(() {
           showIntro = false;
         });

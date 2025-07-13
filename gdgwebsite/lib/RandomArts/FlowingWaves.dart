@@ -29,7 +29,7 @@ class _FlowingWavesState extends State<FlowingWaves>
   void initState() {
     super.initState();
     _controller = AnimationController.unbounded(vsync: this)
-      ..repeat(min: 0, max: 2 * pi, period: const Duration(milliseconds: 400));
+      ..repeat(min: 0, max: 2 * pi, period: const Duration(milliseconds: 1000));
   }
 
   @override
