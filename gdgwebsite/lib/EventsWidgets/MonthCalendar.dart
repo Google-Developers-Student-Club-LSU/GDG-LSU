@@ -92,7 +92,6 @@ void didChangeDependencies() {
             padding: const EdgeInsets.all(6),
             child: Stack(
               children: [
-                
                 Positioned(
                   top: 0,
                   left: 0,
@@ -104,7 +103,8 @@ void didChangeDependencies() {
                
                 if (events.isNotEmpty)
                   InkWell(
-                    onTap: (){
+                    onTapDown: (TapDownDetails details){
+                      final tapPosition = details.globalPosition;
                       showDialog(
                         context: context,
                         barrierDismissible: true,
@@ -118,6 +118,7 @@ void didChangeDependencies() {
                             color: events.first.event?.color ?? gYellow,
                             room: events.first.event?.room,
                             gallerUrl: events.first.event?.galleryUrl,
+                            tapPosition: tapPosition,
                           ),
                     
                       );
