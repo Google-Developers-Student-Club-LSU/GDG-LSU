@@ -10,16 +10,17 @@ import 'package:gdgwebsite/EventsWidgets/CreateEvent.dart';
 import 'package:gdgwebsite/Utils/CIickableImageLink.dart';
 import 'package:intl/intl.dart';
 
-class EventCart extends StatelessWidget {
+class EventCart extends StatefulWidget {
   final String title;
   final String description;
   final DateTime start;
   final DateTime end;
-  final Color color; 
+  final Color color;
   final String? image;
-  final String? room; 
+  final String? room;
   final String? gallerUrl;
   final VoidCallback? onClose;
+  final Offset? tapPosition;
 
   const EventCart({
     super.key,
@@ -31,140 +32,194 @@ class EventCart extends StatelessWidget {
     this.gallerUrl,
     this.image = failedImage,
     required this.description,
-
-
     this.onClose,
+    this.tapPosition,
   });
 
   @override
-Widget build(BuildContext context) {
+  State<EventCart> createState() => _EventCartState();
+}
 
-   bool timeNotAvailable = 
-    start == end || end.difference(start).inMinutes <= 30;;
-   
-   final isLightMode = Theme.of(context).brightness == Brightness.light;
-   final greyColor = isLightMode ? Colors.black54 : Colors.white70;
-  final isMobile = MediaQuery.of(context).size.width < 900;
+class _EventCartState extends State<EventCart> with SingleTickerProviderStateMixin {
+  late AnimationController _fadeController;
+  late Animation<double> _fadeAnimation;
 
-  return Center(
-    child: Material(
-      color: Theme.of(context).scaffoldBackgroundColor,
-      borderRadius: BorderRadius.circular(16), 
-      clipBehavior: Clip.antiAlias,
-      child: Container(
-        width: MediaQuery.of(context).size.width * (isMobile ? 0.8 :0.6),
-        constraints: const BoxConstraints(
-          maxHeight: 600, 
-        ),
-        padding: const EdgeInsets.all(20),
-        decoration:  BoxDecoration(
-                  color: Theme.of(context).scaffoldBackgroundColor,
-                  borderRadius: BorderRadius.circular(16.0),
-                  border: Border.all(color: color, width: 3),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black.withValues(alpha: .3),
-                      blurRadius: 20,
-                      offset: const Offset(0, 10),
-                    ),
-                  ],
+  @override
+  void initState() {
+    super.initState();
+
+    _fadeController = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 300),
+    );
+
+    _fadeAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
+      CurvedAnimation(parent: _fadeController, curve: Curves.easeInOut),
+    );
+
+    _fadeController.forward();
+  }
+
+  Alignment _calculateAlignment(BuildContext context) {
+    if (widget.tapPosition == null) return Alignment.center;
+
+    final renderBox = context.findRenderObject() as RenderBox?;
+    if (renderBox == null || !renderBox.hasSize) return Alignment.center;
+
+    final size = renderBox.size;
+    final localTapPos = renderBox.globalToLocal(widget.tapPosition!);
+
+    final alignmentX = (localTapPos.dx / size.width) * 2 - 1;
+    final alignmentY = (localTapPos.dy / size.height) * 2 - 1;
+
+    return Alignment(alignmentX, alignmentY);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    bool timeNotAvailable = widget.start == widget.end || widget.end.difference(widget.start).inMinutes <= 30;
+
+    final isLightMode = Theme.of(context).brightness == Brightness.light;
+    final greyColor = isLightMode ? Colors.black54 : Colors.white70;
+    final isMobile = MediaQuery.of(context).size.width < 900;
+
+    return Center(
+      child: AnimatedBuilder(
+        animation: _fadeAnimation,
+        builder: (context, child) {
+          final alignment = _calculateAlignment(context);
+          return Transform.scale(
+            scale: _fadeAnimation.value,
+            alignment: alignment,
+            child: child,
+          );
+        },
+        child: Material(
+          color: Theme.of(context).scaffoldBackgroundColor,
+          borderRadius: BorderRadius.circular(16),
+          clipBehavior: Clip.antiAlias,
+          child: Container(
+            width: MediaQuery.of(context).size.width * (isMobile ? 0.8 : 0.6),
+            constraints: const BoxConstraints(maxHeight: 600),
+            padding: const EdgeInsets.all(20),
+            decoration: BoxDecoration(
+              color: Theme.of(context).scaffoldBackgroundColor,
+              borderRadius: BorderRadius.circular(16.0),
+              border: Border.all(color: widget.color, width: 3),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black.withAlpha(77),
+                  blurRadius: 20,
+                  offset: const Offset(0, 10),
                 ),
-        child: SingleChildScrollView(
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Row(
+              ],
+            ),
+            child: SingleChildScrollView(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
                 children: [
-                 Align(
-                    alignment: Alignment.topLeft,
-                    child: Image.asset(gDSCLogo, height: 32,) ,
+                  Row(
+                    children: [
+                      Align(
+                        alignment: Alignment.topLeft,
+                        child: Image.asset(gDSCLogo, height: 32),
+                      ),
+                      const Spacer(),
+                      Align(
+                        alignment: Alignment.topRight,
+                        child: IconButton(
+                          icon: const Icon(Icons.close),
+                          onPressed: widget.onClose ?? () => Navigator.of(context).pop(),
+                        ),
+                      ),
+                    ],
                   ),
-                 Spacer(),
-                 Align(
-                  alignment: Alignment.topRight,
-                  child: IconButton(
-                  icon: const Icon(Icons.close),
-                  onPressed: onClose ?? () => Navigator.of(context).pop(),
-                ),
-              ),
-            ],
-          ),
-
-              const SizedBox(height: 10),
-
-              SelectableText(
-                'Events: $title',
-                style: StandardText.copyWith(fontSize: isMobile ? 30 : 40),
-                textAlign: TextAlign.left,
-              ),
-              const SizedBox(height: 10),
-
-                SelectableText(
-                  timeNotAvailable ?
-                  'Time will be announced soon'
-                   : 'Time: ${DateFormat('h:mm a').format(start)} — ${DateFormat('h:mm a').format(end)}',
-                  style: Theme.of(context).textTheme.bodySmall?.copyWith(color:timeNotAvailable ? gRed : color, fontSize: 20),
-                  textAlign: TextAlign.center,
-                ),
-                const SizedBox(height: 10),
-                SelectableText(
-                  room == null ?
-                  'Room: TBD'
-                   : 'Room: $room',
-                  style: Theme.of(context).textTheme.bodySmall?.copyWith(color: room == null? gRed : greyColor, fontSize: 20),
-                  textAlign: TextAlign.center,
-                ),
-
-              const SizedBox(height: 12),
-
-              Container(
-                width:  MediaQuery.of(context).size.width * 0.4,
-                child: SelectableText(
-                  description,
-                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(fontSize: 17),
-                  textAlign: TextAlign.left,
-                
-                ),
-              ),
-              const SizedBox(height: 12),
-
-              Image.asset(
-                image ?? failedImage ,
-                width: MediaQuery.of(context).size.width * 0.4,
-                fit: BoxFit.contain,
-                 errorBuilder: (context, error, stackTrace) {
-                  return const Text("Image failed to load.");
-                },
-              ),
-              const SizedBox(height: 50),
-              CalendarButton(title: title, description: description, start: start, end: end, room: room,color: color,),
-                  if (gallerUrl != null)
-                          Align(
-                            alignment: Alignment.centerLeft,
-                            child: Padding(
-                              padding: const EdgeInsets.only(top: 10 ,left: 10, bottom: 10),
-                              child: Row(
-                                children: [
-                                  ClickableImageLink(
-                                    width: 70,
-                                    imageAsset: iconGallery,
-                                    linkUrl: gallerUrl ?? '/',
-                                  ),
-                                const SizedBox(height: 10),
-                                SelectableText('⬅️ Tap to see the event gallery', 
-                                style: StandardText.copyWith(fontSize: 15, fontWeight: FontWeight.w500),
-                                )
-
-                                ],
-                              ),
+                  const SizedBox(height: 10),
+                  SelectableText(
+                    'Events: ${widget.title}',
+                    style: StandardText.copyWith(fontSize: isMobile ? 30 : 40),
+                    textAlign: TextAlign.left,
+                  ),
+                  const SizedBox(height: 10),
+                  SelectableText(
+                    timeNotAvailable
+                        ? 'Time will be announced soon'
+                        : 'Time: ${DateFormat('h:mm a').format(widget.start)} — ${DateFormat('h:mm a').format(widget.end)}',
+                    style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                          color: timeNotAvailable ? gRed : widget.color,
+                          fontSize: 20,
+                        ),
+                    textAlign: TextAlign.center,
+                  ),
+                  const SizedBox(height: 10),
+                  SelectableText(
+                    widget.room == null ? 'Room: TBD' : 'Room: ${widget.room}',
+                    style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                          color: widget.room == null ? gRed : greyColor,
+                          fontSize: 20,
+                        ),
+                    textAlign: TextAlign.center,
+                  ),
+                  const SizedBox(height: 12),
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width * 0.4,
+                    child: SelectableText(
+                      widget.description,
+                      style: Theme.of(context).textTheme.bodyMedium?.copyWith(fontSize: 17),
+                      textAlign: TextAlign.left,
+                    ),
+                  ),
+                  const SizedBox(height: 12),
+                  Image.asset(
+                    widget.image ?? failedImage,
+                    width: MediaQuery.of(context).size.width * 0.4,
+                    fit: BoxFit.contain,
+                    errorBuilder: (context, error, stackTrace) {
+                      return const Text("Image failed to load.");
+                    },
+                  ),
+                  const SizedBox(height: 50),
+                  CalendarButton(
+                    title: widget.title,
+                    description: widget.description,
+                    start: widget.start,
+                    end: widget.end,
+                    room: widget.room,
+                    color: widget.color,
+                  ),
+                  if (widget.gallerUrl != null)
+                    Align(
+                      alignment: Alignment.centerLeft,
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 10, left: 10, bottom: 10),
+                        child: Row(
+                          children: [
+                            ClickableImageLink(
+                              width: 70,
+                              imageAsset: iconGallery,
+                              linkUrl: widget.gallerUrl ?? '/',
                             ),
-                          ),
-            ],
+                            const SizedBox(width: 10),
+                            SelectableText(
+                              '⬅️ Tap to see the event gallery',
+                              style: StandardText.copyWith(fontSize: 15, fontWeight: FontWeight.w500),
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                ],
+              ),
+            ),
           ),
         ),
       ),
-    ),
-  );
-}
+    );
+  }
 
+  @override
+  void dispose() {
+    _fadeController.dispose();
+    super.dispose();
+  }
 }
