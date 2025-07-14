@@ -38,6 +38,14 @@ Apart from coding, I like One Piece, Cooking, and Working out(honestly, not much
     linkedin: "https://www.linkedin.com/in/hudson-vu-855214203",
     imageAsset: hudsonPic,
   ),
+    MemberProfile(
+    fullName: 'Trenton Hew',
+    position: 'Secretary',
+    yearAndMajor: 'Junior Cybersecurity',
+    shortIntro:"I am the current Secretary for GDSC. In my past 2 years with the club I've had the opportunity to assist workshops like the Intro to Python workshop, present a workshop and promote our club during welcome week. I am excited to continue this position into the new semester and see where the club goes!",
+    linkedin: "https://www.linkedin.com/in/trentonhew",
+    imageAsset: trentonPic,
+  ),
   MemberProfile(
     fullName: 'Jerrick Miles',
     position: 'Treasurer',

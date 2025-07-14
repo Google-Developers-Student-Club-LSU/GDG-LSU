@@ -38,7 +38,8 @@ const failedImage = 'assets/events/NoImage.png';
 const dinaPic = 'assets/members/Dina.jpg';
 const lillianPic = 'assets/members/Lillian.png';
 const jerrickPic = 'assets/members/Jerrick.jpg';
-const hudsonPic = 'members/Hudson.png';
+const hudsonPic = 'assets/members/Hudson.png';
+const trentonPic = 'members/Trenton.jpg';
 
 //logo 
 const linkedInLogo = 'assets/logo/LinkedIn.png';
