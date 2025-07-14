@@ -39,7 +39,7 @@ const dinaPic = 'assets/members/Dina.jpg';
 const lillianPic = 'assets/members/Lillian.png';
 const jerrickPic = 'assets/members/Jerrick.jpg';
 const hudsonPic = 'assets/members/Hudson.png';
-const trentonPic = 'members/Trenton.jpg';
+const trentonPic = 'assets/members/Trenton.jpg';
 
 //logo 
 const linkedInLogo = 'assets/logo/LinkedIn.png';
