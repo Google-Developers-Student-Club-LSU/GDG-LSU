@@ -29,7 +29,7 @@ const double containerHeight = 500;
 const sponsorBookletLink ='https://www.youtube.com';
 
   //sponsorLink
-  const googleLink =  'www.google.com';
+  const googleLink ='https://www.google.com/';
 
 //events 
 const failedImage = 'assets/events/NoImage.png';
