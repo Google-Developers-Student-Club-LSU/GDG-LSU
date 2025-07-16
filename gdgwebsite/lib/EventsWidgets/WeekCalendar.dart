@@ -37,6 +37,14 @@ void didChangeDependencies() {
   }
 }
 
+int weekNumber(DateTime date) {
+  final firstDayOfYear = DateTime(date.year, 1, 1);
+  final daysOffset = firstDayOfYear.weekday - DateTime.monday;
+  final firstMonday = firstDayOfYear.subtract(Duration(days: daysOffset));
+  final difference = date.difference(firstMonday).inDays;
+  return (difference / 7).ceil() + 1;
+}
+
   @override
   Widget build(BuildContext context) {
     final isLightMode = Theme.of(context).brightness == Brightness.light;
@@ -50,6 +58,7 @@ void didChangeDependencies() {
             maxHeight: MediaQuery.of(context).size.height ,
           ),
           child:  WeekView<Event>(
+
             startHour: 7,
             endHour: 22,
             backgroundColor: themeBackGround,
@@ -57,6 +66,62 @@ void didChangeDependencies() {
             headerStringBuilder: (date, {secondaryDate}) {
               return DateFormat('MMMM yyyy').format(date);
             },
+           timeLineBuilder: (DateTime date) {
+            return Container(
+              decoration: BoxDecoration() ,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(vertical: 4.0),
+                child: Align(
+                  alignment:isMobile ?  Alignment(1.0, -1.6):  Alignment(1.0, -2.7),
+                  child: Text(
+                    DateFormat.jm().format(date), 
+                    style:   TextStyle(fontSize: isMobile ? 10 : 20,  fontWeight: FontWeight.bold, color: Colors.white),
+                  ),
+                ),
+              ),
+            );
+          },
+
+          weekNumberBuilder: (DateTime firstDayOfWeek) {
+            return Container(
+              padding: const EdgeInsets.all(8.0),
+              decoration: BoxDecoration(
+                border: Border(
+                  left: BorderSide(color: gYellow, width: 1),
+                  top: BorderSide(color: gYellow, width: 1),
+                  right: BorderSide(color: gYellow, width: 1),
+                  bottom: BorderSide(color: gYellow, width: 2),
+                )
+              ),
+              child: Center(
+                child: Text(
+                  'Week ${weekNumber(firstDayOfWeek)}',
+                  style: TextStyle(fontSize: isMobile ? 10 : 20,  fontWeight: FontWeight.bold, color: Colors.white),
+                ),
+              ),
+            );
+          },
+            weekDayBuilder: (DateTime date) {
+            return Container(
+              decoration: BoxDecoration(
+                border:  Border(
+                  left: BorderSide(color: gYellow, width: 1),
+                  top: BorderSide(color: gYellow, width: 1),
+                  right: BorderSide(color: gYellow, width: 1),
+                  bottom: BorderSide(color: gYellow, width: 2),
+                )
+              ),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(vertical: 8.0),
+                child: Center(
+                  child: Text(
+                    DateFormat.E().format(date),
+                    style: TextStyle(fontSize: isMobile ? 10 : 20,  fontWeight: FontWeight.bold, color: Colors.white),
+                  ),
+                ),
+              ),
+            );
+          },
             onHeaderTitleTap: (date) async {},
             headerStyle: HeaderStyle(
               leftIconConfig: IconDataConfig(
@@ -66,7 +131,7 @@ void didChangeDependencies() {
                 ),
               ),
               decoration: BoxDecoration(
-                color: (isLightMode ? Colors.black.withValues(alpha: .4) : Colors.white70.withValues(alpha: .1)),
+                color: themeBackGround,
                 border: Border(
                   top: BorderSide(color: gYellow, width: 2),
                   left: BorderSide(color: gYellow, width: 2),
