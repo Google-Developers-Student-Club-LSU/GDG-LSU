@@ -94,9 +94,11 @@ void didChangeDependencies() {
               child: Padding(
                 padding: const EdgeInsets.symmetric(vertical: 8.0),
                 child: Center(
-                  child: Text(
-                    days[dayIndex],
-                    style: TextStyle(fontSize: isMobile ? 10 : 20,  fontWeight: FontWeight.bold, color: Colors.white),
+                  child: FittedBox(
+                    child: Text(
+                      days[dayIndex],
+                      style: TextStyle(fontSize: 20,  fontWeight: FontWeight.bold, color: Colors.white),
+                    ),
                   ),
                 ),
               ),
