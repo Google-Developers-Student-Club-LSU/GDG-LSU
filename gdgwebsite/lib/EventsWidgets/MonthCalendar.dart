@@ -51,6 +51,7 @@ void didChangeDependencies() {
             maxHeight: MediaQuery.of(context).size.height * 0.9,
           ),
           child: MonthView<Event>(
+
             controller: _eventController,
 
             useAvailableVerticalSpace: false,
@@ -79,6 +80,28 @@ void didChangeDependencies() {
               ),
               headerTextStyle: StandardText.copyWith(fontSize: 20, color: Colors.white),
             ),
+          weekDayBuilder: (int dayIndex) {
+            const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+            return Container(
+              decoration: BoxDecoration(
+                color:  (isLightMode ? Colors.black.withValues(alpha: .4) : Colors.white70.withValues(alpha: .1)),
+                border:  Border(
+                  left: BorderSide(color: gYellow, width: 2),
+                  top: BorderSide(color: gYellow, width: 2),
+                  right: BorderSide(color: gYellow, width: 2),
+                )
+              ),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(vertical: 8.0),
+                child: Center(
+                  child: Text(
+                    days[dayIndex],
+                    style: TextStyle(fontSize: isMobile ? 10 : 20,  fontWeight: FontWeight.bold, color: Colors.white),
+                  ),
+                ),
+              ),
+            );
+          },
     cellBuilder: (date, events, isToday, isInMonth, hideDaysNotInMonth,) {
         hideDaysNotInMonth = true;
         Color? cellColor = events.isNotEmpty
@@ -87,7 +110,7 @@ void didChangeDependencies() {
             return Container(
             decoration: BoxDecoration(
               color: cellColor,
-              border: Border.all(color: Colors.white70),
+              border: Border.all(color: gYellow),
             ),
             padding: const EdgeInsets.all(6),
             child: Stack(
