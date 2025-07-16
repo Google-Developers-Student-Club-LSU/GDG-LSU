@@ -29,7 +29,7 @@ const double containerHeight = 500;
 const sponsorBookletLink ='https://www.youtube.com';
 
   //sponsorLink
-  const googleLink ='https://www.google.com/';
+const googleLink ='https://www.google.com/';
 
 //events 
 const failedImage = 'assets/events/NoImage.png';
@@ -40,6 +40,7 @@ const lillianPic = 'assets/members/Lillian.png';
 const jerrickPic = 'assets/members/Jerrick.jpg';
 const hudsonPic = 'assets/members/Hudson.png';
 const trentonPic = 'assets/members/Trenton.jpg';
+const thomasPic = 'members/Thomas.jpeg';
 
 //logo 
 const linkedInLogo = 'assets/logo/LinkedIn.png';

@@ -55,6 +55,14 @@ Apart from coding, I like One Piece, Cooking, and Working out(honestly, not much
     imageAsset: jerrickPic,
   ),
   MemberProfile(
+    fullName: 'Thomas Lee',
+    position: 'Multi Media Manager',
+    yearAndMajor: 'Senior Computer Science',
+    shortIntro: "My name is Thomas lee, I am a senior at LSU studying computer science with a concentration in software engineering. My hobbies include watching movies, making videos, photography, playing video games, cooking, and analyzing philosophical questions. My favorite video game is red dead redemption 2, because of how much it embodies object oriented programming, and the storyline that touches the player's heart. My favorite google features are the google doodles that appear for each holiday. I chose to study computer science because I was interested in making games after we made side scroller games in my computer science class in high school. My goal in college is to graduate and be a contributing member of a society that strives for the betterment of humanity. My dream company is Sony, because I am interested in working with cameras, and improving the way history is recorded. I hope to be a Multi Media Manager that can record the club's activities and make sure no one is forgotten in the records.",
+    linkedin: "https://www.linkedin.com/in/thomas-lee-842a95265/",
+    imageAsset: thomasPic,
+  ),
+  MemberProfile(
     fullName: 'Lillian Holliday',
     position: 'Graphic Designer',
     yearAndMajor: 'Sophomore Computer Science',
