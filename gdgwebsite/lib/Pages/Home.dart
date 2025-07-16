@@ -366,7 +366,7 @@ children: [
       child: Container(
       width: MediaQuery.of(context).size.width *  0.7999,
       height: MediaQuery.of(context).size.height * 0.7999,
-        color: Colors.black.withValues(alpha: .2),
+        color: Colors.black.withValues(alpha: .6),
       ),
     ),
   ),
@@ -391,10 +391,10 @@ children: [
         const SizedBox(height: 24),
         AnimatedTextKit(
           animatedTexts: [
-            TyperAnimatedText('We Grow', textStyle: StandardTextStyled.copyWith(color: gBlue)),
-            TyperAnimatedText('We Innovate', textStyle: StandardTextStyled.copyWith(color: gGreen)),
-            TyperAnimatedText('We Build', textStyle: StandardTextStyled.copyWith(color: gRed)),
-            TyperAnimatedText('Together', textStyle: StandardTextStyled.copyWith(color: gYellow)),
+            TyperAnimatedText('Think Big.', textStyle: StandardTextStyled.copyWith(color: gBlue)),
+            TyperAnimatedText('Build Smart.', textStyle: StandardTextStyled.copyWith(color: gGreen)),
+            TyperAnimatedText('Lead Change.', textStyle: StandardTextStyled.copyWith(color: gRed)),
+            TyperAnimatedText('Together, We Thrive.', textStyle: StandardTextStyled.copyWith(color: gYellow)),
           ],
           repeatForever: true,
           pause: const Duration(milliseconds: 1500),
@@ -431,11 +431,11 @@ children: [
             ),
             Padding(
               padding: const EdgeInsets.only(bottom: 8.0),
-              child: SelectableText("Hands-on learning opportunities on Python,​", style: StandardText.copyWith(fontSize: 20, color: gRed, fontWeight: FontWeight.w500 ),),
+              child: SelectableText("Hands-on learning opportunities on Python,​", style: StandardText.copyWith(fontSize: 20, fontWeight: FontWeight.w500 ),),
             ),
             Padding(
               padding: const EdgeInsets.only(bottom: 8.0),
-              child: SelectableText("Flutter, Google Cloud, and more.​​", style: StandardText.copyWith(fontSize: 20, color: gRed, fontWeight: FontWeight.w500),),
+              child: SelectableText("Flutter, Google Cloud, and more.​​", style: StandardText.copyWith(fontSize: 20, fontWeight: FontWeight.w500),),
             )
         
           ],
@@ -557,11 +557,11 @@ class Community extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.only(bottom: 8.0),
-            child: SelectableText("Build connections and grow your network​", style: StandardText.copyWith(fontSize: 20, color: gRed, fontWeight: FontWeight.w500 ),),
+            child: SelectableText("Build connections and grow your network​", style: StandardText.copyWith(fontSize: 20, fontWeight: FontWeight.w500 ),),
           ),
           Padding(
             padding: const EdgeInsets.only(bottom: 8.0),
-            child: SelectableText("through engaging social events.​​", style: StandardText.copyWith(fontSize: 20, color: gRed, fontWeight: FontWeight.w500),),
+            child: SelectableText("through engaging social events.​​", style: StandardText.copyWith(fontSize: 20, fontWeight: FontWeight.w500),),
           )
         ],
       ),
