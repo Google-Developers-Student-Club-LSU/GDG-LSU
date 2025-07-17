@@ -55,6 +55,14 @@ Apart from coding, I like One Piece, Cooking, and Working out(honestly, not much
     imageAsset: jerrickPic,
   ),
   MemberProfile(
+    fullName: 'Leke Adelakun',
+    position: 'Public Relations',
+    yearAndMajor: 'Senior Marketing',
+    shortIntro: "No Description",
+    linkedin: "https://www.linkedin.com/in/oluwagbemileke-leke-adelakun-001233287/",
+    imageAsset: failedImage,
+  ),
+  MemberProfile(
     fullName: 'Thomas Lee',
     position: 'Multi Media Manager',
     yearAndMajor: 'Senior Computer Science',
@@ -72,7 +80,7 @@ Apart from coding, I like One Piece, Cooking, and Working out(honestly, not much
   ),
     MemberProfile(
     fullName: 'Dina Taing',
-    position: 'Web Master',
+    position: 'Webmaster',
     yearAndMajor: 'Senior Computer Science',
     shortIntro: "Hi, I’m the Web Master for GDG LSU and the sole developer behind our website. I’m deeply passionate about Go and Flutter for their speed, simplicity, and flexibility. Obsessed with UX and performance, I focus on building fast, intuitive, and polished experiences from backend to frontend. (Fun fact): This website is built entirely with Flutter!",
     linkedin: 'https://www.linkedin.com/in/dina-taing-143935236/',
