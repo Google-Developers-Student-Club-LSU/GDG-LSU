@@ -53,7 +53,7 @@ void didChangeDependencies() {
           child: MonthView<Event>(
 
             controller: _eventController,
-
+            borderColor: gYellow,
             useAvailableVerticalSpace: false,
             initialMonth: DateTime.now(),
             showBorder: true,

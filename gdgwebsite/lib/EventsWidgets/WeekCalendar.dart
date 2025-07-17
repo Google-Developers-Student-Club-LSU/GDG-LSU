@@ -58,7 +58,10 @@ int weekNumber(DateTime date) {
             maxHeight: MediaQuery.of(context).size.height ,
           ),
           child:  WeekView<Event>(
-
+            liveTimeIndicatorSettings: LiveTimeIndicatorSettings(
+              color: gYellow,
+              showTime: true
+            ),
             startHour: 7,
             endHour: 22,
             backgroundColor: themeBackGround,
