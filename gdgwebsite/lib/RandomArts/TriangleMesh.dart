@@ -23,7 +23,7 @@ class _TriangleMeshState extends State<TriangleMesh>
     with SingleTickerProviderStateMixin {
   late final AnimationController _controller;
   List<_MovingPoint> _points = [];
-  final int pointCount = 40;
+  final int pointCount = 50;
 
   @override
   void initState() {
@@ -54,15 +54,15 @@ class _TriangleMeshState extends State<TriangleMesh>
               rand.nextDouble() * size.height,
             );
             final velocity = Offset(
-              rand.nextDouble() * 1.5 - 0.75,
-              rand.nextDouble() * 1.5 - 0.75,
+              rand.nextDouble() * 2 - 0.75,
+              rand.nextDouble() * 2 - 0.75,
             );
             return _MovingPoint(pos, velocity, size);
           });
         }
 
         return CustomPaint(
-          painter: _TriangleMeshPainter(_points),
+          painter: _TriangleMeshPainter(_points, Theme.of(context).brightness),
           size: size,
         );
       },
@@ -98,11 +98,14 @@ class _MovingPoint {
 
 class _TriangleMeshPainter extends CustomPainter {
   final List<_MovingPoint> points;
+  final Brightness brightness;
+
+  
   final Paint paintLine = Paint()
     ..strokeWidth = 1
     ..style = PaintingStyle.stroke;
 
-  _TriangleMeshPainter(this.points);
+  _TriangleMeshPainter(this.points, this.brightness);
 
   @override
   void paint(Canvas canvas, Size size) {
@@ -123,12 +126,14 @@ class _TriangleMeshPainter extends CustomPainter {
     for (final line in connections) {
       final index = points.indexOf(line.a);
       paintLine.color = googleColors[index % googleColors.length]
-          .withOpacity(0.2 + Random().nextDouble() * 0.3);
+          .withValues(alpha: .2 + Random().nextDouble() * 0.3);
       canvas.drawLine(line.a.pos, line.b.pos, paintLine);
     }
 
-    // Optional: Draw dots
-    final dotPaint = Paint()..color = Colors.white.withOpacity(0.2);
+      final dotPaint = Paint()
+    ..color = (brightness == Brightness.dark ? Colors.white : Colors.black)
+        .withValues(alpha: .4);
+
     for (final p in points) {
       canvas.drawCircle(p.pos, 1.5, dotPaint);
     }
