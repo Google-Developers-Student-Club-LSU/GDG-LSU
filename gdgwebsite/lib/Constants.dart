@@ -15,7 +15,7 @@ const double containerHeight = 500;
 
 //Links
   //Joins US (Home Page)
-  const discordInviteLink ='https://discord.gg/RD829cKU';
+  const discordInviteLink ='https://discord.gg/syJnNvTxW9';
   const tigerlinkLink ='https://tigerlink.lsu.edu/';
 
   //Gdsc Social Link
