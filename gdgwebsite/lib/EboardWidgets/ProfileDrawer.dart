@@ -22,6 +22,8 @@ class ProfileDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      width:  containerWidth,
+      height : containerHeight,
       decoration: BoxDecoration(
         color: lightBackgroundColor,
         border: Border.all(
@@ -46,7 +48,7 @@ class ProfileDrawer extends StatelessWidget {
                 ),
                 const SizedBox(height: 4),
                 SelectableText(
-                  position,
+                  position.toUpperCase(),
                   style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                         color: lightLetterColor,
                       ),
