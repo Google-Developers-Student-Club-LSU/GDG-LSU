@@ -53,7 +53,7 @@ void didChangeDependencies() {
           child: MonthView<Event>(
 
             controller: _eventController,
-            borderColor: gYellow,
+          borderColor: gYellow,
             useAvailableVerticalSpace: false,
             initialMonth: DateTime.now(),
             showBorder: true,
@@ -112,7 +112,6 @@ void didChangeDependencies() {
             return Container(
             decoration: BoxDecoration(
               color: cellColor,
-              border: Border.all(color: gYellow),
             ),
             padding: const EdgeInsets.all(6),
             child: Stack(
