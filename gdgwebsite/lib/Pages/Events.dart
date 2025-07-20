@@ -135,7 +135,7 @@ class _EventsPageState extends State<EventsPage> with SingleTickerProviderStateM
                             onPressed: () => setState(() => isWeekView = true),
                             style: TextButton.styleFrom(
                               padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-                              backgroundColor: isWeekView ? gYellow :themeBackGround,
+                              backgroundColor: isWeekView ? gYellow : themeBackGround,
                               foregroundColor: isWeekView ? Colors.white :gYellow,
                               shape: const RoundedRectangleBorder(
                                 borderRadius: BorderRadius.only(
