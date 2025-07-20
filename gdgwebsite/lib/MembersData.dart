@@ -58,9 +58,15 @@ Apart from coding, I like One Piece, Cooking, and Working out(honestly, not much
     fullName: 'Leke Adelakun',
     position: 'Public Relations',
     yearAndMajor: 'Senior Marketing',
-    shortIntro: "No Description",
+    shortIntro: 
+    '''
+  Hey, I’m Oluwagbemileke Adelakun, but everyone just calls me Leke /lay-kay/. I’m 21 and currently a senior majoring in Marketing. I’m into all things creative and love figuring out how brands grab people’s attention (and keep it).
+  When I’m not in class or working on projects, you can usually catch me playing video games, playing soccer, or getting competitive in volleyball or pickleball. I like staying active and having fun, especially when it involves some friendly competition.
+  I try to keep things real and give my best in whatever I do, whether it’s school, sports, or just helping out where I can. I’m always up for learning something new or trying something different especially if it lets me connect with new people or bring ideas to life.
+  Marketing feels like the perfect mix of everything I enjoy: strategy, creativity, and working with others. I don’t have everything figured out yet, but I’m excited to see where this path takes me.
+    ''',
     linkedin: "https://www.linkedin.com/in/oluwagbemileke-leke-adelakun-001233287/",
-    imageAsset: failedImage,
+    imageAsset: lekePic,
   ),
   MemberProfile(
     fullName: 'Thomas Lee',
