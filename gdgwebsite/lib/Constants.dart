@@ -14,7 +14,7 @@ const double containerWidth = 300;
 const double containerHeight = 500;
 
 //Links
-  //Joins US (Home Page)
+//Joins US (Home Page)
   const discordInviteLink ='https://discord.gg/syJnNvTxW9';
   const tigerlinkLink ='https://tigerlink.lsu.edu/';
 
@@ -30,6 +30,9 @@ const sponsorBookletLink ='https://www.youtube.com';
 
   //sponsorLink
 const googleLink ='https://www.google.com/';
+
+
+//Picture 
 
 //events 
 const failedImage = 'assets/events/NoImage.png';
@@ -68,7 +71,6 @@ const gifCommunity = "assets/icon/Community.gif";
 const pdfBooklet = 'assets/sponsorPackage/Sponsors.pdf';
 
 // SlideShow
-
  const List<String> firstSlideShow= [
           'assets/firstSlide/slide1.png',
           'assets/firstSlide/slide2.png',
@@ -76,7 +78,6 @@ const pdfBooklet = 'assets/sponsorPackage/Sponsors.pdf';
           'assets/firstSlide/slide4.jpg',
           'assets/firstSlide/slide5.png'
 ];
-
 const List<String> secondSlideShow = [
           'assets/thirdSlide/slide1.png',
           'assets/thirdSlide/slide2.jpg',
