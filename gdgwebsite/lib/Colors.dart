@@ -23,7 +23,7 @@ const colorizeColors = [
 TextStyle textFont = GoogleFonts.ptSans();
 
 //textStyle
-final TextStyle StandardTextStyled = StandardText.copyWith(
+final TextStyle standardTextStyled = StandardText.copyWith(
   fontSize: 60,
   color: Colors.white,
   shadows: [
