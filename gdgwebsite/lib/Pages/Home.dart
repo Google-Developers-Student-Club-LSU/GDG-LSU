@@ -383,7 +383,7 @@ children: [
           animatedTexts: [
             TyperAnimatedText(
               'Our Mission:',
-              textStyle: StandardTextStyled,
+              textStyle: standardTextStyled,
             ),
           ],
           isRepeatingAnimation: false,
@@ -391,10 +391,10 @@ children: [
         const SizedBox(height: 24),
         AnimatedTextKit(
           animatedTexts: [
-            TyperAnimatedText('Think Big.', textStyle: StandardTextStyled.copyWith(color: gBlue)),
-            TyperAnimatedText('Build Smart.', textStyle: StandardTextStyled.copyWith(color: gGreen)),
-            TyperAnimatedText('Lead Change.', textStyle: StandardTextStyled.copyWith(color: gRed)),
-            TyperAnimatedText('Together, We Thrive.', textStyle: StandardTextStyled.copyWith(color: gYellow)),
+            TyperAnimatedText('Think Big.', textStyle: standardTextStyled.copyWith(color: gBlue)),
+            TyperAnimatedText('Build Smart.', textStyle: standardTextStyled.copyWith(color: gGreen)),
+            TyperAnimatedText('Lead Change.', textStyle: standardTextStyled.copyWith(color: gRed)),
+            TyperAnimatedText('Together, We Thrive.', textStyle: standardTextStyled.copyWith(color: gYellow)),
           ],
           repeatForever: true,
           pause: const Duration(milliseconds: 1500),
@@ -466,7 +466,7 @@ Widget _buildAnimatedText(double offset) {
           children: [
             SelectableText(
               "ENHANCE",
-              style: StandardTextStyled.copyWith(
+              style: standardTextStyled.copyWith(
                 fontSize: 50,
                 fontWeight: FontWeight.w900,
                 color: gBlue
@@ -474,7 +474,7 @@ Widget _buildAnimatedText(double offset) {
             ),
             SelectableText(
               "YOUR TECHNICAL",
-              style: StandardTextStyled.copyWith(
+              style: standardTextStyled.copyWith(
                 fontSize: 50,
                 fontWeight: FontWeight.w800,
                 color: gGreen
@@ -482,7 +482,7 @@ Widget _buildAnimatedText(double offset) {
             ),
             SelectableText(
               "KNOWLEDGE",
-              style: StandardTextStyled.copyWith(
+              style: standardTextStyled.copyWith(
                 fontSize: 50,
                 fontWeight: FontWeight.w800,
                 color: gYellow
