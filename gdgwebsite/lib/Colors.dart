@@ -23,7 +23,7 @@ const colorizeColors = [
 TextStyle textFont = GoogleFonts.ptSans();
 
 //textStyle
-final TextStyle standardTextStyled = StandardText.copyWith(
+final TextStyle standardTextStyled = standardText.copyWith(
   fontSize: 60,
   color: Colors.white,
   shadows: [
@@ -34,12 +34,12 @@ final TextStyle standardTextStyled = StandardText.copyWith(
     ),
   ],
 );
-TextStyle StandardText = TextStyle(
+TextStyle standardText = TextStyle(
                 fontSize: 50,
                 fontWeight: FontWeight.w800,
                    );
 
-TextStyle SecondSecStyle = StandardText.copyWith(
+TextStyle SecondSecStyle = standardText.copyWith(
   fontWeight: FontWeight.w500
 );
 // backgroundColor
