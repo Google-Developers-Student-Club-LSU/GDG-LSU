@@ -26,7 +26,7 @@ const double containerHeight = 500;
   const instagramSoc = 'https://www.instagram.com/dsc_lsu/';
 
 //GoogleDrive of Pdf
-const sponsorBookletLink ='https://www.youtube.com';
+const sponsorBookletLink ='https://drive.google.com/file/d/1tQc8s8lU-ZZdAMfHRquLcTelr8aNvvrW/view?usp=sharing';
 
   //sponsorLink
 const googleLink ='https://www.google.com/';
