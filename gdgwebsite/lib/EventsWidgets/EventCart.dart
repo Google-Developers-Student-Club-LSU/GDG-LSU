@@ -137,7 +137,7 @@ class _EventCartState extends State<EventCart> with SingleTickerProviderStateMix
                   const SizedBox(height: 10),
                   SelectableText(
                     'Events: ${widget.title}',
-                    style: StandardText.copyWith(fontSize: isMobile ? 30 : 40),
+                    style: standardText.copyWith(fontSize: isMobile ? 30 : 40),
                     textAlign: TextAlign.left,
                   ),
                   const SizedBox(height: 10),
@@ -202,7 +202,7 @@ class _EventCartState extends State<EventCart> with SingleTickerProviderStateMix
                             const SizedBox(width: 10),
                             SelectableText(
                               '⬅️ Tap to see the event gallery',
-                              style: StandardText.copyWith(fontSize: 15, fontWeight: FontWeight.w500),
+                              style: standardText.copyWith(fontSize: 15, fontWeight: FontWeight.w500),
                             )
                           ],
                         ),
