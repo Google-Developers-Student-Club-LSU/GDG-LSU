@@ -143,7 +143,7 @@ int weekNumber(DateTime date) {
                 ),
                 borderRadius: const BorderRadius.vertical(top: Radius.circular(24)),
               ),
-              headerTextStyle: StandardText.copyWith(fontSize: 20, color: Colors.white),
+              headerTextStyle: standardText.copyWith(fontSize: 20, color: Colors.white),
             ),
             eventTileBuilder: (date, events, boundry, start, end) {
               return InkWell(
@@ -181,7 +181,7 @@ int weekNumber(DateTime date) {
                                 softWrap: true,
                                 overflow: TextOverflow.ellipsis,
                                 textAlign: TextAlign.center,
-                                style: StandardText.copyWith(fontSize: isMobile? 10: 17 , color: Colors.white, fontWeight: FontWeight.w600),
+                                style: standardText.copyWith(fontSize: isMobile? 10: 17 , color: Colors.white, fontWeight: FontWeight.w600),
                               )
                       :
                      FittedBox(
@@ -191,7 +191,7 @@ int weekNumber(DateTime date) {
                                 softWrap: true,
                                 overflow: TextOverflow.visible,
                                 textAlign: TextAlign.center,
-                                style: StandardText.copyWith(fontSize: isMobile? 10: 17 , color: Colors.white, fontWeight: FontWeight.w600),
+                                style: standardText.copyWith(fontSize: isMobile? 10: 17 , color: Colors.white, fontWeight: FontWeight.w600),
                               ),
                     ),
                   ),
