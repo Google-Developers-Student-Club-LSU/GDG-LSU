@@ -82,7 +82,7 @@ class _AnimatedCounterState extends State<AnimatedCounter> with SingleTickerProv
       builder: (context, _) {
         return SelectableText(
           '${_animation.value}',
-          style: StandardText.copyWith(fontWeight: FontWeight.w500),
+          style: standardText.copyWith(fontWeight: FontWeight.w500),
         );
       },
     );
