@@ -114,7 +114,7 @@ class SecondPart extends StatelessWidget {
            width: isMobile ? double.infinity : 600,
           child: SelectableText('THANK YOU TO OUR SPONSORS!',
               textAlign:TextAlign.center  ,
-              style: StandardText.copyWith(fontSize: isMobile ? 40:40),
+              style: standardText.copyWith(fontSize: isMobile ? 40:40),
               ),
         ),
       
@@ -192,7 +192,7 @@ class _SponsorLinkState extends State<SponsorLink>
               painter: _UnderlinePainter(shader, _fontSize),
               child: Text(
                 'Sponsorship Booklet',
-                style: StandardText.copyWith(
+                style: standardText.copyWith(
                   fontSize: _fontSize,
                   fontWeight: FontWeight.bold,
                   foreground: Paint()..shader = shader,
