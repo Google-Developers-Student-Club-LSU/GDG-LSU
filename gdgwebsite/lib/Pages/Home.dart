@@ -98,7 +98,7 @@ class _HomePageState extends State<HomePage> {
             height: 50,
           ),
           Center(child: SelectableText("UPCOMING EVENTS",
-          style: StandardText,)
+          style: standardText,)
           ),
       const SizedBox(
             height: 50,
@@ -123,7 +123,7 @@ class _HomePageState extends State<HomePage> {
           ),            
           Center(
             child:SelectableText('Join Us',
-                style: StandardText.copyWith(fontWeight: FontWeight.w500),),
+                style: standardText.copyWith(fontWeight: FontWeight.w500),),
           ),
       const SizedBox(
             height: 50,
@@ -134,7 +134,7 @@ class _HomePageState extends State<HomePage> {
           ),   
       Center(
             child:SelectableText('Follow us',
-                style: StandardText.copyWith(fontWeight: FontWeight.w500),),
+                style: standardText.copyWith(fontWeight: FontWeight.w500),),
           ), 
       const SizedBox(height: 50),   
       Center(
@@ -194,7 +194,7 @@ class _HomePageState extends State<HomePage> {
                     child: AnimatedTextKit(animatedTexts: 
                     [
                       TypewriterAnimatedText('ENCHANCE',
-                      textStyle: StandardText.copyWith(
+                      textStyle: standardText.copyWith(
                          fontSize: 40,
                         color: gBlue
                       ))
@@ -206,7 +206,7 @@ class _HomePageState extends State<HomePage> {
                     child: AnimatedTextKit(animatedTexts: 
                     [
                       TypewriterAnimatedText('YOUR TECHNICAL',
-                      textStyle: StandardText.copyWith(
+                      textStyle: standardText.copyWith(
                         fontSize: 40,
                         color: gYellow
                       ))
@@ -218,7 +218,7 @@ class _HomePageState extends State<HomePage> {
                     child: AnimatedTextKit(animatedTexts: 
                     [
                       TypewriterAnimatedText('KNOWLEDGE',
-                      textStyle: StandardText.copyWith(
+                      textStyle: standardText.copyWith(
                         fontSize: 40,
                         color: gGreen
                       ))
@@ -285,7 +285,7 @@ class _HomePageState extends State<HomePage> {
                         Center(child: Image.asset(iconOfficer, width: 150,)),
                         AnimatedCounter(targetNumber: 8,),
                         SelectableText('Officers',
-                        style: StandardText.copyWith(fontWeight: FontWeight.w500),)
+                        style: standardText.copyWith(fontWeight: FontWeight.w500),)
                       ],
                     ),
                     const SizedBox(height: 50,),
@@ -294,7 +294,7 @@ class _HomePageState extends State<HomePage> {
                         Center(child: Image.asset(iconMemember, width: 150,)),
                         AnimatedCounter(targetNumber: 163,),
                         SelectableText('Memebers',
-                        style: StandardText.copyWith(fontWeight: FontWeight.w500),)
+                        style: standardText.copyWith(fontWeight: FontWeight.w500),)
                       ],
                     ),
 
@@ -308,7 +308,7 @@ class _HomePageState extends State<HomePage> {
                         Center(child: Image.asset(iconOfficer, width: 150,)),
                         AnimatedCounter(targetNumber: 8,),
                         SelectableText('Officers',
-                        style: StandardText.copyWith(fontWeight: FontWeight.w500),)
+                        style: standardText.copyWith(fontWeight: FontWeight.w500),)
                       ],
                     ),
                     const SizedBox(width: 200,),
@@ -317,7 +317,7 @@ class _HomePageState extends State<HomePage> {
                         Center(child: Image.asset(iconMemember, width: 150,)),
                         AnimatedCounter(targetNumber: 163,),
                         SelectableText('Memebers',
-                        style: StandardText.copyWith(fontWeight: FontWeight.w500),)
+                        style: standardText.copyWith(fontWeight: FontWeight.w500),)
                       ],
                     ),
                     
@@ -427,15 +427,15 @@ children: [
             ),
             Padding(
               padding: const EdgeInsets.only(bottom: 8.0),
-              child: SelectableText("Workshop", style: StandardText.copyWith(fontSize: 40 ),),
+              child: SelectableText("Workshop", style: standardText.copyWith(fontSize: 40 ),),
             ),
             Padding(
               padding: const EdgeInsets.only(bottom: 8.0),
-              child: SelectableText("Hands-on learning opportunities on Python,​", style: StandardText.copyWith(fontSize: 20, fontWeight: FontWeight.w500 ),),
+              child: SelectableText("Hands-on learning opportunities on Python,​", style: standardText.copyWith(fontSize: 20, fontWeight: FontWeight.w500 ),),
             ),
             Padding(
               padding: const EdgeInsets.only(bottom: 8.0),
-              child: SelectableText("Flutter, Google Cloud, and more.​​", style: StandardText.copyWith(fontSize: 20, fontWeight: FontWeight.w500),),
+              child: SelectableText("Flutter, Google Cloud, and more.​​", style: standardText.copyWith(fontSize: 20, fontWeight: FontWeight.w500),),
             )
         
           ],
@@ -553,15 +553,15 @@ class Community extends StatelessWidget {
           child: CircleImageContainer(imagePath:gifCommunity, size: 200,)),
           Padding(
             padding: const EdgeInsets.only(bottom: 8.0),
-            child: SelectableText("Community", style: StandardText.copyWith(fontSize: 40 ),),
+            child: SelectableText("Community", style: standardText.copyWith(fontSize: 40 ),),
           ),
           Padding(
             padding: const EdgeInsets.only(bottom: 8.0),
-            child: SelectableText("Build connections and grow your network​", style: StandardText.copyWith(fontSize: 20, fontWeight: FontWeight.w500 ),),
+            child: SelectableText("Build connections and grow your network​", style: standardText.copyWith(fontSize: 20, fontWeight: FontWeight.w500 ),),
           ),
           Padding(
             padding: const EdgeInsets.only(bottom: 8.0),
-            child: SelectableText("through engaging social events.​​", style: StandardText.copyWith(fontSize: 20, fontWeight: FontWeight.w500),),
+            child: SelectableText("through engaging social events.​​", style: standardText.copyWith(fontSize: 20, fontWeight: FontWeight.w500),),
           )
         ],
       ),
