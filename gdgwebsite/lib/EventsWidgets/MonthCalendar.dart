@@ -78,7 +78,7 @@ void didChangeDependencies() {
                 ),
                 borderRadius: const BorderRadius.vertical(top: Radius.circular(24)),
               ),
-              headerTextStyle: StandardText.copyWith(fontSize: 20, color: Colors.white),
+              headerTextStyle: standardText.copyWith(fontSize: 20, color: Colors.white),
             ),
           weekDayBuilder: (int dayIndex) {
             const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
@@ -121,7 +121,7 @@ void didChangeDependencies() {
                   left: 0,
                   child: SelectableText(
                     date.day.toString(),
-                    style: StandardText.copyWith(fontSize: 12, color: Colors.white),
+                    style: standardText.copyWith(fontSize: 12, color: Colors.white),
                   ),
                 ),
                
@@ -157,14 +157,14 @@ void didChangeDependencies() {
                                 softWrap: true,
                                 overflow: TextOverflow.ellipsis,
                                 textAlign: TextAlign.center,
-                                style: StandardText.copyWith(fontSize: isMobile? 10: 17 , color: Colors.white, fontWeight: FontWeight.w600),
+                                style: standardText.copyWith(fontSize: isMobile? 10: 17 , color: Colors.white, fontWeight: FontWeight.w600),
                               )
                         : FittedBox(
                           child: Text(
                             events.first.title,
                             maxLines: 2,
                             textAlign: TextAlign.center,
-                            style: StandardText.copyWith(fontSize: isMobile ? 10 : 17 , color: Colors.white, fontWeight: FontWeight.w600),
+                            style: standardText.copyWith(fontSize: isMobile ? 10 : 17 , color: Colors.white, fontWeight: FontWeight.w600),
                           ),
                         ),
                       ),
