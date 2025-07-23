@@ -69,7 +69,7 @@ class _EventsPageState extends State<EventsPage> with SingleTickerProviderStateM
                   child: Wrap(
                     children: [
                       SelectableText("Tap on an event for more information",
-                      style: StandardText,
+                      style: standardText,
                       textAlign: TextAlign.center,
                       ),
                     ],
