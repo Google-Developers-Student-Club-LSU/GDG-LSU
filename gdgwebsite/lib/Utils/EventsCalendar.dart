@@ -72,7 +72,7 @@ void didChangeDependencies() {
                 ),
                 borderRadius: const BorderRadius.vertical(top: Radius.circular(24)),
               ),
-              headerTextStyle: StandardText.copyWith(fontSize: 20),
+              headerTextStyle: standardText.copyWith(fontSize: 20),
             ),
 cellBuilder: (date, events, isToday, isInMonth, hideDaysNotInMonth) {
   final cellColor = events.isNotEmpty ? events.first.event?.color : backgroundColor;
@@ -92,7 +92,7 @@ cellBuilder: (date, events, isToday, isInMonth, hideDaysNotInMonth) {
           left: 0,
           child: Text(
             date.day.toString(),
-            style: StandardText.copyWith(fontSize: 17),
+            style: standardText.copyWith(fontSize: 17),
           ),
         ),
         // Centered event title (if any)
@@ -107,7 +107,7 @@ cellBuilder: (date, events, isToday, isInMonth, hideDaysNotInMonth) {
                                 softWrap: true,
                                 overflow: TextOverflow.ellipsis,
                                 textAlign: TextAlign.center,
-                                style: StandardText.copyWith(fontSize: 10 , color: Colors.white, fontWeight: FontWeight.w600),
+                                style: standardText.copyWith(fontSize: 10 , color: Colors.white, fontWeight: FontWeight.w600),
                  )
                    :
                     FittedBox(
@@ -116,7 +116,7 @@ cellBuilder: (date, events, isToday, isInMonth, hideDaysNotInMonth) {
                     maxLines: 2,
                     overflow: TextOverflow.visible,
                     textAlign: TextAlign.left,
-                    style: StandardText.copyWith(fontSize: 20 , fontWeight: FontWeight.w500),
+                    style: standardText.copyWith(fontSize: 20 , fontWeight: FontWeight.w500),
                                     ),
                   ),
               
