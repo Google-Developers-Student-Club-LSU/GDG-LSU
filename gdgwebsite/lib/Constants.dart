@@ -68,7 +68,7 @@ const iconGallery = "assets/icon/gallery.png";
 const gifCommunity = "assets/icon/Community.gif";
 
 //sponsorPDf 
-const pdfBooklet = 'assets/sponsorPackage/Sponsors.pdf';
+const pdfBooklet = 'assets/sponsorPackage/GDGSponsor.pdf';
 
 // SlideShow
  const List<String> firstSlideShow= [
