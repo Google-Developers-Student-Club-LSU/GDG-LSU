@@ -136,7 +136,7 @@ class _EventCartState extends State<EventCart> with SingleTickerProviderStateMix
                   ),
                   const SizedBox(height: 10),
                   SelectableText(
-                    'Events: ${widget.title}',
+                   widget.title,
                     style: standardText.copyWith(fontSize: isMobile ? 30 : 40),
                     textAlign: TextAlign.left,
                   ),
