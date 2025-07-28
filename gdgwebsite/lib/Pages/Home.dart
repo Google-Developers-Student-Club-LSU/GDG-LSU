@@ -66,7 +66,7 @@ class _HomePageState extends State<HomePage> {
     ReponsiveWrap(
       builder: (isMobile) {
         return 
-        isMobile? FirstSectionMobile(context) :
+        isMobile? firstSectionMobile(context) :
       Stack(children: [
             FirstSectionBackground(),
                 _buildFirstSlideShow(scrollOffset),
@@ -81,18 +81,18 @@ class _HomePageState extends State<HomePage> {
          return isMobile ? Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Workshops(),
+            workshops(),
             SizedBox(height: 30,),
             Community()
 
           ],
          )
          : 
-         SecondSection();
+         secondSection();
        }
      ),
       const SizedBox(height:50),
-          ThirdSection(context),
+          thirdSection(context),
 
           const SizedBox(
             height: 50,
@@ -103,7 +103,7 @@ class _HomePageState extends State<HomePage> {
       const SizedBox(
             height: 50,
           ),          
-          FourthSection(),
+          fourthSection(),
           Center(
               child: HoverExpand(
                 child: CustomButton(
@@ -117,7 +117,7 @@ class _HomePageState extends State<HomePage> {
       const SizedBox(
             height: 50,
           ),
-           FifthSection(),
+           fifthSection(),
       const SizedBox(
             height: 50,
           ),            
@@ -128,7 +128,7 @@ class _HomePageState extends State<HomePage> {
       const SizedBox(
             height: 50,
           ),   
-          SixthSection(),
+          sixthSection(),
       const SizedBox(
             height: 50,
           ),   
@@ -173,10 +173,10 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Stack FirstSectionMobile(BuildContext context) {
+  Stack firstSectionMobile(BuildContext context) {
     return Stack(
         children: [
-        Container(
+        SizedBox(
         width: double.infinity,
         height: MediaQuery.of(context).size.height,
         child: const TriangleMesh(),
@@ -246,7 +246,7 @@ class _HomePageState extends State<HomePage> {
 
 
 
-  ReponsiveWrap SixthSection() {
+  ReponsiveWrap sixthSection() {
     return
      ReponsiveWrap(
        builder: (isMobile) {
@@ -273,7 +273,7 @@ class _HomePageState extends State<HomePage> {
      );
   }
 
-  ReponsiveWrap FifthSection() {
+  ReponsiveWrap fifthSection() {
     return ReponsiveWrap(
       builder: (isMobile) {
         return isMobile ?
@@ -283,7 +283,7 @@ class _HomePageState extends State<HomePage> {
              Column(
                       children: [
                         Center(child: Image.asset(iconOfficer, width: 150,)),
-                        AnimatedCounter(targetNumber: 8,),
+                        AnimatedCounter(targetNumber: numberOfficer,),
                         SelectableText('Officers',
                         style: standardText.copyWith(fontWeight: FontWeight.w500),)
                       ],
@@ -292,7 +292,7 @@ class _HomePageState extends State<HomePage> {
                     Column(
                       children: [
                         Center(child: Image.asset(iconMemember, width: 150,)),
-                        AnimatedCounter(targetNumber: 188,),
+                        AnimatedCounter(targetNumber: numberMembers,),
                         SelectableText('Developers',
                         style: standardText.copyWith(fontWeight: FontWeight.w500),)
                       ],
@@ -306,7 +306,7 @@ class _HomePageState extends State<HomePage> {
                     Column(
                       children: [
                         Center(child: Image.asset(iconOfficer, width: 150,)),
-                        AnimatedCounter(targetNumber: 8,),
+                        AnimatedCounter(targetNumber: numberOfficer,),
                         SelectableText('Officers',
                         style: standardText.copyWith(fontWeight: FontWeight.w500),)
                       ],
@@ -315,7 +315,7 @@ class _HomePageState extends State<HomePage> {
                     Column(
                       children: [
                         Center(child: Image.asset(iconMemember, width: 150,)),
-                        AnimatedCounter(targetNumber: 163,),
+                        AnimatedCounter(targetNumber: numberMembers,),
                         SelectableText('Developers',
                         style: standardText.copyWith(fontWeight: FontWeight.w500),)
                       ],
@@ -327,7 +327,7 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  AbsorbPointer FourthSection() {
+  AbsorbPointer fourthSection() {
     return AbsorbPointer(
       absorbing: true,
       child: Center(
@@ -344,7 +344,7 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Stack ThirdSection(BuildContext context) {
+  Stack thirdSection(BuildContext context) {
     return Stack(
 children: [
 
@@ -406,18 +406,18 @@ children: [
 );
   }
 
-  Row SecondSection() {
+  Row secondSection() {
     return Row(
     mainAxisAlignment: MainAxisAlignment.center,
     children: [
-      Workshops(),
+      workshops(),
       const SizedBox(width:50),
       Community(),  
     ],
    );
   }
 
-  Padding Workshops() {
+  Padding workshops() {
     return Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(
@@ -530,7 +530,7 @@ class FirstSectionBackground extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
           width: double.infinity,
           height: MediaQuery.of(context).size.height,
           child: const SpiralDotsArt(),
