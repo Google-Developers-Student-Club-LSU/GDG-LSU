@@ -316,7 +316,7 @@ class _HomePageState extends State<HomePage> {
                       children: [
                         Center(child: Image.asset(iconMemember, width: 150,)),
                         AnimatedCounter(targetNumber: 163,),
-                        SelectableText('Memebers',
+                        SelectableText('Developers',
                         style: standardText.copyWith(fontWeight: FontWeight.w500),)
                       ],
                     ),
