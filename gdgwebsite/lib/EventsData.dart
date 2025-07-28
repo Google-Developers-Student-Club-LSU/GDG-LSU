@@ -60,11 +60,27 @@ Bring your laptop and get ready to code!
     "room" : "PFT 1209"
   },
     {
-    "title": "Hackathon",
-    "date": DateTime(2025, 7, 30, 14, 30),
-    "endDate": DateTime(2025, 7, 30, 15, 30),
-    "description": "Annual physical check-up at local clinic.",
+    "title": "GeauxHack",
+    "date": DateTime(2025, 11, 7, 18, 00),
+    "endDate": DateTime(2025,11, 7, 23, 59),
+    "description": '''Join us for an exciting 3-day hackathon hosted in collaboration between SASE and GDG, packed with innovation, creativity, and fun. Designed for all skill levels, the event features two categories: Beginner and Advanced, making it both beginner-friendly and competitively engaging for experienced participants. Enjoy provided meals throughout the weekend, along with engaging activities, networking opportunities, and a collaborative atmosphere. The top teams in each category will earn amazing prizes and recognition, so bring your ideas, your energy, and your team for an unforgettable experience.''',
     "color": gRed,
-    "room" : "PFT 1219",
+    "room" : "Patrick F Taylor",
+  },
+  {
+    "title": "GeauxHack",
+    "date": DateTime(2025, 11, 8, 00, 00),
+    "endDate": DateTime(2025,11, 8, 23, 59),
+    "description": '''Join us for an exciting 3-day hackathon hosted in collaboration between SASE and GDG, packed with innovation, creativity, and fun. Designed for all skill levels, the event features two categories: Beginner and Advanced, making it both beginner-friendly and competitively engaging for experienced participants. Enjoy provided meals throughout the weekend, along with engaging activities, networking opportunities, and a collaborative atmosphere. The top teams in each category will earn amazing prizes and recognition, so bring your ideas, your energy, and your team for an unforgettable experience.''',
+    "color": gRed,
+    "room" : "Patrick F Taylor",
+  },
+  {
+    "title": "GeauxHack",
+    "date": DateTime(2025, 11, 9, 00, 00),
+    "endDate": DateTime(2025,11, 9, 12, 00),
+    "description":'''Join us for an exciting 3-day hackathon hosted in collaboration between SASE and GDG, packed with innovation, creativity, and fun. Designed for all skill levels, the event features two categories: Beginner and Advanced, making it both beginner-friendly and competitively engaging for experienced participants. Enjoy provided meals throughout the weekend, along with engaging activities, networking opportunities, and a collaborative atmosphere. The top teams in each category will earn amazing prizes and recognition, so bring your ideas, your energy, and your team for an unforgettable experience.''',
+    "color": gRed,
+    "room" : "Patrick F Taylor",
   },
 ];
