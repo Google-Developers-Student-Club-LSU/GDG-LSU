@@ -78,6 +78,58 @@ class _EventsPageState extends State<EventsPage> with SingleTickerProviderStateM
                 SizedBox(height: 25,),
                  pillShapeButton(themeBackGround),
                 SizedBox(height: 10,),
+                    SizedBox(
+                      width:MediaQuery.of(context).size.width * 0.95,
+                      child: Wrap(
+                        alignment: WrapAlignment.center,
+                        runAlignment: WrapAlignment.center,
+                        runSpacing: 10,
+                        spacing: 10,
+                        children: [
+                          Container(
+                            width: 20,
+                            height: 20,
+                            decoration: BoxDecoration(
+                              border: Border.all(color: isLightMode ? darkBackgroundColor: lightBackgroundColor,),
+                              shape: BoxShape.circle,
+                              color: gBlue
+                            ),
+                          ), 
+                          Text("Workshop", style: standardText.copyWith(fontWeight: FontWeight.w500, fontSize: 15),),
+                            Container(
+                            width: 20,
+                            height: 20,
+                            decoration: BoxDecoration(
+                              border: Border.all(color: isLightMode ? darkBackgroundColor: lightBackgroundColor,),
+                              shape: BoxShape.circle,
+                              color: gGreen
+                            ),
+                          ),
+                          Text("General Meeting", style: standardText.copyWith(fontWeight: FontWeight.w500, fontSize: 15),),
+                            Container(
+                            width: 20,
+                            height: 20,
+                            decoration: BoxDecoration(
+                              border: Border.all(color: isLightMode ? darkBackgroundColor: lightBackgroundColor,),
+                              shape: BoxShape.circle,
+                              color: gRed
+                            ),
+                          ),
+                          Text("Major Event", style: standardText.copyWith(fontWeight: FontWeight.w500, fontSize: 15),),
+                          Container(
+                            width: 20,
+                            height: 20,
+                            decoration: BoxDecoration(
+                              border: Border.all(color: isLightMode ? darkBackgroundColor: lightBackgroundColor,),
+                              shape: BoxShape.circle,
+                              color: gYellow
+                            ),
+                          ),
+                           Text("Social Event", style: standardText.copyWith(fontWeight: FontWeight.w500, fontSize: 15),),
+                        ],
+                                         ),
+                    ),
+                SizedBox(height: 10,),
                  Center(
                         child: ScrollConfiguration(
                           behavior: ScrollConfiguration.of(context).copyWith(scrollbars: true),
