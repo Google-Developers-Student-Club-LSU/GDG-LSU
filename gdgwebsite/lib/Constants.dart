@@ -13,7 +13,11 @@ final String sponsor = 'sponsor';
 const double containerWidth = 300;
 const double containerHeight = 500;
 
+//Home Page
+  const numberOfficer = 8;
+  const numberMembers = 188;
 //Links
+
 //Joins US (Home Page)
   const discordInviteLink ='https://discord.gg/syJnNvTxW9';
   const tigerlinkLink ='https://tigerlink.lsu.edu/';
