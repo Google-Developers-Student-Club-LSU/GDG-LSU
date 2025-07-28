@@ -1,4 +1,4 @@
-//
+
 // Licensed under Creative Commons Attribution-NonCommercial-ShareAlike 4.0
 // International License https://creativecommons.org/licenses/by-nc-sa/4.0/
 //
@@ -39,7 +39,7 @@ TextStyle standardText = TextStyle(
                 fontWeight: FontWeight.w800,
                    );
 
-TextStyle SecondSecStyle = standardText.copyWith(
+TextStyle secondSecStyle = standardText.copyWith(
   fontWeight: FontWeight.w500
 );
 // backgroundColor
