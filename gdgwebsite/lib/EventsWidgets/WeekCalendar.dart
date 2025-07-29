@@ -63,7 +63,7 @@ int weekNumber(DateTime date) {
               showTime: true
             ),
             startHour: 7,
-            endHour: 22,
+            endHour: 24,
             backgroundColor: themeBackGround,
             controller: _eventController,
             headerStringBuilder: (date, {secondaryDate}) {
