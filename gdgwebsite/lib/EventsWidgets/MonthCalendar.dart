@@ -81,7 +81,8 @@ void didChangeDependencies() {
               headerTextStyle: standardText.copyWith(fontSize: 20, color: Colors.white),
             ),
           weekDayBuilder: (int dayIndex) {
-            const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+            const days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+            final displayIndex = (dayIndex + 7) % 7 ; 
             return Container(
               decoration: BoxDecoration(
                 color:  (isLightMode ? Colors.black.withValues(alpha: .4) : Colors.white70.withValues(alpha: .1)),
@@ -96,7 +97,7 @@ void didChangeDependencies() {
                 child: Center(
                   child: FittedBox(
                     child: Text(
-                      days[dayIndex],
+                      days[displayIndex],
                       style: TextStyle(fontSize: 20,  fontWeight: FontWeight.bold, color: Colors.white),
                     ),
                   ),
@@ -105,7 +106,7 @@ void didChangeDependencies() {
             );
           },
     cellBuilder: (date, events, isToday, isInMonth, hideDaysNotInMonth,) {
-        hideDaysNotInMonth = true;
+        hideDaysNotInMonth = false;
         Color? cellColor = events.isNotEmpty
             ? events.first.event?.color.withValues(alpha: isLightMode ? 0.9 : 0.7)
             : (isLightMode ? Colors.black.withValues(alpha: .4) : Colors.white70.withValues(alpha: .1));          
