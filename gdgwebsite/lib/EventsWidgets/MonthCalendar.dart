@@ -122,7 +122,7 @@ void didChangeDependencies() {
                   left: 0,
                   child: SelectableText(
                     date.day.toString(),
-                    style: standardText.copyWith(fontSize: 12, color: Colors.white),
+                    style: standardText.copyWith(fontSize: 12, color: isInMonth ? Colors.white : Colors.white.withValues(alpha: 0.5) ),
                   ),
                 ),
                
