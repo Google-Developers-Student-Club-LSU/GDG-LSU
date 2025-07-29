@@ -93,6 +93,18 @@ const List<String> secondSlideShow = [
 
 
 
+//About
+
+const aboutText = 
+'''
+Since 2019, our organization has hosted a variety of hands-on workshops focused on Android development, Google Cloud technologies, and core programming skills. We've worked alongside local businesses and industry professionals to deliver practical, skill-based learning experiences.
+Over the years, we've built a strong network of students and developers collaborating on projects, sharing knowledge, and gaining exposure to tools and workflows used in real-world tech environments. From beginner tutorials to advanced technical deep dives, our events are designed to support continuous learning and professional growth.
+Today, we continue to offer opportunities for students to expand their technical abilities, engage in meaningful collaboration, and stay connected to current trends and innovations in the field of technology. 
+''';
+
+const gdgEmail = 'teamdsc.lsu@gmail.com';
+const gdgMailAddress = '3304 S Quad Dr, Baton Rouge, LA 70803';
+
 
 
 
