@@ -60,12 +60,12 @@ class FooterBar extends StatelessWidget {
       children: const [
         FooterSectionTitle("About Us"),
         FooterText(
-          "Since 2019, we’ve hosted workshops on Android development, Google Cloud, and programming, while collaborating with local businesses and industry professionals. Today, we continue to provide a welcoming space for students to build practical skills, connect with peers, and explore their passion for technology.",
+          aboutText
         ),
         SizedBox(height: 20),
         FooterSectionTitle("Contact Us"),
-        FooterText("teamdsc.lsu@gmail.com"),
-        FooterText("3304 S Quad Dr, Baton Rouge, LA 70803"),
+        FooterText(gdgEmail),
+        FooterText(gdgMailAddress),
         SizedBox(height: 20),
          FooterText(
           'You can find us:'
@@ -108,7 +108,7 @@ class FooterBar extends StatelessWidget {
                 children: const [
                   FooterSectionTitle("About Us"),
                   FooterText(
-                    "Since 2019, we’ve hosted workshops on Android development, Google Cloud, and programming, while collaborating with local businesses and industry professionals. Today, we continue to provide a welcoming space for students to build practical skills, connect with peers, and explore their passion for technology.",
+                   aboutText
                   ),
                 ],
               ),
@@ -118,8 +118,8 @@ class FooterBar extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: const [
                       FooterSectionTitle("Contact Us"),
-                      FooterText("teamdsc.lsu@gmail.com"),
-                      FooterText("3304 S Quad Dr, Baton Rouge, LA 70803"),
+                      FooterText(gdgEmail),
+                      FooterText(gdgMailAddress),
                       SizedBox(width: 20),
                     FooterText(
                       'Find us:'
