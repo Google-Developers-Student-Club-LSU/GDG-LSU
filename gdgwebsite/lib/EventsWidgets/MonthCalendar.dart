@@ -57,11 +57,12 @@ void didChangeDependencies() {
             useAvailableVerticalSpace: false,
             initialMonth: DateTime.now(),
             showBorder: true,
+            pagePhysics: const BouncingScrollPhysics(),
+            pageTransitionCurve: Curves.easeInOut,
             cellAspectRatio: ratio,
             headerStringBuilder: (date, {secondaryDate}) {
               return DateFormat('MMMM yyyy').format(date);
             },
-            onHeaderTitleTap: (date) async {},
             headerStyle: HeaderStyle(
               leftIconConfig: IconDataConfig(
                 icon: (context) => Padding(
@@ -108,7 +109,7 @@ void didChangeDependencies() {
     cellBuilder: (date, events, isToday, isInMonth, hideDaysNotInMonth,) {
         hideDaysNotInMonth = false;
         Color? cellColor = events.isNotEmpty
-            ? events.first.event?.color.withValues(alpha: isLightMode ? 0.9 : 0.7)
+            ? events.first.event?.color.withValues(alpha: isInMonth ? 0.9 : isLightMode? 0.7 :  0.3 )
             : (isLightMode ? Colors.black.withValues(alpha: .4) : Colors.white70.withValues(alpha: .1));          
             return Container(
             decoration: BoxDecoration(
