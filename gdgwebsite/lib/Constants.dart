@@ -30,7 +30,7 @@ const double containerHeight = 500;
   const instagramSoc = 'https://www.instagram.com/dsc_lsu/';
 
 //GoogleDrive of Pdf
-const sponsorBookletLink ='https://drive.google.com/file/d/1tQc8s8lU-ZZdAMfHRquLcTelr8aNvvrW/view?usp=sharing';
+const sponsorBookletLink ='https://drive.google.com/file/d/1ajBr6U4LrSn8Yy0FCLwyURrXwiFnw38A/view?usp=sharing';
 
   //sponsorLink
 const googleLink ='https://www.google.com/';
@@ -49,6 +49,7 @@ const hudsonPic = 'assets/members/Hudson.png';
 const trentonPic = 'assets/members/Trenton.jpg';
 const thomasPic = 'assets/members/Thomas.jpeg';
 const lekePic = 'assets/members/Leke.jpg';
+const malikPic = 'assets/members/Malik.jpg';
 
 //logo 
 const linkedInLogo = 'assets/logo/LinkedIn.png';
