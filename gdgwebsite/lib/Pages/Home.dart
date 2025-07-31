@@ -69,8 +69,8 @@ class _HomePageState extends State<HomePage> {
         isMobile? firstSectionMobile(context) :
       Stack(children: [
             FirstSectionBackground(),
-                _buildFirstSlideShow(scrollOffset),
-                _buildAnimatedText(scrollOffset),
+                _buildFirstSlideShow(context, scrollOffset),
+                _buildAnimatedText(context,scrollOffset),
          ]);
       }
     ),
@@ -444,48 +444,55 @@ children: [
   }
 
 
-Widget _buildAnimatedText(double offset) {
+Widget _buildAnimatedText(BuildContext context, double offset) {
+  final Size screenSize = MediaQuery.of(context).size;
   const double maxOffset = 200;
   final double clampedOffset = offset.clamp(0, maxOffset);
 
-  final double baseTop = 550;
-  final double translateY = -clampedOffset / 0.85; 
-  final double scale = 1.0 - (clampedOffset / maxOffset) * 0.1;
-  final double translateX = clampedOffset / 4; 
+  // Base positions as a proportion of screen size
+  final double baseTop = screenSize.height * 0.45;
+  final double baseLeft = screenSize.width * 0.005;
+
+  final double translateY = -clampedOffset /2;
+  final double translateX = clampedOffset /9;
+  final double scale = 1.0 - (clampedOffset / maxOffset) * 0.2;
+
+  // Responsive font size
+  final double baseFontSize = screenSize.width * 0.05; // ~50 for 800px wide
 
   return Positioned(
     top: baseTop + translateY,
-    left: 50 + translateX,
+    left: baseLeft + translateX,
     child: Transform.scale(
       scale: scale,
       alignment: Alignment.topLeft,
       child: Padding(
-        padding: const EdgeInsets.all(24.0),
+        padding: EdgeInsets.all(screenSize.width * 0.03),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SelectableText(
               "ENHANCE",
               style: standardTextStyled.copyWith(
-                fontSize: 50,
+                fontSize: baseFontSize,
                 fontWeight: FontWeight.w900,
-                color: gBlue
+                color: gBlue,
               ),
             ),
             SelectableText(
               "YOUR TECHNICAL",
               style: standardTextStyled.copyWith(
-                fontSize: 50,
+                fontSize: baseFontSize,
                 fontWeight: FontWeight.w800,
-                color: gGreen
+                color: gGreen,
               ),
             ),
             SelectableText(
               "KNOWLEDGE",
               style: standardTextStyled.copyWith(
-                fontSize: 50,
+                fontSize: baseFontSize,
                 fontWeight: FontWeight.w800,
-                color: gYellow
+                color: gYellow,
               ),
             ),
           ],
@@ -495,23 +502,33 @@ Widget _buildAnimatedText(double offset) {
   );
 }
 
-  Widget _buildFirstSlideShow(double offset) {
-    const double maxOffset = 200;
-    final double clampedOffset = offset.clamp(0, maxOffset);
 
-    final double scale = 1.0 - (clampedOffset / maxOffset) * 0.425;
-    final double translateX = clampedOffset / 0.75;
-    
+Widget _buildFirstSlideShow(BuildContext context, double offset) {
+  const double maxOffset = 200;
+  final double clampedOffset = offset.clamp(0, maxOffset);
 
-    return Transform.translate(
-      offset: Offset(translateX, 0),
-      child: Transform.scale(
-        scale: scale,
-        alignment: Alignment.center,
-        child: const AutoSlideCarousel(imagePaths: firstSlideShow),
-      ),
-    );
-  }
+  final Size screenSize = MediaQuery.of(context).size;
+  final double screenWidth = screenSize.width;
+
+  // 👇 Set how far it can move horizontally across different screen sizes
+  final double maxTranslateX = screenWidth * 0.2; // 12% of screen width
+
+  // 👇 Adjust scale factor based on screen width (subtle on mobile, more on desktop)
+  final double scaleFactor = 0.2 + (screenWidth / 10000);
+
+  // 👇 Interpolate based on scroll offset
+  final double translateX = (clampedOffset / maxOffset) * maxTranslateX;
+  final double scale = 1.0 - (clampedOffset / maxOffset) * scaleFactor;
+
+  return Transform.translate(
+    offset: Offset(translateX, 0),
+    child: Transform.scale(
+      scale: scale,
+      alignment: Alignment.center,
+      child: const AutoSlideCarousel(imagePaths: firstSlideShow),
+    ),
+  );
+}
 
 
     Widget _buildSecondSlideShow(){
