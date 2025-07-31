@@ -17,6 +17,7 @@ final List<MemberProfile> members = [
     fullName: 'Mujtaba Malik',
     position: 'President',
     yearAndMajor: 'Junior Computer Science',
+    
     shortIntro:
     '''
 Hi everyone,
@@ -28,7 +29,7 @@ Apart from coding, I like One Piece, Cooking, and Working out(honestly, not much
 
 ''',
     linkedin: 'https://www.linkedin.com/in/mujtaba-malik-7b8442299/',
-    imageAsset: failedImage,
+    imageAsset: malikPic,
   ),
     MemberProfile(
     fullName: 'Hudson Vu',
