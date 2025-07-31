@@ -81,7 +81,7 @@ class _EventCartState extends State<EventCart> with SingleTickerProviderStateMix
 
     final isLightMode = Theme.of(context).brightness == Brightness.light;
     final greyColor = isLightMode ? Colors.black54 : Colors.white70;
-    final isMobile = MediaQuery.of(context).size.width < 900;
+    final isMobile = MediaQuery.of(context).size.width < 800;
 
     return Center(
       child: AnimatedBuilder(
@@ -100,7 +100,8 @@ class _EventCartState extends State<EventCart> with SingleTickerProviderStateMix
           clipBehavior: Clip.antiAlias,
           child: Container(
             width: MediaQuery.of(context).size.width * (isMobile ? 0.8 : 0.6),
-            constraints: const BoxConstraints(maxHeight: 600),
+            height: MediaQuery.of(context).size.width * (isMobile ? 1: 0.4),
+
             padding: const EdgeInsets.all(20),
             decoration: BoxDecoration(
               color: Theme.of(context).scaffoldBackgroundColor,
@@ -195,14 +196,17 @@ class _EventCartState extends State<EventCart> with SingleTickerProviderStateMix
                         child: Row(
                           children: [
                             ClickableImageLink(
-                              width: 70,
+                              width:  isMobile ? 50 : 70,
                               imageAsset: iconGallery,
                               linkUrl: widget.gallerUrl ?? '/',
                             ),
                             const SizedBox(width: 10),
-                            SelectableText(
-                              '⬅️ Tap to see the event gallery',
-                              style: standardText.copyWith(fontSize: 15, fontWeight: FontWeight.w500),
+                            Flexible(
+                              child: Text(
+                                '⬅️ Tap to see the event gallery',
+                                softWrap: true,
+                                style: standardText.copyWith(fontSize: 15, fontWeight: FontWeight.w500),
+                              ),
                             )
                           ],
                         ),
