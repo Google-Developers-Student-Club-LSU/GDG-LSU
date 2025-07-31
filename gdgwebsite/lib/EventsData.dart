@@ -30,31 +30,37 @@ final List<Map<String, dynamic>> myEvents = [
     "galleryUrl" : "https://ww4.fmovies.co/film/family-guy-season-11-9393/"
   },
     {
-    "title": "General Body Meeting",
-    "date": DateTime(2025, 6, 15, 10, 0),
-    "endDate": DateTime(2025, 6, 15, 10, 30),
-    "description": "Weekly sync-up with the team to discuss goals.",
-    "color": gGreen,
-    "room" : "PFT 1200"
+    "title": "Engineering Club Fair",
+    "date": DateTime(2025, 9, 1, 10, 0),
+    "endDate": DateTime(2025, 9, 1, 10, 30),
+    "description": "Join Google Developer Group at LSU and be part of a passionate tech community where you can learn, build, and grow alongside fellow students. Look forward to exciting opportunities like our Hackathon, ICPC programming contest, and hands-on workshops. Together, we’ll work on real-world software projects, including building and deploying an app that we’ll actually use, giving you practical experience that goes beyond the classroom. Whether you’re just starting out or looking to sharpen your skills, GDG at LSU is the place to connect, create, and make an impact.",
+    "color": gYellow,
+    "room" : "Patrick F Taylor"
   },
   {
-    "title": "Firebase WorkShop",
-    "date": DateTime(2025, 7, 16, 14, 30),
-    "endDate": DateTime(2025, 7, 16, 15,00 ),
-    "description": "Annual physical check-up at local clinic.",
+    "title": "Career workshop ",
+    "date": DateTime(2025, 9, 3, 14, 30),
+    "endDate": DateTime(2025, 9, 3, 15,00 ),
+    "description": "Join us for a career workshop hosted by FAST ENTERPRISES. Learn about career paths, gain resume and interview tips, and discover internship and job opportunities with a leading tech company.",
     "color": gBlue,
     "room" : "PFT 1202"
   },
   {
-    "title": "Flutter Workshop",
-    "date": DateTime(2025, 7, 17, 9, 0),
-    "endDate": DateTime(2025, 7, 17, 12, 0),
+    "title": "General Body Meeting",
+    "date": DateTime(2025, 9, 15, 9, 0),
+    "endDate": DateTime(2025, 9, 15, 12, 0),
     "description": 
-    '''
-Join us for an engaging hands-on workshop where you'll learn how to build modern, responsive mobile apps using Flutter, Google's open-source UI toolkit. Whether you're a beginner or looking to sharpen your cross-platform development skills, this session will guide you through the fundamentals of Dart, Flutter widgets, layouts, and state management.
-
-Bring your laptop and get ready to code!
-      ''',
+    '''Catch up with fellow members as we kick off the semester! We'll discuss plans for our upcoming app development project, assign initial roles, and get things rolling. Plus, enjoy some fun activities to break the ice and build team spirit.''',
+    "image": "assets/events/Flutter.jpg",
+    "color": gGreen,
+    "room" : "PFT 1209"
+  },
+    {
+    "title": "Game Development Workshop",
+    "date": DateTime(2025, 9, 29, 9, 0),
+    "endDate": DateTime(2025, 9, 29, 12, 0),
+    "description": 
+    '''Dive into the world of game development in this hands-on workshop hosted by Lillian, our talented graphic designer. Learn the fundamentals of designing and building simple games, explore visual design principles, and collaborate with peers to bring your ideas to life—no prior experience required!''',
     "image": "assets/events/Flutter.jpg",
     "color": gBlue,
     "room" : "PFT 1209"
