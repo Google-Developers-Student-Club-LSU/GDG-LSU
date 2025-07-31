@@ -86,13 +86,13 @@ cellBuilder: (date, events, isToday, isInMonth, hideDaysNotInMonth) {
     padding: const EdgeInsets.all(6),
     child: Stack(
       children: [
-        // Day number in the top-left corner
         Positioned(
           top: 0,
           left: 0,
           child: Text(
             date.day.toString(),
             style: standardText.copyWith(fontSize: 17),
+            
           ),
         ),
         // Centered event title (if any)
