@@ -11,12 +11,12 @@
 // UPCOMING EVENTS
 //Title, Description, Date, Color  is required to create an events 
 // if time is not yet available please put it less than or equal 30 min gap eg 
-//                  (year, month, day, hour, mins) 
+//                    (year, month, day, hour, mins) 
 //    "date": DateTime(2025, 6, 15, 10, 0),
 //    "endDate": DateTime(2025, 6, 15, 10, 30),
 // Image, Time, Room number is no required can be update later
-
-// General Body Meeting = Green, Workshop = Blue, OtherEvents = Red
+// Color Code: 
+// General Body Meeting = Green, Workshop = Blue, Major Events = Red, Social Events = gYellow
 import 'package:gdgwebsite/Colors.dart';
 
 final List<Map<String, dynamic>> myEvents = [
@@ -27,7 +27,6 @@ final List<Map<String, dynamic>> myEvents = [
     "description": "Weekly sync-up with the team to discuss goals.",
     "color": gGreen,
     "room" : "PFT 1200",
-    "galleryUrl" : "https://ww4.fmovies.co/film/family-guy-season-11-9393/"
   },
     {
     "title": "Engineering Club Fair",
@@ -47,21 +46,19 @@ final List<Map<String, dynamic>> myEvents = [
   },
   {
     "title": "General Body Meeting",
-    "date": DateTime(2025, 9, 15, 9, 0),
-    "endDate": DateTime(2025, 9, 15, 12, 0),
+    "date": DateTime(2025, 9, 15, 12, 0),
+    "endDate": DateTime(2025, 9, 15, 12, 30),
     "description": 
     '''Catch up with fellow members as we kick off the semester! We'll discuss plans for our upcoming app development project, assign initial roles, and get things rolling. Plus, enjoy some fun activities to break the ice and build team spirit.''',
-    "image": "assets/events/Flutter.jpg",
     "color": gGreen,
     "room" : "PFT 1209"
   },
     {
     "title": "Game Development Workshop",
-    "date": DateTime(2025, 9, 29, 9, 0),
-    "endDate": DateTime(2025, 9, 29, 12, 0),
+    "date": DateTime(2025, 9, 29, 12, 0),
+    "endDate": DateTime(2025, 9, 29, 12, 30),
     "description": 
     '''Dive into the world of game development in this hands-on workshop hosted by Lillian, our talented graphic designer. Learn the fundamentals of designing and building simple games, explore visual design principles, and collaborate with peers to bring your ideas to life—no prior experience required!''',
-    "image": "assets/events/Flutter.jpg",
     "color": gBlue,
     "room" : "PFT 1209"
   },
