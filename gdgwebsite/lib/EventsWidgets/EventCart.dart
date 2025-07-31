@@ -99,7 +99,7 @@ class _EventCartState extends State<EventCart> with SingleTickerProviderStateMix
           borderRadius: BorderRadius.circular(16),
           clipBehavior: Clip.antiAlias,
           child: Container(
-            width: MediaQuery.of(context).size.width * (isMobile ? 0.8 : 0.6),
+            width: MediaQuery.of(context).size.width * (isMobile ? 0.8 :  0.6),
             height: MediaQuery.of(context).size.width * (isMobile ? 1: 0.4),
 
             padding: const EdgeInsets.all(20),
