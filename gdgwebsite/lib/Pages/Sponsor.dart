@@ -169,7 +169,7 @@ class _SponsorLinkState extends State<SponsorLink>
   @override
   Widget build(BuildContext context) {
    bool isMobile = MediaQuery.of(context).size.width < 600;
-      final double _fontSize = isMobile ? 40 : 50;;
+      final double _fontSize = isMobile ? 40 : 50;
 
     return Center(
       child: InkWell(
