@@ -59,6 +59,7 @@ int weekNumber(DateTime date) {
           ),
           child:  WeekView<Event>(
             liveTimeIndicatorSettings: LiveTimeIndicatorSettings(
+              
               color: gYellow,
               showTime: true
             ),
