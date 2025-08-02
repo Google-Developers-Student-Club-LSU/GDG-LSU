@@ -10,7 +10,6 @@ import 'package:gdgwebsite/Constants.dart';
 import 'package:gdgwebsite/Models/MemberModel.dart';
 
 
-
 // EBOARD MEMBERS
 final List<MemberProfile> members = [
   MemberProfile(
