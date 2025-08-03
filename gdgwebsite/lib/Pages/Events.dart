@@ -66,13 +66,17 @@ class _EventsPageState extends State<EventsPage> with SingleTickerProviderStateM
                 SizedBox(height: 50,),
                 Center(
                   child: FadeTransition(opacity:_fadeAnimation,
-                  child: Wrap(
-                    children: [
-                      SelectableText("Tap on an event for more information",
-                      style: standardText,
-                      textAlign: TextAlign.center,
-                      ),
-                    ],
+                  child: Padding(
+                    padding: const EdgeInsets.all(10),
+                    child: Wrap(
+                      children: [
+                        SelectableText("Tap on an event for more information",
+                        style: standardText.copyWith(fontSize: MediaQuery.textScalerOf(context).scale(30)),
+                        textAlign: TextAlign.center,
+                        
+                        ),
+                      ],
+                    ),
                   ),),
                 ),
                 SizedBox(height: 25,),
