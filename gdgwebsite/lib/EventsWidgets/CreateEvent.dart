@@ -57,18 +57,25 @@ class CalendarButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final screenSize =  MediaQuery.of(context).size;
     return HoverButton(
       child: Container(
-        width: 200,
-        height: 50,
+        width: screenSize.width * 0.3,
+        height: screenSize.height *  0.075,
+        constraints: BoxConstraints(
+          minWidth: 250 ,
+          maxHeight: 60
+        ),
         decoration:  BoxDecoration(
           borderRadius: BorderRadius.all(Radius.circular(16)),
           color: color,
           border: Border.all(color: Colors.black)
         ),
         child: Center(
-          child: Text("Add to Calendar",
-          style:  standardText.copyWith(fontSize: 20, color: Colors.white),
+          child: FittedBox(
+            child: Text("Add to Calendar",
+            style:  standardText.copyWith(fontSize: MediaQuery.textScalerOf(context).scale(30),  color: Colors.white),
+            ),
           ),
         ),
       ),
