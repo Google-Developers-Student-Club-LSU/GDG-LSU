@@ -78,7 +78,7 @@ class _EventCartState extends State<EventCart> with SingleTickerProviderStateMix
   @override
   Widget build(BuildContext context) {
     bool timeNotAvailable = widget.start == widget.end || widget.end.difference(widget.start).inMinutes <= 30;
-
+    final screenSize =  MediaQuery.of(context).size;
     final isLightMode = Theme.of(context).brightness == Brightness.light;
     final greyColor = isLightMode ? Colors.black54 : Colors.white70;
     final isMobile = MediaQuery.of(context).size.width < 800;
