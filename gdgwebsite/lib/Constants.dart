@@ -16,6 +16,13 @@ const double containerHeight = 500;
 //Home Page
   const numberOfficer = 8;
   const numberMembers = 188;
+  const thinkLikeADev = 'Gif/ThinkLikeADevStickerbyGoogleDevelopers.gif';
+  const sun = 'Gif/sun.png';
+  const tree = 'Gif/tree.png';
+  const bush = 'Gif/bush.webp';
+  const mike = 'Gif/mike.png';
+
+  
 //Links
 
 //Joins US (Home Page)
@@ -34,6 +41,7 @@ const sponsorBookletLink ='https://drive.google.com/file/d/1ajBr6U4LrSn8Yy0FCLwy
 
   //sponsorLink
 const googleLink ='https://www.google.com/';
+const saseLink = "https://www.saselsu.org/";
 
 
 //Picture 
@@ -54,6 +62,7 @@ const malikPic = 'assets/members/Malik.jpg';
 //logo 
 const linkedInLogo = 'assets/logo/LinkedIn.png';
 const gDSCLogo = 'assets/logo/GDSC.png';
+const saseLogo = 'assets/logo/sase.png';
 const discordLogo = 'assets/logo/Discord.png';
 const tigerlinkLogo = 'assets/logo/TigerLink.png';
 const googleLogo =  'assets/logo/Google.png';
