@@ -36,7 +36,7 @@ class _SponsorPageState extends State<SponsorPage> {
       body: Stack(
         children: [
            Positioned.fill(child: MagnetismField()),
-          ReponsiveWrap(
+          ResponsiveWrap(
             builder: (isMobiles) {
               return NotificationListener<ScrollNotification>(
                 onNotification: (_) => _isHoveringPdf,

@@ -8,10 +8,10 @@
 
 import 'package:flutter/material.dart';
 
-class ReponsiveWrap extends StatelessWidget {
+class ResponsiveWrap extends StatelessWidget {
   final Widget Function(bool isMobile) builder ; 
 
-  const ReponsiveWrap({super.key, required this.builder});
+  const ResponsiveWrap({super.key, required this.builder});
 
 @override
   Widget build(BuildContext context) {

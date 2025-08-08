@@ -10,6 +10,7 @@ import 'package:calendar_view/calendar_view.dart';
 import 'package:flutter/material.dart';
 import 'package:gdgwebsite/Colors.dart';
 import 'package:gdgwebsite/Constants.dart';
+import 'package:gdgwebsite/HackathonSection/HackathonContainer.dart';
 import 'package:gdgwebsite/Models/EventModel.dart';
 import 'package:gdgwebsite/RandomArts/SmoothRandomArt.dart';
 import 'package:gdgwebsite/RandomArts/TriangleMesh.dart';
@@ -63,7 +64,7 @@ class _HomePageState extends State<HomePage> {
       body: ListView(
         controller: _scrollController,
         children: [
-    ReponsiveWrap(
+    ResponsiveWrap(
       builder: (isMobile) {
         return 
         isMobile? firstSectionMobile(context) :
@@ -75,7 +76,9 @@ class _HomePageState extends State<HomePage> {
       }
     ),
 
-     ReponsiveWrap(
+    HackathonContainer(),
+
+     ResponsiveWrap(
        builder: (isMobile) {
 
          return isMobile ? Column(
@@ -246,9 +249,9 @@ class _HomePageState extends State<HomePage> {
 
 
 
-  ReponsiveWrap sixthSection() {
+  ResponsiveWrap sixthSection() {
     return
-     ReponsiveWrap(
+     ResponsiveWrap(
        builder: (isMobile) {
          return isMobile ?
          Column(
@@ -273,8 +276,8 @@ class _HomePageState extends State<HomePage> {
      );
   }
 
-  ReponsiveWrap fifthSection() {
-    return ReponsiveWrap(
+  ResponsiveWrap fifthSection() {
+    return ResponsiveWrap(
       builder: (isMobile) {
         return isMobile ?
         Column(
