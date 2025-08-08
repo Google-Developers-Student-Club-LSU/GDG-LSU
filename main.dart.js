@@ -98186,16 +98186,16 @@ return A.cm(A.b2(o,A.b2(o,new A.f9(new A.aIr(n,m),o),B.l,o,B.I7,new A.bj(l.aH(0.
 A.aIr.prototype={
 $2(a,b){var s,r,q,p,o,n,m=null,l=b.b,k=l<600,j=b.d,i=j*0.7,h=new A.b9(12,12)
 l=A.b2(m,m,B.l,m,m,new A.bj(A.bM(4287090411),m,m,new A.d_(h,h,B.O,B.O),m,m,B.H),m,i,m,m,m,m,l)
-h=A.fG("Gif/sun.png",m,m,m,100)
+h=A.fG("assets/Gif/sun.png",m,m,m,100)
 s=this.a.a<=700
 r=s?10:30
 i=j-i
 j=s?10:120
-j=A.ew(i-j,A.fG("Gif/mike.png",m,m,s?80:200,m),m,m,r,m,m,m)
+j=A.ew(i-j,A.fG("assets/Gif/mike.png",m,m,s?80:200,m),m,m,r,m,m,m)
 r=A.ew(m,A.aZo(B.rq,50,B.n,100),m,m,m,50,10,m)
 q=A.ew(m,A.aZo(B.i.aH(0.8),50,B.MW,100),m,m,m,500,10,m)
-p=A.ew(i-50,A.fG("Gif/tree.png",m,m,300,m),m,m,m,-125,m,m)
-i=A.ew(i-30,A.fG("Gif/bush.webp",m,m,m,150),m,m,m,-25,m,m)
+p=A.ew(i-50,A.fG("assets/Gif/tree.png",m,m,300,m),m,m,m,-125,m,m)
+i=A.ew(i-30,A.fG("assets/Gif/bush.webp",m,m,m,150),m,m,m,-25,m,m)
 o=$.cF()
 s=A.b4("GeauxHack 2025",m,m,m,m,o.fe(B.i,k?40:60,B.fg),B.b7,m,m)
 o=$.cF()
