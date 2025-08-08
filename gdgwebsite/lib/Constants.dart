@@ -16,11 +16,11 @@ const double containerHeight = 500;
 //Home Page
   const numberOfficer = 8;
   const numberMembers = 188;
-  const thinkLikeADev = 'Gif/ThinkLikeADevStickerbyGoogleDevelopers.gif';
-  const sun = 'Gif/sun.png';
-  const tree = 'Gif/tree.png';
-  const bush = 'Gif/bush.webp';
-  const mike = 'Gif/mike.png';
+  const thinkLikeADev = 'assets/Gif/ThinkLikeADevStickerbyGoogleDevelopers.gif';
+  const sun = 'assets/Gif/sun.png';
+  const tree = 'assets/Gif/tree.png';
+  const bush = 'assets/Gif/bush.webp';
+  const mike = 'assets/Gif/mike.png';
 
   
 //Links
