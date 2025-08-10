@@ -14,7 +14,31 @@ class HackathonContainer extends StatefulWidget {
   State<HackathonContainer> createState() => _HackathonContainerState();
 }
 
-class _HackathonContainerState extends State<HackathonContainer> {
+class _HackathonContainerState extends State<HackathonContainer>
+    with SingleTickerProviderStateMixin {
+  late AnimationController _cloudController;
+  late Animation<double> _cloudOffset;
+
+  @override
+  void initState() {
+    super.initState();
+
+    _cloudController = AnimationController(
+      vsync: this,
+      duration: const Duration(seconds: 15),
+    )..repeat(reverse: true);
+
+    _cloudOffset = Tween<double>(begin: -50, end: 50).animate(
+      CurvedAnimation(parent: _cloudController, curve: Curves.linear),
+    );
+  }
+
+  @override
+  void dispose() {
+    _cloudController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
@@ -28,21 +52,29 @@ class _HackathonContainerState extends State<HackathonContainer> {
         padding: const EdgeInsets.all(5),
         decoration: BoxDecoration(
           gradient: LinearGradient(
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
             colors: [
-              const Color(0xFF006400).withValues(alpha: .3), 
-              const Color(0xFF00FFA3).withValues(alpha: .3), 
+              Color(0xFF87CEEB),
+              const Color(0xFF006400).withValues(alpha: .3),
+             // const Color(0xFF00FFA3).withValues(alpha: .3),
             ],
-            stops: const [0.5, 0.8],
+            stops: const [0.5, 1],
           ),
           borderRadius: BorderRadius.circular(16),
           boxShadow: [
             BoxShadow(
+              color: const Color(0xFF87CEEB).withValues(alpha: .5),
+              blurRadius: 20,
+              spreadRadius: 2,
+              offset: const Offset(0, -8),
+              ),
+            BoxShadow(
+              
               color: const Color(0xFF00FF66).withValues(alpha: .5),
               blurRadius: 20,
               spreadRadius: 2,
-              offset: const Offset(0, 0),
+              offset: const Offset(0, 10),
             ),
           ],
         ),
@@ -66,33 +98,78 @@ class _HackathonContainerState extends State<HackathonContainer> {
                   Container(
                     width: constraints.maxWidth,
                     height: constraints.maxHeight * 0.7,
-                    
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                       color: Color(0xFF87CEEB),
-                      borderRadius: BorderRadius.vertical(top: Radius.circular(12))
+                      borderRadius: BorderRadius.vertical(
+                        top: Radius.circular(12),
+                      ),
                     ),
                   ),
-                  Image.asset(sun, width: 100,),
+                  Image.asset(sun, width: 100),
+
+                  AnimatedBuilder(
+                    animation: _cloudController,
+                    builder: (context, child) {
+                      return Positioned(
+                        top: 10,
+                        right: 50 + _cloudOffset.value * (2),
+                        child: FloatingCloud(
+                          width: 100,
+                          height: 50,
+                          color: Colors.grey.shade200,
+                          shadowColor: Colors.transparent,
+                        ),
+                      );
+                    },
+                  ),
+
+                  AnimatedBuilder(
+                    animation: _cloudController,
+                    builder: (context, child) {
+                      return Positioned(
+                        top: 40,
+                        right: 500 + _cloudOffset.value * 3,
+                        child: FloatingCloud(
+                          width: 100,
+                          color: Colors.white.withValues(alpha: 0.8),
+                          height: 50,
+                        ),
+                      );
+                    },
+                  ),
+
                   Positioned(
-                    left:  (screenSize.width <= 700) ? 10 : 30,
-                    bottom: constraints.maxHeight - (constraints.maxHeight * 0.7) -  ((screenSize.width <= 700) ? 10: 120),
-                    child: Image.asset(mike, height: (screenSize.width <= 700) ? 80 : 200,)),
+                    left: (screenSize.width <= 700) ? 10 : 30,
+                    bottom: constraints.maxHeight -
+                        (constraints.maxHeight * 0.7) -
+                        ((screenSize.width <= 700) ? 10 : 120),
+                    child: Image.asset(
+                      mike,
+                      height: (screenSize.width <= 700) ? 80 : 200,
+                    ),
+                  ),
                   Positioned(
-                    top: 10,
-                    right: 50,
-                    child: FloatingCloud(width: 100,height: 50, color:Colors.grey.shade200, shadowColor: Colors.transparent,)),
-                    Positioned(
-                    top: 10 ,
-                    right: 50 * 10,
-                    child: FloatingCloud(width: 100, color:Colors.white.withValues(alpha: 0.8), height: 50,)),
+                    right: -(250 / 2),
+                    bottom: constraints.maxHeight -
+                        (constraints.maxHeight * 0.7) -
+                        50,
+                    child: Image.asset(
+                      tree,
+                      height: 300,
+                    ),
+                  ),
                   Positioned(
-                    right: -(250 /2 ),
-                    bottom: constraints.maxHeight - (constraints.maxHeight * 0.7) - 50,
-                    child: Image.asset(tree,  height: 300,)),
-                  Positioned(
-                    right: -(50 /2 ),
-                    bottom: constraints.maxHeight - (constraints.maxHeight * 0.7) - 30,
-                    child: Image.asset(bush, width: 150, )),
+                    right: -(50 / 2),
+                    bottom: constraints.maxHeight -
+                        (constraints.maxHeight * 0.7) -
+                        30,
+                    child: Image.asset(
+                      bush,
+                      width: 150,
+                    ),
+                  ),
+
+                  // Center content
                   Center(
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
@@ -123,7 +200,8 @@ class _HackathonContainerState extends State<HackathonContainer> {
                             builder: (isMobile) {
                               return isMobile
                                   ? Row(
-                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
                                       children: [
                                         ClickableImageLink(
                                           imageAsset: saseLogo,
@@ -139,7 +217,8 @@ class _HackathonContainerState extends State<HackathonContainer> {
                                       ],
                                     )
                                   : Row(
-                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
                                       children: [
                                         ClickableImageLink(
                                           imageAsset: saseLogo,

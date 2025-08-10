@@ -77,6 +77,8 @@ class _HomePageState extends State<HomePage> {
     ),
 
     HackathonContainer(),
+    
+     const SizedBox(height: 25),   
 
      ResponsiveWrap(
        builder: (isMobile) {

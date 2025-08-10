@@ -37,14 +37,14 @@ class _TigerTextState extends State<TigerText> {
   @override
   Widget build(BuildContext context) {
     if (tigerImage == null) {
-      return Text(widget.text, style: widget.style); // fallback
+      return Text(widget.text, style: widget.style); 
     }
 
     final shader = ImageShader(
       tigerImage!,
       TileMode.repeated,
       TileMode.repeated,
-      Matrix4.identity().scaled(0.5, 0.5).storage, // Adjust scale here
+      Matrix4.identity().scaled(0.5, 0.5).storage, 
     );
 
     return ShaderMask(

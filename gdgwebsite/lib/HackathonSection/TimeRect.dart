@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:ui';
 import 'package:flutter/material.dart';
 
 class TimeRect extends StatefulWidget {
@@ -42,10 +41,10 @@ class _TimeRectState extends State<TimeRect> {
           borderRadius: BorderRadius.circular(4),
           boxShadow: [      
           BoxShadow(
-            color: Colors.black.withValues(alpha: .5), // Shadow color
-            offset: const Offset(0, 4),            // X, Y offset
-            blurRadius: 8,                         // How soft the shadow is
-            spreadRadius: 1,                       // How far it spreads
+            color: Colors.black.withValues(alpha: .5),
+            offset: const Offset(0, 4),            
+            blurRadius: 8,                         
+            spreadRadius: 1,                       
           ),
           ]
         ),
@@ -83,7 +82,7 @@ class _TimeRectState extends State<TimeRect> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Column(children: _buildTimeBox(days, 'day')),
-          const SizedBox(width: spacing), // ← wider spacing
+          const SizedBox(width: spacing), 
           Column(children: _buildTimeBox(hours, 'hr')),
           const SizedBox(width: spacing),
           Column(children: _buildTimeBox(minutes, 'min')),
