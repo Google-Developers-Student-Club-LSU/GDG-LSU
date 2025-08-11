@@ -33,7 +33,6 @@ class AnimationPage extends StatefulWidget {
 class _AnimationPageState extends State<AnimationPage>
     with SingleTickerProviderStateMixin {
   late AnimationController animationController;
-  
 
   @override
   void initState() {
@@ -44,79 +43,83 @@ class _AnimationPageState extends State<AnimationPage>
     );
   }
 
-  void _onEnter(ui.PointerEnterEvent event) {
-    if (animationController.isDismissed) {
-      animationController.forward();
-    }
+  @override
+  void dispose() {
+    animationController.dispose();
+    super.dispose();
   }
 
-  void _onExit(ui.PointerExitEvent event) {
-    if (animationController.isCompleted) {
+  void _toggle() {
+    if (animationController.status == AnimationStatus.dismissed ||
+        animationController.status == AnimationStatus.reverse) {
+      animationController.forward();
+    } else {
       animationController.reverse();
     }
   }
 
-        @override
-      Widget build(BuildContext context) {
-        double maxSlide = widget.width;
-      bool isMobile(BuildContext context) => MediaQuery.of(context).size.width < 600;
+  void _onEnter(ui.PointerEnterEvent _) {
+    animationController.forward();
+  }
 
-        final child = AnimatedBuilder(
-          animation: animationController,
-          builder: (context, _) {
-            final value = animationController.value;
-            return Stack(
-              children: [
-                Transform.translate(
-                  offset: Offset(maxSlide * (value - 1), 0),
-                  child: Transform(
-                    alignment: Alignment.centerRight,
-                    transform: Matrix4.identity()
-                      ..setEntry(3, 2, 0.001)
-                      ..rotateY(math.pi / 2 * (1 - value)),
-                    child: ProfileDrawer(
-                      fullName: widget.fullName,
-                      position: widget.position,
-                      yearAndMajor: widget.yearAndMajor,
-                      shortIntroduction: widget.shortIntroduction,
-                      linkedinLink: widget.linkedinLink,
-                    ),
-                  ),
+  void _onExit(ui.PointerExitEvent _) {
+    // On hover exit, close
+    animationController.reverse();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final double maxSlide = widget.width;
+
+    final child = AnimatedBuilder(
+      animation: animationController,
+      builder: (context, _) {
+        final value = animationController.value;
+        return Stack(
+          children: [
+            Transform.translate(
+              offset: Offset(maxSlide * (value - 1), 0),
+              child: Transform(
+                alignment: Alignment.centerRight,
+                transform: Matrix4.identity()
+                  ..setEntry(3, 2, 0.001)
+                  ..rotateY(math.pi / 2 * (1 - value)),
+                child: ProfileDrawer(
+                  fullName: widget.fullName,
+                  position: widget.position,
+                  yearAndMajor: widget.yearAndMajor,
+                  shortIntroduction: widget.shortIntroduction,
+                  linkedinLink: widget.linkedinLink,
                 ),
-                Transform.translate(
-                  offset: Offset(maxSlide * value, 0),
-                  child: Transform(
-                    alignment: Alignment.centerLeft,
-                    transform: Matrix4.identity()
-                      ..setEntry(3, 2, 0.001)
-                      ..rotateY(-math.pi / 2 * value),
-                    child: Picture(
-                      assets: widget.assets,
-                      width: widget.width,
-                      height: widget.height,
-                    ),
-                  ),
+              ),
+            ),
+            Transform.translate(
+              offset: Offset(maxSlide * value, 0),
+              child: Transform(
+                alignment: Alignment.centerLeft,
+                transform: Matrix4.identity()
+                  ..setEntry(3, 2, 0.001)
+                  ..rotateY(-math.pi / 2 * value),
+                child: Picture(
+                  assets: widget.assets,
+                  width: widget.width,
+                  height: widget.height,
                 ),
-              ],
-            );
-          },
+              ),
+            ),
+          ],
         );
+      },
+    );
 
-        return isMobile(context)
-            ? GestureDetector(
-                onTap: () {
-                  if (animationController.isDismissed) {
-                    animationController.forward();
-                  } else if (animationController.isCompleted) {
-                    animationController.reverse();
-                  }
-                },
-                child: child,
-              )
-            : MouseRegion(
-                onEnter: _onEnter,
-                onExit: _onExit,
-                child: child,
-              );
-      }
-    }
+    return MouseRegion(
+      onEnter: _onEnter,
+      onExit: _onExit,
+      child: GestureDetector(
+        behavior: HitTestBehavior.opaque, 
+        onTap: _toggle,                   
+        child: child,
+      ),
+    );
+  }
+}
