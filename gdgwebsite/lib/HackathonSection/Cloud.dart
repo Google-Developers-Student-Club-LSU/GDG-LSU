@@ -5,12 +5,11 @@ class FloatingCloud extends StatefulWidget {
   final double width;
   final double height;
   final Duration duration;
-  final Color color;
+  final Color color;          // base tint (still used)
   final double shadowBlur;
   final Color shadowColor;
   final double? amplitude;
-
-  /// Controls how “puffy” the cloud gets (0..1)
+  /// 0..1 – controls number/size variation of puff lobes
   final double puffiness;
 
   const FloatingCloud({
@@ -38,7 +37,7 @@ class _FloatingCloudState extends State<FloatingCloud>
 
   late final List<Offset> _centers;
   late final List<double> _radii;
-  late final RRect _bodyEllipse; // main capsule-ish body
+  late final RRect _bodyEllipse;
 
   @override
   void initState() {
@@ -48,24 +47,19 @@ class _FloatingCloudState extends State<FloatingCloud>
     _phaseOffset = rand.nextDouble() * 2 * math.pi;
     _amp = widget.amplitude ?? (4 + rand.nextDouble() * 6);
 
-    // —— Constrained cloud generation —— //
-    // 1) Choose 5–7 lobes, evenly spaced with jitter
+    // ---- Generate fluffy lobe layout ----
     final puffCount = 5 + rand.nextInt(3);
 
-    // horizontal band where cloud lives
     final left = widget.width * 0.12;
     final right = widget.width * 0.88;
     final bandWidth = right - left;
 
-    // vertical band for puff centers (upper half, gentle jitter)
     final yBase = widget.height * 0.55;
     final yJitter = widget.height * 0.10;
 
-    // radius range (kept reasonable)
     final rMin = widget.height * 0.22;
     final rMax = widget.height * 0.36;
 
-    // mild “puffiness” modulation
     final puffiness = widget.puffiness.clamp(0.0, 1.0);
     final jitterX = (bandWidth / puffCount) * (0.15 + 0.25 * puffiness);
     final jitterR = (rMax - rMin) * (0.25 + 0.5 * puffiness);
@@ -75,29 +69,22 @@ class _FloatingCloudState extends State<FloatingCloud>
 
     for (int i = 0; i < puffCount; i++) {
       final t = puffCount == 1 ? 0.5 : i / (puffCount - 1);
-      // base even spacing
       double cx = left + t * bandWidth;
-      // small horizontal jitter, but clamp to band
       cx += (rand.nextDouble() * 2 - 1) * jitterX;
       cx = cx.clamp(left, right);
-
-      // y with small jitter
       final cy = yBase + (rand.nextDouble() * 2 - 1) * yJitter;
-
-      // radius with smooth-ish variation using sin + jitter
       final baseR = rMin + (0.5 + 0.5 * math.sin(t * math.pi)) * (rMax - rMin);
       final r = (baseR + (rand.nextDouble() * 2 - 1) * jitterR).clamp(rMin, rMax);
-
       _centers.add(Offset(cx, cy));
       _radii.add(r);
     }
 
-    // 2) Ensure overlap by softly pulling neighbors together if gaps are too large
+    // ensure overlap
     for (int i = 1; i < _centers.length; i++) {
       final prev = _centers[i - 1];
       final curr = _centers[i];
       final dist = (curr.dx - prev.dx).abs();
-      final maxGap = (_radii[i - 1] + _radii[i]) * 0.85; // enforce ~15% overlap
+      final maxGap = (_radii[i - 1] + _radii[i]) * 0.85;
       if (dist > maxGap) {
         final mid = (prev.dx + curr.dx) / 2;
         _centers[i - 1] = Offset(mid - maxGap / 2, _centers[i - 1].dy);
@@ -105,7 +92,7 @@ class _FloatingCloudState extends State<FloatingCloud>
       }
     }
 
-    // 3) Add a main body capsule to unify silhouette
+    // main unifying capsule
     final minX = _centers
         .asMap()
         .entries
@@ -117,7 +104,6 @@ class _FloatingCloudState extends State<FloatingCloud>
         .map((e) => e.value.dx + _radii[e.key])
         .reduce(math.max);
 
-    // body height anchored around 60–75% area
     final bodyTop = widget.height * 0.50;
     final bodyHeight = widget.height * (0.28 + 0.12 * puffiness);
     final bodyRect = Rect.fromLTWH(
@@ -150,8 +136,8 @@ class _FloatingCloudState extends State<FloatingCloud>
           offset: Offset(drift, bob),
           child: CustomPaint(
             size: Size(widget.width, widget.height),
-            painter: _ConstrainedCloudPainter(
-              color: widget.color,
+            painter: _FluffyCloudPainter(
+              baseColor: widget.color,
               shadowBlur: widget.shadowBlur,
               shadowColor: widget.shadowColor,
               centers: _centers,
@@ -165,16 +151,16 @@ class _FloatingCloudState extends State<FloatingCloud>
   }
 }
 
-class _ConstrainedCloudPainter extends CustomPainter {
-  final Color color;
+class _FluffyCloudPainter extends CustomPainter {
+  final Color baseColor;
   final double shadowBlur;
   final Color shadowColor;
   final List<Offset> centers;
   final List<double> radii;
   final RRect bodyEllipse;
 
-  _ConstrainedCloudPainter({
-    required this.color,
+  _FluffyCloudPainter({
+    required this.baseColor,
     required this.shadowBlur,
     required this.shadowColor,
     required this.centers,
@@ -184,34 +170,13 @@ class _ConstrainedCloudPainter extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
-    final paint = Paint()..color = color..isAntiAlias = true;
-
-    // Soft shadow
-    if (shadowBlur > 0) {
-      final shadowPaint = Paint()
-        ..color = shadowColor
-        ..maskFilter = MaskFilter.blur(BlurStyle.normal, shadowBlur);
-      _drawCloud(canvas, size, shadowPaint, dy: 2);
-    }
-
-    _drawCloud(canvas, size, paint);
-  }
-
-  void _drawCloud(Canvas canvas, Size size, Paint paint, {double dy = 0}) {
-    final path = Path();
-
-    // Main body capsule
-    path.addRRect(bodyEllipse.shift(Offset(0, dy)));
-
-    // Add puff ovals
+    // Build union path
+    final path = Path()..addRRect(bodyEllipse);
     for (int i = 0; i < centers.length; i++) {
-      path.addOval(Rect.fromCircle(
-        center: centers[i] + Offset(0, dy),
-        radius: radii[i],
-      ));
+      path.addOval(Rect.fromCircle(center: centers[i], radius: radii[i]));
     }
 
-    // Flat-ish base to ensure nice silhouette
+    // Add a flat-ish base to keep silhouette grounded
     final minX = centers
         .asMap()
         .entries
@@ -222,22 +187,104 @@ class _ConstrainedCloudPainter extends CustomPainter {
         .entries
         .map((e) => e.value.dx + radii[e.key])
         .reduce(math.max);
-
     final baseTop = size.height * 0.68;
     final baseRect = RRect.fromRectAndRadius(
-      Rect.fromLTWH(
-        minX,
-        baseTop + dy,
-        (maxX - minX),
-        size.height * 0.26,
-      ),
+      Rect.fromLTWH(minX, baseTop, (maxX - minX), size.height * 0.26),
       Radius.circular(size.height * 0.12),
     );
     path.addRRect(baseRect);
 
-    canvas.drawPath(path, paint);
+    // ---- 1) Outer soft halo (feathered rim) ----
+    final haloPaint = Paint()
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = size.height * 0.12
+      ..color = Colors.white.withOpacity(0.22)
+      ..maskFilter = MaskFilter.blur(BlurStyle.normal, size.height * 0.12);
+    canvas.drawPath(path, haloPaint);
+
+    // ---- 2) Drop shadow (below) for depth ----
+    if (shadowBlur > 0) {
+      final shadowPaint = Paint()
+        ..color = shadowColor
+        ..maskFilter = MaskFilter.blur(BlurStyle.normal, shadowBlur);
+      canvas.save();
+      canvas.translate(0, 2); // slight y-offset
+      canvas.drawPath(path, shadowPaint);
+      canvas.restore();
+    }
+
+    // ---- 3) Creamy fill (top warm → bottom cool) ----
+    final fillPaint = Paint()
+      ..shader = LinearGradient(
+        begin: Alignment.topLeft,
+        end: Alignment.bottomRight,
+        colors: [
+          Colors.white.withOpacity(0.95),                         // bright top
+          Color.alphaBlend(const Color(0xFFEFF7FF), baseColor)     // cool base
+              .withOpacity(0.90),
+          const Color(0xFFE3F1FF).withOpacity(0.85),               // subtle blue
+        ],
+        stops: const [0.0, 0.55, 1.0],
+      ).createShader(Offset.zero & size);
+    canvas.drawPath(path, fillPaint);
+
+    // ---- 4) Inner shade near the base (adds puff volume) ----
+    canvas.save();
+    canvas.clipPath(path);
+    final shadePaint = Paint()
+      ..shader = LinearGradient(
+        begin: Alignment.topCenter,
+        end: Alignment.bottomCenter,
+        colors: [
+          Colors.transparent,
+          Colors.black.withOpacity(0.06),
+          Colors.black.withOpacity(0.10),
+        ],
+        stops: const [0.0, 0.6, 1.0],
+      ).createShader(Offset(0, size.height * 0.35) &
+          Size(size.width, size.height * 0.7));
+    canvas.drawRect(Offset.zero & size, shadePaint);
+    canvas.restore();
+
+    // ---- 5) Small per-lobe highlights (sparkly puff caps) ----
+    for (int i = 0; i < centers.length; i++) {
+      final c = centers[i] + const Offset(-4, -6); // top-left offset
+      final r = radii[i] * 0.85;
+      final highlight = Paint()
+        ..shader = RadialGradient(
+          center: Alignment.center,
+          radius: 1.0,
+          colors: [
+            Colors.white.withOpacity(0.30),
+            Colors.white.withOpacity(0.00),
+          ],
+          stops: const [0.0, 1.0],
+        ).createShader(Rect.fromCircle(center: c, radius: r));
+      canvas.drawCircle(c, r, highlight);
+    }
+
+    // ---- 6) Soft top rim light to sell fluffiness ----
+    final rimPaint = Paint()
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = size.height * 0.018
+      ..color = Colors.white.withOpacity(0.75)
+      ..maskFilter = MaskFilter.blur(BlurStyle.normal, size.height * 0.02);
+    // Clip to top half so rim light doesn’t appear at the bottom
+    final topClip = Path()
+      ..addRect(Rect.fromLTWH(0, 0, size.width, size.height * 0.6));
+    canvas.save();
+    canvas.clipPath(topClip);
+    canvas.drawPath(path, rimPaint);
+    canvas.restore();
   }
 
   @override
-  bool shouldRepaint(covariant _ConstrainedCloudPainter oldDelegate) => false;
+  bool shouldRepaint(covariant _FluffyCloudPainter old) {
+    // Only re-generate if layout changes; animation comes from Transform/parent.
+    return old.baseColor != baseColor ||
+        old.shadowBlur != shadowBlur ||
+        old.shadowColor != shadowColor ||
+        old.bodyEllipse != bodyEllipse ||
+        old.centers.length != centers.length;
+  }
 }
