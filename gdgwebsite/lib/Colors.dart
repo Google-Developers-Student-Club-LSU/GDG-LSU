@@ -56,6 +56,7 @@ const gBlue = Color(0xFF4285F4);
 const gRed = Color(0xFFEA4335);
 const gYellow = Color(0xFFFBBC05);
 const gGreen = Color(0xFF34AB53);
+const gPurple = Color(0xFF673ab7);
 
 
 
