@@ -11,7 +11,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:gdgwebsite/Colors.dart';
 
-const googleColors = [gBlue, gRed, gYellow, gGreen];
+const googleColors = [gBlue, gRed, gYellow, gGreen, gPurple];
 class GlowingParticles extends StatefulWidget {
   const GlowingParticles({super.key});
 

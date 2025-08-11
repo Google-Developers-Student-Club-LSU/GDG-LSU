@@ -12,7 +12,7 @@ import 'package:flutter/material.dart';
 import 'package:gdgwebsite/Colors.dart';
 
 
-const waveColors = [gBlue, gRed, gYellow, gGreen];
+const waveColors = [gBlue, gRed, gYellow, gGreen,gPurple];
 
 class FlowingWaves extends StatefulWidget {
   const FlowingWaves({super.key});
