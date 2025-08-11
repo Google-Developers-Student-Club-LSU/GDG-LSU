@@ -63,18 +63,12 @@ class _HackathonContainerState extends State<HackathonContainer>
           ),
           borderRadius: BorderRadius.circular(16),
           boxShadow: [
-            BoxShadow(
-              color: const Color(0xFF87CEEB).withValues(alpha: .5),
-              blurRadius: 20,
-              spreadRadius: 2,
-              offset: const Offset(0, -8),
-              ),
-            BoxShadow(
-              
+
+            BoxShadow(     
               color: const Color(0xFF00FF66).withValues(alpha: .5),
               blurRadius: 20,
               spreadRadius: 2,
-              offset: const Offset(0, 10),
+              offset: const Offset(3, 3),
             ),
           ],
         ),
@@ -114,7 +108,7 @@ class _HackathonContainerState extends State<HackathonContainer>
                         top: 10,
                         right: 50 + _cloudOffset.value * (2),
                         child: FloatingCloud(
-                          width: 100,
+                          width: 110,
                           height: 50,
                           color: Colors.grey.shade200,
                           shadowColor: Colors.transparent,
@@ -122,21 +116,22 @@ class _HackathonContainerState extends State<HackathonContainer>
                       );
                     },
                   ),
-
                   AnimatedBuilder(
                     animation: _cloudController,
                     builder: (context, child) {
                       return Positioned(
-                        top: 40,
-                        right: 500 + _cloudOffset.value * 3,
+                        top: 50,
+                        left:  -10 + _cloudOffset.value * (3),
                         child: FloatingCloud(
-                          width: 100,
-                          color: Colors.white.withValues(alpha: 0.8),
-                          height: 50,
+                          width: 110,
+                          height: 70,
+                          color: Colors.grey.shade200,
+                          shadowColor: Colors.transparent,
                         ),
                       );
                     },
                   ),
+                          
 
                   Positioned(
                     left: (screenSize.width <= 700) ? 10 : 30,
@@ -175,15 +170,28 @@ class _HackathonContainerState extends State<HackathonContainer>
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         spaceBox,
-                        Text(
-                          "GeauxHack 2025",
-                          style: standardText.copyWith(
-                            fontSize: mobile ? 40 : 60,
-                            color: Colors.white,
-                            fontWeight: FontWeight.w900,
+                       Text(
+                            "GeauxHack 2025",
+                            style: standardText.copyWith(
+                              fontSize: mobile ? 40 : 60,
+                              color: const Color(0xFF2B7CAF), // slightly darker than sky blue
+                              fontWeight: FontWeight.w900,
+                              shadows: [
+                                // Highlight (top-left)
+                                const Shadow(
+                                  offset: Offset(-2, -2),
+                                  blurRadius: 2,
+                                  color: Colors.white30,
+                                ),
+                                // Shadow (bottom-right)
+                                Shadow(
+                                  offset: const Offset(2, 2),
+                                  blurRadius: 3,
+                                  color: Colors.blue.shade900.withValues(alpha: .4),
+                                ),
+                              ],
+                            ),
                           ),
-                          textAlign: TextAlign.center,
-                        ),
                         spaceBox,
                         TimeRect(targetTime: eventDate),
                         SelectableText(
