@@ -11,6 +11,9 @@ import 'package:gdgwebsite/Models/MemberModel.dart';
 
 
 // EBOARD MEMBERS
+//To add a memmber every detail is Required, 
+// Full Name, Position, Year and Major, and 
+//Short Intro, short intro it is look best if its less 200 words, but it can be more
 final List<MemberProfile> members = [
   MemberProfile(
     fullName: 'Mujtaba Malik',
