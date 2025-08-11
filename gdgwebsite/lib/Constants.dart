@@ -17,7 +17,7 @@ const double containerHeight = 500;
 //Home Page
   const numberOfficer = 8;
   const numberMembers = 188;
-  const thinkLikeADev = 'assets/Gif/ThinkLikeADevStickerbyGoogleDevelopers.gif';
+  const thinkLikeADev = 'assets/Gif/think.gif';
   const sun = 'assets/Gif/sun.png';
   const tree = 'assets/Gif/tree.png';
   const bush = 'assets/Gif/bush.webp';
