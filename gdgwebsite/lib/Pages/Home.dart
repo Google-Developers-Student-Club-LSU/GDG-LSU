@@ -80,21 +80,24 @@ class _HomePageState extends State<HomePage> {
     
      const SizedBox(height: 25),   
 
-     ResponsiveWrap(
-       builder: (isMobile) {
-
-         return isMobile ? Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            workshops(),
-            SizedBox(height: 30,),
-            Community()
-
-          ],
-         )
-         : 
-         secondSection();
-       }
+     SelectableRegion(
+      selectionControls: materialTextSelectionControls,
+       child: ResponsiveWrap(
+         builder: (isMobile) {
+       
+           return isMobile ? Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              workshops(),
+              SizedBox(height: 30,),
+              Community()
+       
+            ],
+           )
+           : 
+           secondSection();
+         }
+       ),
      ),
       const SizedBox(height:50),
           thirdSection(context),
