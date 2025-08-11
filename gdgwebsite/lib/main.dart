@@ -13,6 +13,7 @@ import 'package:gdgwebsite/EventsData.dart';
 import 'package:gdgwebsite/Pages/Eboard.dart';
 import 'package:gdgwebsite/Pages/Events.dart';
 import 'package:gdgwebsite/Pages/Home.dart';
+import 'package:gdgwebsite/Pages/Members.dart';
 import 'package:gdgwebsite/Pages/Sponsor.dart';
 import 'package:gdgwebsite/provider/EventProvider.dart';
 import 'package:gdgwebsite/provider/ThemeProvider.dart';
@@ -57,6 +58,7 @@ class MyApp extends StatelessWidget {
         eboard: (_) => const EboardPage(),
         events: (_) => const EventsPage(),
         sponsor: (_) => const SponsorPage(),
+        members: (_) => const Members(),
        // '/blog': (_) => const BlogPage()
       }
     );
