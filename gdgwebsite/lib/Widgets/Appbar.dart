@@ -116,6 +116,7 @@ class _AppbarState extends State<Appbar> with SingleTickerProviderStateMixin {
                             _dropdownItem(context, 'Home', home),
                             _dropdownItem(context, 'Eboard', eboard),
                             _dropdownItem(context, 'Events', events),
+                            _dropdownItem(context, "Members", members),
                             _dropdownItem(context, 'Sponsor', sponsor),
                           ],
                         ),
@@ -152,7 +153,7 @@ class _AppbarState extends State<Appbar> with SingleTickerProviderStateMixin {
     final theme = Theme.of(context);
     final textColor = theme.textTheme.bodyMedium?.color ?? Colors.black;
 
-    Widget spacer = const SizedBox(width: 25);
+    Widget spacer = const SizedBox(width: 20);
 
     return ResponsiveAppBar(
       borderColor: widget.borderColor,
@@ -162,6 +163,8 @@ class _AppbarState extends State<Appbar> with SingleTickerProviderStateMixin {
         NavHoverItem(label: 'Eboard', route: eboard, baseColor: textColor, hoverColor: gRed),
         spacer,
         NavHoverItem(label: 'Events', route: events, baseColor: textColor, hoverColor: gYellow),
+        spacer,
+        NavHoverItem(label: "Members", route: members, baseColor: textColor, hoverColor: gPurple),
         spacer,
         NavHoverItem(label: 'Sponsor', route: sponsor, baseColor: textColor, hoverColor: gGreen),
         spacer,

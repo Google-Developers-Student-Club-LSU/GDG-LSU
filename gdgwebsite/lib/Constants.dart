@@ -8,6 +8,7 @@ final String home = '/home';
 final String events = 'events';
 final String eboard = 'eboard';
 final String sponsor = 'sponsor';
+final String members = 'members';
 
 
 const double containerWidth = 300;
