@@ -80,23 +80,25 @@ class _HomePageState extends State<HomePage> {
     
      const SizedBox(height: 25),   
 
-     SelectableRegion(
-      selectionControls: materialTextSelectionControls,
-       child: ResponsiveWrap(
-         builder: (isMobile) {
-       
-           return isMobile ? Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              workshops(),
-              SizedBox(height: 30,),
-              Community()
-       
-            ],
-           )
-           : 
-           secondSection();
-         }
+     Center(
+       child: SelectableRegion(
+        selectionControls: materialTextSelectionControls,
+         child: ResponsiveWrap(
+           builder: (isMobile) {
+         
+             return isMobile ? Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                workshops(),
+                SizedBox(height: 30,),
+                Community()
+         
+              ],
+             )
+             : 
+             secondSection();
+           }
+         ),
        ),
      ),
       const SizedBox(height:50),
@@ -166,8 +168,8 @@ class _HomePageState extends State<HomePage> {
               child: HoverExpand(
                 child: CustomButton(
                   color: gGreen,
-                  width: 400,
-                  height:100 ,
+                  width: 350,
+                  height:80 ,
                   buttonName: "Sponsor Package",
                   pressed: () => Navigator.pushReplacementNamed(context, sponsor),
                 ),
@@ -439,7 +441,7 @@ children: [
             ),
             Padding(
               padding: const EdgeInsets.only(bottom: 8.0),
-              child: SelectableText("Hands-on learning opportunities on Python,​", style: standardText.copyWith(fontSize: 20, fontWeight: FontWeight.w500 ),),
+              child: SelectableText("Hands-on learning opportunities on Python,​", style: standardText.copyWith(fontSize: 20, fontWeight: FontWeight.w500,), textAlign: TextAlign.center,),
             ),
             Padding(
               padding: const EdgeInsets.only(bottom: 8.0),
