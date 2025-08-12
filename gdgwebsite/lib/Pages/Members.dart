@@ -90,14 +90,14 @@ class WhyBecomeAMember extends StatelessWidget {
   final bool isMobile;
 
   static const List<String> reasons = [
-    "Skill Growth – Get hands-on experience in Google technologies, AI/ML, Flutter, Android, Cloud, and more.",
-    "Career Opportunities – Network with industry professionals, and LSU alumni.",
-    'Exclusive Code Access – Get hands-on code from our workshops to learn faster.',
-    "Exclusive Events – Access To Our Exclusive Events.",
-    "Real-World Shipping – Build and publish a real app together (Play Store/TestFlight) to grow your portfolio and strengthen our community.",
-    "Leadership & Mentorship – Learn from mentors and even lead workshops yourself.",
-    "Community & Collaboration – Join peers who share your passion for tech.",
-    "Free Swag & Perks – Stickers, T-shirts."
+    "🛠️💡 Skill Growth – Get hands-on experience in Google technologies, AI/ML, Flutter, Android, Cloud, and more.",
+    "🤝💼 Career Opportunities – Network with industry professionals, and LSU alumni.",
+    '🔑💻 Exclusive Code Access – Get hands-on code from our workshops to learn faster.',
+    "🎟️✨ Exclusive Events – Access To Our Exclusive Events.",
+    "📦🚀 Real-World Shipping – Build and publish a real app together (Play Store/TestFlight) to grow your portfolio and strengthen our community.",
+    "🧑‍🏫🌟 Leadership & Mentorship – Learn from mentors and even lead workshops yourself.",
+    "🤗👥 Community & Collaboration – Join peers who share your passion for tech.",
+    "🎁👕 Free Swag & Perks – Stickers, T-shirts."
   ];
 
   @override
