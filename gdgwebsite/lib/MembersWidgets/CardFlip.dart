@@ -8,7 +8,7 @@ import 'dart:math' as math;
 import 'package:url_launcher/url_launcher.dart';
 
 
-const _cardSize = Size(560, 320); // one source of truth
+const _cardSize = Size(560, 320);
 
 class CardFlip extends StatefulWidget {
   const CardFlip({super.key});

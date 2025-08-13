@@ -24,7 +24,7 @@ class EboardPage extends StatefulWidget {
 
 class _EboardPageState extends State<EboardPage> with TickerProviderStateMixin {
   bool showIntro = true;
-  final String introText = 'Tap a board member to see who they are.';
+  final String introText = 'Tap a board member to see more information.';
   late AnimationController _fadeController;
   late Animation<double> _fadeAnimation;
 
@@ -45,8 +45,7 @@ class _EboardPageState extends State<EboardPage> with TickerProviderStateMixin {
           showIntro = true;
         });
       });
-    // Automatically fade out the intro after 1.5 seconds
-    Future.delayed(const Duration(milliseconds: 1500), () {
+    Future.delayed(const Duration(milliseconds: 1000), () {
       _fadeController.reverse().then((_) {
         setState(() {
           showIntro = false;
