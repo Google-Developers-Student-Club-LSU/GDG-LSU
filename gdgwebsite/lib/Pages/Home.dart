@@ -102,6 +102,8 @@ class _HomePageState extends State<HomePage> {
          ),
        ),
      ),
+      SizedBox(height: 30,),
+     RealworldExpr(),
       const SizedBox(height:50),
           thirdSection(context),
 
@@ -552,6 +554,34 @@ Widget _buildFirstSlideShow(BuildContext context, double offset) {
     
 
 
+}
+
+class RealworldExpr extends StatelessWidget {
+  const RealworldExpr({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Padding(padding: EdgeInsets.all(8.0),
+          child: CircleImageContainer(imagePath: robot, size: 200,)),
+          Padding(
+            padding: const EdgeInsets.only(bottom: 8.0),
+            child: SelectableText("Real World Experience", style: standardText.copyWith(fontSize: 40 ),),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(bottom: 8.0),
+            child: SelectableText("Build and launch a production-ready app ​", style: standardText.copyWith(fontSize: 20, fontWeight: FontWeight.w500 ),),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(bottom: 8.0),
+            child: SelectableText("leveraging Firebase, Flutter, and more​​", style: standardText.copyWith(fontSize: 20, fontWeight: FontWeight.w500),),
+          )
+      ],
+    );
+  }
 }
 
 class FirstSectionBackground extends StatelessWidget {

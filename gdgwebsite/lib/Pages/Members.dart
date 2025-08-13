@@ -5,6 +5,7 @@ import 'package:gdgwebsite/Constants.dart';
 import 'package:gdgwebsite/MembersWidgets/CardFlip.dart';
 import 'package:gdgwebsite/MembersWidgets/GlassEffect.dart';
 import 'package:gdgwebsite/RandomArts/AuroraBackground.dart';
+import 'package:gdgwebsite/Utils/CIickableImageLink.dart';
 import 'package:gdgwebsite/Widgets/Appbar.dart';
 import 'package:gdgwebsite/Widgets/Footbar.dart';
 
@@ -54,7 +55,25 @@ class Members extends StatelessWidget {
                         ],
                       ),
                       const SizedBox(height: 34),
-                      Center(child: CardFlip())
+                      GlassEffect(
+                        title: 
+                        FittedBox(
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Center(child: Text("Be Part of Our Communnity", textAlign: TextAlign.center, style: standardText.copyWith(fontSize: 30), )),
+                                Image.asset(globe, width: 50,)
+                              ],
+                            
+                            ),
+                        ),
+                
+                        children: [
+                            Center(child: ClickableImageLink(imageAsset: discordLogo, linkUrl: discordInviteLink)),
+                            Center(child: ClickableImageLink(imageAsset: tigerlinkLogo, linkUrl: tigerlinkLink))
+                      ],),
+                      const SizedBox(height: 34),
+                      Center(child: CardFlip()),
                     ],
                   ),
                 ),
