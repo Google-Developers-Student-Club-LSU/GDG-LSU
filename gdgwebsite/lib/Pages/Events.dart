@@ -137,9 +137,12 @@ class _EventsPageState extends State<EventsPage> with SingleTickerProviderStateM
                  Center(
                         child: ScrollConfiguration(
                           behavior: ScrollConfiguration.of(context).copyWith(scrollbars: true),
-                          child: CalendarControllerProvider<Event>(
-                            controller: EventController<Event>(),
-                            child: isWeekView ? WeekCalendar(): MonthCalendar(),
+                          child: Hero(
+                            tag: "calendar",
+                            child: CalendarControllerProvider<Event>(
+                              controller: EventController<Event>(),
+                              child: isWeekView ? WeekCalendar(): MonthCalendar(),
+                            ),
                           ),
                         ),
                     

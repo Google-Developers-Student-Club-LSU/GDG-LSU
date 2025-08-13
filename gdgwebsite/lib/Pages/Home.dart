@@ -10,6 +10,7 @@ import 'package:calendar_view/calendar_view.dart';
 import 'package:flutter/material.dart';
 import 'package:gdgwebsite/Colors.dart';
 import 'package:gdgwebsite/Constants.dart';
+import 'package:gdgwebsite/EventsWidgets/MonthCalendar.dart';
 import 'package:gdgwebsite/HackathonSection/HackathonContainer.dart';
 import 'package:gdgwebsite/Models/EventModel.dart';
 import 'package:gdgwebsite/RandomArts/SmoothRandomArt.dart';
@@ -337,16 +338,19 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  AbsorbPointer fourthSection() {
+  Widget fourthSection() {
     return AbsorbPointer(
       absorbing: true,
       child: Center(
                   child: SizedBox(
                     width: MediaQuery.of(context).size.width * 0.8,
                     height: MediaQuery.of(context).size.height,
-                    child: CalendarControllerProvider<Event>(
-                      controller: EventController<Event>(),
-                      child: EventsCalendar(),
+                    child: Hero(
+                      tag: "calendar",
+                      child: CalendarControllerProvider<Event>(
+                        controller: EventController<Event>(),
+                        child: MonthCalendar(),
+                      ),
                     ),
                   ),
               
