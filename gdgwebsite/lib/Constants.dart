@@ -22,6 +22,8 @@ const double containerHeight = 500;
   const tree = 'assets/Gif/tree.png';
   const bush = 'assets/Gif/bush.webp';
   const mike = 'assets/Gif/mike.png';
+  const globe = 'Gif/GdgGlobe.gif';
+  const robot = 'Gif/Robot.gif';
 
   
 //Links
