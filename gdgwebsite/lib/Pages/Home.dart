@@ -111,6 +111,7 @@ class _HomePageState extends State<HomePage> {
             height: 50,
           ),
           Center(child: SelectableText("UPCOMING EVENTS",
+          textAlign: TextAlign.center,
           style: standardText,)
           ),
       const SizedBox(

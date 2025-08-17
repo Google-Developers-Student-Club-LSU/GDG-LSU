@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:gdgwebsite/Colors.dart';
+import 'package:gdgwebsite/Constants.dart';
 
 import 'dart:math' as math;
 
@@ -193,7 +194,7 @@ class BackCard extends StatelessWidget {
                   ),
                   SizedBox(height: 25,),
                   Center(
-                    child: GlassButton(label: "Sign Up Form", url: "https://forms.gle/ks8xigwXhcaVQCw7A"),
+                    child: GlassButton(label: "Sign Up Form", url: signUpLink),
                   )
                 ],
               ),

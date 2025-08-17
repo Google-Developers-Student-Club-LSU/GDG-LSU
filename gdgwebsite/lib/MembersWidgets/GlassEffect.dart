@@ -46,8 +46,10 @@ class GlassEffect extends StatelessWidget {
                             child: Center(
                               child: Wrap(
                                 direction: Axis.horizontal,
-                                spacing: 12,
-                                runSpacing: 12,
+                                runAlignment: WrapAlignment.center,
+                                alignment: WrapAlignment.center,
+                                spacing: 20,
+                                runSpacing: 20,
                                 children: children.map((c) {
                                   return ConstrainedBox(
                                     constraints:
