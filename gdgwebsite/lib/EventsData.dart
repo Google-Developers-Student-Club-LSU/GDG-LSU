@@ -30,11 +30,11 @@ final List<Map<String, dynamic>> myEvents = [
   },
     {
     "title": "Engineering Club Fair",
-    "date": DateTime(2025, 9, 1, 10, 0),
-    "endDate": DateTime(2025, 9, 1, 10, 30),
+    "date": DateTime(2025, 8, 28, 16, 30),
+    "endDate": DateTime(2025, 8, 28, 18, 00),
     "description": "Join Google Developer Group at LSU and be part of a passionate tech community where you can learn, build, and grow alongside fellow students. Look forward to exciting opportunities like our Hackathon, ICPC programming contest, and hands-on workshops. Together, we’ll work on real-world software projects, including building and deploying an app that we’ll actually use, giving you practical experience that goes beyond the classroom. Whether you’re just starting out or looking to sharpen your skills, GDG at LSU is the place to connect, create, and make an impact.",
     "color": gYellow,
-    "room" : "Patrick F Taylor"
+    "room" : "Patrick F. Taylor Hall - Cambre Atrium"
   },
   {
     "title": "Career workshop ",

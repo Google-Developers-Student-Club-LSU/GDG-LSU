@@ -179,12 +179,13 @@ class BackCard extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 12),
-                  _StepLine(index: 1, text: "Pay \$20 for the entire year", isMobile: isMobile),
+                  _StepLine(index: 1, text: "Join Discord", isMobile: isMobile),
                   _StepLine(index: 2, text: "Join TigerLink", isMobile: isMobile),
-                  _StepLine(index: 3, text: "Complete Hazing Prevention", isMobile: isMobile),
+                   _StepLine(index: 3, text: "Join GDG Community", isMobile: isMobile),
+                  _StepLine(index: 4, text: "Complete Hazing Prevention", isMobile: isMobile),
                   const SizedBox(height: 12),
                   Text(
-                    "Follow these three simple steps to get started. The form below includes detailed guidance for completing each one.",
+                    "Follow these four simple steps to get started. The form below includes detailed guidance for completing each one.",
                     textAlign: TextAlign.center,
                     softWrap: true,
                     style: standardText.copyWith(

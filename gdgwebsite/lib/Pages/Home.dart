@@ -114,7 +114,7 @@ class _HomePageState extends State<HomePage> {
           textAlign: TextAlign.center,
           style: standardText,)
           ),
-      const SizedBox(
+          const SizedBox(
             height: 50,
           ),          
           fourthSection(),
@@ -270,7 +270,7 @@ class _HomePageState extends State<HomePage> {
             ClickableImageLink(imageAsset: discordLogo, width: 150, linkUrl: discordInviteLink),
             const SizedBox(height: 50,),
             ClickableImageLink(imageAsset:tigerlinkLogo, width: 150, linkUrl: tigerlinkLink)
-         
+             
           ],
 
          )
