@@ -91,8 +91,8 @@ Apart from coding, I like One Piece, Cooking, and Working out(honestly, not much
     fullName: 'Dina Taing',
     position: 'Webmaster',
     yearAndMajor: 'Senior Computer Science',
-    shortIntro: "Hi, I’m the Web Master for GDG LSU and the sole developer behind our website. I’m deeply passionate about Go and Flutter for their speed, simplicity, and flexibility. Obsessed with UX and performance, I focus on building fast, intuitive, and polished experiences from backend to frontend. (Fun fact): This website is built entirely with Flutter!",
+    shortIntro: "I’m the Web Master for GDG LSU and the sole developer behind our website, where I design, build, and maintain end-to-end digital experiences. Obsessed with speed, simplicity, and performance, I specialize in Go for backend systems and Flutter for cross-platform UIs, delivering websites and apps that are fast, intuitive, and polished. My focus is always on user experience and scalability, ensuring that technology feels effortless from backend logic to frontend interaction.Beyond web development, I’m deeply interested in artificial intelligence (AI) and machine learning (ML) not just in theory, but in applying these technologies to real-life problems. Whether it’s optimizing performance, enhancing user interactions, or exploring how AI can power everyday solutions, I’m driven by the challenge of turning cutting-edge research into practical, impactful applications.(Fun fact: our GDG LSU website is built entirely with Flutter!)",
     linkedin: 'https://www.linkedin.com/in/dina-taing-143935236/',
     imageAsset: dinaPic,
-  ),
+),
 ];
