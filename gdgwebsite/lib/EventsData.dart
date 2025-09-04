@@ -37,20 +37,13 @@ final List<Map<String, dynamic>> myEvents = [
     "room" : "Patrick F. Taylor Hall - Cambre Atrium"
   },
   {
-    "title": "Career workshop ",
-    "date": DateTime(2025, 9, 3, 14, 30),
-    "endDate": DateTime(2025, 9, 3, 15,00 ),
-    "description": "Join us for a career workshop hosted by FAST ENTERPRISES. Learn about career paths, gain resume and interview tips, and discover internship and job opportunities with a leading tech company.",
-    "color": gBlue,
-    "room" : "PFT 1202"
-  },
-  {
     "title": "General Body Meeting",
-    "date": DateTime(2025, 9, 15, 12, 0),
-    "endDate": DateTime(2025, 9, 15, 12, 30),
+    "date": DateTime(2025, 9, 10, 17, 30),
+    "endDate": DateTime(2025, 9, 10, 18, 30),
     "description": 
     '''Catch up with fellow members as we kick off the semester! We'll discuss plans for our upcoming app development project, assign initial roles, and get things rolling. Plus, enjoy some fun activities to break the ice and build team spirit.''',
     "color": gGreen,
+    "image": "assets/events/GBM1.png",
     "room" : "PFT 1209"
   },
     {
@@ -60,6 +53,7 @@ final List<Map<String, dynamic>> myEvents = [
     "description": 
     '''Dive into the world of game development in this hands-on workshop hosted by Lillian, our talented graphic designer. Learn the fundamentals of designing and building simple games, explore visual design principles, and collaborate with peers to bring your ideas to life—no prior experience required!''',
     "color": gBlue,
+  
     "room" : "PFT 1209"
   },
     {
