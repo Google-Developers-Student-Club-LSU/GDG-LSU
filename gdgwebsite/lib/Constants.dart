@@ -94,10 +94,10 @@ const pdfBooklet = 'assets/sponsorPackage/GDGSponsor.pdf';
 
 // SlideShow
  const List<String> firstSlideShow= [
-          'assets/firstSlide/slide1.png',
-          'assets/firstSlide/slide2.png',
-          'assets/firstSlide/slide3.png',
-          'assets/firstSlide/slide4.jpg',
+          'assets/firstSlide/slide1.JPG',
+          'assets/firstSlide/slide2.JPG',
+          'assets/firstSlide/slide3.JPG',
+          'assets/firstSlide/slide4.JPG',
           'assets/firstSlide/slide5.png'
 ];
 const List<String> secondSlideShow = [

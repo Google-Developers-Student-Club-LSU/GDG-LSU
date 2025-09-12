@@ -17,6 +17,7 @@ import 'package:gdgwebsite/RandomArts/SmoothRandomArt.dart';
 import 'package:gdgwebsite/RandomArts/TriangleMesh.dart';
 import 'package:gdgwebsite/Utils/CIickableImageLink.dart';
 import 'package:gdgwebsite/Utils/CustomButton.dart';
+import 'package:gdgwebsite/Utils/InformationCard.dart';
 import 'package:gdgwebsite/Utils/ReponsiveWrap.dart';
 import 'package:gdgwebsite/Widgets/FloatingDarkLightMode.dart';
 import 'package:gdgwebsite/Widgets/Footbar.dart';
@@ -69,17 +70,55 @@ class _HomePageState extends State<HomePage> {
       builder: (isMobile) {
         return 
         isMobile? firstSectionMobile(context) :
-      Stack(children: [
-            FirstSectionBackground(),
-                _buildFirstSlideShow(context, scrollOffset),
-                _buildAnimatedText(context,scrollOffset),
-         ]);
+        Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Container(
+                width: MediaQuery.of(context).size.width *.8,
+                height: MediaQuery.of(context).size.height * .8,
+                decoration: BoxDecoration(
+                  border: Border.all(color: gBlue, width: 2,  ),
+                  borderRadius: BorderRadius.circular(25),
+                ),
+                child: _buildFirstSlideShow() ,
+              ),
+            ),
+            _buildAnimatedText()
+          ],
+        );
       }
     ),
 
     HackathonContainer(),
     
      const SizedBox(height: 25),   
+     Wrap(
+        direction: Axis.horizontal,            // horizontal first
+        alignment: WrapAlignment.center,       // center each line
+        runAlignment: WrapAlignment.center,    // center the group of lines
+        crossAxisAlignment: WrapCrossAlignment.center,
+        spacing: 20,                      // gap between items
+        runSpacing: 16,                // gap between rows
+        children: [
+          InformationCard(
+            title: "Grow",
+            description: "Expand your skills with hands-on workshops and real-world projects.",
+            size: Size(MediaQuery.of(context).size.width < 600 ? MediaQuery.of(context).size.width * .9 : 400, 400),
+          ),
+          InformationCard(
+            title: "Connect",
+            description: "Join a vibrant community of tech enthusiasts and professionals.",
+            size: Size(MediaQuery.of(context).size.width < 600 ? MediaQuery.of(context).size.width * .9 : 400, 400),
+          ),
+          InformationCard(
+            title: "Give",
+            description: "Make a difference through tech-driven social impact initiatives. Give back to the community.",
+            size: Size(MediaQuery.of(context).size.width < 600 ? MediaQuery.of(context).size.width * .9 : 400, 400),
+          ),
+        ],
+      ),
+      const SizedBox(height: 25),
 
      Center(
        child: SelectableRegion(
@@ -461,91 +500,39 @@ children: [
   }
 
 
-Widget _buildAnimatedText(BuildContext context, double offset) {
-  final Size screenSize = MediaQuery.of(context).size;
-  const double maxOffset = 200;
-  final double clampedOffset = offset.clamp(0, maxOffset);
-
-  // Base positions as a proportion of screen size
-  final double baseTop = screenSize.height * 0.45;
-  final double baseLeft = screenSize.width * 0.005;
-
-  final double translateY = -clampedOffset /2;
-  final double translateX = clampedOffset /9;
-  final double scale = 1.0 - (clampedOffset / maxOffset) * 0.2;
-
-  // Responsive font size
-  final double baseFontSize = screenSize.width * 0.05; // ~50 for 800px wide
-
-  return Positioned(
-    top: baseTop + translateY,
-    left: baseLeft + translateX,
-    child: Transform.scale(
-      scale: scale,
-      alignment: Alignment.topLeft,
-      child: Padding(
-        padding: EdgeInsets.all(screenSize.width * 0.03),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            SelectableText(
-              "ENHANCE",
-              style: standardTextStyled.copyWith(
-                fontSize: baseFontSize,
-                fontWeight: FontWeight.w900,
-                color: gBlue,
-              ),
-            ),
-            SelectableText(
-              "YOUR TECHNICAL",
-              style: standardTextStyled.copyWith(
-                fontSize: baseFontSize,
-                fontWeight: FontWeight.w800,
-                color: gGreen,
-              ),
-            ),
-            SelectableText(
-              "KNOWLEDGE",
-              style: standardTextStyled.copyWith(
-                fontSize: baseFontSize,
-                fontWeight: FontWeight.w800,
-                color: gYellow,
-              ),
-            ),
-          ],
-        ),
-      ),
-    ),
+Widget _buildAnimatedText() {
+  return AnimatedTextKit(
+    repeatForever: true,
+    animatedTexts: 
+    [
+      TypewriterAnimatedText('ENCHANCE',
+      textStyle: standardText.copyWith(
+         fontSize: 60,
+        color: gBlue
+      )),
+      TypewriterAnimatedText('YOUR TECHNICAL',
+      textStyle: standardText.copyWith(
+        fontSize: 60,
+        color: gYellow
+      )),
+      TypewriterAnimatedText('KNOWLEDGE',
+      textStyle: standardText.copyWith(
+        fontSize: 60,
+        color: gGreen
+      ))
+    ],
+    totalRepeatCount: 1,
+    pause: const Duration(milliseconds: 1000),
+    displayFullTextOnTap: true,
+    stopPauseOnTap: true,
   );
 }
 
-
-Widget _buildFirstSlideShow(BuildContext context, double offset) {
-  const double maxOffset = 200;
-  final double clampedOffset = offset.clamp(0, maxOffset);
-
-  final Size screenSize = MediaQuery.of(context).size;
-  final double screenWidth = screenSize.width;
-
-  // 👇 Set how far it can move horizontally across different screen sizes
-  final double maxTranslateX = screenWidth * 0.2; // 12% of screen width
-
-  // 👇 Adjust scale factor based on screen width (subtle on mobile, more on desktop)
-  final double scaleFactor = 0.2 + (screenWidth / 10000);
-
-  // 👇 Interpolate based on scroll offset
-  final double translateX = (clampedOffset / maxOffset) * maxTranslateX;
-  final double scale = 1.0 - (clampedOffset / maxOffset) * scaleFactor;
-
-  return Transform.translate(
-    offset: Offset(translateX, 0),
-    child: Transform.scale(
-      scale: scale,
-      alignment: Alignment.center,
-      child: const AutoSlideCarousel(imagePaths: firstSlideShow),
-    ),
-  );
-}
+  Widget _buildFirstSlideShow (){
+    return  AutoSlideCarousel(imagePaths: firstSlideShow
+     
+    );
+  }
 
 
     Widget _buildSecondSlideShow(){
@@ -582,21 +569,6 @@ class RealworldExpr extends StatelessWidget {
           )
       ],
     );
-  }
-}
-
-class FirstSectionBackground extends StatelessWidget {
-  const FirstSectionBackground({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-          width: double.infinity,
-          height: MediaQuery.of(context).size.height,
-          child: const SpiralDotsArt(),
-            );
   }
 }
 
