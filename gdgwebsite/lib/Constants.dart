@@ -101,15 +101,16 @@ const pdfBooklet = 'assets/sponsorPackage/GDGSponsor.pdf';
           'assets/firstSlide/slide5.png'
 ];
 const List<String> secondSlideShow = [
-          'assets/thirdSlide/slide1.png',
-          'assets/thirdSlide/slide2.jpg',
-          'assets/thirdSlide/slide3.jpg',
-          'assets/thirdSlide/slide4.jpg',
+          'assets/thirdSlide/slide1.JPG',
+          'assets/thirdSlide/slide2.JPG',
+          'assets/thirdSlide/slide3.JPG',
+          'assets/thirdSlide/slide4.JPG',
           'assets/thirdSlide/slide5.png',
-          'assets/thirdSlide/slide6.jpg'
+          'assets/thirdSlide/slide6.JPG',
+          'assets/thirdSlide/slide7.JPG'
 ];
 
-   const List<String> whyJoinGDGReasons = [
+const List<String> whyJoinGDGReasons = [
     "🛠️💡 Skill Growth – Get hands-on experience in Google technologies, AI/ML, Flutter, Android, Cloud, and more.",
     "🤝💼 Career Opportunities – Network with industry professionals, and LSU alumni.",
     '🔑💻 Exclusive Code Access – Get hands-on code from our workshops to learn faster.',

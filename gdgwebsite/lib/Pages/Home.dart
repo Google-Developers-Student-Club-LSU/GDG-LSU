@@ -103,12 +103,12 @@ class _HomePageState extends State<HomePage> {
         children: [
           InformationCard(
             title: "Grow",
-            description: "Expand your skills with hands-on workshops and real-world projects.",
+            description: "We grow by learning together, through hands-on projects, workshops, and real-world challenges that push us beyond the classroom. Whether you're new to tech or an experienced builder, there's always more to explore.",
             size: Size(MediaQuery.of(context).size.width < 600 ? MediaQuery.of(context).size.width * .9 : 400, 400),
           ),
           InformationCard(
             title: "Connect",
-            description: "Join a vibrant community of tech enthusiasts and professionals.",
+            description: "We connect not just code — but people.At GDSC LSU, we bring together students from all backgrounds, majors, and skill levels to collaborate on shared goals. Whether you're a designer, developer, or simply curious, you’ll find a space to meet teammates, mentors, and lifelong friends. Together, we build more than apps — we build a community.",
             size: Size(MediaQuery.of(context).size.width < 600 ? MediaQuery.of(context).size.width * .9 : 400, 400),
           ),
           InformationCard(
